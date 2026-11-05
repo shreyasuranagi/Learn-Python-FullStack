@@ -1,0 +1,234 @@
+SQL> --1 WAQTD NO OF EMPLOYEES WORKING IN EACH DEPARTMEN EXCLUDING PRESIDENT
+SQL> SELECT COUNT(*)
+  2  FROM EMP
+  3  WHERE JOB<>'PRESIDENT'
+  4  GROUP BY DEPTNO;
+
+  COUNT(*)                                                                                          
+----------                                                                                          
+         6                                                                                          
+         5                                                                                          
+         2                                                                                          
+
+SQL> SELECT COUNT(*), DEPTNO
+  2  FROM EMP
+  3  WHERE JOB<>'PRESIDENT'
+  4  GROUP BY DEPTNO;
+
+  COUNT(*)     DEPTNO                                                                               
+---------- ----------                                                                               
+         6         30                                                                               
+         5         20                                                                               
+         2         10                                                                               
+
+SQL> SELECT COUNT(*), DEPTNO, ENAME
+  2  FROM EMP
+  3  WHERE JOB<>'PRESIDENT'
+  4  GROUP BY DEPTNO;
+SELECT COUNT(*), DEPTNO, ENAME
+                         *
+ERROR at line 1:
+ORA-00979: not a GROUP BY expression 
+
+
+SQL> --2 WAQTD TOTAL SALARY NEEDED TO PAY ALL THE EMPLOYEES IN EACH JOB
+SQL> SELECT SUM(SAL), JOB
+  2  FROM EMP
+  3  GROUP BY JOB;
+
+  SUM(SAL) JOB                                                                                      
+---------- ---------                                                                                
+      4150 CLERK                                                                                    
+      5600 SALESMAN                                                                                 
+      5000 PRESIDENT                                                                                
+      8275 MANAGER                                                                                  
+      6000 ANALYST                                                                                  
+
+SQL> --3 WAQTD NO OF EMPLOYEES WORKING AS MANAGER IN EACH DEPT
+SQL> SELECT COUNT(*)
+  2  FROM EMP
+  3  WHERE JOB IN 'MANAGER'
+  4  GROUP BY DEPTNO;
+
+  COUNT(*)                                                                                          
+----------                                                                                          
+         1                                                                                          
+         1                                                                                          
+         1                                                                                          
+
+SQL> --3 WAQTD NO OF EMPLOYEES WORKING AS MANAGER IN EACH DEPT
+SQL> SELECT SUM(SAL), JOB
+  2  GROUP BY DEPTNO;
+GROUP BY DEPTNO
+*
+ERROR at line 2:
+ORA-00923: FROM keyword not found where expected 
+
+
+SQL> --3 WAQTD NO OF EMPLOYEES WORKING AS MANAGER IN EACH DEPT
+SQL> SELECT COUNT(*), DEPTNO
+  2  FROM EMP
+  3  WHERE JOB IN 'MANAGER'
+  4  GROUP BY DEPTNO;
+
+  COUNT(*)     DEPTNO                                                                               
+---------- ----------                                                                               
+         1         30                                                                               
+         1         20                                                                               
+         1         10                                                                               
+
+SQL> --4 WAQTD AVERAGE SALARY NEEDED TO PAY ALL THE EMPLOYEES IN EACH DEPT EXCLUDING DEPT 20
+SQL> SELECT AVG(SAL), DEPTNO
+  2  FROM EMP
+  3  WHERE DEPTNO<>20
+  4  GROUP BY DEPTNO 20;
+GROUP BY DEPTNO 20
+                *
+ERROR at line 4:
+ORA-00933: SQL command not properly ended 
+
+
+SQL> --4 WAQTD AVERAGE SALARY NEEDED TO PAY ALL THE EMPLOYEES IN EACH DEPT EXCLUDING DEPT 20
+SQL> SELECT AVG(SAL), DEPTNO
+  2  FROM EMP
+  3  WHERE DEPTNO<>20
+  4  GROUP BY DEPTNO;
+
+  AVG(SAL)     DEPTNO                                                                               
+---------- ----------                                                                               
+1566.66667         30                                                                               
+2916.66667         10                                                                               
+
+SQL> --5 WAQTD NO OF EMPLOYEES HAVING CHARACTER 'A' IN THEIR NAMES IN EACH JOB
+SQL> SELECT COUNT(*), DEPTNO
+  2  FROM EMP
+  3  WHERE ENAME LIKE '%A%'
+  4  GROUP BY JOB;
+SELECT COUNT(*), DEPTNO
+                 *
+ERROR at line 1:
+ORA-00979: not a GROUP BY expression 
+
+
+SQL> --5 WAQTD NO OF EMPLOYEES HAVING CHARACTER 'A' IN THEIR NAMES IN EACH JOB
+SQL> SELECT COUNT(*), JOB
+  2  FROM EMP
+  3  WHERE ENAME LIKE '%A%'
+  4  GROUP BY JOB;
+
+  COUNT(*) JOB                                                                                      
+---------- ---------                                                                                
+         3 SALESMAN                                                                                 
+         2 CLERK                                                                                    
+         2 MANAGER                                                                                  
+
+SQL> --6 WAQTD NUMBER OF EMPLOYEES AND AVERAGE SALARY NEEDED TO PAY THE EMPLOYEES WHOSE SALARY IS GREATER THAN 2000 IN EACH DEPARTMENT
+SQL> SELECT COUNT(*), AVG(SAL)
+  2  FROM EMP
+  3  WHERE SAL>;
+WHERE SAL>
+         *
+ERROR at line 3:
+ORA-00936: missing expression 
+
+
+SQL> --6 WAQTD NUMBER OF EMPLOYEES AND AVERAGE SALARY NEEDED TO PAY THE EMPLOYEES WHOSE SALARY IS GREATER THAN 2000 IN EACH DEPARTMENT
+SQL> SELECT COUNT(*), AVG(SAL), DEPTNO
+  2  FROM EMP
+  3  WHERE SAL>2000
+  4  GROUP BY DEPTNO;
+
+  COUNT(*)   AVG(SAL)     DEPTNO                                                                    
+---------- ---------- ----------                                                                    
+         1       2850         30                                                                    
+         3 2991.66667         20                                                                    
+         2       3725         10                                                                    
+
+SQL> --7 WAQTD TOTAL SALARY NEEDED TO PAY AND NUMBER OF SALESMAN IN EACH DEPARTMENT
+SQL> SELECT SUM(SAL), COUNT(*), DEPTNO
+  2  FROM EMP
+  3  WHERE ;
+WHERE 
+     *
+ERROR at line 3:
+ORA-00936: missing expression 
+
+
+SQL> --7 WAQTD TOTAL SALARY NEEDED TO PAY AND NUMBER OF SALESMAN IN EACH DEPARTMENT
+SQL> SELECT SUM(SAL) TOTAL_SAL, COUNT(*) AS NO_OF_SALESMAN, DEPTNO
+  2  FROM EMP
+  3  GROUP BY DEPTNO;
+
+ TOTAL_SAL NO_OF_SALESMAN     DEPTNO                                                                
+---------- -------------- ----------                                                                
+      9400              6         30                                                                
+     10875              5         20                                                                
+      8750              3         10                                                                
+
+SQL> --8 WAQTD NUMBER OF EMPLOYEES WITH THEIR MAXIMUM SALARIES IN EACH JOB
+SQL> SELECT COUNT(*) AS NO_OF_EMPLOYEES_WITH_MAX_SAL, JOB
+  2  FROM EMP
+  3  WHERE ;
+WHERE 
+     *
+ERROR at line 3:
+ORA-00936: missing expression 
+
+
+SQL> --8 WAQTD NUMBER OF EMPLOYEES WITH THEIR MAXIMUM SALARIES IN EACH JOB
+SQL> SELECT COUNT(*) NO_OF_EMPS, MAX(SAL) AS MAX_SAL, JOB
+  2  FROM EMP
+  3  GROUP BY JOB;
+
+NO_OF_EMPS    MAX_SAL JOB                                                                           
+---------- ---------- ---------                                                                     
+         4       1300 CLERK                                                                         
+         4       1600 SALESMAN                                                                      
+         1       5000 PRESIDENT                                                                     
+         3       2975 MANAGER                                                                       
+         2       3000 ANALYST                                                                       
+
+SQL> --9 WAQTD MAXIMUM SALARY GIVEN TO AN EMPLOYEE WORKING IN EACH DEPARTMENT
+SQL> SELECT MAX(SAL) AS MAX_SAL, DEPTNO
+  2  FROM EMP
+  3  WHERE DEPTNO;
+WHERE DEPTNO
+           *
+ERROR at line 3:
+ORA-00920: invalid relational operator 
+
+
+SQL> --9 WAQTD MAXIMUM SALARY GIVEN TO AN EMPLOYEE WORKING IN EACH DEPARTMENT
+SQL> SELECT MAX(SAL) AS MAX_SAL, DEPTNO
+  2  FROM EMP
+  3  GROUP BY DEPTNO;
+
+   MAX_SAL     DEPTNO                                                                               
+---------- ----------                                                                               
+      2850         30                                                                               
+      3000         20                                                                               
+      5000         10                                                                               
+
+SQL> --10 WAQTD NUMBER OF TIMES EACH SALARY IS PRESENT IN THE EMPLOYEE TABLE
+SQL> SELECT COUNT(*) COUNT_OF_SAL, SAL
+  2  FROM EMP
+  3  GROUP BY SAL;
+
+COUNT_OF_SAL        SAL                                                                             
+------------ ----------                                                                             
+           1       2450                                                                             
+           1       5000                                                                             
+           1       1300                                                                             
+           2       1250                                                                             
+           1       2850                                                                             
+           1       2975                                                                             
+           1       1100                                                                             
+           2       3000                                                                             
+           1        800                                                                             
+           1       1600                                                                             
+           1       1500                                                                             
+           1        950                                                                             
+
+12 rows selected.
+
+SQL> SPOOL OFF;

@@ -1,0 +1,259 @@
+SQL> --1 1. WAQTD NUMBER OF EMPLOYEES GETTING SALARY LESS THAN 2000 IN DEPTNO 10
+SQL> SELECT COUNT * FROM EMP WHERE SAL<2000 AND DEPTNO IN 10;
+SELECT COUNT * FROM EMP WHERE SAL<2000 AND DEPTNO IN 10
+               *
+ERROR at line 1:
+ORA-00936: missing expression 
+
+
+SQL> SELECT COUNT *
+  2  FROM EMP
+  3  WHERE SAL<2000 AND DEPTNO IN 10;
+FROM EMP
+*
+ERROR at line 2:
+ORA-00936: missing expression 
+
+
+SQL> SELECT COUNT(*)
+  2  FROM EMP
+  3  WHERE SAL<2000 AND DEPTNO IN 10;
+
+  COUNT(*)                                                                                          
+----------                                                                                          
+         1                                                                                          
+
+SQL> SELECT COUNT(ENAME)
+  2  FROM EMP
+  3  WHERE SAL<2000 AND DEPTNO IN 10;
+
+COUNT(ENAME)                                                                                        
+------------                                                                                        
+           1                                                                                        
+
+SQL> SELECT ENAME
+  2  FROM EMP
+  3  WHERE COUNT(WHERE SAL<2000 AND DEPTNO IN 10)>0;
+WHERE COUNT(WHERE SAL<2000 AND DEPTNO IN 10)>0
+      *
+ERROR at line 3:
+ORA-00934: group function is not allowed here 
+
+
+SQL> SELECT ENAME
+  2  FROM EMP
+  3  WHERE COUNT(SAL<2000 AND DEPTNO IN 10);
+WHERE COUNT(SAL<2000 AND DEPTNO IN 10)
+      *
+ERROR at line 3:
+ORA-00934: group function is not allowed here 
+
+
+SQL> SELECT ENAME
+  2  FROM EMP
+  3  WHERE MAX(COUNT(ENAME))>0;
+WHERE MAX(COUNT(ENAME))>0
+      *
+ERROR at line 3:
+ORA-00934: group function is not allowed here 
+
+
+SQL> --2 WAQTD TOTAL SALARY NEEDED TO PAY EMPLOYEES WORKING AS CLERK
+SQL> SELECT SUM(SAL)
+  2  FROM EMP
+  3  WHERE JOB='CLERK';
+
+  SUM(SAL)                                                                                          
+----------                                                                                          
+      4150                                                                                          
+
+SQL> --3 WAQTD AVERAGE SALARY NEEDED TO PAY ALL EMPLOYEES.
+SQL> SELECT AVG(SAL)
+  2  FROM EMP
+  3  ;
+
+  AVG(SAL)                                                                                          
+----------                                                                                          
+2073.21429                                                                                          
+
+SQL> SELEC AVG(SAL) AVG_SAL
+SP2-0734: unknown command beginning "SELEC AVG(..." - rest of line ignored.
+SQL> SELECT AVG(SAL) AVG_SAL
+  2  FROM EMP;
+
+   AVG_SAL                                                                                          
+----------                                                                                          
+2073.21429                                                                                          
+
+SQL> --4 WAQTD NUMBER OF EMPLOYEES HAVING 'A' AS THEIR FIRST CHARACTER.
+SQL> SELECT COUNT(*)
+  2  FROM EMP
+  3  WHERE ENAME LIKE 'A%';
+
+  COUNT(*)                                                                                          
+----------                                                                                          
+         2                                                                                          
+
+SQL> SELECT EMP.COUNT(*), ENAME
+  2  FROM EMP
+  3  WHERE ENAME LIKE 'A%';
+SELECT EMP.COUNT(*), ENAME
+                 *
+ERROR at line 1:
+ORA-00936: missing expression 
+
+
+SQL> --5 WAQTD NUMBER OF EMPLOYEES WORKING AS CLERK OR MANAGER
+SQL> SELECT COUNT(*)
+  2  FROM EMP
+  3  WHERE JOB='CLERK' OR JOB='MANAGER';
+
+  COUNT(*)                                                                                          
+----------                                                                                          
+         7                                                                                          
+
+SQL> -- 6 WAQTD TOTAL SALARY NEEDED TO PAY EMPLOYEES HIRED IN FEB.
+SQL> SELECT SUM(SAL)
+  2  FROM EMP
+  3  WHERE HIREDATE LIKE '%FEB%';
+
+  SUM(SAL)                                                                                          
+----------                                                                                          
+      2850                                                                                          
+
+SQL> --7 WAQTD NUMBER OF EMPLOYEES REPORTING TO 7839 (MGR)
+SQL> SELECT COUNT(*)
+  2  FROM EMP
+  3  WHERE MGR=7839;
+
+  COUNT(*)                                                                                          
+----------                                                                                          
+         3                                                                                          
+
+SQL> --8 WAQTD NUMBER OF EMPLOYEES GETTING COMISSION IN DEPTNO 30
+SQL> SELECT COUNT(*) COMM_DEPT30_COUNT
+  2  FROM EMP
+  3  WHERE COMM IS NOT NULL AND DEPTNO IN 30;
+
+COMM_DEPT30_COUNT                                                                                   
+-----------------                                                                                   
+                4                                                                                   
+
+SQL> --9 WAQTD AVG SAL, TOTAL SAL, NUMBER OF EMPS AND MAXIMUM SALARY GIVEN TO EMPLOYEES WORKING AS PERSIDENT.
+SQL> SELECT AVG(SAL) AVG_SAL, SUM(SAL) TOTAL_SAL, COUNT(*) NUM_OF_EMP, MAX(SAL) MAX_SAL
+  2  FROM EMP
+  3  WHERE JOB='PRESIDENT';
+
+   AVG_SAL  TOTAL_SAL NUM_OF_EMP    MAX_SAL                                                         
+---------- ---------- ---------- ----------                                                         
+      5000       5000          1       5000                                                         
+
+SQL> --10 WAQTD NUMBER OF EMPLOYEES HAVING 'A' IN THEIR NAMES.
+SQL> SELECT COUNT(*)
+  2  FROM EMP
+  3  WHERE ENAME LIKE '%A%';
+
+  COUNT(*)                                                                                          
+----------                                                                                          
+         7                                                                                          
+
+SQL> -- 11 WAQTD NUMBER OF EMPS AND TOTAL SALARY NEEDED TO PAY THE EMPLOYEES WHO HAVE 2 CONSICUTIVE L's IN THEIR NAMES.
+SQL> SELECT COUNT(*) AS NUM_EMP, SUM(SAL) TOTAL_SAL
+  2  FROM EMP
+  3  WHERE ENAME LIKE '%LL%';
+
+   NUM_EMP  TOTAL_SAL                                                                               
+---------- ----------                                                                               
+         2       2900                                                                               
+
+SQL> --12 WAQTD NUMBER OF DEPARTMENTS PRESENT IN EMPLOYEE TABLE.
+SQL> SELECT DISTINCT DEPTNO
+  2  FROM EMP
+  3  ;
+
+    DEPTNO                                                                                          
+----------                                                                                          
+        30                                                                                          
+        20                                                                                          
+        10                                                                                          
+
+SQL> --12 WAQTD NUMBER OF DEPARTMENTS PRESENT IN EMPLOYEE TABLE.
+SQL> SELECT COUNT(DISTINCT(DEPTNO))
+  2  FROM EMP;
+
+COUNT(DISTINCT(DEPTNO))                                                                             
+-----------------------                                                                             
+                      3                                                                             
+
+SQL> -- 13 WAQTD NUMBER OF EMPLOYEES HAVING CHARACTER 'Z' IN THEIR NAMES.
+SQL> SELECT COUNT(*)
+  2  FROM EMP
+  3  WHERE ENAME LIKE '%Z%';
+
+  COUNT(*)                                                                                          
+----------                                                                                          
+         0                                                                                          
+
+SQL> --14 WAQTD NUMBER OF EMPLOYEES HAVING 'S' IN THEIR NAMES.
+SQL> SELECT COUNT(*)
+  2  FROM EMP
+  3  WHERE ENAME LIKE '%S%';
+
+  COUNT(*)                                                                                          
+----------                                                                                          
+         5                                                                                          
+
+SQL> --15 WAQTD TOTAL SALARY GIVEN TO EMPLOYEES WORKING AS CLERK IN DEPT 30.
+SQL> SELECT SUM(SAL) TOTAL_SAL
+  2  FROM EMP
+  3  WHERE JOB IN 'CLERK' AND DEPTNO IN 30;
+
+ TOTAL_SAL                                                                                          
+----------                                                                                          
+       950                                                                                          
+
+SQL> --16 WAQTD MAXIMUM SALARY GIVEN TO THE EMPLOYEES WORKING AS ANALYST
+SQL> SELECT MAX(SAL)
+  2  FROM EMP
+  3  WHERE JOB='ANALYST';
+
+  MAX(SAL)                                                                                          
+----------                                                                                          
+      3000                                                                                          
+
+SQL> --17 WAQTD NUMBER OF DISTINCT SALARIES PRESENT IN EMPLOYEE TABLE
+SQL> SELECT COUNT(DISTINCT SAL)
+  2  FROM EMP
+  3  ;
+
+COUNT(DISTINCTSAL)                                                                                  
+------------------                                                                                  
+                12                                                                                  
+
+SQL> --18 WAQTD NUMBER OF JOBS PRESENT IN EMPLOYEE TABLE
+SQL> SELECT COUNT(DISTINCT JOB)
+  2  FROM EMP;
+
+COUNT(DISTINCTJOB)                                                                                  
+------------------                                                                                  
+                 5                                                                                  
+
+SQL> --19 WATQD AVG SALARY GIVEN TO THE CLERK.
+SQL> SELECT AVG(SAL) AVG_SAL
+  2  FROM EMP
+  3  WHERE JOB='CLERK';
+
+   AVG_SAL                                                                                          
+----------                                                                                          
+    1037.5                                                                                          
+
+SQL> --20 WAQTD MINIMUM SALARY GIVEN TO THE EMPLOYEES WHO WORK IN DEPT 10 AS MANAGER OR A CLERK.
+SQL> SELECT MIN(SAL)
+  2  FROM EMP
+  3  WHERE DEPTNO IN 10 AND JOB IN ('MANAGER','CLERK');
+
+  MIN(SAL)                                                                                          
+----------                                                                                          
+      1300                                                                                          
+
+SQL> SPOOL OFF;

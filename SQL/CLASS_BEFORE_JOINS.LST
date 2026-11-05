@@ -1,0 +1,80 @@
+SQL> 
+SQL> --1
+SQL> SELECT ENAME
+  2  FROM EMP
+  3  WHERE SAL LIKE '____' AND
+  4  	(JOB LIKE 'A% OR JOB LIKE 'S%' OR JOB LIKE 'M%')
+  5  AND (JOB LIKE '%T' OR JOB LIKE '%R' OR JOB LIKE '%N')
+  6  AND DEPTNO IN (SELECT DEPTNO
+  7  			FROM DEPT
+  8  			WHERE LOC IN ('CHICAGO', 'DALLAS', 'BOSTON'));
+ERROR:
+ORA-01756: quoted string not properly terminated 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT ENAME
+  2  FROM EMP
+  3  WHERE SAL LIKE '____' AND
+  4  	(JOB LIKE 'A%' OR JOB LIKE 'S%' OR JOB LIKE 'M%')
+  5  AND (JOB LIKE '%T' OR JOB LIKE '%R' OR JOB LIKE '%N')
+  6  AND DEPTNO IN (SELECT DEPTNO
+  7  			FROM DEPT
+  8* 			WHERE LOC IN ('CHICAGO', 'DALLAS', 'BOSTON'))
+SQL> /
+
+ENAME                                                                                               
+----------                                                                                          
+ALLEN                                                                                               
+WARD                                                                                                
+JONES                                                                                               
+MARTIN                                                                                              
+BLAKE                                                                                               
+SCOTT                                                                                               
+TURNER                                                                                              
+FORD                                                                                                
+
+8 rows selected.
+
+SQL> --2
+SQL> SELECT DNAME
+  2  FROM DEPT
+  3  WHERE DEPTNO IN (SELECT DEPTNO
+  4  			FROM EMP
+  5  			WHERE SAL LIKE '%0' OR SAL LIKE '%5' OR SAL LIKE '%1'
+  6  			AND HIREDATE LIKE '%FEB%' OR HIREDATE LIKE '%MAR%' OR HIREDATE LIKE '%APR%' OR HIREDATE LIKE
+  7  			'%SEP%');
+
+DNAME                                                                                               
+--------------                                                                                      
+ACCOUNTING                                                                                          
+RESEARCH                                                                                            
+SALES                                                                                               
+
+SQL> --3
+SQL> --2
+SQL> SELECT DNAME
+  2  FROM DEP
+  3  ;
+FROM DEP
+     *
+ERROR at line 2:
+ORA-00942: table or view does not exist 
+
+
+SQL> --2
+SQL> SELECT DNAME
+  2  FROM DEPT
+  3  WHERE DEPTNO IN (SELECT DEPTNO
+  4  			FROM EMP
+  5  			WHERE (SAL LIKE '%0' OR SAL LIKE '%5' OR SAL LIKE '%1')
+  6  			AND (HIREDATE LIKE '%FEB%' OR HIREDATE LIKE '%MAR%' OR HIREDATE LIKE '%APR%' OR HIREDATE LIKE '%SEP%'));
+
+DNAME                                                                                               
+--------------                                                                                      
+RESEARCH                                                                                            
+SALES                                                                                               
+
+SQL> SPOOL OFF;

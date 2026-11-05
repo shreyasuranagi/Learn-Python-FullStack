@@ -1,0 +1,8 @@
+--1 WAQTD Employee name if they are 
+earning 4 digit salary and their designation
+starts with A/S/M and ends with T/R/N and
+ working in the location Chicago, Dallas, Boston.
+
+--2 WAQTD Department name if salary 
+ends with 0 or 1 or 5 and hired in the 
+month of Feb, Mar, Apr,Sep

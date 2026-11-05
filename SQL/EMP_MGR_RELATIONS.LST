@@ -1,0 +1,244 @@
+SQL> -------ASSIGNMENT ON EMP MGR RELATION-------------
+SQL> 
+SQL> --1
+SQL> SELECT ENAME
+  2  FROM EMP
+  3  WHERE EMPNO=(SELECT MGR
+  4  		FROM EMP
+  5  		WHERE ENAME='SMITH');
+
+ENAME                                                                                               
+----------                                                                                          
+FORD                                                                                                
+
+SQL> --2
+SQL> SELECT ENAME
+  2  FROM EMP
+  3  WHERE EMPNO=(SELECT MGR
+  4  		FROM EMP
+  5  		WHERE EMPNO=(SELECT MGR
+  6  				FROM EMP
+  7  				WHERE EMPO='ADAM'));
+				WHERE EMPO='ADAM'))
+				      *
+ERROR at line 7:
+ORA-00904: "EMPO": invalid identifier 
+
+
+SQL> /
+				WHERE EMPO='ADAM'))
+				      *
+ERROR at line 7:
+ORA-00904: "EMPO": invalid identifier 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT ENAME
+  2  FROM EMP
+  3  WHERE EMPNO=(SELECT MGR
+  4  		FROM EMP
+  5  		WHERE EMPNO=(SELECT MGR
+  6  				FROM EMP
+  7* 				WHERE EMPNO='ADAM'))
+SQL> /
+				WHERE EMPNO='ADAM'))
+				            *
+ERROR at line 7:
+ORA-01722: invalid number 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT ENAME
+  2  FROM EMP
+  3  WHERE EMPNO=(SELECT MGR
+  4  		FROM EMP
+  5  		WHERE EMPNO LIKE (SELECT MGR
+  6  				FROM EMP
+  7* 				WHERE EMPNO='ADAM'))
+SQL> /
+				WHERE EMPNO='ADAM'))
+				            *
+ERROR at line 7:
+ORA-01722: invalid number 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT ENAME
+  2  FROM EMP
+  3  WHERE EMPNO=(SELECT MGR
+  4  		FROM EMP
+  5  		WHERE EMPNO LIKE (SELECT MGR
+  6  				FROM EMP
+  7* 				WHERE ENAME LIKE 'ADAM'))
+SQL> /
+
+no rows selected
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT ENAME
+  2  FROM EMP
+  3  WHERE EMPNO=(SELECT MGR
+  4  		FROM EMP
+  5  		WHERE EMPNO LIKE (SELECT MGR
+  6  				FROM EMP
+  7* 				WHERE ENAME LIKE 'ADAMS'))
+SQL> /
+
+ENAME                                                                                               
+----------                                                                                          
+JONES                                                                                               
+
+SQL> --3
+SQL> --WAQTD DNAME OF JONES MANAGER
+SQL> SELECT DNAME
+  2  FROM DEPT
+  3  WHERE DEPTNO=(SELECT DEPTNO
+  4  			FROM EMP
+  5  			WHERE EMPNO = (SELECT MGR
+  6  					FROM EMP
+  7  					WHERE MGR='JONES'));
+					WHERE MGR='JONES'))
+					          *
+ERROR at line 7:
+ORA-01722: invalid number 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT DNAME
+  2  FROM DEPT
+  3  WHERE DEPTNO IN (SELECT DEPTNO
+  4  			FROM EMP
+  5  			WHERE EMPNO IN (SELECT MGR
+  6  					FROM EMP
+  7* 					WHERE MGR LIKE 'JONES'))
+SQL> /
+
+no rows selected
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT DNAME
+  2  FROM DEPT
+  3  WHERE DEPTNO IN (SELECT DEPTNO
+  4  			FROM EMP
+  5  			WHERE EMPNO IN (SELECT MGR
+  6  					FROM EMP
+  7* 					WHERE ENAME LIKE 'JONES'))
+SQL> /
+
+DNAME                                                                                               
+--------------                                                                                      
+ACCOUNTING                                                                                          
+
+SQL> --5 WAQTD MILLER'S MANAGER'S SALARY
+SQL> SELECT SAL
+  2  FROM EMP
+  3  WHERE EMPNO=(SELECT MGR
+  4  		FROM EMP
+  5  		WHERE ENAME LIKE 'MILLER');
+
+       SAL                                                                                          
+----------                                                                                          
+      2450                                                                                          
+
+SQL> --6 WAQTD NAME OF THE EMPLOYEES REPORTING TO BLAKE
+SQL> SELECT ENAME
+  2  FROM EMP
+  3  WHERE MGR = (SELECT EMPNO
+  4  		FROM EMP
+  5  		WHERE ENAME LIKE 'BLAKE');
+
+ENAME                                                                                               
+----------                                                                                          
+ALLEN                                                                                               
+WARD                                                                                                
+MARTIN                                                                                              
+TURNER                                                                                              
+JAMES                                                                                               
+
+SQL> --7 WAQTD NUMBER OF EMPLOYEES REPORTING TO KING
+SQL> SELECT COUNT(*)
+  2  FROM EMP
+  3  WHERE MGR IN (SELECT EMPNO
+  4  		FROM EMP
+  5  		WHERE ENAME LIKE 'KING');
+
+  COUNT(*)                                                                                          
+----------                                                                                          
+         3                                                                                          
+
+SQL> --8 WAQTD DETAILS OF THE EMPLOYEES REPORTING TO JONES
+SQL> SELECT *
+  2  FROM EMP
+  3  WHERE MGR IN (SELECT EMPNO
+  4  		FROM EMP
+  5  		WHERE ENAME LIKE 'JONES');
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO               
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------               
+      7902 FORD       ANALYST         7566 03-DEC-81       3000                    20               
+      7788 SCOTT      ANALYST         7566 19-APR-87       3000                    20               
+
+SQL> --9 WAQTD ENAMES OF THE EMPLOYEES REPORTING TO BLAKES MANAGER
+SQL> SELECT ENAME
+  2  FROM EMP
+  3  WHERE EMPNO IN (SELECT MGR
+  4  			FROM EMP
+  5  			WHERE ENAME LIKE 'BLAKE');
+
+ENAME                                                                                               
+----------                                                                                          
+KING                                                                                                
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT *
+  2  FROM EMP 
+  3  WHERE MGR IN (SELECT MGR
+  4  			FROM EMP
+  5* 			WHERE ENAME LIKE 'BLAKE')
+SQL> /
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO               
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------               
+      7782 CLARK      MANAGER         7839 09-JUN-81       2450                    10               
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850                    30               
+      7566 JONES      MANAGER         7839 02-APR-81       2975                    20               
+
+SQL> --9 WAQTD ENAMES OF THE EMPLOYEES REPORTING TO BLAKES MANAGER
+SQL> SELECT ENAME
+  2  FROM EMP
+  3  WHERE MGR IN (SELECT MGR
+  4  		FROM EMP
+  5  		WHERE ENAME LIKE 'BLAKE');
+
+ENAME                                                                                               
+----------                                                                                          
+CLARK                                                                                               
+BLAKE                                                                                               
+JONES                                                                                               
+
+SQL> --10 WAQTD NUMBER OF EMPLOYEES REPORTING TO FORDS MANAGER
+SQL> SELECT COUNT(*)
+  2  FROM EMP
+  3  WHERE MGR IN (SELECT MGR
+  4  			FROM EMP
+  5  			WHERE ENAME LIKE 'FORD');
+
+  COUNT(*)                                                                                          
+----------                                                                                          
+         2                                                                                          
+
+SQL> SPOOL OFF;

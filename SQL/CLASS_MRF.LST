@@ -1,0 +1,69 @@
+SQL> --RULE 1 - MRF ACCEPTS ONLY ONE ARGUMENT
+SQL> SELECT MAX(SAL)
+  2  FROM EMP;
+
+  MAX(SAL)                                                                                          
+----------                                                                                          
+      5000                                                                                          
+
+SQL> --ERROR-IF MROE THAN ONE ARGUMENT
+SQL> SELECT MAX(SAL,COMM)
+  2  FROM EMP;
+SELECT MAX(SAL,COMM)
+       *
+ERROR at line 1:
+ORA-00909: invalid number of arguments 
+
+
+SQL> --RULE 2 - ALONG WITH MRF WE CANT PASS OTHER COLUMN NAME & EXPR
+SQL> SELECT MAX(SAL), ENAME
+  2  FROM EMP;
+SELECT MAX(SAL), ENAME
+                 *
+ERROR at line 1:
+ORA-00937: not a single-group group function 
+
+
+SQL> --MULTIPLE MRF ONYL /GROUPED  FUNCTIONS ARE ALLOWED
+SQL> SELECT AVG(SAL),MIN(COMM)
+  2  FROM EMP;
+
+  AVG(SAL)  MIN(COMM)                                                                               
+---------- ----------                                                                               
+2073.21429          0                                                                               
+
+SQL> --RULE 3 - MRF IGNORES NULL
+SQL> SELECT COUNT(COMM)
+  2  FROM EMP;
+
+COUNT(COMM)                                                                                         
+-----------                                                                                         
+          4                                                                                         
+
+SQL> --RULE 4 - WE CANT PASS MRF IN WHERE CLAUSE
+SQL> SELECT *
+  2  FROM EMP
+  3  WHERE MAX(SAL)>2000;
+WHERE MAX(SAL)>2000
+      *
+ERROR at line 3:
+ORA-00934: group function is not allowed here 
+
+
+SQL> --RULE 5 - COUNT IS THE ONLY FUNCTION THAT TAKES *
+SQL> SELECT COUNT(*)
+  2  FROM EMP;
+
+  COUNT(*)                                                                                          
+----------                                                                                          
+        14                                                                                          
+
+SQL> SELECT MAX *
+  2  FROM EMP;
+FROM EMP
+*
+ERROR at line 2:
+ORA-00936: missing expression 
+
+
+SQL> SPOOL OFF;

@@ -1,0 +1,280 @@
+SQL> --1
+SQL> SET PAGES 200 LINES 200
+SQL> SELECT E.ENAME, M.ENAME
+  2  FROM EMP E, EMP M
+  3  WHERE E.JOB='CLERK' AND E.MGR=M.EMPNO;
+
+ENAME      ENAME                                                                                                                                                                                        
+---------- ----------                                                                                                                                                                                   
+JAMES      BLAKE                                                                                                                                                                                        
+MILLER     CLARK                                                                                                                                                                                        
+ADAMS      SCOTT                                                                                                                                                                                        
+SMITH      FORD                                                                                                                                                                                         
+
+SQL> --2
+SQL> SELECT E.ENAME, M.JOB AS MGR_JOB
+  2  FROM EMP E, EMP M
+  3  WHERE M.DEPTNO IN (10,20) AND E.MGR=M.EMPNO;
+
+ENAME      MGR_JOB                                                                                                                                                                                      
+---------- ---------                                                                                                                                                                                    
+FORD       MANAGER                                                                                                                                                                                      
+SCOTT      MANAGER                                                                                                                                                                                      
+MILLER     MANAGER                                                                                                                                                                                      
+ADAMS      ANALYST                                                                                                                                                                                      
+BLAKE      PRESIDENT                                                                                                                                                                                    
+JONES      PRESIDENT                                                                                                                                                                                    
+CLARK      PRESIDENT                                                                                                                                                                                    
+SMITH      ANALYST                                                                                                                                                                                      
+
+8 rows selected.
+
+SQL> --3
+SQL> SELECT E.ENAME, M.JOB AS MGR_JOB
+  2  FROM EMP E, EMP M
+  3  WHERE E.DEPTNO IN(10,20) AND E.MGR=M.EMPNO;
+
+ENAME      MGR_JOB                                                                                                                                                                                      
+---------- ---------                                                                                                                                                                                    
+SCOTT      MANAGER                                                                                                                                                                                      
+FORD       MANAGER                                                                                                                                                                                      
+MILLER     MANAGER                                                                                                                                                                                      
+ADAMS      ANALYST                                                                                                                                                                                      
+CLARK      PRESIDENT                                                                                                                                                                                    
+JONES      PRESIDENT                                                                                                                                                                                    
+SMITH      ANALYST                                                                                                                                                                                      
+
+7 rows selected.
+
+SQL> --3(ACTUALLY 3)
+SQL> SELECT E.ENAME EMP_NAME, M.SAL M_SAL
+  2  FROM EMP E, EMP M
+  3  
+SQL> --3
+SQL> SELECT E.ENAME EMP_NAME, M.SAL M_SAL
+  2  FROM EMP E, EMP M
+  3  WHERE E..MGR=M.EMPNO AND E.SAL>2300 AND M.SAL>2300;
+WHERE E..MGR=M.EMPNO AND E.SAL>2300 AND M.SAL>2300
+        *
+ERROR at line 3:
+ORA-01747: invalid user.table.column, table.column, or column specification 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT E.ENAME EMP_NAME, M.SAL M_SAL
+  2  FROM EMP E, EMP M
+  3* WHERE E.MGR=M.EMPNO AND E.SAL>2300 AND M.SAL>2300
+SQL> /
+
+EMP_NAME        M_SAL                                                                                                                                                                                   
+---------- ----------                                                                                                                                                                                   
+SCOTT            2975                                                                                                                                                                                   
+FORD             2975                                                                                                                                                                                   
+BLAKE            5000                                                                                                                                                                                   
+JONES            5000                                                                                                                                                                                   
+CLARK            5000                                                                                                                                                                                   
+
+SQL> --4
+SQL> SELECT E.ENAME, M.HIREDATE
+  2  FROM EMP E, EMP M
+  3  WHERE E.MGR=M.EMPNO AND E.HIREDATE<'01-JAN-82';
+
+ENAME      HIREDATE                                                                                                                                                                                     
+---------- ---------                                                                                                                                                                                    
+SMITH      03-DEC-81                                                                                                                                                                                    
+ALLEN      01-MAY-81                                                                                                                                                                                    
+WARD       01-MAY-81                                                                                                                                                                                    
+JONES      17-NOV-81                                                                                                                                                                                    
+MARTIN     01-MAY-81                                                                                                                                                                                    
+BLAKE      17-NOV-81                                                                                                                                                                                    
+CLARK      17-NOV-81                                                                                                                                                                                    
+TURNER     01-MAY-81                                                                                                                                                                                    
+JAMES      01-MAY-81                                                                                                                                                                                    
+FORD       02-APR-81                                                                                                                                                                                    
+
+10 rows selected.
+
+SQL> --5
+SQL> SELECT E.ENAME E_NAME, M.COMM M_COMM
+  2  FROM EMP E, EMP M
+  3  WHERE E.JOB='SALESMAN' AND M.DEPTNO IN 30;
+
+E_NAME         M_COMM                                                                                                                                                                                   
+---------- ----------                                                                                                                                                                                   
+ALLEN             300                                                                                                                                                                                   
+ALLEN             500                                                                                                                                                                                   
+ALLEN            1400                                                                                                                                                                                   
+ALLEN                                                                                                                                                                                                   
+ALLEN               0                                                                                                                                                                                   
+ALLEN                                                                                                                                                                                                   
+WARD              300                                                                                                                                                                                   
+WARD              500                                                                                                                                                                                   
+WARD             1400                                                                                                                                                                                   
+WARD                                                                                                                                                                                                    
+WARD                0                                                                                                                                                                                   
+WARD                                                                                                                                                                                                    
+MARTIN            300                                                                                                                                                                                   
+MARTIN            500                                                                                                                                                                                   
+MARTIN           1400                                                                                                                                                                                   
+MARTIN                                                                                                                                                                                                  
+MARTIN              0                                                                                                                                                                                   
+MARTIN                                                                                                                                                                                                  
+TURNER            300                                                                                                                                                                                   
+TURNER            500                                                                                                                                                                                   
+TURNER           1400                                                                                                                                                                                   
+TURNER                                                                                                                                                                                                  
+TURNER              0                                                                                                                                                                                   
+TURNER                                                                                                                                                                                                  
+
+24 rows selected.
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT E.ENAME E_NAME, M.COMM M_COMM
+  2  FROM EMP E, EMP M
+  3* WHERE E.JOB='SALESMAN' AND M.DEPTNO IN 30 AND E.MGR=M.EMPNO
+SQL> /
+
+E_NAME         M_COMM                                                                                                                                                                                   
+---------- ----------                                                                                                                                                                                   
+ALLEN                                                                                                                                                                                                   
+TURNER                                                                                                                                                                                                  
+MARTIN                                                                                                                                                                                                  
+WARD                                                                                                                                                                                                    
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT E.ENAME E_NAME, M.COMM M_COMM
+  2  FROM EMP E, EMP M
+  3* WHERE E.JOB='SALESMAN' AND M.DEPTNO IN 30 AND E.MGR=M.EMPNO
+SQL> /
+
+E_NAME         M_COMM                                                                                                                                                                                   
+---------- ----------                                                                                                                                                                                   
+ALLEN                                                                                                                                                                                                   
+TURNER                                                                                                                                                                                                  
+MARTIN                                                                                                                                                                                                  
+WARD                                                                                                                                                                                                    
+
+SQL> --6
+SQL> SELECT E.ENAME E_NAME, M.ENAME M_NAME, E.SAL E_SAL, M.SAL M_SAL
+  2  FROM EMP E, MGR M
+  3  WHERE E.MGR=M.EMPNO AND E.SAL>M.SAL;
+FROM EMP E, MGR M
+            *
+ERROR at line 2:
+ORA-00942: table or view does not exist 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT E.ENAME E_NAME, M.ENAME M_NAME, E.SAL E_SAL, M.SAL M_SAL
+  2  FROM EMP E, EMP M
+  3* WHERE E.MGR=M.EMPNO AND E.SAL>M.SAL
+SQL> /
+
+E_NAME     M_NAME          E_SAL      M_SAL                                                                                                                                                             
+---------- ---------- ---------- ----------                                                                                                                                                             
+FORD       JONES            3000       2975                                                                                                                                                             
+SCOTT      JONES            3000       2975                                                                                                                                                             
+
+SQL> --7
+SQL> SELECT E.ENAME ENAME, E.HIREDATE EHIRED, M.ENAME MNAME, M.HIREDATE MHIRED
+  2  FROM EMP E, EMP M
+  3  WHERE E.MGR=M.EMPNO AND M.HIREDATE<E.HIREDATE;
+
+ENAME      EHIRED    MNAME      MHIRED                                                                                                                                                                  
+---------- --------- ---------- ---------                                                                                                                                                               
+FORD       03-DEC-81 JONES      02-APR-81                                                                                                                                                               
+SCOTT      19-APR-87 JONES      02-APR-81                                                                                                                                                               
+TURNER     08-SEP-81 BLAKE      01-MAY-81                                                                                                                                                               
+JAMES      03-DEC-81 BLAKE      01-MAY-81                                                                                                                                                               
+MARTIN     28-SEP-81 BLAKE      01-MAY-81                                                                                                                                                               
+MILLER     23-JAN-82 CLARK      09-JUN-81                                                                                                                                                               
+ADAMS      23-MAY-87 SCOTT      19-APR-87                                                                                                                                                               
+
+7 rows selected.
+
+SQL> --8
+SQL> SELECT E.ENAME ENAME, M.ENAME MNAME
+  2  FROM EMP E, EMP M
+  3  WHERE E.MGR = M.EMPNO AND E.JOB=M.JOB;
+
+no rows selected
+
+SQL> --9
+SQL> SELECT E.ENAME ENAME, M.ENAME MNAME
+  2  FROM EMP E, EMP M
+  3  WHERE E.MGR=M.EMPNO AND M.JOB IN 'MANAGER';
+
+ENAME      MNAME                                                                                                                                                                                        
+---------- ----------                                                                                                                                                                                   
+FORD       JONES                                                                                                                                                                                        
+SCOTT      JONES                                                                                                                                                                                        
+TURNER     BLAKE                                                                                                                                                                                        
+ALLEN      BLAKE                                                                                                                                                                                        
+WARD       BLAKE                                                                                                                                                                                        
+JAMES      BLAKE                                                                                                                                                                                        
+MARTIN     BLAKE                                                                                                                                                                                        
+MILLER     CLARK                                                                                                                                                                                        
+
+8 rows selected.
+
+SQL> --10
+SQL> SELECT E.ENAME ENAME, M.ENAME, E.SAL*12 ESAL, M.SAL*12 MSAL
+  2  FROM EMP E, EMP M
+  3  WHERE E.MGR=M.EMPNO AND E.DEPTNO IN (10,20) AND M.SAL>E.SAL;
+
+ENAME      ENAME            ESAL       MSAL                                                                                                                                                             
+---------- ---------- ---------- ----------                                                                                                                                                             
+MILLER     CLARK           15600      29400                                                                                                                                                             
+ADAMS      SCOTT           13200      36000                                                                                                                                                             
+CLARK      KING            29400      60000                                                                                                                                                             
+JONES      KING            35700      60000                                                                                                                                                             
+SMITH      FORD             9600      36000                                                                                                                                                             
+
+SQL> --11
+SQL> SELECT E.ENAME ENAME, M.JOB MJOB
+  2  FROM EMP E, EMP M
+  3  WHERE E.MGR=M.EMPNO;
+
+ENAME      MJOB                                                                                                                                                                                         
+---------- ---------                                                                                                                                                                                    
+FORD       MANAGER                                                                                                                                                                                      
+SCOTT      MANAGER                                                                                                                                                                                      
+TURNER     MANAGER                                                                                                                                                                                      
+ALLEN      MANAGER                                                                                                                                                                                      
+WARD       MANAGER                                                                                                                                                                                      
+JAMES      MANAGER                                                                                                                                                                                      
+MARTIN     MANAGER                                                                                                                                                                                      
+MILLER     MANAGER                                                                                                                                                                                      
+ADAMS      ANALYST                                                                                                                                                                                      
+BLAKE      PRESIDENT                                                                                                                                                                                    
+JONES      PRESIDENT                                                                                                                                                                                    
+CLARK      PRESIDENT                                                                                                                                                                                    
+SMITH      ANALYST                                                                                                                                                                                      
+
+13 rows selected.
+
+SQL> --12
+SQL> SELECT E.ENAME, M.SAL
+  2  FROM EMP E, EMP M
+  3  WHERE M.SAL LIKE '%50' AND E.MGR=M.EMPNO;
+
+ENAME             SAL                                                                                                                                                                                   
+---------- ----------                                                                                                                                                                                   
+TURNER           2850                                                                                                                                                                                   
+ALLEN            2850                                                                                                                                                                                   
+WARD             2850                                                                                                                                                                                   
+JAMES            2850                                                                                                                                                                                   
+MARTIN           2850                                                                                                                                                                                   
+MILLER           2450                                                                                                                                                                                   
+
+6 rows selected.
+
+SQL> SPOOL OFF;

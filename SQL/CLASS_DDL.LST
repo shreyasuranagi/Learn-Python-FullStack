@@ -1,0 +1,213 @@
+SQL> SELECT *
+  2  FROM TAB;
+
+TNAME                          TABTYPE  CLUSTERID                                                                                                                                                       
+------------------------------ ------- ----------                                                                                                                                                       
+BONUS                          TABLE                                                                                                                                                                    
+DEPT                           TABLE                                                                                                                                                                    
+EMP                            TABLE                                                                                                                                                                    
+SALGRADE                       TABLE                                                                                                                                                                    
+
+SQL> CREATE STUD
+  2  (
+  3  ID NUMBER(3) PRIMARY KEY,,
+  4  SNAME VARCHAR(20) NOT NULL,
+  5  DOB DATE,
+  6  PHONE NUMBER(10)
+  7  );
+CREATE STUD
+       *
+ERROR at line 1:
+ORA-00901: invalid CREATE command 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  CREATE STUD
+  2  (
+  3  ID NUMBER(3) PRIMARY KEY,
+  4  SNAME VARCHAR(20) NOT NULL,
+  5  DOB DATE,
+  6  PHONE NUMBER(10)
+  7* )
+SQL> /
+CREATE STUD
+       *
+ERROR at line 1:
+ORA-00901: invalid CREATE command 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  CREATE TABLE STUD
+  2  (
+  3  ID NUMBER(3) PRIMARY KEY,
+  4  SNAME VARCHAR(20) NOT NULL,
+  5  DOB DATE,
+  6  PHONE NUMBER(10)
+  7* )
+SQL> 
+SQL> /
+
+Table created.
+
+SQL> DESC STUD;
+ Name                                                                                                              Null?    Type
+ ----------------------------------------------------------------------------------------------------------------- -------- ----------------------------------------------------------------------------
+ ID                                                                                                                NOT NULL NUMBER(3)
+ SNAME                                                                                                             NOT NULL VARCHAR2(20)
+ DOB                                                                                                                        DATE
+ PHONE                                                                                                                      NUMBER(10)
+
+SQL> DESC EMP;
+ Name                                                                                                              Null?    Type
+ ----------------------------------------------------------------------------------------------------------------- -------- ----------------------------------------------------------------------------
+ EMPNO                                                                                                             NOT NULL NUMBER(4)
+ ENAME                                                                                                                      VARCHAR2(10)
+ JOB                                                                                                                        VARCHAR2(9)
+ MGR                                                                                                                        NUMBER(4)
+ HIREDATE                                                                                                                   DATE
+ SAL                                                                                                                        NUMBER(7,2)
+ COMM                                                                                                                       NUMBER(7,2)
+ DEPTNO                                                                                                                     NUMBER(2)
+
+SQL> CREATE TABLE TRAINER
+  2  (
+  3  ID NUMBER(3) PRIMARY KEY,
+  4  TNAME VARCHAR2(20),
+  5  COURSE CHAR(10)
+  6  );
+
+Table created.
+
+SQL> DESC TRAINER
+ Name                                                                                                              Null?    Type
+ ----------------------------------------------------------------------------------------------------------------- -------- ----------------------------------------------------------------------------
+ ID                                                                                                                NOT NULL NUMBER(3)
+ TNAME                                                                                                                      VARCHAR2(20)
+ COURSE                                                                                                                     CHAR(10)
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  CREATE TABLE TRAINER
+  2  (
+  3  ID NUMBER(3) PRIMARY KEY,
+  4  TNAME VARCHAR2(20),
+  5  COURSE CHAR(10)
+  6* )
+SQL> /
+CREATE TABLE TRAINER
+             *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object 
+
+
+SQL> SELECT * FROM TAB;
+
+TNAME                          TABTYPE  CLUSTERID                                                                                                                                                       
+------------------------------ ------- ----------                                                                                                                                                       
+BONUS                          TABLE                                                                                                                                                                    
+DEPT                           TABLE                                                                                                                                                                    
+EMP                            TABLE                                                                                                                                                                    
+SALGRADE                       TABLE                                                                                                                                                                    
+STUD                           TABLE                                                                                                                                                                    
+TRAINER                        TABLE                                                                                                                                                                    
+
+6 rows selected.
+
+SQL> RENAME STU TO STUDENT;
+RENAME STU TO STUDENT
+*
+ERROR at line 1:
+ORA-04043: object STU does not exist 
+
+
+SQL> RENAME STUD TO STUDENT;
+
+Table renamed.
+
+SQL> DESC STUD;
+ERROR:
+ORA-04043: object STUD does not exist 
+
+
+SQL> SELECT * FROM TAB;
+
+TNAME                          TABTYPE  CLUSTERID                                                                                                                                                       
+------------------------------ ------- ----------                                                                                                                                                       
+BONUS                          TABLE                                                                                                                                                                    
+DEPT                           TABLE                                                                                                                                                                    
+EMP                            TABLE                                                                                                                                                                    
+SALGRADE                       TABLE                                                                                                                                                                    
+STUDENT                        TABLE                                                                                                                                                                    
+TRAINER                        TABLE                                                                                                                                                                    
+
+6 rows selected.
+
+SQL> ALTER TABLE STUDENT
+  2  ADD COLUMN MARKS NUMBER(3) NOT NULL;
+ADD COLUMN MARKS NUMBER(3) NOT NULL
+    *
+ERROR at line 2:
+ORA-00904: : invalid identifier 
+
+
+SQL> ALTER TABLE STUDENT
+  2  ADD COLUMN MARKS NUMBER(3);
+ADD COLUMN MARKS NUMBER(3)
+    *
+ERROR at line 2:
+ORA-00904: : invalid identifier 
+
+
+SQL> ALTER TABLE STUDENT
+  2  ADD MARKS NUMBER(5);
+
+Table altered.
+
+SQL> ALTER TABLE STUDENT
+  2  REMOVE MARKS;
+REMOVE MARKS
+*
+ERROR at line 2:
+ORA-01735: invalid ALTER TABLE option 
+
+
+SQL> ALTER TABLE STUDENT
+  2  DROP MARKS;
+DROP MARKS
+     *
+ERROR at line 2:
+ORA-00905: missing keyword 
+
+
+SQL> ALTER TABLE STUDENT
+  2  DROP COLUMN MARKS;
+
+Table altered.
+
+SQL> DESC STUDENT
+ Name                                                                                                              Null?    Type
+ ----------------------------------------------------------------------------------------------------------------- -------- ----------------------------------------------------------------------------
+ ID                                                                                                                NOT NULL NUMBER(3)
+ SNAME                                                                                                             NOT NULL VARCHAR2(20)
+ DOB                                                                                                                        DATE
+ PHONE                                                                                                                      NUMBER(10)
+
+SQL> ALTER TABLE STUDENT
+  2  RENAME SNAME TO SNAMES;
+RENAME SNAME TO SNAMES
+       *
+ERROR at line 2:
+ORA-14155: missing PARTITION or SUBPARTITION keyword 
+
+
+SQL> ALTER TABLE STUDENT
+  2  RENAME COLUMN SNAME TO SNAMES;
+
+Table altered.
+
+SQL> SPOOL OFF;

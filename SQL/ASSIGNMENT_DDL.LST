@@ -1,0 +1,533 @@
+SQL> 
+SQL> CREATE TABLE DOCTOR
+  2  {
+  3  DOC_ID NUMBER(3) PRIMARY KEY,
+  4  DOC_NAME VARCHAR(20) NOT NULL
+  5  CONTACT NUMBER(10) UNIQUE
+  6  SALARY NUMBER(8,2),
+  7  EMAIL_ID VARCHAR(20)
+  8  );
+{
+*
+ERROR at line 2:
+ORA-00911: invalid character 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  CREATE TABLE DOCTOR
+  2  (
+  3  DOC_ID NUMBER(3) PRIMARY KEY,
+  4  DOC_NAME VARCHAR(20) NOT NULL
+  5  CONTACT NUMBER(10) UNIQUE
+  6  SALARY NUMBER(8,2),
+  7  EMAIL_ID VARCHAR(20)
+  8* )
+SQL> /
+CONTACT NUMBER(10) UNIQUE
+*
+ERROR at line 5:
+ORA-00907: missing right parenthesis 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  CREATE TABLE DOCTOR
+  2  (
+  3  DOC_ID NUMBER(3) PRIMARY KEY,
+  4  DOC_NAME VARCHAR(20) NOT NULL
+  5  CONTACT NUMBER(10) UNIQUE,
+  6  SALARY NUMBER(8,2),
+  7  EMAIL_ID VARCHAR(20)
+  8* )
+SQL> /
+CONTACT NUMBER(10) UNIQUE,
+*
+ERROR at line 5:
+ORA-00907: missing right parenthesis 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  CREATE TABLE DOCTOR
+  2  (
+  3  DOC_ID NUMBER(3) PRIMARY KEY,
+  4  DOC_NAME VARCHAR(20) NOT NULL,
+  5  CONTACT NUMBER(10) UNIQUE,
+  6  SALARY NUMBER(8,2),
+  7  EMAIL_ID VARCHAR(20)
+  8* )
+SQL> /
+
+Table created.
+
+SQL> SELECT * FRAM TAB;
+SELECT * FRAM TAB
+         *
+ERROR at line 1:
+ORA-00923: FROM keyword not found where expected 
+
+
+SQL> SELECT * FROM TAB;
+
+TNAME                          TABTYPE  CLUSTERID                                                                                                                                                                                                                                                           
+------------------------------ ------- ----------                                                                                                                                                                                                                                                           
+BONUS                          TABLE                                                                                                                                                                                                                                                                        
+DEPT                           TABLE                                                                                                                                                                                                                                                                        
+DOCTOR                         TABLE                                                                                                                                                                                                                                                                        
+EMP                            TABLE                                                                                                                                                                                                                                                                        
+SALGRADE                       TABLE                                                                                                                                                                                                                                                                        
+
+SQL> DESC DOCTOR;
+ Name                                                                                                                                                                          Null?    Type
+ ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -------- --------------------------------------------------------------------------------------------------------------------
+ DOC_ID                                                                                                                                                                        NOT NULL NUMBER(3)
+ DOC_NAME                                                                                                                                                                      NOT NULL VARCHAR2(20)
+ CONTACT                                                                                                                                                                                NUMBER(10)
+ SALARY                                                                                                                                                                                 NUMBER(8,2)
+ EMAIL_ID                                                                                                                                                                               VARCHAR2(20)
+
+SQL> CREATE TABLE PATIENT
+  2  (
+  3  PAT_ID CHAR(5) PRIMARY KEY,
+  4  DOC_ID NUMBER(3),
+  5  PAT_PH_NO NUMBER(10),
+  6  DISEASE_NAME VARCHAR(20),
+  7  TOTAL_BILL NUMBER(7,2)
+  8  );
+
+Table created.
+
+SQL> DESC PATIENT;
+ Name                                                                                                                                                                          Null?    Type
+ ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -------- --------------------------------------------------------------------------------------------------------------------
+ PAT_ID                                                                                                                                                                        NOT NULL CHAR(5)
+ DOC_ID                                                                                                                                                                                 NUMBER(3)
+ PAT_PH_NO                                                                                                                                                                              NUMBER(10)
+ DISEASE_NAME                                                                                                                                                                           VARCHAR2(20)
+ TOTAL_BILL                                                                                                                                                                             NUMBER(7,2)
+
+SQL> RENAME DOCTOR TO DOC;
+
+Table renamed.
+
+SQL> RENAME PATIENT TO PAT;
+
+Table renamed.
+
+SQL> STUDENT * FROM TAB;
+SP2-0734: unknown command beginning "STUDENT * ..." - rest of line ignored.
+SQL> SELECT * FROM TAB;
+
+TNAME                          TABTYPE  CLUSTERID                                                                                                                                                                                                                                                           
+------------------------------ ------- ----------                                                                                                                                                                                                                                                           
+BONUS                          TABLE                                                                                                                                                                                                                                                                        
+DEPT                           TABLE                                                                                                                                                                                                                                                                        
+DOC                            TABLE                                                                                                                                                                                                                                                                        
+EMP                            TABLE                                                                                                                                                                                                                                                                        
+PAT                            TABLE                                                                                                                                                                                                                                                                        
+SALGRADE                       TABLE                                                                                                                                                                                                                                                                        
+
+6 rows selected.
+
+SQL> DESC DOC;
+ Name                                                                                                                                                                          Null?    Type
+ ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -------- --------------------------------------------------------------------------------------------------------------------
+ DOC_ID                                                                                                                                                                        NOT NULL NUMBER(3)
+ DOC_NAME                                                                                                                                                                      NOT NULL VARCHAR2(20)
+ CONTACT                                                                                                                                                                                NUMBER(10)
+ SALARY                                                                                                                                                                                 NUMBER(8,2)
+ EMAIL_ID                                                                                                                                                                               VARCHAR2(20)
+
+SQL> DESC PAT;
+ Name                                                                                                                                                                          Null?    Type
+ ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -------- --------------------------------------------------------------------------------------------------------------------
+ PAT_ID                                                                                                                                                                        NOT NULL CHAR(5)
+ DOC_ID                                                                                                                                                                                 NUMBER(3)
+ PAT_PH_NO                                                                                                                                                                              NUMBER(10)
+ DISEASE_NAME                                                                                                                                                                           VARCHAR2(20)
+ TOTAL_BILL                                                                                                                                                                             NUMBER(7,2)
+
+SQL> 
+SQL> 
+SQL> --Q2.--
+SQL> CREATE TABLE CHEF(
+  2  CHEF_NAME CHAR(30) NOT NULL,
+  3  CHEF_RANK NUMBER(20) NOT NULL,
+  4  CHEF_SING_DISH VARCHAR(30) NOT NULL,
+  5  CHEF HIRED_DATE DATE NOT NULL,
+  6  SALARY NUMBER(10,3) NOT NULL,
+  7  HEAD_OF_THE_CHEF CHAR(30) NOT NULL
+  8  );
+CHEF HIRED_DATE DATE NOT NULL,
+                *
+ERROR at line 5:
+ORA-00907: missing right parenthesis 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  CREATE TABLE CHEF(
+  2  CHEF_NAME CHAR(30) NOT NULL,
+  3  CHEF_RANK NUMBER(20) NOT NULL,
+  4  CHEF_SING_DISH VARCHAR(30) NOT NULL,
+  5  CHEF_HIRED_DATE DATE NOT NULL,
+  6  SALARY NUMBER(10,3) NOT NULL,
+  7  HEAD_OF_THE_CHEF CHAR(30) NOT NULL
+  8* )
+SQL> /
+
+Table created.
+
+SQL> SELECT * FROM TAB;
+
+TNAME                          TABTYPE  CLUSTERID                                                                                                                                                                                                                                                           
+------------------------------ ------- ----------                                                                                                                                                                                                                                                           
+BONUS                          TABLE                                                                                                                                                                                                                                                                        
+CHEF                           TABLE                                                                                                                                                                                                                                                                        
+DEPT                           TABLE                                                                                                                                                                                                                                                                        
+DOC                            TABLE                                                                                                                                                                                                                                                                        
+EMP                            TABLE                                                                                                                                                                                                                                                                        
+PAT                            TABLE                                                                                                                                                                                                                                                                        
+SALGRADE                       TABLE                                                                                                                                                                                                                                                                        
+
+7 rows selected.
+
+SQL> DESC CHEF;
+ Name                                                                                                                                                                          Null?    Type
+ ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -------- --------------------------------------------------------------------------------------------------------------------
+ CHEF_NAME                                                                                                                                                                     NOT NULL CHAR(30)
+ CHEF_RANK                                                                                                                                                                     NOT NULL NUMBER(20)
+ CHEF_SING_DISH                                                                                                                                                                NOT NULL VARCHAR2(30)
+ CHEF_HIRED_DATE                                                                                                                                                               NOT NULL DATE
+ SALARY                                                                                                                                                                        NOT NULL NUMBER(10,3)
+ HEAD_OF_THE_CHEF                                                                                                                                                              NOT NULL CHAR(30)
+
+SQL> ALTER TABLE CHEF
+  2  ADD CHEF_PH_NO NUMBER(10) NOT NULL;
+
+Table altered.
+
+SQL> DESC CHEF;
+ Name                                                                                                                                                                          Null?    Type
+ ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -------- --------------------------------------------------------------------------------------------------------------------
+ CHEF_NAME                                                                                                                                                                     NOT NULL CHAR(30)
+ CHEF_RANK                                                                                                                                                                     NOT NULL NUMBER(20)
+ CHEF_SING_DISH                                                                                                                                                                NOT NULL VARCHAR2(30)
+ CHEF_HIRED_DATE                                                                                                                                                               NOT NULL DATE
+ SALARY                                                                                                                                                                        NOT NULL NUMBER(10,3)
+ HEAD_OF_THE_CHEF                                                                                                                                                              NOT NULL CHAR(30)
+ CHEF_PH_NO                                                                                                                                                                    NOT NULL NUMBER(10)
+
+SQL> ALTER TABLE CHEF
+  2  DROP COLUMN HEAD_OF_THE_CHEF;
+
+Table altered.
+
+SQL> DESC CHEF;
+ Name                                                                                                                                                                          Null?    Type
+ ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -------- --------------------------------------------------------------------------------------------------------------------
+ CHEF_NAME                                                                                                                                                                     NOT NULL CHAR(30)
+ CHEF_RANK                                                                                                                                                                     NOT NULL NUMBER(20)
+ CHEF_SING_DISH                                                                                                                                                                NOT NULL VARCHAR2(30)
+ CHEF_HIRED_DATE                                                                                                                                                               NOT NULL DATE
+ SALARY                                                                                                                                                                        NOT NULL NUMBER(10,3)
+ CHEF_PH_NO                                                                                                                                                                    NOT NULL NUMBER(10)
+
+SQL> ALTER TABLE CHEF
+  2  MODIFY CHEF_NAME VARCHAR(50);
+
+Table altered.
+
+SQL> DESC CHEF;
+ Name                                                                                                                                                                          Null?    Type
+ ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -------- --------------------------------------------------------------------------------------------------------------------
+ CHEF_NAME                                                                                                                                                                     NOT NULL VARCHAR2(50)
+ CHEF_RANK                                                                                                                                                                     NOT NULL NUMBER(20)
+ CHEF_SING_DISH                                                                                                                                                                NOT NULL VARCHAR2(30)
+ CHEF_HIRED_DATE                                                                                                                                                               NOT NULL DATE
+ SALARY                                                                                                                                                                        NOT NULL NUMBER(10,3)
+ CHEF_PH_NO                                                                                                                                                                    NOT NULL NUMBER(10)
+
+SQL> ALTER TABLE CHEF
+  2  MODIFY SALARY NUMBER(15,7);
+
+Table altered.
+
+SQL> DESC CHEF;
+ Name                                                                                                                                                                          Null?    Type
+ ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -------- --------------------------------------------------------------------------------------------------------------------
+ CHEF_NAME                                                                                                                                                                     NOT NULL VARCHAR2(50)
+ CHEF_RANK                                                                                                                                                                     NOT NULL NUMBER(20)
+ CHEF_SING_DISH                                                                                                                                                                NOT NULL VARCHAR2(30)
+ CHEF_HIRED_DATE                                                                                                                                                               NOT NULL DATE
+ SALARY                                                                                                                                                                        NOT NULL NUMBER(15,7)
+ CHEF_PH_NO                                                                                                                                                                    NOT NULL NUMBER(10)
+
+SQL> ALTER TABLE CHEF
+  2  ADD CONSTRAINT U_CR UNIQUE(CHEF_RANK);
+
+Table altered.
+
+SQL> DESC CHEF;
+ Name                                                                                                                                                                          Null?    Type
+ ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -------- --------------------------------------------------------------------------------------------------------------------
+ CHEF_NAME                                                                                                                                                                     NOT NULL VARCHAR2(50)
+ CHEF_RANK                                                                                                                                                                     NOT NULL NUMBER(20)
+ CHEF_SING_DISH                                                                                                                                                                NOT NULL VARCHAR2(30)
+ CHEF_HIRED_DATE                                                                                                                                                               NOT NULL DATE
+ SALARY                                                                                                                                                                        NOT NULL NUMBER(15,7)
+ CHEF_PH_NO                                                                                                                                                                    NOT NULL NUMBER(10)
+
+SQL> SELECT *
+  2  FROM USER_CONSTRAINTS
+  3  WHERE TABLE_NAME = 'CHEF';
+
+OWNER                                                                                                                    CONSTRAINT_NAME                C TABLE_NAME                     SEARCH_CONDITION                                                                                                   
+------------------------------------------------------------------------------------------------------------------------ ------------------------------ - ------------------------------ --------------------------------------------------------------------------------                                   
+R_OWNER                                                                                                                  R_CONSTRAINT_NAME              DELETE_RU STATUS   DEFERRABLE     DEFERRED  VALIDATED     GENERATED      BAD RELY LAST_CHAN INDEX_OWNER                                             
+------------------------------------------------------------------------------------------------------------------------ ------------------------------ --------- -------- -------------- --------- ------------- -------------- --- ---- --------- ------------------------------                          
+INDEX_NAME                     INVALID VIEW_RELATED                                                                                                                                                                                                                                                         
+------------------------------ ------- --------------                                                                                                                                                                                                                                                       
+SCOTT                                                                                                                    SYS_C007157                    C CHEF                           "CHEF_NAME" IS NOT NULL                                                                                            
+                                                                                                                                                                  ENABLED  NOT DEFERRABLE IMMEDIATE VALIDATED     GENERATED NAME          16-SEP-26                                                         
+                                                                                                                                                                                                                                                                                                            
+                                                                                                                                                                                                                                                                                                            
+SCOTT                                                                                                                    SYS_C007158                    C CHEF                           "CHEF_RANK" IS NOT NULL                                                                                            
+                                                                                                                                                                  ENABLED  NOT DEFERRABLE IMMEDIATE VALIDATED     GENERATED NAME          16-SEP-26                                                         
+                                                                                                                                                                                                                                                                                                            
+                                                                                                                                                                                                                                                                                                            
+SCOTT                                                                                                                    SYS_C007159                    C CHEF                           "CHEF_SING_DISH" IS NOT NULL                                                                                       
+                                                                                                                                                                  ENABLED  NOT DEFERRABLE IMMEDIATE VALIDATED     GENERATED NAME          16-SEP-26                                                         
+                                                                                                                                                                                                                                                                                                            
+                                                                                                                                                                                                                                                                                                            
+SCOTT                                                                                                                    SYS_C007160                    C CHEF                           "CHEF_HIRED_DATE" IS NOT NULL                                                                                      
+                                                                                                                                                                  ENABLED  NOT DEFERRABLE IMMEDIATE VALIDATED     GENERATED NAME          16-SEP-26                                                         
+                                                                                                                                                                                                                                                                                                            
+                                                                                                                                                                                                                                                                                                            
+SCOTT                                                                                                                    SYS_C007161                    C CHEF                           "SALARY" IS NOT NULL                                                                                               
+                                                                                                                                                                  ENABLED  NOT DEFERRABLE IMMEDIATE VALIDATED     GENERATED NAME          16-SEP-26                                                         
+                                                                                                                                                                                                                                                                                                            
+                                                                                                                                                                                                                                                                                                            
+SCOTT                                                                                                                    U_CR                           U CHEF                                                                                                                                              
+                                                                                                                                                                  ENABLED  NOT DEFERRABLE IMMEDIATE VALIDATED     USER NAME               16-SEP-26 SCOTT                                                   
+U_CR                                                                                                                                                                                                                                                                                                        
+                                                                                                                                                                                                                                                                                                            
+SCOTT                                                                                                                    SYS_C007163                    C CHEF                           "CHEF_PH_NO" IS NOT NULL                                                                                           
+                                                                                                                                                                  ENABLED  NOT DEFERRABLE IMMEDIATE VALIDATED     GENERATED NAME          16-SEP-26                                                         
+                                                                                                                                                                                                                                                                                                            
+                                                                                                                                                                                                                                                                                                            
+
+7 rows selected.
+
+SQL> 
+SQL> 
+SQL> ALTER TABLE CHEF
+  2  MODIFY SALARY NULL;
+
+Table altered.
+
+SQL> DESC CHEF;
+ Name                                                                                                                                                                          Null?    Type
+ ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -------- --------------------------------------------------------------------------------------------------------------------
+ CHEF_NAME                                                                                                                                                                     NOT NULL VARCHAR2(50)
+ CHEF_RANK                                                                                                                                                                     NOT NULL NUMBER(20)
+ CHEF_SING_DISH                                                                                                                                                                NOT NULL VARCHAR2(30)
+ CHEF_HIRED_DATE                                                                                                                                                               NOT NULL DATE
+ SALARY                                                                                                                                                                                 NUMBER(15,7)
+ CHEF_PH_NO                                                                                                                                                                    NOT NULL NUMBER(10)
+
+SQL> ALTER TABLE CHEF
+  2  ADD CONSTRAINT U_HD UNIQUE(HIRED_DATE);
+ADD CONSTRAINT U_HD UNIQUE(HIRED_DATE)
+                           *
+ERROR at line 2:
+ORA-00904: "HIRED_DATE": invalid identifier 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  ALTER TABLE CHEF
+  2* ADD CONSTRAINT U_HD UNIQUE(CHEF_HIRED_DATE)
+SQL> /
+
+Table altered.
+
+SQL> SELECT *
+  2  FROM USER CONSTRAINT
+  3  WHERE TABLE_NAME='CHEF';
+FROM USER CONSTRAINT
+     *
+ERROR at line 2:
+ORA-00903: invalid table name 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT *
+  2  FROM USER_CONSTRAINT
+  3* WHERE TABLE_NAME='CHEF'
+SQL> /
+FROM USER_CONSTRAINT
+     *
+ERROR at line 2:
+ORA-00942: table or view does not exist 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT *
+  2  FROM USER_CONSTRAINTS
+  3* WHERE TABLE_NAME='CHEF'
+SQL> /
+
+OWNER                                                                                                                    CONSTRAINT_NAME                C TABLE_NAME                     SEARCH_CONDITION                                                                                                   
+------------------------------------------------------------------------------------------------------------------------ ------------------------------ - ------------------------------ --------------------------------------------------------------------------------                                   
+R_OWNER                                                                                                                  R_CONSTRAINT_NAME              DELETE_RU STATUS   DEFERRABLE     DEFERRED  VALIDATED     GENERATED      BAD RELY LAST_CHAN INDEX_OWNER                                             
+------------------------------------------------------------------------------------------------------------------------ ------------------------------ --------- -------- -------------- --------- ------------- -------------- --- ---- --------- ------------------------------                          
+INDEX_NAME                     INVALID VIEW_RELATED                                                                                                                                                                                                                                                         
+------------------------------ ------- --------------                                                                                                                                                                                                                                                       
+SCOTT                                                                                                                    SYS_C007157                    C CHEF                           "CHEF_NAME" IS NOT NULL                                                                                            
+                                                                                                                                                                  ENABLED  NOT DEFERRABLE IMMEDIATE VALIDATED     GENERATED NAME          16-SEP-26                                                         
+                                                                                                                                                                                                                                                                                                            
+                                                                                                                                                                                                                                                                                                            
+SCOTT                                                                                                                    SYS_C007158                    C CHEF                           "CHEF_RANK" IS NOT NULL                                                                                            
+                                                                                                                                                                  ENABLED  NOT DEFERRABLE IMMEDIATE VALIDATED     GENERATED NAME          16-SEP-26                                                         
+                                                                                                                                                                                                                                                                                                            
+                                                                                                                                                                                                                                                                                                            
+SCOTT                                                                                                                    SYS_C007159                    C CHEF                           "CHEF_SING_DISH" IS NOT NULL                                                                                       
+                                                                                                                                                                  ENABLED  NOT DEFERRABLE IMMEDIATE VALIDATED     GENERATED NAME          16-SEP-26                                                         
+                                                                                                                                                                                                                                                                                                            
+                                                                                                                                                                                                                                                                                                            
+SCOTT                                                                                                                    SYS_C007160                    C CHEF                           "CHEF_HIRED_DATE" IS NOT NULL                                                                                      
+                                                                                                                                                                  ENABLED  NOT DEFERRABLE IMMEDIATE VALIDATED     GENERATED NAME          16-SEP-26                                                         
+                                                                                                                                                                                                                                                                                                            
+                                                                                                                                                                                                                                                                                                            
+SCOTT                                                                                                                    U_HD                           U CHEF                                                                                                                                              
+                                                                                                                                                                  ENABLED  NOT DEFERRABLE IMMEDIATE VALIDATED     USER NAME               16-SEP-26 SCOTT                                                   
+U_HD                                                                                                                                                                                                                                                                                                        
+                                                                                                                                                                                                                                                                                                            
+SCOTT                                                                                                                    U_CR                           U CHEF                                                                                                                                              
+                                                                                                                                                                  ENABLED  NOT DEFERRABLE IMMEDIATE VALIDATED     USER NAME               16-SEP-26 SCOTT                                                   
+U_CR                                                                                                                                                                                                                                                                                                        
+                                                                                                                                                                                                                                                                                                            
+SCOTT                                                                                                                    SYS_C007163                    C CHEF                           "CHEF_PH_NO" IS NOT NULL                                                                                           
+                                                                                                                                                                  ENABLED  NOT DEFERRABLE IMMEDIATE VALIDATED     GENERATED NAME          16-SEP-26                                                         
+                                                                                                                                                                                                                                                                                                            
+                                                                                                                                                                                                                                                                                                            
+
+7 rows selected.
+
+SQL> ALTER TABLE CHEF
+  2  DROP CONSTRAINT U_HD;
+
+Table altered.
+
+SQL> SELECT *
+  2  FROM USER_CONSTRAINTS
+  3  WHERE TABLE_NAME='CHEF';
+
+OWNER                                                                                                                    CONSTRAINT_NAME                C TABLE_NAME                     SEARCH_CONDITION                                                                                                   
+------------------------------------------------------------------------------------------------------------------------ ------------------------------ - ------------------------------ --------------------------------------------------------------------------------                                   
+R_OWNER                                                                                                                  R_CONSTRAINT_NAME              DELETE_RU STATUS   DEFERRABLE     DEFERRED  VALIDATED     GENERATED      BAD RELY LAST_CHAN INDEX_OWNER                                             
+------------------------------------------------------------------------------------------------------------------------ ------------------------------ --------- -------- -------------- --------- ------------- -------------- --- ---- --------- ------------------------------                          
+INDEX_NAME                     INVALID VIEW_RELATED                                                                                                                                                                                                                                                         
+------------------------------ ------- --------------                                                                                                                                                                                                                                                       
+SCOTT                                                                                                                    SYS_C007157                    C CHEF                           "CHEF_NAME" IS NOT NULL                                                                                            
+                                                                                                                                                                  ENABLED  NOT DEFERRABLE IMMEDIATE VALIDATED     GENERATED NAME          16-SEP-26                                                         
+                                                                                                                                                                                                                                                                                                            
+                                                                                                                                                                                                                                                                                                            
+SCOTT                                                                                                                    SYS_C007158                    C CHEF                           "CHEF_RANK" IS NOT NULL                                                                                            
+                                                                                                                                                                  ENABLED  NOT DEFERRABLE IMMEDIATE VALIDATED     GENERATED NAME          16-SEP-26                                                         
+                                                                                                                                                                                                                                                                                                            
+                                                                                                                                                                                                                                                                                                            
+SCOTT                                                                                                                    SYS_C007159                    C CHEF                           "CHEF_SING_DISH" IS NOT NULL                                                                                       
+                                                                                                                                                                  ENABLED  NOT DEFERRABLE IMMEDIATE VALIDATED     GENERATED NAME          16-SEP-26                                                         
+                                                                                                                                                                                                                                                                                                            
+                                                                                                                                                                                                                                                                                                            
+SCOTT                                                                                                                    SYS_C007160                    C CHEF                           "CHEF_HIRED_DATE" IS NOT NULL                                                                                      
+                                                                                                                                                                  ENABLED  NOT DEFERRABLE IMMEDIATE VALIDATED     GENERATED NAME          16-SEP-26                                                         
+                                                                                                                                                                                                                                                                                                            
+                                                                                                                                                                                                                                                                                                            
+SCOTT                                                                                                                    U_CR                           U CHEF                                                                                                                                              
+                                                                                                                                                                  ENABLED  NOT DEFERRABLE IMMEDIATE VALIDATED     USER NAME               16-SEP-26 SCOTT                                                   
+U_CR                                                                                                                                                                                                                                                                                                        
+                                                                                                                                                                                                                                                                                                            
+SCOTT                                                                                                                    SYS_C007163                    C CHEF                           "CHEF_PH_NO" IS NOT NULL                                                                                           
+                                                                                                                                                                  ENABLED  NOT DEFERRABLE IMMEDIATE VALIDATED     GENERATED NAME          16-SEP-26                                                         
+                                                                                                                                                                                                                                                                                                            
+                                                                                                                                                                                                                                                                                                            
+
+6 rows selected.
+
+SQL> 
+SQL> 
+SQL> 
+SQL> ---PREV
+SQL> ALTER TABLE PAT
+  2  ADD DOCT_ID NUMBER(3);
+
+Table altered.
+
+SQL> DESC PAT;
+ Name                                                                                                                                                                          Null?    Type
+ ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -------- --------------------------------------------------------------------------------------------------------------------
+ PAT_ID                                                                                                                                                                        NOT NULL CHAR(5)
+ DOC_ID                                                                                                                                                                                 NUMBER(3)
+ PAT_PH_NO                                                                                                                                                                              NUMBER(10)
+ DISEASE_NAME                                                                                                                                                                           VARCHAR2(20)
+ TOTAL_BILL                                                                                                                                                                             NUMBER(7,2)
+ DOCT_ID                                                                                                                                                                                NUMBER(3)
+
+SQL> ALTER TABLE PAT
+  2  ADD CONSTRAINT D_FK FOREIGN KEY(DOCT_ID)
+  3  REFERENCES DOC(DOC_ID);
+
+Table altered.
+
+SQL> DESC PAT;
+ Name                                                                                                                                                                          Null?    Type
+ ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -------- --------------------------------------------------------------------------------------------------------------------
+ PAT_ID                                                                                                                                                                        NOT NULL CHAR(5)
+ DOC_ID                                                                                                                                                                                 NUMBER(3)
+ PAT_PH_NO                                                                                                                                                                              NUMBER(10)
+ DISEASE_NAME                                                                                                                                                                           VARCHAR2(20)
+ TOTAL_BILL                                                                                                                                                                             NUMBER(7,2)
+ DOCT_ID                                                                                                                                                                                NUMBER(3)
+
+SQL> DESC DOC;
+ Name                                                                                                                                                                          Null?    Type
+ ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -------- --------------------------------------------------------------------------------------------------------------------
+ DOC_ID                                                                                                                                                                        NOT NULL NUMBER(3)
+ DOC_NAME                                                                                                                                                                      NOT NULL VARCHAR2(20)
+ CONTACT                                                                                                                                                                                NUMBER(10)
+ SALARY                                                                                                                                                                                 NUMBER(8,2)
+ EMAIL_ID                                                                                                                                                                               VARCHAR2(20)
+
+SQL> SELECT *
+  2  FROM USER_CONSTRAINTS
+  3  WHERE TABLE_NAME='PAT';
+
+OWNER                                                                                                                    CONSTRAINT_NAME                C TABLE_NAME                     SEARCH_CONDITION                                                                                                   
+------------------------------------------------------------------------------------------------------------------------ ------------------------------ - ------------------------------ --------------------------------------------------------------------------------                                   
+R_OWNER                                                                                                                  R_CONSTRAINT_NAME              DELETE_RU STATUS   DEFERRABLE     DEFERRED  VALIDATED     GENERATED      BAD RELY LAST_CHAN INDEX_OWNER                                             
+------------------------------------------------------------------------------------------------------------------------ ------------------------------ --------- -------- -------------- --------- ------------- -------------- --- ---- --------- ------------------------------                          
+INDEX_NAME                     INVALID VIEW_RELATED                                                                                                                                                                                                                                                         
+------------------------------ ------- --------------                                                                                                                                                                                                                                                       
+SCOTT                                                                                                                    SYS_C007156                    P PAT                                                                                                                                               
+                                                                                                                                                                  ENABLED  NOT DEFERRABLE IMMEDIATE VALIDATED     GENERATED NAME          16-SEP-26 SCOTT                                                   
+SYS_C007156                                                                                                                                                                                                                                                                                                 
+                                                                                                                                                                                                                                                                                                            
+SCOTT                                                                                                                    D_FK                           R PAT                                                                                                                                               
+SCOTT                                                                                                                    SYS_C007154                    NO ACTION ENABLED  NOT DEFERRABLE IMMEDIATE VALIDATED     USER NAME               16-SEP-26                                                         
+                                                                                                                                                                                                                                                                                                            
+                                                                                                                                                                                                                                                                                                            
+
+SQL> SPOOL OFF;

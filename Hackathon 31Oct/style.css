@@ -1,0 +1,401 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: Arial;
+
+}
+
+body {
+    height: 100vh;
+    width: 100vw;
+    /* background-color: pink; */
+    background-color: black;
+}
+
+.navbar {
+    height: 60px;
+    width: 100%;
+    /* background-color:blue; */
+    /* border:2px solid green; */
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    color: white;
+    font-family: Arial;
+    font-size: 14px;
+}
+
+.navbar .searchbar {
+    padding: 15px;
+    /* border:2px solid white; */
+    /* height:10px;
+    width:100px; */
+}
+
+.navbar_left {
+    width: 45%;
+}
+
+.navbar_center {
+    width: 5%;
+}
+
+.navbar_right {
+    width: 45%;
+}
+
+.navbar ul {
+    list-style: none;
+}
+
+.navbar_left ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 20px;
+}
+
+.navbar_right ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 20px;
+}
+
+.navbar:hover {
+    background-color: white;
+    color: black;
+}
+
+/* invisble navbar */
+
+/* .navbar_left:hover{
+   
+}
+
+.invisible_navbar{
+    display:none;
+} */
+
+
+
+
+/* ##################### */
+
+
+/* main styling */
+
+/*page 1*/
+
+#page1 {
+    width: 100vw;
+    height: calc(100vh - 60px - 20px + 20vh);
+    background-image: url("C:/Users/Suranagi/Downloads/one8_ Performance Footwear, Apparel & Gear/imgi_10_Desktop_From_6_AM_to_11_59_AM_3-cropped-1787660117826.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    color: white;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+
+    animation-name: carousel;
+    animation-duration: 3s;
+    animation-delay: 1s;
+    animation-timing-function: ease-in-out;
+}
+
+#page1 .buttons {
+    display: block;
+}
+
+#page1 .buttons button {
+    background-color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 25px;
+}
+
+.text1 {
+    margin-bottom: 50px;
+    font-family: Arial;
+
+}
+
+.text1>* {
+    margin-left: 35px;
+}
+
+/* page 2*/
+
+#page2 {
+    height: 100vh;
+    width: 100vw;
+    background-color: white;
+}
+
+#page2 h2 {
+    margin-left: 10px;
+}
+
+#page2 button {
+    background-color: white;
+    border: 1px solid black;
+    color: black;
+    padding: 5px 10px;
+    border-radius: 15px;
+    margin-left: 10px;
+}
+
+#page2 button:hover {
+    background-color: black;
+    color: white;
+}
+
+
+
+
+
+
+
+
+/*row and card styling */
+
+
+.row {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    margin-left: 10px;
+}
+
+.card {
+    height: 70vh;
+    width: 400px;
+    background-color: rgb(245, 242, 242);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.card_part1 {
+    height: 20%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 10px;
+}
+
+/* .card_part2
+{
+    height: 40%;
+    width:100%;
+} */
+.card_part2 {
+    height: 100%;
+    width: 100%;
+    background-image: url("C:/Users/Suranagi/Downloads/one8_ Performance Footwear, Apparel & Gear/imgi_11_V10018201_03_2f0eb140-a784-451d-9138-e7436aebf7a0.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+
+}
+
+/*images for card row*/
+
+#card1 .card_part2 {
+    background-image: url("C:/Users/Suranagi/Downloads/one8_ Performance Footwear, Apparel & Gear/imgi_11_V10018201_03_2f0eb140-a784-451d-9138-e7436aebf7a0.jpg");
+
+}
+
+#card2 .card_part2 {
+    background-image: url("C:/Users/Suranagi/Downloads/one8_ Performance Footwear, Apparel & Gear/imgi_14_V10018202_03_bfb9c22c-7491-42d3-8c14-b38aca5f065b.jpg");
+
+
+}
+
+#card3 .card_part2 {
+    background-image: url("C:/Users/Suranagi/Download/one8_ Performance Footwear, Apparel & Gear/imgi_17_V10018601_03_1b41e591-f7e2-499b-ba87-8cf4013bdd79.jpg")
+}
+
+#card4 .card_part2 {
+    background-image: url("C:/Users/Suranagi/Downloads/one8_ Performance Footwear, Apparel & Gear/imgi_20_V10021003_03_38cbc9a3-5956-4b91-9365-ab5434e90e96.jpg");
+}
+
+#card5 .card_part2 {
+    background-image: url("C:/Users/Suranagi/Downloads/one8_ Performance Footwear, Apparel & Gear/imgi_11_V10018201_03_2f0eb140-a784-451d-9138-e7436aebf7a0.jpg");
+}
+
+
+
+/* hovering styles for card row*/
+
+#card1 .card_part2:hover {
+    background-image: url("C:/Users/Suranagi/Downloads/one8_ Performance Footwear, Apparel & Gear/imgi_19_V10018601_02_94c44062-68e8-49b9-b5cd-06797d84a225.jpg");
+}
+
+#card2 .card_part2:hover {
+    background-image: url("C:/Users/Suranagi/Downloads/one8_ Performance Footwear, Apparel & Gear/imgi_14_V10018202_03_bfb9c22c-7491-42d3-8c14-b38aca5f065b.jpg");
+
+}
+
+#card3 .card_part2:hover {
+    background-image: url("C:/Users/Suranagi/Download/one8_ Performance Footwear, Apparel & Gear/imgi_17_V10018601_03_1b41e591-f7e2-499b-ba87-8cf4013bdd79.jpg")
+}
+
+#card4 .card_part2:hover {
+    background-image: url("C:/Users/Suranagi/Downloads/one8_ Performance Footwear, Apparel & Gear/imgi_21_V10021003_01_63a39d22-869c-4645-a888-3f6d6a2e398d.jpg");
+
+}
+
+#card5 .card_part2:hover {
+    background-image: url("C:/Users/Suranagi/Downloads/one8_ Performance Footwear, Apparel & Gear/imgi_19_V10018601_02_94c44062-68e8-49b9-b5cd-06797d84a225.jpg");
+
+}
+
+
+
+
+/* */
+
+.card_part3 {
+    height: 30%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 10px;
+}
+
+
+/* page 3 styling */
+
+#page3 {
+    height: 120vh;
+    width: 100vw;
+    background-color: white;
+}
+
+#page3 h2 {
+    margin-left: 10px;
+}
+
+.rowvirat {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.cardvirat {
+    height: 70vh;
+    width: 100%;
+    background-color: rgb(210, 206, 206);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    background-image: url("C:/Users/Suranagi/Downloads/one8_ Performance Footwear, Apparel & Gear/imgi_117_Gradient_vk_1.png");
+
+}
+
+
+.rowvirat {
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+
+    text-align: center;
+
+}
+
+.cardvirat {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.cardvirat button {
+    display: none;
+    background-color: white;
+    padding: 10px 20px;
+    border-radius: 25px;
+    border: none;
+}
+
+.cardvirat:hover button {
+    display: block;
+}
+
+#cardv2 {
+    background-image: url("C:/Users/Suranagi/Downloads/one8_ Performance Footwear, Apparel & Gear/imgi_118_b.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+#cardv3 {
+    background-image: url("C:/Users/Suranagi/Downloads/one8_ Performance Footwear, Apparel & Gear/imgi_119_d.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+#card4 {
+    background-image: url("");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+@keyframes carousel {
+    0% {
+        background-image: url("C:/Users/Suranagi/Downloads/one8_ Performance Footwear, Apparel & Gear/imgi_10_Desktop_From_6_AM_to_11_59_AM_3-cropped-1787660117826.jpg");
+
+        translateX: 50vw;
+        display: none;
+
+        width: 100vw;
+        height: calc(100vh - 60px - 20px);
+
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        color: white;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        align-items: flex-start;
+
+    }
+
+    100% {
+        background-image: url("C:/Users/Suranagi/Downloads/one8_ Performance Footwear, Apparel & Gea/imgi_9_DRP_OF_THE_SEASON_4-1.jpg");
+        z-index: 1;
+        display: block;
+
+        width: 100vw;
+        height: calc(100vh - 60px - 20px + 20vh);
+        /* background-image: url("C:/Users/Suranagi/Downloads/one8_ Performance Footwear, Apparel & Gear/imgi_10_Desktop_From_6_AM_to_11_59_AM_3-cropped-1787660117826.jpg"); */
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        color: white;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        align-items: flex-start;
+
+    }
+
+
+}

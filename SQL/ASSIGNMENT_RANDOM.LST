@@ -1,0 +1,381 @@
+SQL> --1
+SQL> SELECT *
+  2  FROM EMP
+  3  WHERE SAL BETWEEN 1000 AND 3000 AND DEPTNO IN (10,20) AND JOB IN ('MANAGER','CLERK');
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO               
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------               
+      7566 JONES      MANAGER         7839 02-APR-81       2975                    20               
+      7782 CLARK      MANAGER         7839 09-JUN-81       2450                    10               
+      7876 ADAMS      CLERK           7788 23-MAY-87       1100                    20               
+      7934 MILLER     CLERK           7782 23-JAN-82       1300                    10               
+
+SQL> --2
+SQL> SELECT *
+  2  FROM EMP
+  3  WHERE SAL NOT BETWEEN 1000 AND 2000 AND DEPTNO IN (10,20,30) AND JOB<>'SALESMAN';
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO               
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------               
+      7369 SMITH      CLERK           7902 17-DEC-80        800                    20               
+      7566 JONES      MANAGER         7839 02-APR-81       2975                    20               
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850                    30               
+      7782 CLARK      MANAGER         7839 09-JUN-81       2450                    10               
+      7788 SCOTT      ANALYST         7566 19-APR-87       3000                    20               
+      7839 KING       PRESIDENT            17-NOV-81       5000                    10               
+      7900 JAMES      CLERK           7698 03-DEC-81        950                    30               
+      7902 FORD       ANALYST         7566 03-DEC-81       3000                    20               
+
+8 rows selected.
+
+SQL> --3
+SQL> SELECT DNAME
+  2  FROM DEPT
+  3  WHERE LOC LIKE '%O%' AND DNAME LIKE '%O%';
+
+DNAME                                                                                               
+--------------                                                                                      
+ACCOUNTING                                                                                          
+OPERATIONS                                                                                          
+
+SQL> --4
+SQL> SELECT *
+  2  FROM EMP
+  3  WHERE JOB LIKE '%MAN%';
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO               
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------               
+      7499 ALLEN      SALESMAN        7698 20-FEB-81       1600        300         30               
+      7521 WARD       SALESMAN        7698 22-FEB-81       1250        500         30               
+      7566 JONES      MANAGER         7839 02-APR-81       2975                    20               
+      7654 MARTIN     SALESMAN        7698 28-SEP-81       1250       1400         30               
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850                    30               
+      7782 CLARK      MANAGER         7839 09-JUN-81       2450                    10               
+      7844 TURNER     SALESMAN        7698 08-SEP-81       1500          0         30               
+
+7 rows selected.
+
+SQL> --5
+SQL> ---------------
+SQL> --------------------
+SQL> ----------------
+SQL> 
+SQL> --1
+SQL> SELECT MAX(SAL) MAX_SAL, MIN(SAL) MIN_SAL, SUM(SAL) TOTAL_SALARY
+  2  FROM EMP
+  3  ;
+
+   MAX_SAL    MIN_SAL TOTAL_SALARY                                                                  
+---------- ---------- ------------                                                                  
+      5000        800        29025                                                                  
+
+SQL> --2
+SQL> SELECT COUNT(*) TOTAL_EMPLOYEE_COUNT
+  2  FROM EMP;
+
+TOTAL_EMPLOYEE_COUNT                                                                                
+--------------------                                                                                
+                  14                                                                                
+
+SQL> --3
+SQL> SELECT COUNT(*) NO_OF_EMPLOYEES_WITH_COMMISSION
+  2  FROM EMP
+  3  WHERE COMM IS NOT NULL;
+SELECT COUNT(*) NO_OF_EMPLOYEES_WITH_COMMISSION
+                *
+ERROR at line 1:
+ORA-00972: identifier is too long 
+
+
+SQL> --3
+SQL> SELECT COUNT(*) NO_OF_EMPLOYEES
+  2  FROM EMP
+  3  WHERE COMM IS NOT NULL;
+
+NO_OF_EMPLOYEES                                                                                     
+---------------                                                                                     
+              4                                                                                     
+
+SQL> --4
+SQL> SELECT COUNT(*) NO_OF_EMP_DEP_30
+  2  FROM EMP
+  3  WHERE DEPTNO=30;
+
+NO_OF_EMP_DEP_30                                                                                    
+----------------                                                                                    
+               6                                                                                    
+
+SQL> --5
+SQL> SELECT COUNT(*) NO_OF_CLERK_DEP_30
+  2  FROM WMP
+  3  ;
+FROM WMP
+     *
+ERROR at line 2:
+ORA-00942: table or view does not exist 
+
+
+SQL> --5
+SQL> SELECT COUNT(*) NO_OF_CLERK_DEP_30
+  2  FROM EMP
+  3  WHERE DEPTNO=20 AND JOB='CLERK';
+
+NO_OF_CLERK_DEP_30                                                                                  
+------------------                                                                                  
+                 2                                                                                  
+
+SQL> --5 DISPLAY THE TOTAL SALARY IN DEPT 30
+SQL> SELECT SUM(SAL) TOTAL_SAL
+  2  FROM EMP
+  3  WHERE DEPTNO=30;
+
+ TOTAL_SAL                                                                                          
+----------                                                                                          
+      9400                                                                                          
+
+SQL> --6
+SQL> DISPLAY THE NUMBER OF CLERKS IN DEPT20
+SP2-0734: unknown command beginning "DISPLAY TH..." - rest of line ignored.
+SQL> --DISPLAY THE NUMBER OF CLERKS IN DEPT 20
+SQL> SELECT COUNT(*) NO_OF_CLERKS
+  2  FROM EMP
+  3  WHERE DEPTNO=20 AND JOB='CLERK';
+
+NO_OF_CLERKS                                                                                        
+------------                                                                                        
+           2                                                                                        
+
+SQL> --7
+SQL> SELECT MAX(SAL) MAX_SAL, MIN(SAL) MIN_SAL
+  2  FROM EMP
+  3  WHERE JOB='SALESMAN';
+
+   MAX_SAL    MIN_SAL                                                                               
+---------- ----------                                                                               
+      1600       1250                                                                               
+
+SQL> --8
+SQL> SELECT COUNT(*) NO_OF_EMPLOYEES_ABOVE_3000
+  2  FROM EMP
+  3  WHERE SAL>3000;
+
+NO_OF_EMPLOYEES_ABOVE_3000                                                                          
+--------------------------                                                                          
+                         1                                                                          
+
+SQL> --9
+SQL> SELECT COUNT(DISTINCT(DEPTNO))
+  2  FROM EMP
+  3  ;
+
+COUNT(DISTINCT(DEPTNO))                                                                             
+-----------------------                                                                             
+                      3                                                                             
+
+SQL> --10
+SQL> SELECT MIN(HIREDATE), MAX(HIREDATE)
+  2  FROM EMP;
+
+MIN(HIRED MAX(HIRED                                                                                 
+--------- ---------                                                                                 
+17-DEC-80 23-MAY-87                                                                                 
+
+SQL> 
+SQL> ----------------
+SQL> -----------------
+SQL> --------------------
+SQL> 
+SQL> --1
+SQL> SELECT SUM(SAL) TOTAL_SAL
+  2  FROM EMP
+  3  GROUP BY DEPTNO;
+
+ TOTAL_SAL                                                                                          
+----------                                                                                          
+      9400                                                                                          
+     10875                                                                                          
+      8750                                                                                          
+
+SQL> --2
+SQL> SELECT MAX(SAL), JOB
+  2  FROM EMP
+  3  GROUP BY JOB;
+
+  MAX(SAL) JOB                                                                                      
+---------- ---------                                                                                
+      1300 CLERK                                                                                    
+      1600 SALESMAN                                                                                 
+      5000 PRESIDENT                                                                                
+      2975 MANAGER                                                                                  
+      3000 ANALYST                                                                                  
+
+SQL> --3
+SQL> SELECT MAX(SAL) MAX_SAL, JOB
+  2  FROM EMP
+  3  GORUP BY JOB
+  4  HAVING ;
+GORUP BY JOB
+      *
+ERROR at line 3:
+ORA-00933: SQL command not properly ended 
+
+
+SQL> --3
+SQL> SELECT MAX(SAL) MAX_SAL, JOB
+  2  FROM EMP
+  3  WHERE SAL>1500
+  4  GROUP BY JOB;
+
+   MAX_SAL JOB                                                                                      
+---------- ---------                                                                                
+      1600 SALESMAN                                                                                 
+      5000 PRESIDENT                                                                                
+      2975 MANAGER                                                                                  
+      3000 ANALYST                                                                                  
+
+SQL> --4
+SQL> SELECT MAX(SAL) MAX_SAL, JOB
+  2  FROM EMP
+  3  WHERE SAL>1500 AND DEPTNO<>30
+  4  GROUP BY JOB
+  5  ORDER BY ASC;
+ORDER BY ASC
+         *
+ERROR at line 5:
+ORA-00936: missing expression 
+
+
+SQL> --4
+SQL> SELECT MAX(SAL) MAX_SAL, JOB
+  2  FROM EMP
+  3  WHERE SAL>1500 AND DEPTNO<>30
+  4  GROUP BY JOB
+  5  ORDER BY SAL;
+ORDER BY SAL
+         *
+ERROR at line 5:
+ORA-00979: not a GROUP BY expression 
+
+
+SQL> --4
+SQL> SELECT MAX(SAL) MAX_SAL, JOB
+  2  FROM EMP
+  3  WHERE SAL>1500 AND DEPTNO<>30
+  4  GROUP BY JOB
+  5  ORDER BY MAX(SAL);
+
+   MAX_SAL JOB                                                                                      
+---------- ---------                                                                                
+      2975 MANAGER                                                                                  
+      3000 ANALYST                                                                                  
+      5000 PRESIDENT                                                                                
+
+SQL> --1(FROM FIRST ONE  CORRECTED)
+SQL> SELCT *
+SP2-0042: unknown command "SELCT *" - rest of line ignored.
+SQL> FROM EMP
+SP2-0042: unknown command "FROM EMP" - rest of line ignored.
+SQL> SELECT *
+  2  FROM EMP
+  3  WHERE JOB NOT IN ('MANAGER','CLERK') AND SAL BETWEEN 1OO0 AND 3000 AND DEPTNO IN (10,20);
+WHERE JOB NOT IN ('MANAGER','CLERK') AND SAL BETWEEN 1OO0 AND 3000 AND DEPTNO IN (10,20)
+                                                      *
+ERROR at line 3:
+ORA-00905: missing keyword 
+
+
+SQL> --1(FROM FIRST ONE  CORRECTED)
+SQL> SELECT *
+  2  FROM EMP
+  3  WHERE JOB NOT IN ('MANAGER','CLERK') AND SAL BETWEEN 1OO0 AND 3000 AND DEPTNO IN (10,20);
+WHERE JOB NOT IN ('MANAGER','CLERK') AND SAL BETWEEN 1OO0 AND 3000 AND DEPTNO IN (10,20)
+                                                      *
+ERROR at line 3:
+ORA-00905: missing keyword 
+
+
+SQL> --1(FROM FIRST ONE  CORRECTED)
+SQL> SELECT *
+  2  FROM EMP
+  3  WHERE JOB NOT IN ('MANAGER','CLERK') AND SAL BETWEEN 1000 AND 3000 AND DEPTNO IN (10,20);
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO               
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------               
+      7788 SCOTT      ANALYST         7566 19-APR-87       3000                    20               
+      7902 FORD       ANALYST         7566 03-DEC-81       3000                    20               
+
+SQL> 
+SQL> 
+SQL> --------
+SQL> -- BACK TO OLD ASSIGNMENT CONTD.
+SQL> 
+SQL> 
+SQL> ---------
+SQL> -----------
+SQL> --1
+SQL> SELECT DEPTNO, COUNT(*)
+  2  FROM EMP
+  3  GROUP BY DEPTNO;
+
+    DEPTNO   COUNT(*)                                                                               
+---------- ----------                                                                               
+        30          6                                                                               
+        20          5                                                                               
+        10          3                                                                               
+
+SQL> --2
+SQL> SELECT DEPTNO, COUNT(*)
+  2  FROM EMP
+  3  GROUP BY DEPTNO
+  4  HAVING COUNT(*)>4;
+
+    DEPTNO   COUNT(*)                                                                               
+---------- ----------                                                                               
+        30          6                                                                               
+        20          5                                                                               
+
+SQL> --3
+SQL> SELECT MAX(SAL) MAX_SAL_BY_JOB, JOB
+  2  FROM EMP
+  3  WHERE ENAME NOT LIKE '%S'
+  4  GROUP BY JOB;
+
+MAX_SAL_BY_JOB JOB                                                                                  
+-------------- ---------                                                                            
+          1300 CLERK                                                                                
+          1600 SALESMAN                                                                             
+          5000 PRESIDENT                                                                            
+          2850 MANAGER                                                                              
+          3000 ANALYST                                                                              
+
+SQL> --4
+SQL> SELECT DEPTNO, SUM(SAL)
+  2  FROM EMP
+  3  GROUP BY DEPTNO
+  4  HAVING SUM(SAL)>9000;
+
+    DEPTNO   SUM(SAL)                                                                               
+---------- ----------                                                                               
+        30       9400                                                                               
+        20      10875                                                                               
+
+SQL> 
+SQL> 
+SQL> 
+SQL> ----
+SQL> ANOTHER WAY
+SP2-0734: unknown command beginning "ANOTHER WA..." - rest of line ignored.
+SQL> --ANOTHER WAY
+SQL> SELECT JOB,MAX(SAL)
+  2  FROM EMP
+  3  GROUP BY JOB
+  4  HAVING MAX(SAL)>1500;
+
+JOB         MAX(SAL)                                                                                
+--------- ----------                                                                                
+SALESMAN        1600                                                                                
+PRESIDENT       5000                                                                                
+MANAGER         2975                                                                                
+ANALYST         3000                                                                                
+
+SQL> SPOOL OFF;

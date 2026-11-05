@@ -1,0 +1,83 @@
+q2. syntax of - group by, oder by without group by, full outer join (both), self join (both) , 
+delete, rename a column name, modify the datatype, grant
+
+(a)syntax for group by-
+
+SELECT group_function/group by expression
+FROM table_name
+[WHERE <filter-conditions>]
+GROUP BY col_name/expression;
+
+(b)syntax for order by without group by clause-
+
+SELECT col_name/expression
+FROM table_name
+WHERE <filter-conditions>
+ORDER BY col_name [ASC]/DESC;
+
+(c)syntax for full outer join-
+(ANSI)
+SELECT col_name/expression
+FROM table_name1 FULL {outer} JOIN 
+ON table_name1.column=table_name2.column;
+
+(ORACLE)
+there is no syntax for oracle full outer join. we use ansi syntax-
+SELECT col_name/expression
+FROM table_name1 FULL {outer} JOIN 
+ON table_name1.column=table_name2.column;
+
+(d) syntax for self join
+(ANSI)
+SELECT col_name/expression
+FROM table_name1 JOIN table_name2
+ON <join-condition>;
+
+(ORACLE)
+SELECT col_name/expression
+FROM table_name1, table_name2
+WHERE <join-condition>;
+
+(e)syntax for delete a column
+ALTER table table_name
+DROP COLUMN column_name;
+
+(f)syntax for renaming a column
+ALTER table table_name
+RENAME existi-ng_col_name TO new_col_name;
+
+(g)modify the datatype
+ALTER table table_name
+MODIFY column_name new_data_type;
+
+(h)syntax for grant
+GRANT sql_statements
+ON table_name
+TO user;
+
+Q3) waqtd employees names, managers names, department name if managers are working as salesman, ANALYST, clerk
+and earning exactly 4 digits, and employees department should consists of a,s,o,r in location of new york, boston,
+chicago, and arrange the salaries in descending order
+
+SELECT E.ENAME, M.ENAME, D.DNAME
+FROM EMP E, EMP M, DEPT D
+WHERE E.DEPTNO = D.DEPTNO
+AND E.MGR=M.EMPNO
+AND D.LOC IN ('NEW YORK', 'BOSTON', 'CHICAGO')
+AND ( D.DNAME LIKE '%A%' OR D.DNAME LIKE '%S%'OR D.DNAME LIKE '%R%'OR D.DNAME LIKE '%O%')
+AND M.JOB IN ('SALESMAN','CLERK','ANALYST')
+AND M.SAL LIKE '____'
+ORDER BY E.SAL DESC
+
+Q4)WAQTD hiredate who hired 2,4,5 and last hired employee.
+
+  1  SELECT E1.HIREDATE
+  2  FROM EMP E1
+  3  WHERE (SELECT COUNT(DISTINCT E2.HIREDATE)
+  4             FROM EMP E2
+  5             WHERE E1.HIREDATE>E2.HIREDATE) IN (1,3,4)
+  6  OR E1.HIREDATE = (SELECT MAX(E1.HIREDATE)
+  7                    FROM EMP E1)
+
+
+SELECT E.ENAME, M.ENAME, D.DNAME FROM EMP E, EMP M, DEPT D WHERE E.DEPTNO = D.DEPTNO AND E.MGR=M.EMPNO AND D.LOC IN ('NEW YORK', 'BOSTON', 'CHICAGO') AND ( D.DNAME LIKE '%A%' OR D.DNAME LIKE '%S%'OR D.DNAME LIKE '%R%'OR D.DNAME LIKE '%O%') AND M.JOB IN ('SALESMAN','CLERK','ANALYST') AND M.SAL LIKE '____' ORDER BY E.SAL DESC

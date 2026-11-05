@@ -1,0 +1,282 @@
+SQL> --1 WAQTD EMP NAME, MGR NAME , MANAGER'S MANAGER'S NAME
+SQL> 
+SQL> SELECT E.ENAME, M.ENAME, MM.ENAME
+  2  FROM EMP E, EMP M, EMP MM
+  3  WHERE E.MGR=M.EMPNO AND M.MGR=MM.EMPNO;
+
+ENAME      ENAME      ENAME                                                                                                                                                                             
+---------- ---------- ----------                                                                                                                                                                        
+SMITH      FORD       JONES                                                                                                                                                                             
+ALLEN      BLAKE      KING                                                                                                                                                                              
+WARD       BLAKE      KING                                                                                                                                                                              
+MARTIN     BLAKE      KING                                                                                                                                                                              
+SCOTT      JONES      KING                                                                                                                                                                              
+TURNER     BLAKE      KING                                                                                                                                                                              
+ADAMS      SCOTT      JONES                                                                                                                                                                             
+JAMES      BLAKE      KING                                                                                                                                                                              
+FORD       JONES      KING                                                                                                                                                                              
+MILLER     CLARK      KING                                                                                                                                                                              
+
+10 rows selected.
+
+SQL> SELECT E.ENAME, D.DNAME, M.ENAME, M.DNAME
+  2  FROM EMP E, DEPT D, EMP M, DEPT MD
+  3  WHERE E.DEPTNO=D.DEPTNO
+  4  AND E.MGR=M.EMPNO
+  5  AND M.DEPTNO=MD.DEPTNO;
+SELECT E.ENAME, D.DNAME, M.ENAME, M.DNAME
+                                  *
+ERROR at line 1:
+ORA-00904: "M"."DNAME": invalid identifier 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT E.ENAME, D.DNAME, M.ENAME, MD.DNAME
+  2  FROM EMP E, DEPT D, EMP M, DEPT MD
+  3  WHERE E.DEPTNO=D.DEPTNO
+  4  AND E.MGR=M.EMPNO
+  5* AND M.DEPTNO=MD.DEPTNO
+SQL> /
+
+ENAME      DNAME          ENAME      DNAME                                                                                                                                                              
+---------- -------------- ---------- --------------                                                                                                                                                     
+CLARK      ACCOUNTING     KING       ACCOUNTING                                                                                                                                                         
+JONES      RESEARCH       KING       ACCOUNTING                                                                                                                                                         
+BLAKE      SALES          KING       ACCOUNTING                                                                                                                                                         
+MILLER     ACCOUNTING     CLARK      ACCOUNTING                                                                                                                                                         
+SMITH      RESEARCH       FORD       RESEARCH                                                                                                                                                           
+ADAMS      RESEARCH       SCOTT      RESEARCH                                                                                                                                                           
+SCOTT      RESEARCH       JONES      RESEARCH                                                                                                                                                           
+FORD       RESEARCH       JONES      RESEARCH                                                                                                                                                           
+JAMES      SALES          BLAKE      SALES                                                                                                                                                              
+ALLEN      SALES          BLAKE      SALES                                                                                                                                                              
+MARTIN     SALES          BLAKE      SALES                                                                                                                                                              
+TURNER     SALES          BLAKE      SALES                                                                                                                                                              
+WARD       SALES          BLAKE      SALES                                                                                                                                                              
+
+13 rows selected.
+
+SQL> --ansi
+SQL> SELECT E.ENAME, D.DNAME, M.ENAME, MD.DNAME
+  2  FROM EMP E INNER JOIN DEPT D ON E.DEPTNO=D.DEPTNO
+  3  JOIN EMP M ON E.MGR=M.EMPNO
+  4  INNER JOIN DEPT MD ON M.DEPTNO=MD.DEPTNO;
+
+ENAME      DNAME          ENAME      DNAME                                                                                                                                                              
+---------- -------------- ---------- --------------                                                                                                                                                     
+CLARK      ACCOUNTING     KING       ACCOUNTING                                                                                                                                                         
+JONES      RESEARCH       KING       ACCOUNTING                                                                                                                                                         
+BLAKE      SALES          KING       ACCOUNTING                                                                                                                                                         
+MILLER     ACCOUNTING     CLARK      ACCOUNTING                                                                                                                                                         
+SMITH      RESEARCH       FORD       RESEARCH                                                                                                                                                           
+ADAMS      RESEARCH       SCOTT      RESEARCH                                                                                                                                                           
+SCOTT      RESEARCH       JONES      RESEARCH                                                                                                                                                           
+FORD       RESEARCH       JONES      RESEARCH                                                                                                                                                           
+JAMES      SALES          BLAKE      SALES                                                                                                                                                              
+ALLEN      SALES          BLAKE      SALES                                                                                                                                                              
+MARTIN     SALES          BLAKE      SALES                                                                                                                                                              
+TURNER     SALES          BLAKE      SALES                                                                                                                                                              
+WARD       SALES          BLAKE      SALES                                                                                                                                                              
+
+13 rows selected.
+
+SQL> SELECT E.ENAME, M.ENAME, MM.ENAME, MMD.DNAME
+  2  FROM EMP E, EMP M, EMP MM, DEPT MMD
+  3  WHERE E.MGR=M.EMPNO
+  4  AND M.MGR=MM.EMPNO
+  5  AND MM.DEPTNO=MMD.DEPTNO;
+
+ENAME      ENAME      ENAME      DNAME                                                                                                                                                                  
+---------- ---------- ---------- --------------                                                                                                                                                         
+SMITH      FORD       JONES      RESEARCH                                                                                                                                                               
+ALLEN      BLAKE      KING       ACCOUNTING                                                                                                                                                             
+WARD       BLAKE      KING       ACCOUNTING                                                                                                                                                             
+MARTIN     BLAKE      KING       ACCOUNTING                                                                                                                                                             
+SCOTT      JONES      KING       ACCOUNTING                                                                                                                                                             
+TURNER     BLAKE      KING       ACCOUNTING                                                                                                                                                             
+ADAMS      SCOTT      JONES      RESEARCH                                                                                                                                                               
+JAMES      BLAKE      KING       ACCOUNTING                                                                                                                                                             
+FORD       JONES      KING       ACCOUNTING                                                                                                                                                             
+MILLER     CLARK      KING       ACCOUNTING                                                                                                                                                             
+
+10 rows selected.
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT E.ENAME, M.ENAME, MM.ENAME, MMD.DNAME
+  2  FROM EMP E, EMP M, EMP MM, DEPT MMD
+  3  WHERE E.MGR=M.EMPNO
+  4  AND M.MGR=MM.EMPNO
+  5  AND MM.DEPTNO=MMD.DEPTNO
+  6  AND E.JOB IN ('SALESMAN','CLERK','ANALYST') AND E.SAL LIKE '____'
+  7* AND (E.HIREDATE LIKE '%NOV%' OR E.HIREDATE LIKE '%DEC%' OR E.HIREDATE LIKE '%FEB%')
+SQL> /
+
+ENAME      ENAME      ENAME      DNAME                                                                                                                                                                  
+---------- ---------- ---------- --------------                                                                                                                                                         
+ALLEN      BLAKE      KING       ACCOUNTING                                                                                                                                                             
+WARD       BLAKE      KING       ACCOUNTING                                                                                                                                                             
+FORD       JONES      KING       ACCOUNTING                                                                                                                                                             
+
+SQL> SELECT E.ENAME, MD.DNAME
+  2  FROM EMP E, EMP M, DEPT MD
+  3  WHERE E.MGR=M.EMPNO
+  4  AND M.DEPTNO=MD.DEPTNO
+  5  AND M.JOB LIKE '%LL%'
+  6  ;
+
+no rows selected
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT E.ENAME, MD.DNAME
+  2  FROM EMP E, EMP M, DEPT MD, DEPT ED
+  3  WHERE E.MGR=M.EMPNO
+  4  AND M.DEPTNO=MD.DEPTNO
+  5  AND E.DEPTNO=ED.DEPTNO
+  6  AND M.JOB LIKE '%LL%'
+  7* AND ED.LOC IN ('NEW YORK','DALLAS')
+SQL> /
+
+no rows selected
+
+SQL> ;
+  1  SELECT E.ENAME, MD.DNAME
+  2  FROM EMP E, EMP M, DEPT MD, DEPT ED
+  3  WHERE E.MGR=M.EMPNO
+  4  AND M.DEPTNO=MD.DEPTNO
+  5  AND E.DEPTNO=ED.DEPTNO
+  6  AND M.JOB LIKE '%LL%'
+  7* AND ED.LOC IN ('NEW YORK','DALLAS')
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT E.ENAME, MD.DNAME
+  2  FROM EMP E, EMP M, DEPT MD
+  3  WHERE E.MGR=M.EMPNO
+  4  AND M.DEPTNO=MD.DEPTNO
+  5  AND M.JOB LIKE '%LL%'
+  6* AND MD.LOC IN ('NEW YORK','DALLAS')
+SQL> /
+
+no rows selected
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT E.ENAME, MD.DNAME
+  2  FROM EMP E, EMP M, DEPT MD
+  3  WHERE E.MGR=M.EMPNO
+  4  AND M.DEPTNO=MD.DEPTNO
+  5  AND M.JOB LIKE 'SALES'
+  6* AND MD.LOC IN ('NEW YORK','DALLAS')
+SQL> /
+
+no rows selected
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT E.ENAME, MD.DNAME
+  2  FROM EMP E, EMP M, DEPT MD
+  3  WHERE E.MGR=M.EMPNO
+  4  AND M.DEPTNO=MD.DEPTNO
+  5* AND MD.LOC IN ('NEW YORK','DALLAS')
+SQL> /
+
+ENAME      DNAME                                                                                                                                                                                        
+---------- --------------                                                                                                                                                                               
+SMITH      RESEARCH                                                                                                                                                                                     
+JONES      ACCOUNTING                                                                                                                                                                                   
+BLAKE      ACCOUNTING                                                                                                                                                                                   
+CLARK      ACCOUNTING                                                                                                                                                                                   
+SCOTT      RESEARCH                                                                                                                                                                                     
+ADAMS      RESEARCH                                                                                                                                                                                     
+FORD       RESEARCH                                                                                                                                                                                     
+MILLER     ACCOUNTING                                                                                                                                                                                   
+
+8 rows selected.
+
+SQL> ;
+  1  SELECT E.ENAME, MD.DNAME
+  2  FROM EMP E, EMP M, DEPT MD
+  3  WHERE E.MGR=M.EMPNO
+  4  AND M.DEPTNO=MD.DEPTNO
+  5* AND MD.LOC IN ('NEW YORK','DALLAS')
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT E.ENAME, MD.DNAME
+  2  FROM EMP E, EMP M, DEPT MD, DEPT ED
+  3  WHERE E.MGR=M.EMPNO
+  4  AND M.DEPTNO=MD.DEPTNO
+  5  AND E.DEPTNO=ED.DEPTNO
+  6  AND M.JOB = 'ANALYST'
+  7* AND ED.LOC IN ('NEW YORK','DALLAS')
+SQL> /
+
+ENAME      DNAME                                                                                                                                                                                        
+---------- --------------                                                                                                                                                                               
+ADAMS      RESEARCH                                                                                                                                                                                     
+SMITH      RESEARCH                                                                                                                                                                                     
+
+SQL> --
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT E.ENAME, MD.DNAME
+  2  FROM EMP E, EMP M, DEPT MD
+  3  WHERE E.MGR=M.EMPNO
+  4  AND M.DEPTNO=MD.DEPTNO
+  5  AND M.JOB = 'ANALYST'
+  6* AND MD.LOC IN ('NEW YORK','DALLAS')
+SQL> /
+
+ENAME      DNAME                                                                                                                                                                                        
+---------- --------------                                                                                                                                                                               
+SMITH      RESEARCH                                                                                                                                                                                     
+ADAMS      RESEARCH                                                                                                                                                                                     
+
+SQL> --
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT E.ENAME, MD.DNAME
+  2  FROM EMP E, EMP M, DEPT MD
+  3  WHERE E.MGR=M.EMPNO
+  4  AND M.DEPTNO=MD.DEPTNO
+  5  AND M.JOB = 'MANAGER'
+  6* AND MD.LOC IN ('NEW YORK','DALLAS')
+SQL> /
+
+ENAME      DNAME                                                                                                                                                                                        
+---------- --------------                                                                                                                                                                               
+SCOTT      RESEARCH                                                                                                                                                                                     
+FORD       RESEARCH                                                                                                                                                                                     
+MILLER     ACCOUNTING                                                                                                                                                                                   
+
+SQL> --
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT E.ENAME, MD.DNAME
+  2  FROM EMP E, EMP M, DEPT MD
+  3  WHERE E.MGR=M.EMPNO
+  4  AND M.DEPTNO=MD.DEPTNO
+  5  AND E.DEPTNO=ED.DEPTNO
+  6  AND M.JOB = 'ANALYST'
+  7* AND E.LOC IN ('NEW YORK','DALLAS')
+SQL> S
+SP2-0042: unknown command "S" - rest of line ignored.
+SQL> /
+AND E.LOC IN ('NEW YORK','DALLAS')
+    *
+ERROR at line 7:
+ORA-00904: "E"."LOC": invalid identifier 
+
+
+SQL> SPOOL OFF;

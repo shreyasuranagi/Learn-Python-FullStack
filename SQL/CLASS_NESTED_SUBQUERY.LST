@@ -1,0 +1,291 @@
+SQL> SELECT MAX(SAL)
+  2  FROM EMP;
+
+  MAX(SAL)                                                                                          
+----------                                                                                          
+      5000                                                                                          
+
+SQL> SELECT SAL
+  2  ;
+
+*
+ERROR at line 2:
+ORA-00923: FROM keyword not found where expected 
+
+
+SQL> SELECT MAX(SAL)
+  2  FROM EMP
+  3  WHERE SAL <> (SELECT MAX(SAL)
+  4  			FROM EMP
+  5  			);
+
+  MAX(SAL)                                                                                          
+----------                                                                                          
+      3000                                                                                          
+
+SQL> SELECT MAX(SAL)
+  2  FROM EMP
+  3  WHERE SAL<(SELECT MAX(SAL)
+  4  			FROM EMP
+  5  			WHERE SAL <(SELECT MAX(SAL)
+  6  					FROM EMP));
+
+  MAX(SAL)                                                                                          
+----------                                                                                          
+      2975                                                                                          
+
+SQL> --WAQTD DNAME WHO IS EARNING 5TH MAXIMUM SALARY
+SQL> SELECT DNAME
+  2  FROM DEPT
+  3  WHERE DEPTNO = (SELECT MAX(SAL) FROM EMP
+  4  		WHERE ;
+WHERE DEPTNO = (SELECT MAX(SAL) FROM EMP
+                *
+ERROR at line 3:
+ORA-00921: unexpected end of SQL command 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT DNAME
+  2  FROM DEPT
+  3  WHERE DEPTNO = SELECT DEPTNO
+  4  		FROM EMP
+  5  		WHERE SAL<(SELECT MAX(SAL) FROM EMP
+  6  			WHERE SAL<(SELECT MAX(SAL) FROM EMP
+  7  				WHERE SAL<(SELECT MAX(SAL) FROM EMP
+  8  					WHERE SAL<(SELECT MAX(SAL) FROM EMP
+  9* 						WHERE SAL<(SELECT MAX(SAL) FROM EMP)))))
+SQL> /
+WHERE DEPTNO = SELECT DEPTNO
+               *
+ERROR at line 3:
+ORA-00936: missing expression 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT DNAME
+  2  FROM DEPT
+  3  WHERE DEPTNO = (SELECT DEPTNO
+  4  		FROM EMP
+  5  		WHERE SAL<(SELECT MAX(SAL) FROM EMP
+  6  			WHERE SAL<(SELECT MAX(SAL) FROM EMP
+  7  				WHERE SAL<(SELECT MAX(SAL) FROM EMP
+  8  					WHERE SAL<(SELECT MAX(SAL) FROM EMP
+  9* 						WHERE SAL<(SELECT MAX(SAL) FROM EMP)))))
+SQL> /
+WHERE DEPTNO = (SELECT DEPTNO
+                *
+ERROR at line 3:
+ORA-00921: unexpected end of SQL command 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT DNAME
+  2  FROM DEPT
+  3  WHERE DEPTNO IN (SELECT DEPTNO
+  4  		FROM EMP
+  5  		WHERE SAL<(SELECT MAX(SAL) FROM EMP
+  6  			WHERE SAL<(SELECT MAX(SAL) FROM EMP
+  7  				WHERE SAL<(SELECT MAX(SAL) FROM EMP
+  8  					WHERE SAL<(SELECT MAX(SAL) FROM EMP
+  9* 						WHERE SAL<(SELECT MAX(SAL) FROM EMP)))))
+SQL> /
+						WHERE SAL<(SELECT MAX(SAL) FROM EMP)))))
+						                                       *
+ERROR at line 9:
+ORA-00907: missing right parenthesis 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT DNAME
+  2  FROM DEPT
+  3  WHERE DEPTNO IN (SELECT DEPTNO
+  4  		FROM EMP
+  5  		WHERE SAL<(SELECT MAX(SAL) FROM EMP
+  6  			WHERE SAL<(SELECT MAX(SAL) FROM EMP
+  7  				WHERE SAL<(SELECT MAX(SAL) FROM EMP
+  8  					WHERE SAL<(SELECT MAX(SAL) FROM EMP
+  9* 						WHERE SAL<(SELECT MAX(SAL) FROM EMP))))))
+SQL> /
+
+DNAME                                                                                               
+--------------                                                                                      
+SALES                                                                                               
+RESEARCH                                                                                            
+ACCOUNTING                                                                                          
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT DNAME
+  2  FROM DEPT
+  3  WHERE DEPTNO IN (SELECT DEPTNO
+  4  		FROM EMP
+  5  		WHERE SAL=(SELECT MAX(SAL) FROM EMP
+  6  			WHERE SAL<(SELECT MAX(SAL) FROM EMP
+  7  				WHERE SAL<(SELECT MAX(SAL) FROM EMP
+  8  					WHERE SAL<(SELECT MAX(SAL) FROM EMP
+  9* 						WHERE SAL<(SELECT MAX(SAL) FROM EMP))))))
+SQL> /
+
+DNAME                                                                                               
+--------------                                                                                      
+ACCOUNTING                                                                                          
+
+SQL> SELECT DNAME
+  2  FROM DEPT
+  3  WHERE DEPTNO = (SELECT DEPNO
+  4  			FROM EMP
+  5  			WHERE SAL=(SELECT MAX(SAL) FROM EMP
+  6  WHERE SAL<(SELECT MAX(SAL) FROM EMP
+  7  ));
+WHERE DEPTNO = (SELECT DEPNO
+                *
+ERROR at line 3:
+ORA-00921: unexpected end of SQL command 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT DNAME
+  2  FROM DEPT
+  3  WHERE DEPTNO = (SELECT DEPNO
+  4  			FROM EMP
+  5  			WHERE SAL=(SELECT MAX(SAL) FROM EMP
+  6* 				WHERE SAL<(SELECT MAX(SAL) FROM EMP)))
+SQL> /
+WHERE DEPTNO = (SELECT DEPNO
+                       *
+ERROR at line 3:
+ORA-00904: "DEPNO": invalid identifier 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT DNAME
+  2  FROM DEPT
+  3  WHERE DEPTNO = (SELECT DEPTNO
+  4  			FROM EMP
+  5  			WHERE SAL=(SELECT MAX(SAL) FROM EMP
+  6* 				WHERE SAL<(SELECT MAX(SAL) FROM EMP)))
+SQL> /
+WHERE DEPTNO = (SELECT DEPTNO
+                *
+ERROR at line 3:
+ORA-01427: single-row subquery returns more than one row 
+
+
+SQL> --WAQTD LOC WHO IS EARNING 7TH MINIMUM SALARY
+SQL> SELECT LOC
+  2  FROM DEPT
+  3  WHERE DEPTNO IN (SELECT DEPTNO
+  4  			FROM EMP
+  5  			WHERE SAL=( SELECT MIN(SAL)
+  6  				FROM EMP
+  7  				WHERE SAL>(SELECT MIN(SAL)
+  8    6                             FROM EMP
+  9    7                             WHERE SAL>(SELECT MIN(SAL)
+ 10    6                             FROM EMP
+ 11    7                             WHERE SAL>(SELECT MIN(SAL)
+ 12    6                             FROM EMP
+ 13    7                             WHERE SAL>(SELECT MIN(SAL)
+ 14    6                             FROM EMP
+ 15    7                             WHERE SAL>(SELECT MIN(SAL)
+ 16    6                             FROM EMP
+ 17    7                             WHERE SAL>(SELECT MIN(SAL)
+ 18    6                             FROM EMP
+ 19    7                            ))))))));
+  6                             FROM EMP
+  *
+ERROR at line 8:
+ORA-00923: FROM keyword not found where expected 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT LOC
+  2  FROM DEPT
+  3  WHERE DEPTNO IN (SELECT DEPTNO
+  4  			FROM EMP
+  5  			WHERE SAL=( SELECT MIN(SAL)
+  6  				FROM EMP
+  7  				WHERE SAL>(SELECT MIN(SAL)
+  8    6                             FROM EMP
+  9    7                             WHERE SAL>(SELECT MIN(SAL)
+ 10    6                             FROM EMP
+ 11    7                             WHERE SAL>(SELECT MIN(SAL)
+ 12    6                             FROM EMP
+ 13    7                             WHERE SAL>(SELECT MIN(SAL)
+ 14    6                             FROM EMP
+ 15    7                             WHERE SAL>(SELECT MIN(SAL)
+ 16    6                             FROM EMP
+ 17    7                             WHERE SAL>(SELECT MIN(SAL)
+ 18*   6                             FROM EMP ))))))))
+SQL> /
+  6                             FROM EMP
+  *
+ERROR at line 8:
+ORA-00923: FROM keyword not found where expected 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT LOC
+  2  FROM DEPT
+  3  WHERE DEPTNO IN (SELECT DEPTNO
+  4  			FROM EMP
+  5  			WHERE SAL=( SELECT MIN(SAL)
+  6  				FROM EMP
+  7  				WHERE SAL>(SELECT MIN(SAL)
+  8                                	FROM EMP
+  9                                		WHERE SAL>(SELECT MIN(SAL)
+ 10                                		FROM EMP
+ 11                                			WHERE SAL>(SELECT MIN(SAL)
+ 12                                			FROM EMP
+ 13                                				WHERE SAL>(SELECT MIN(SAL)
+ 14                                				FROM EMP
+ 15                                					WHERE SAL>(SELECT MIN(SAL)
+ 16                                 					FROM EMP
+ 17*                              						WHERE SAL>(SELECT MIN(SAL)   FROM EMP ))))))))
+SQL> /
+
+LOC                                                                                                 
+-------------                                                                                       
+CHICAGO                                                                                             
+
+SQL> FIND SMITHS MANAGER
+SP2-0734: unknown command beginning "FIND SMITH..." - rest of line ignored.
+SQL> --FIND SMITHS MANAGER
+SQL> SELECT ENAME
+  2  FROM EMP
+  3  WHERE EMPNO=(SELECT MGR
+  4  			FROM EMP
+  5  			WHERE ENAME='SMITH');
+
+ENAME                                                                                               
+----------                                                                                          
+FORD                                                                                                
+
+SQL> SELECT COUNT(*)
+  2  FROM EMP
+  3  WHERE MGR=(SELECT EMPNO
+  4  		FROM EMP
+  5  		WHERE ENAME='JONES');
+
+  COUNT(*)                                                                                          
+----------                                                                                          
+         2                                                                                          
+
+SQL> SPOOL OFF;

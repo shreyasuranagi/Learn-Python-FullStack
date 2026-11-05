@@ -1,0 +1,85 @@
+SQL> --Q3) waqtd employees names, managers names, department name if managers are working as salesman, clerk, and earning exactly 4 digits, and employees department should consists of a,s,o,r in location of new york, boston,chicago, and arrange the salaries in descending order
+SQL> 
+SQL> SELECT E.ENAME, M.ENAME, D.DNAME
+  2  FROM EMP E, EMP M, DEPT D
+  3  WHERE E.DEPTNO = D.DEPTNO
+  4  AND E.MGR=M.EMPNO
+  5  AND D.DNAME IN ('NEW YORK', 'BOSTON', 'CHICAGO')
+  6  AND M.JOB IN ('SALESMAN','CLERK')
+  7  AND M.SAL LIKE '____'
+  8  ORDER BY E.SAL DESC;
+
+no rows selected
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  SELECT E.ENAME, M.ENAME, D.DNAME
+  2  FROM EMP E, EMP M, DEPT D
+  3  WHERE E.DEPTNO = D.DEPTNO
+  4  AND E.MGR=M.EMPNO
+  5  AND D.DNAME IN ('NEW YORK', 'BOSTON', 'CHICAGO')
+  6  AND M.JOB IN ('SALESMAN','CLERK')
+  7  AND M.SAL LIKE '____'
+  8* ORDER BY E.SAL DESC
+SQL> /
+
+no rows selected
+
+SQL> cl_scr
+SP2-0158: unknown CLEAR option "_scr"
+SQL> cl scr
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  SELECT E.ENAME, M.ENAME, D.DNAME
+  2  FROM EMP E, EMP M, DEPT D
+  3  WHERE E.DEPTNO = D.DEPTNO
+  4  AND E.MGR=M.EMPNO
+  5  AND D.LOC IN ('NEW YORK', 'BOSTON', 'CHICAGO')
+  6  AND ( D.DNAME LIKE '%A%' OR D.DNAME LIKE '%S%'OR D.DNAME LIKE '%R%'OR D.DNAME LIKE '%O%')
+  7  AND M.JOB IN ('SALESMAN','CLERK','ANALYST')
+  8  AND M.SAL LIKE '____'
+  9* ORDER BY E.SAL DESC
+SQL> /
+
+no rows selected
+
+SQL> --Q4)WAQTD hiredate who hired 2,4,5 and last hired employee.
+SQL> 
+SQL> SELECT E1.HIREDATE
+  2  FROM EMP E1
+  3  WHERE (SELECT COUNT(DISTINCT E2.HIREDATE)
+  4  		FROM EMP E2
+  5  		WHERE E1.HIREDATE>E2.HIREDATE) IN (1,3,4)
+  6  OR E1.HIREDATE = (SELECT MIN(E1.HIREDATE)
+  7  			FROM EMP E1);
+
+HIREDATE                                                                                                                                                                                                
+---------                                                                                                                                                                                               
+17-DEC-80                                                                                                                                                                                               
+20-FEB-81                                                                                                                                                                                               
+02-APR-81                                                                                                                                                                                               
+01-MAY-81                                                                                                                                                                                               
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  SELECT E1.HIREDATE
+  2  FROM EMP E1
+  3  WHERE (SELECT COUNT(DISTINCT E2.HIREDATE)
+  4  		FROM EMP E2
+  5  		WHERE E1.HIREDATE>E2.HIREDATE) IN (1,3,4)
+  6  OR E1.HIREDATE = (SELECT MAX(E1.HIREDATE)
+  7* 			FROM EMP E1)
+SQL> /
+
+HIREDATE                                                                                                                                                                                                
+---------                                                                                                                                                                                               
+20-FEB-81                                                                                                                                                                                               
+02-APR-81                                                                                                                                                                                               
+01-MAY-81                                                                                                                                                                                               
+23-MAY-87                                                                                                                                                                                               
+
+SQL> spool off;

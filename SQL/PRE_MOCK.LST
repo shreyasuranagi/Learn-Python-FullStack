@@ -1,0 +1,51 @@
+SQL> SELECT 'SHREYA'||' '||JOB||' '||SAL
+  2  FROM EMP
+  3  WHERE SAL BETWEEN 2001 AND 3999;
+
+'SHREYA'||''||JOB||''||SAL                                                                          
+---------------------------------------------------------                                           
+SHREYA MANAGER 2975                                                                                 
+SHREYA MANAGER 2850                                                                                 
+SHREYA MANAGER 2450                                                                                 
+SHREYA ANALYST 3000                                                                                 
+SHREYA ANALYST 3000                                                                                 
+
+SQL> --q. WAQTD DETIALS OF EMPLOYEES ALONG WITH JOB, SAL, DEPTNO, MERGED
+SQL> --AND WHERE SAL IS GREATER THEN 1500 AND JOB IS SALESMAN OR CLERK BUT NOT MANAGER
+SQL> SELECT EMP.*, JOB||' '||SAL||' '||DEPTNO
+  2  FROM EMP
+  3  WHERE (SAL>1500 AND JOB IN ('SALESMAN','CLERK') ) AND NOT JOB='MANAGER';
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO               
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------               
+JOB||''||SAL||''||DEPTNO                                                                            
+-------------------------------------------------------------------------------------------         
+      7499 ALLEN      SALESMAN        7698 20-FEB-81       1600        300         30               
+SALESMAN 1600 30                                                                                    
+                                                                                                    
+
+SQL>  --Q. waqtd job, sal, of all employees who are either clerk or salesman not in dept 30
+SQL> --but are having a quarterly salary of greater than 8000
+SQL> --*greater than 5000 not 8000*
+SQL> SELECT JOB, SAL
+  2  FROM EMP
+  3  WHERE JOB IN ('SALESMAN','CLERK') AND DEPTNO<>30 AND SAL*4>5000;
+
+JOB              SAL                                                                                
+--------- ----------                                                                                
+CLERK           1300                                                                                
+
+SQL> SPOOL OFF;
+SQL> SELECT 'SHREYA'||' '||JOB||' '||SAL AS COMBINED
+  2  FROM EMP
+  3  WHERE SAL BETWEEN 2001 AND 3999;
+
+COMBINED                                                                                            
+---------------------------------------------------------                                           
+SHREYA MANAGER 2975                                                                                 
+SHREYA MANAGER 2850                                                                                 
+SHREYA MANAGER 2450                                                                                 
+SHREYA ANALYST 3000                                                                                 
+SHREYA ANALYST 3000                                                                                 
+
+SQL> SPOOL OFF;

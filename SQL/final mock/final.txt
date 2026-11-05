@@ -1,0 +1,247 @@
+Q1. syntax o number data type, having clause, order by clause without group by clause, not in operator, 
+not like operator, is operator, is not, inner join, natural join, right outer join, modify data type, 
+add a column, rename a column, revoke.
+
+
+q2. wQTD emploee name, manager name, managers location, if managers are working as salesman , clerk, analyst, 
+and employees location must contain 'a''c''d''n' and managers are hired on tuesday, wednesday month of march in 82.
+and managers should earn even digit salary. (without using like operator)
+
+q3. create a table and build a relation with department table and perfrom dml operations and give permissions to hr.
+
+
+
+
+
+
+
+
+
+
+ANSWERS
+
+Q1.
+
+(1) syntax of number data type:
+NUMBER(Precision, [Scale])
+
+(2) having clause:-
+
+SELECT group function/group by expression
+FROM table_name
+WHERE <filter-conditions>
+GROUP BY col_name/expression
+HAVING <group-condition>;
+
+(3) order by clause:-
+
+SELECT column_name/expression
+FROM table_name
+[WHERE <filter-conditions>]
+ORDER BY column_name [ASC]/DESC;
+
+(4) not in operator :- 
+
+column_name NOT IN (val1, val2,...,valn);
+
+(5)not like operator:
+
+column_name NOT LIKE 'pattern_to_be_matched';
+
+(6)IS operator:-
+
+column_name IS NULL;
+
+(7) IS NOT operator:-
+
+column_name IS NOT NULL;
+
+(8) inner join:-
+
+ANSI syntax::-
+SELECT column_name/expression
+FROM table_name1 INNER JOIN table_name2
+ON <join-condition>;
+
+<join-condition> is given by:-
+table_name1.column = table_name2.column;
+
+ORACLE syntax::-
+SELECT column_name/expression
+FROM table_name1, table_name2
+ON <join-condition>;
+
+
+(9) natural join:-
+
+ANSI syntax::-
+SELECT column_name/expression
+FROM table_name1 NATURAL JOIN table_name2;
+
+There is no ORACLE syntax for natural join.
+
+(10) Right outer join:-
+
+ANSI syntax:-
+SELECT column_name/expression
+FROM table_name1 RIGHT [OUTER] JOIN table_name2
+ON <join-condition>;
+
+ORACLE syntax:-
+SELECT column_name/expression
+FROM table_name1, table_name2
+WHERE table_name1.column(+)= table_name2.column;
+
+(11) MODIFY Data type:-
+
+ALTER TABLE table_name
+MODIFY Column_name New_data_type;
+
+(12) add a column:-
+
+ALTER TABLE table_name
+ADD Column_name Data_type Constraint;
+
+(13) Rename a column:-
+
+ALTER TABLE table_name
+RENAME COLUMN Existing_Column_name TO New_column_name;
+
+(14) Revoke:-
+
+REVOKE sql_statements
+ON table_name
+FROM user_name;
+
+\
+=========
+=============
+
+Q2.
+
+  1  SELECT E.ENAME, M.ENAME, MD.LOC
+  2  FROM EMP E, EMP M, DEPT MD, DEPT ED
+  3  WHERE E.MGR=M.EMPNO
+  4     AND E.DEPTNO = ED.DEPTNO
+  5     AND M.DEPTNO = MD.DEPTNO
+  6     AND M.JOB IN ('SALESMAN','CLERK','ANALYST')
+  7     AND (INSTR(ED.LOC,'A',1)>=1 OR INSTR(ED.LOC,'C')>=1 OR INSTR(ED.LOC,'D')>=1 OR INSTR(ED.LOC,'N')>=1)
+  8     AND ( TO_CHAR(M.HIREDATE,'DAY')='TUESDAY  ' OR TO_CHAR(M.HIREDATE,'DAY')='WEDNESDAY')
+  9     AND TO_CHAR(M.HIREDATE, 'MONTH')='MARCH    '
+ 10     AND TO_CHAR(M.HIREDATE,'YY')=82
+ 11    AND MOD(M.SAL,2)=0;
+SQL> 
+==================
+==================
+
+
+=====CREATE TABLE=======
+
+Q3.
+SQL> ED
+Wrote file afiedt.buf
+
+  1  CREATE TABLE INTERN
+  2  (
+  3  ID NUMBER(5) PRIMARY KEY,
+  4  INAME VARCHAR(20) NOT NULL,
+  5  PHONE NUMBER(10),
+  6  DEPTNO NUMBER(2)
+  7* );
+SQL> /
+
+Table created.
+
+======DML=========
+SQL> ED
+Wrote file afiedt.buf
+
+  1* INSERT INTO INTERN VALUES(1,'SHREYA',9738889597,20);
+SQL> /
+
+
+SQL> SELECT * FROM INTERN;
+
+        ID INAME                     PHONE     DEPTNO
+---------- -------------------- ---------- ----------
+         1 SHREYA               9738889597         20
+
+SQL> INSERT INTO INTERN (ID,INAME) VALUES (2,'HITHA');
+
+1 row created.
+
+SQL> SELECT * FROM INTERN;
+
+        ID INAME                     PHONE     DEPTNO
+---------- -------------------- ---------- ----------
+         1 SHREYA               9738889597         20
+         2 HITHA
+
+SQL> UPDATE INTERN
+  2  SET DEPTNO=20, PHONE=2345678
+  3  WHERE ID=2;
+
+SQL> CONN
+Enter user-name: hr
+Enter password:
+Connected.
+SQL> SELECT * FROM SCOTT.INTERN;
+SELECT * FROM INTERN
+              *
+ERROR at line 1:
+ORA-00942: table or view does not exist
+
+=======GRANT==============
+SQL> GRANT SELECT
+  2  ON INTERN
+  3  TO HR;
+
+Grant succeeded.
+
+SQL> SELECT * FROM SCOTT.INTERN;
+
+        ID INAME                     PHONE     DEPTNO       DEPT
+---------- -------------------- ---------- ---------- ----------
+         1 SHREYA               9738889597         20         20
+         2 HITHA                   2345678         20         20
+==============
+
+1 row updated.
+
+SQL> SELECT * FROM INTERN;
+
+        ID INAME                     PHONE     DEPTNO
+---------- -------------------- ---------- ----------
+         1 SHREYA               9738889597         20
+         2 HITHA                   2345678         20
+
+==============BUILD RELATION===============
+
+SQL> ALTER TABLE INTERN
+  2  ADD DEPT NUMBER(3);
+
+Table altered.
+
+SQL> DESC INTERN;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ ID                                        NOT NULL NUMBER(5)
+ INAME                                     NOT NULL VARCHAR2(20)
+ PHONE                                              NUMBER(10)
+ DEPTNO                                             NUMBER(2)
+ DEPT                                               NUMBER(3)
+
+SQL> UPDATE INTERN
+  2  SET DEPT =20;
+
+2 rows updated.
+
+SQL> ALTER TABLE INTERN
+  2  ADD CONSTRAINT F_D FOREIGN KEY(DEPT)
+  3  REFERENCES DEPT(DEPTNO);
+
+Table altered.
+
+  1  SELECT *
+  2  FROM USER_CONSTRAINTS
+  3* WHERE TABLE_NAME='INTERN';

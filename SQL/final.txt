@@ -1,0 +1,10 @@
+syntax o number data type, having clause, order by clause without group by clause, not in operator, 
+not like operator, is operator, is , inner join, natural join, right outer join, modify data type, 
+add a column, rename a column, revoke, 
+
+
+q2. wQTD emploee name, manager name, managers location, if managers are working as salesman , clerk, analyst, 
+and employees location must contain 'a''c''d''n' and managers are hired on tuesday, wednesday month of march in 82.
+and managers should earn even digit salary. (without using like operator)
+
+q3. create a table and build a relation with department table and perfrom dml operations and give permissions to hr.

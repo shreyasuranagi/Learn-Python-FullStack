@@ -1,0 +1,203 @@
+SQL> 
+SQL> ----ASSIGNMENT ON SUBQUERY CASE 1 AND CASE 2------
+SQL> 
+SQL> --1 WAQTD NAMES OF THE EMPLOYEES EARNING MORE THAN SCOTT IN ACCOUNTING DEPT.
+SQL> SELECT ENAME
+  2  FROM EMP
+  3  WHERE SAL>(SELECT SAL
+  4  		FROM EMP
+  5  		WHERE;
+WHERE SAL>(SELECT SAL
+           *
+ERROR at line 3:
+ORA-00921: unexpected end of SQL command 
+
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  SELECT ENAME
+  2  FROM EMP
+  3  WHERE SAL>(SELECT SAL
+  4  		FROM EMP
+  5  		WHERE ENAME='SCOTT')
+  6  AND DEPTNO=(SELECT DEPTNO
+  7  		FROM DEPT
+  8* 		WHERE DNAME='ACCOUNTING');
+SQL> /
+		WHERE DNAME='ACCOUNTING');
+		                         *
+ERROR at line 8:
+ORA-00911: invalid character 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT ENAME
+  2  FROM EMP
+  3  WHERE SAL>(SELECT SAL
+  4  		FROM EMP
+  5  		WHERE ENAME='SCOTT') AND DEPTNO=(SELECT DEPTNO
+  6  							FROM DEPT
+  7* 							WHERE DNAME='ACCOUNTING')
+SQL> /
+
+ENAME                                                                                               
+----------                                                                                          
+KING                                                                                                
+
+SQL> --2 WAQTD DETAILS OF THE EMPLOYEES WORKING AS MANAGER IN THE LOCATION CHICAGO.
+SQL> SELECT *
+  2  FROM EMP
+  3  WHERE JOB='MANAGER' AND DEPTNO = (SELECT DEPTNO
+  4  					FROM DEPT
+  5  					WHERE LOC='CHICAGO');
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO               
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------               
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850                    30               
+
+SQL> --3 WAQTD NAME AND SAL OF THE EMPLOYEES EARNING MORE THAN KING IN THE DEPT ACCOUNTING.
+SQL> SELECT ENAME, SAL
+  2  FROM EMP
+  3  WHERE SAL>(SELECT SAL
+  4  		FROM EMP
+  5  		WHERE ENAME='KING') AND DEPTNO = (SELECT DEPTNO
+  6  							FROM DEPT
+  7  							WHERE DNAME='ACCOUNTING');
+
+no rows selected
+
+SQL> --4 WAQTD DETAILS OF THE EMPLOYEES WORKING AS SALESMAN IN THE DEPARTEMENT SALES.
+SQL> SELECT *
+  2  FROM EMP
+  3  WHERE JOB='SALESMAN' AND DEPTNO = (SELECT DEPTNO
+  4  					FROM DEPT
+  5  					DNAME = 'SALES');
+					DNAME = 'SALES')
+					      *
+ERROR at line 5:
+ORA-00907: missing right parenthesis 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT *
+  2  FROM EMP
+  3  WHERE JOB='SALESMAN' AND DEPTNO = (SELECT DEPTNO
+  4  					FROM DEPT
+  5* 					WHERE DNAME = 'SALES')
+SQL> ;
+  1  SELECT *
+  2  FROM EMP
+  3  WHERE JOB='SALESMAN' AND DEPTNO = (SELECT DEPTNO
+  4  					FROM DEPT
+  5* 					WHERE DNAME = 'SALES')
+SQL> /
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO               
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------               
+      7499 ALLEN      SALESMAN        7698 20-FEB-81       1600        300         30               
+      7521 WARD       SALESMAN        7698 22-FEB-81       1250        500         30               
+      7654 MARTIN     SALESMAN        7698 28-SEP-81       1250       1400         30               
+      7844 TURNER     SALESMAN        7698 08-SEP-81       1500          0         30               
+
+SQL> --5
+SQL> --5 WAQTD NAME, SAL, JOB, HIREDATE OF THE EMPLOYEES WORKING IN OPERATIONS DEPARTMENT AND HIRED BEFORE KING.
+SQL> SELECT ENAME, SAL, JOB, HIREDATE
+  2  FROM EMP
+  3  WHERE HIREDATE < (SELECT HIREDATE
+  4  			FROM EMP
+  5  			WHERE ENAME='KING')
+  6  AND DEPTNO = (SELECT DEPTNO
+  7  			FROM DEPT
+  8  			WHERE DNAME='OPERATIONS');
+
+no rows selected
+
+SQL> --6 DISPLAY ALL THE EMPLOYEES WHOSE DEPARTMET NAMES ENDING 'S'.
+SQL> SELECT *
+  2  FROM EMP
+  3  WHERE DEPTNO = (SELECT DEPTNO
+  4  			FROM DEPT
+  5  			WHERE DNAME LIKE '%S');
+WHERE DEPTNO = (SELECT DEPTNO
+                *
+ERROR at line 3:
+ORA-01427: single-row subquery returns more than one row 
+
+
+SQL> SELECT *
+  2  FROM EMP
+  3  WHERE DEPTNO IN (SELECT DEPTNO
+  4  			FROM DEPT
+  5  			WHERE DNAME LIKE '%S');
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO               
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------               
+      7521 WARD       SALESMAN        7698 22-FEB-81       1250        500         30               
+      7844 TURNER     SALESMAN        7698 08-SEP-81       1500          0         30               
+      7499 ALLEN      SALESMAN        7698 20-FEB-81       1600        300         30               
+      7900 JAMES      CLERK           7698 03-DEC-81        950                    30               
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850                    30               
+      7654 MARTIN     SALESMAN        7698 28-SEP-81       1250       1400         30               
+
+6 rows selected.
+
+SQL> --7
+SQL> --7  WAQTD DNAME OF THE EMPLOYEES WHOSE NAMES HAS CHARACTER 'A' IN IT.
+SQL> SELECT DNAME
+  2  FROM DEPT
+  3  WHERE DEPTNO = (SELECT DEPTNO
+  4  			FROM EMP
+  5  			WHERE ENAME LIKE '%A%');
+WHERE DEPTNO = (SELECT DEPTNO
+                *
+ERROR at line 3:
+ORA-01427: single-row subquery returns more than one row 
+
+
+SQL> SPOOL OFF;
+SQL> SPOOL "C:\Users\Suranagi\Desktop\SQL\Questions\ASSIGNMENT_SUBQUERY_CASE1N2.LST" APPEND
+SQL> --8
+SQL> SELECT DNAME, LOC
+  2  FROM DEPT
+  3  WHERE DEPTNO IN (SELECT DEPTNO FROM EMP WHERE SAL=800);
+
+DNAME          LOC                                                                                  
+-------------- -------------                                                                        
+RESEARCH       DALLAS                                                                               
+
+SQL> --9
+SQL> SELECT DNAME
+  2  FROM EMP
+  3  WHERE DEPTNO IN (SELECT DEPTNO FROM EMP WHERE COMM IS NOT NULL);
+SELECT DNAME
+       *
+ERROR at line 1:
+ORA-00904: "DNAME": invalid identifier 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT DNAME
+  2  FROM DEPT
+  3* WHERE DEPTNO IN (SELECT DEPTNO FROM EMP WHERE COMM IS NOT NULL)
+SQL> /
+
+DNAME                                                                                               
+--------------                                                                                      
+SALES                                                                                               
+
+SQL> --10
+SQL> SELECT LOC
+  2  FROM DEPT
+  3  WHERE DEPTNO IN (SELECT DEPTNO FROM EMP
+  4  			WHERE COMM IS NOT NULL AND DEPTNO=40);
+
+no rows selected
+
+SQL> SPOOL OFF;

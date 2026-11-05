@@ -1,0 +1,338 @@
+SQL> CREATE TABLE D
+  2  (
+  3  ID NUMBER(3),
+  4  ;
+
+*
+ERROR at line 4:
+ORA-00904: : invalid identifier 
+
+
+SQL> CREATE TABLE D
+  2  (
+  3  ID NUMBER(3) NOT NULL,
+  4  NAME CHAR(10) NOT NULL
+  5  );
+
+Table created.
+
+SQL> DESC D;
+ Name                                                                                                              Null?    Type
+ ----------------------------------------------------------------------------------------------------------------- -------- ----------------------------------------------------------------------------
+ ID                                                                                                                NOT NULL NUMBER(3)
+ NAME                                                                                                              NOT NULL CHAR(10)
+
+SQL> INSERT INTO D VALUES (1,'APPLE');
+
+1 row created.
+
+SQL> SELECT * FROM D;
+
+        ID NAME                                                                                                                                                                                         
+---------- ----------                                                                                                                                                                                   
+         1 APPLE                                                                                                                                                                                        
+
+SQL> INSERT INTO D VALUES (2,'ORANGE');
+
+1 row created.
+
+SQL> INSERT INTO D VALUES(&ID,&NAME);
+Enter value for id: 3
+Enter value for name: BANANA
+old   1: INSERT INTO D VALUES(&ID,&NAME)
+new   1: INSERT INTO D VALUES(3,BANANA)
+INSERT INTO D VALUES(3,BANANA)
+                       *
+ERROR at line 1:
+ORA-00984: column not allowed here 
+
+
+SQL> INSERT INTO D VALUES(&ID,&NAME);
+Enter value for id: 3
+Enter value for name: BANANA
+old   1: INSERT INTO D VALUES(&ID,&NAME)
+new   1: INSERT INTO D VALUES(3,BANANA)
+INSERT INTO D VALUES(3,BANANA)
+                       *
+ERROR at line 1:
+ORA-00984: column not allowed here 
+
+
+SQL> INSERT INTO D VALUES(&ID,&NAME);
+Enter value for id: 3
+Enter value for name: MANGO
+old   1: INSERT INTO D VALUES(&ID,&NAME)
+new   1: INSERT INTO D VALUES(3,MANGO)
+INSERT INTO D VALUES(3,MANGO)
+                       *
+ERROR at line 1:
+ORA-00984: column not allowed here 
+
+
+SQL> INSERT INTO D VALUES(&ID,&NAME);
+Enter value for id: 3
+Enter value for name: 'MANGO'
+old   1: INSERT INTO D VALUES(&ID,&NAME)
+new   1: INSERT INTO D VALUES(3,'MANGO')
+
+1 row created.
+
+SQL> /
+Enter value for id: 4
+Enter value for name: 'BANANA'
+old   1: INSERT INTO D VALUES(&ID,&NAME)
+new   1: INSERT INTO D VALUES(4,'BANANA')
+
+1 row created.
+
+SQL> INSERT INTO D (ID) VALUES (5);
+INSERT INTO D (ID) VALUES (5)
+*
+ERROR at line 1:
+ORA-01400: cannot insert NULL into ("SCOTT"."D"."NAME") 
+
+
+SQL> SELECT * FROM D;
+
+        ID NAME                                                                                                                                                                                         
+---------- ----------                                                                                                                                                                                   
+         1 APPLE                                                                                                                                                                                        
+         2 ORANGE                                                                                                                                                                                       
+         3 MANGO                                                                                                                                                                                        
+         4 BANANA                                                                                                                                                                                       
+
+SQL> UPDATE D
+  2  SET NAME='CHERRY'
+  3  WHERE ID=3;
+
+1 row updated.
+
+SQL> SELECT * FROM D;
+
+        ID NAME                                                                                                                                                                                         
+---------- ----------                                                                                                                                                                                   
+         1 APPLE                                                                                                                                                                                        
+         2 ORANGE                                                                                                                                                                                       
+         3 CHERRY                                                                                                                                                                                       
+         4 BANANA                                                                                                                                                                                       
+
+SQL> DELETE FROM D
+  2  WHERE ID=4;
+
+1 row deleted.
+
+SQL> SELECT * FROM D;
+
+        ID NAME                                                                                                                                                                                         
+---------- ----------                                                                                                                                                                                   
+         1 APPLE                                                                                                                                                                                        
+         2 ORANGE                                                                                                                                                                                       
+         3 CHERRY                                                                                                                                                                                       
+
+SQL> COMMIT;
+
+Commit complete.
+
+SQL> SEELCT * FROM D;
+SP2-0734: unknown command beginning "SEELCT * F..." - rest of line ignored.
+SQL> SELECT * FROM D;
+
+        ID NAME                                                                                                                                                                                         
+---------- ----------                                                                                                                                                                                   
+         1 APPLE                                                                                                                                                                                        
+         2 ORANGE                                                                                                                                                                                       
+         3 CHERRY                                                                                                                                                                                       
+
+SQL> INSERT INTO D VALUES (4,'PEAR');
+
+1 row created.
+
+SQL> COMMIT;
+
+Commit complete.
+
+SQL> SELECT * FROM D;
+
+        ID NAME                                                                                                                                                                                         
+---------- ----------                                                                                                                                                                                   
+         1 APPLE                                                                                                                                                                                        
+         2 ORANGE                                                                                                                                                                                       
+         3 CHERRY                                                                                                                                                                                       
+         4 PEAR                                                                                                                                                                                         
+
+SQL> ROLLBACK;
+
+Rollback complete.
+
+SQL> SELECT * FROM D;
+
+        ID NAME                                                                                                                                                                                         
+---------- ----------                                                                                                                                                                                   
+         1 APPLE                                                                                                                                                                                        
+         2 ORANGE                                                                                                                                                                                       
+         3 CHERRY                                                                                                                                                                                       
+         4 PEAR                                                                                                                                                                                         
+
+SQL> CREATE TABLE C
+  2  ( ID NUMBER(3));
+
+Table created.
+
+SQL> INSERT INTO C(&ID);
+Enter value for id: 1
+old   1: INSERT INTO C(&ID)
+new   1: INSERT INTO C(1)
+INSERT INTO C(1)
+              *
+ERROR at line 1:
+ORA-00928: missing SELECT keyword 
+
+
+SQL> 2
+SP2-0226: Invalid line number 
+SQL> INSERT INTO C VALUES(&ID);
+Enter value for id: 1
+old   1: INSERT INTO C VALUES(&ID)
+new   1: INSERT INTO C VALUES(1)
+
+1 row created.
+
+SQL> /
+Enter value for id: 2
+old   1: INSERT INTO C VALUES(&ID)
+new   1: INSERT INTO C VALUES(2)
+
+1 row created.
+
+SQL> /
+Enter value for id: 3
+old   1: INSERT INTO C VALUES(&ID)
+new   1: INSERT INTO C VALUES(3)
+
+1 row created.
+
+SQL> SAVEPOINT S1;
+
+Savepoint created.
+
+SQL> /
+
+Savepoint created.
+
+SQL> 5
+SP2-0226: Invalid line number 
+SQL> /
+
+Savepoint created.
+
+SQL> ROLLBACK;
+
+Rollback complete.
+
+SQL> SELECT  * FROM C;
+
+no rows selected
+
+SQL> INSERT INTO C VALUES(&ID);
+Enter value for id: 1
+old   1: INSERT INTO C VALUES(&ID)
+new   1: INSERT INTO C VALUES(1)
+
+1 row created.
+
+SQL> /
+Enter value for id: 2
+old   1: INSERT INTO C VALUES(&ID)
+new   1: INSERT INTO C VALUES(2)
+
+1 row created.
+
+SQL> 3
+SP2-0226: Invalid line number 
+SQL> /
+Enter value for id: 3
+old   1: INSERT INTO C VALUES(&ID)
+new   1: INSERT INTO C VALUES(3)
+
+1 row created.
+
+SQL> SAVEPOINT S1
+  2  ;
+
+Savepoint created.
+
+SQL> /
+
+Savepoint created.
+
+SQL> SELECT * FROM C;
+
+        ID                                                                                                                                                                                              
+----------                                                                                                                                                                                              
+         1                                                                                                                                                                                              
+         2                                                                                                                                                                                              
+         3                                                                                                                                                                                              
+
+SQL> INSERT INTO C VALUES(&ID);
+Enter value for id: 5
+old   1: INSERT INTO C VALUES(&ID)
+new   1: INSERT INTO C VALUES(5)
+
+1 row created.
+
+SQL> /
+Enter value for id: 6
+old   1: INSERT INTO C VALUES(&ID)
+new   1: INSERT INTO C VALUES(6)
+
+1 row created.
+
+SQL> SAVEPOINT S2;
+
+Savepoint created.
+
+SQL> ROLLBACK S2;
+ROLLBACK S2
+         *
+ERROR at line 1:
+ORA-02181: invalid option to ROLLBACK WORK 
+
+
+SQL> ROLLBACK SAVEPOINT S2;
+ROLLBACK SAVEPOINT S2
+         *
+ERROR at line 1:
+ORA-02181: invalid option to ROLLBACK WORK 
+
+
+SQL> ROLLBACK TO S2;
+
+Rollback complete.
+
+SQL> SELECT * FROM C;
+
+        ID                                                                                                                                                                                              
+----------                                                                                                                                                                                              
+         1                                                                                                                                                                                              
+         2                                                                                                                                                                                              
+         3                                                                                                                                                                                              
+         5                                                                                                                                                                                              
+         6                                                                                                                                                                                              
+
+SQL> ROLLBACK TO S1;
+
+Rollback complete.
+
+SQL> SELECT * FROM C;
+
+        ID                                                                                                                                                                                              
+----------                                                                                                                                                                                              
+         1                                                                                                                                                                                              
+         2                                                                                                                                                                                              
+         3                                                                                                                                                                                              
+
+SQL> COMMIT;
+
+Commit complete.
+
+SQL> spool off;

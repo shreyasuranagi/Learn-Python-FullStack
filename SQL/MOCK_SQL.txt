@@ -1,0 +1,27 @@
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT E.ENAME, M.ENAME, MD.DNAME
+  2  FROM EMP E, EMP M, DEPT MD
+  3  WHERE E.MGR=M.EMPNO
+  4  AND M.DEPTNO=MD.DEPTNO
+  5  AND E.JOB IN ('SALESMAN','CLERK')
+  6  AND E.SAL LIKE '____'
+  7  AND (MD.DNAME LIKE '%A%' OR MD.DNAME LIKE '%R%' OR MD.DNAME LIKE '%S%' OR MD.DNAME LIKE '%O%')
+  8  AND E.JOB IN(SELECT E.JOB
+  9     FROM EMP E
+ 10     GROUP BY E.JOB
+ 11     HAVING COUNT(*)>=2)
+ 12* ORDER BY E.SAL DESC
+SQL> /
+
+ENAME      ENAME      DNAME
+---------- ---------- --------------
+ALLEN      BLAKE      SALES
+TURNER     BLAKE      SALES
+MILLER     CLARK      ACCOUNTING
+WARD       BLAKE      SALES
+MARTIN     BLAKE      SALES
+ADAMS      SCOTT      RESEARCH
+
+6 rows selected.

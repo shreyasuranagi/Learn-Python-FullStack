@@ -1,0 +1,34 @@
+ASSIGNMENT ON WHERE CLAUSE
+
+1. WAQTD the annual salary of the employee whose name is SMITH.
+
+2. WAQTD the names of the employees working as CLERK.
+
+3. WAQTD the salary of the employees who are working as SALESMAN.
+
+4. WAQTD the details of the employees who earn more than 2000.
+
+5. WAQTD the details of the employee whose name is JONES.
+
+6. WAQTD the details of the employees who were hired after 01-JAN-81.
+
+7. WAQTD the name and salary along with the annual salary if the annual salary is more than 12000.
+
+8. WAQTD the employee numbers of the employees who are working in DEPT 30.
+
+8. WAQTD the employee numbers of the employees who are working in DEPT 30.
+
+9. WAQTD the employee name and hire date if they were hired before the year 1981.
+
+10. WAQTD the details of the employees working as MANAGER.
+
+11. WAQTD the name and salary of the employee if the employee earns a commission of 1400.
+
+12. WAQTD the details of the employees having commission more than their salary.
+
+13. WAQTD the employee numbers of the employees hired before the year 1987.
+
+14. WAQTD the details of the employees working as an ANALYST.
+
+15. WAQTD the details of the employees earning more than 2000 per month.
+

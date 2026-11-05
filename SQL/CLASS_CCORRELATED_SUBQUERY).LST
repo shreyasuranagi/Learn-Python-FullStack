@@ -1,0 +1,67 @@
+SQL> --WAQTD DNAME WHERE WMPLOYEES ARE WORKING
+SQL> SELECT DNAME
+  2  FROM DEPT D
+  3  WHERE D.DEPTNO IN (SELECT E.DEPTNO
+  4  			FROM EMP E
+  5  			WHERE D.DEPTNO=E.DEPTNO)
+  6  ;
+
+DNAME                                                                                                                                                                                                   
+--------------                                                                                                                                                                                          
+ACCOUNTING                                                                                                                                                                                              
+RESEARCH                                                                                                                                                                                                
+SALES                                                                                                                                                                                                   
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT DNAME
+  2  FROM DEPT
+  3  WHERE DEPTNO IN (SELECT E.DEPTNO
+  4  			FROM EMP E
+  5* 			WHERE D.DEPTNO=E.DEPTNO)
+  6  /
+			WHERE D.DEPTNO=E.DEPTNO)
+			      *
+ERROR at line 5:
+ORA-00904: "D"."DEPTNO": invalid identifier 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT DNAME
+  2  FROM DEPT D
+  3  WHERE D.DEPTNO IN (SELECT E.DEPTNO
+  4  			FROM EMP E
+  5* 			WHERE D.DEPTNO=E.DEPTNO)
+SQL> /
+
+DNAME                                                                                                                                                                                                   
+--------------                                                                                                                                                                                          
+ACCOUNTING                                                                                                                                                                                              
+RESEARCH                                                                                                                                                                                                
+SALES                                                                                                                                                                                                   
+
+SQL> SELECT DNAME
+  2  FROM DEPT D
+  3  WHERE EXISTS (SELECT E.DEPTNO
+  4  		FROM EMP E
+  5  		WHERE D.DEPTNO=E.DEPTNO);
+
+DNAME                                                                                                                                                                                                   
+--------------                                                                                                                                                                                          
+ACCOUNTING                                                                                                                                                                                              
+RESEARCH                                                                                                                                                                                                
+SALES                                                                                                                                                                                                   
+
+SQL> --WAQTD 4TH MAXIMUM SALARY
+SQL> SELECT E1.SAL
+  2  FROM EMP E1
+  3  WHERE E1.SAL IN (SELECT COUNT(DISTINCT(E2.SAL))
+  4  		FROM EMP E2
+  5  		WHERE E1.SAL<E2.SAL);
+
+no rows selected
+
+SQL> SPOOL OFF;

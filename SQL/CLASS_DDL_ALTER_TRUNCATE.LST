@@ -1,0 +1,519 @@
+SQL> SET PAGES 200 LINES 200
+SQL> SELECT *
+  2  FROM TAB;
+
+TNAME                          TABTYPE  CLUSTERID                                                                                                                                                       
+------------------------------ ------- ----------                                                                                                                                                       
+BONUS                          TABLE                                                                                                                                                                    
+DEPT                           TABLE                                                                                                                                                                    
+EMP                            TABLE                                                                                                                                                                    
+SALGRADE                       TABLE                                                                                                                                                                    
+STUDENT                        TABLE                                                                                                                                                                    
+TRAINER                        TABLE                                                                                                                                                                    
+
+6 rows selected.
+
+SQL> DESC STUDENT;
+ Name                                                                                                              Null?    Type
+ ----------------------------------------------------------------------------------------------------------------- -------- ----------------------------------------------------------------------------
+ ID                                                                                                                NOT NULL NUMBER(3)
+ SNAMES                                                                                                            NOT NULL VARCHAR2(20)
+ DOB                                                                                                                        DATE
+ PHONE                                                                                                                      NUMBER(10)
+
+SQL> DESC TRAINER;
+ Name                                                                                                              Null?    Type
+ ----------------------------------------------------------------------------------------------------------------- -------- ----------------------------------------------------------------------------
+ ID                                                                                                                NOT NULL NUMBER(3)
+ TNAME                                                                                                                      VARCHAR2(20)
+ COURSE                                                                                                                     CHAR(10)
+
+SQL> ALTER TABLE STUDENT
+  2  MODIFY VARCHAR2(20);
+MODIFY VARCHAR2(20)
+       *
+ERROR at line 2:
+ORA-00904: : invalid identifier 
+
+
+SQL> ALTER TABLE STUDENT
+  2  MODIFY SNAMES CHAR(20);
+
+Table altered.
+
+SQL> DESC STUDENT;
+ Name                                                                                                              Null?    Type
+ ----------------------------------------------------------------------------------------------------------------- -------- ----------------------------------------------------------------------------
+ ID                                                                                                                NOT NULL NUMBER(3)
+ SNAMES                                                                                                            NOT NULL CHAR(20)
+ DOB                                                                                                                        DATE
+ PHONE                                                                                                                      NUMBER(10)
+
+SQL> ALTER TABLE STUDENT
+  2  MODIFY SNAMES VARCHAR(10);
+
+Table altered.
+
+SQL> DESC STUDENT;
+ Name                                                                                                              Null?    Type
+ ----------------------------------------------------------------------------------------------------------------- -------- ----------------------------------------------------------------------------
+ ID                                                                                                                NOT NULL NUMBER(3)
+ SNAMES                                                                                                            NOT NULL VARCHAR2(10)
+ DOB                                                                                                                        DATE
+ PHONE                                                                                                                      NUMBER(10)
+
+SQL> 
+SQL> --MODIFY CONSTRIANT-ADD,DROP,MODIFY---
+SQL> 
+SQL> --MODIFY CONSTRAINT
+SQL> ALTER TABLE STUDENT
+  2  MODIFY DOB NOT NULL;
+
+Table altered.
+
+SQL> DESC STUDENT;
+ Name                                                                                                              Null?    Type
+ ----------------------------------------------------------------------------------------------------------------- -------- ----------------------------------------------------------------------------
+ ID                                                                                                                NOT NULL NUMBER(3)
+ SNAMES                                                                                                            NOT NULL VARCHAR2(10)
+ DOB                                                                                                               NOT NULL DATE
+ PHONE                                                                                                                      NUMBER(10)
+
+SQL> ALTER TABLE STUDENT
+  2  MODIFY DATE PRIMARY KEY;
+MODIFY DATE PRIMARY KEY
+       *
+ERROR at line 2:
+ORA-00904: : invalid identifier 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  ALTER TABLE STUDENT
+  2* MODIFY DOB PRIMARY KEY
+SQL> /
+MODIFY DOB PRIMARY KEY
+           *
+ERROR at line 2:
+ORA-02260: table can have only one primary key 
+
+
+SQL> --ADD CONSTRAINTS--
+SQL> ALTER TABLE TABLE_NAME
+  2  ADD CONSTRAINT U_N UNIQUE(PHONE);
+ALTER TABLE TABLE_NAME
+*
+ERROR at line 1:
+ORA-00942: table or view does not exist 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  ALTER TABLE STUDENT
+  2* ADD CONSTRAINT U_N UNIQUE(PHONE)
+SQL> /
+
+Table altered.
+
+SQL> DESC STUDENT
+ Name                                                                                                              Null?    Type
+ ----------------------------------------------------------------------------------------------------------------- -------- ----------------------------------------------------------------------------
+ ID                                                                                                                NOT NULL NUMBER(3)
+ SNAMES                                                                                                            NOT NULL VARCHAR2(10)
+ DOB                                                                                                               NOT NULL DATE
+ PHONE                                                                                                                      NUMBER(10)
+
+SQL> SELECT *
+  2  FROM USER_CONSTRAINTS
+  3  WHERE TABLE_NAME='STUDENT';
+
+OWNER                                                                                                                    CONSTRAINT_NAME                C TABLE_NAME                                    
+------------------------------------------------------------------------------------------------------------------------ ------------------------------ - ------------------------------                
+SEARCH_CONDITION                                                                                                                                                                                        
+--------------------------------------------------------------------------------                                                                                                                        
+R_OWNER                                                                                                                  R_CONSTRAINT_NAME              DELETE_RU STATUS   DEFERRABLE     DEFERRED      
+------------------------------------------------------------------------------------------------------------------------ ------------------------------ --------- -------- -------------- ---------     
+VALIDATED     GENERATED      BAD RELY LAST_CHAN INDEX_OWNER                    INDEX_NAME                     INVALID VIEW_RELATED                                                                      
+------------- -------------- --- ---- --------- ------------------------------ ------------------------------ ------- --------------                                                                    
+SCOTT                                                                                                                    SYS_C007116                    C STUDENT                                       
+"SNAMES" IS NOT NULL                                                                                                                                                                                    
+                                                                                                                                                                  ENABLED  NOT DEFERRABLE IMMEDIATE     
+VALIDATED     GENERATED NAME          11-SEP-26                                                                                                                                                         
+                                                                                                                                                                                                        
+SCOTT                                                                                                                    SYS_C007117                    P STUDENT                                       
+                                                                                                                                                                                                        
+                                                                                                                                                                  ENABLED  NOT DEFERRABLE IMMEDIATE     
+VALIDATED     GENERATED NAME          11-SEP-26 SCOTT                          SYS_C007117                                                                                                              
+                                                                                                                                                                                                        
+SCOTT                                                                                                                    SYS_C007143                    C STUDENT                                       
+"DOB" IS NOT NULL                                                                                                                                                                                       
+                                                                                                                                                                  ENABLED  NOT DEFERRABLE IMMEDIATE     
+VALIDATED     GENERATED NAME          15-SEP-26                                                                                                                                                         
+                                                                                                                                                                                                        
+SCOTT                                                                                                                    U_N                            U STUDENT                                       
+                                                                                                                                                                                                        
+                                                                                                                                                                  ENABLED  NOT DEFERRABLE IMMEDIATE     
+VALIDATED     USER NAME               15-SEP-26 SCOTT                          U_N                                                                                                                      
+                                                                                                                                                                                                        
+
+SQL> --DROP COSNTRAINT--
+SQL> ALTER TABLE STUDENT
+  2  DROP CONSTRAINT U_N;
+
+Table altered.
+
+SQL> DESC STUDENT;
+ Name                                                                                                              Null?    Type
+ ----------------------------------------------------------------------------------------------------------------- -------- ----------------------------------------------------------------------------
+ ID                                                                                                                NOT NULL NUMBER(3)
+ SNAMES                                                                                                            NOT NULL VARCHAR2(10)
+ DOB                                                                                                               NOT NULL DATE
+ PHONE                                                                                                                      NUMBER(10)
+
+SQL> SELECT *
+  2  FROM USER_CONSTRAINTS
+  3  WHERE TABLE_NAME='STUDENT';
+
+OWNER                                                                                                                    CONSTRAINT_NAME                C TABLE_NAME                                    
+------------------------------------------------------------------------------------------------------------------------ ------------------------------ - ------------------------------                
+SEARCH_CONDITION                                                                                                                                                                                        
+--------------------------------------------------------------------------------                                                                                                                        
+R_OWNER                                                                                                                  R_CONSTRAINT_NAME              DELETE_RU STATUS   DEFERRABLE     DEFERRED      
+------------------------------------------------------------------------------------------------------------------------ ------------------------------ --------- -------- -------------- ---------     
+VALIDATED     GENERATED      BAD RELY LAST_CHAN INDEX_OWNER                    INDEX_NAME                     INVALID VIEW_RELATED                                                                      
+------------- -------------- --- ---- --------- ------------------------------ ------------------------------ ------- --------------                                                                    
+SCOTT                                                                                                                    SYS_C007116                    C STUDENT                                       
+"SNAMES" IS NOT NULL                                                                                                                                                                                    
+                                                                                                                                                                  ENABLED  NOT DEFERRABLE IMMEDIATE     
+VALIDATED     GENERATED NAME          11-SEP-26                                                                                                                                                         
+                                                                                                                                                                                                        
+SCOTT                                                                                                                    SYS_C007117                    P STUDENT                                       
+                                                                                                                                                                                                        
+                                                                                                                                                                  ENABLED  NOT DEFERRABLE IMMEDIATE     
+VALIDATED     GENERATED NAME          11-SEP-26 SCOTT                          SYS_C007117                                                                                                              
+                                                                                                                                                                                                        
+SCOTT                                                                                                                    SYS_C007143                    C STUDENT                                       
+"DOB" IS NOT NULL                                                                                                                                                                                       
+                                                                                                                                                                  ENABLED  NOT DEFERRABLE IMMEDIATE     
+VALIDATED     GENERATED NAME          15-SEP-26                                                                                                                                                         
+                                                                                                                                                                                                        
+
+SQL> 
+SQL> 
+SQL> --ASSING FOREING KEY--
+SQL> ALTER TABLE STUDENT
+  2  ADD TR_ID  CHAR(5)
+  3  ;
+
+Table altered.
+
+SQL> SELECT * FROM TRAINER;
+
+no rows selected
+
+SQL> DESC TRAINER;
+ Name                                                                                                              Null?    Type
+ ----------------------------------------------------------------------------------------------------------------- -------- ----------------------------------------------------------------------------
+ ID                                                                                                                NOT NULL NUMBER(3)
+ TNAME                                                                                                                      VARCHAR2(20)
+ COURSE                                                                                                                     CHAR(10)
+
+SQL> DESC STUDENT;
+ Name                                                                                                              Null?    Type
+ ----------------------------------------------------------------------------------------------------------------- -------- ----------------------------------------------------------------------------
+ ID                                                                                                                NOT NULL NUMBER(3)
+ SNAMES                                                                                                            NOT NULL VARCHAR2(10)
+ DOB                                                                                                               NOT NULL DATE
+ PHONE                                                                                                                      NUMBER(10)
+ TR_ID                                                                                                                      CHAR(5)
+
+SQL> ALTER TABLE STUDENT
+  2  ADD TRID NUMBER(5);
+
+Table altered.
+
+SQL> DESC STUDENT;
+ Name                                                                                                              Null?    Type
+ ----------------------------------------------------------------------------------------------------------------- -------- ----------------------------------------------------------------------------
+ ID                                                                                                                NOT NULL NUMBER(3)
+ SNAMES                                                                                                            NOT NULL VARCHAR2(10)
+ DOB                                                                                                               NOT NULL DATE
+ PHONE                                                                                                                      NUMBER(10)
+ TR_ID                                                                                                                      CHAR(5)
+ TRID                                                                                                                       NUMBER(5)
+
+SQL> ALTER TABLE STUDET
+  2  ADD CONSTRAIT F_N FOREIGN KEY (ID)
+  3  REFERENCES TRAINER(ID);
+ADD CONSTRAIT F_N FOREIGN KEY (ID)
+                  *
+ERROR at line 2:
+ORA-01735: invalid ALTER TABLE option 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  ALTER TABLE STUDENT
+  2  ADD CONSTRAIT F_N FOREIGN KEY (TRID)
+  3* REFERENCES TRAINER(ID)
+SQL> /
+ADD CONSTRAIT F_N FOREIGN KEY (TRID)
+                  *
+ERROR at line 2:
+ORA-01735: invalid ALTER TABLE option 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  ALTER TABLE STUDENT
+  2  ADD CONSTRAINT F_N FOREIGN KEY (TRID)
+  3* REFERENCES TRAINER(ID)
+SQL> /
+
+Table altered.
+
+SQL> DESC STUDENT;
+ Name                                                                                                              Null?    Type
+ ----------------------------------------------------------------------------------------------------------------- -------- ----------------------------------------------------------------------------
+ ID                                                                                                                NOT NULL NUMBER(3)
+ SNAMES                                                                                                            NOT NULL VARCHAR2(10)
+ DOB                                                                                                               NOT NULL DATE
+ PHONE                                                                                                                      NUMBER(10)
+ TR_ID                                                                                                                      CHAR(5)
+ TRID                                                                                                                       NUMBER(5)
+
+SQL> SELECT *
+  2  FROM USER_CONSTRAINTS
+  3  WHERE TABLE_NAME='STUDENT';
+
+OWNER                                                                                                                    CONSTRAINT_NAME                C TABLE_NAME                                    
+------------------------------------------------------------------------------------------------------------------------ ------------------------------ - ------------------------------                
+SEARCH_CONDITION                                                                                                                                                                                        
+--------------------------------------------------------------------------------                                                                                                                        
+R_OWNER                                                                                                                  R_CONSTRAINT_NAME              DELETE_RU STATUS   DEFERRABLE     DEFERRED      
+------------------------------------------------------------------------------------------------------------------------ ------------------------------ --------- -------- -------------- ---------     
+VALIDATED     GENERATED      BAD RELY LAST_CHAN INDEX_OWNER                    INDEX_NAME                     INVALID VIEW_RELATED                                                                      
+------------- -------------- --- ---- --------- ------------------------------ ------------------------------ ------- --------------                                                                    
+SCOTT                                                                                                                    SYS_C007116                    C STUDENT                                       
+"SNAMES" IS NOT NULL                                                                                                                                                                                    
+                                                                                                                                                                  ENABLED  NOT DEFERRABLE IMMEDIATE     
+VALIDATED     GENERATED NAME          11-SEP-26                                                                                                                                                         
+                                                                                                                                                                                                        
+SCOTT                                                                                                                    SYS_C007117                    P STUDENT                                       
+                                                                                                                                                                                                        
+                                                                                                                                                                  ENABLED  NOT DEFERRABLE IMMEDIATE     
+VALIDATED     GENERATED NAME          11-SEP-26 SCOTT                          SYS_C007117                                                                                                              
+                                                                                                                                                                                                        
+SCOTT                                                                                                                    SYS_C007143                    C STUDENT                                       
+"DOB" IS NOT NULL                                                                                                                                                                                       
+                                                                                                                                                                  ENABLED  NOT DEFERRABLE IMMEDIATE     
+VALIDATED     GENERATED NAME          15-SEP-26                                                                                                                                                         
+                                                                                                                                                                                                        
+SCOTT                                                                                                                    F_N                            R STUDENT                                       
+                                                                                                                                                                                                        
+SCOTT                                                                                                                    SYS_C007118                    NO ACTION ENABLED  NOT DEFERRABLE IMMEDIATE     
+VALIDATED     USER NAME               15-SEP-26                                                                                                                                                         
+                                                                                                                                                                                                        
+
+SQL> 
+SQL> ---------
+SQL> 
+SQL> --ADDING FOREIGN KEY AT THE TIME FO CEATION OF TABLES---
+SQL> CREATE TABLE PARENT
+  2  {
+  3  ID NUMBER(4)
+  4  NAME VARCHAR(10)
+  5  };
+{
+*
+ERROR at line 2:
+ORA-00911: invalid character 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  CREATE TABLE PARENT
+  2  (
+  3  ID NUMBER(4)
+  4  NAME VARCHAR(10)
+  5* )
+SQL> /
+NAME VARCHAR(10)
+*
+ERROR at line 4:
+ORA-00907: missing right parenthesis 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  CREATE TABLE PARENT
+  2  (
+  3  ID NUMBER(4),
+  4  NAME VARCHAR(10)
+  5* )
+SQL> /
+
+Table created.
+
+SQL> CREATE TABLE CHILD
+  2  (
+  3  ID NUMBER(5),
+  4  NAME VARCHAR(20)
+  5  )
+  6  ;
+
+Table created.
+
+SQL> DESC PARENT, CHILD;
+SP2-0565: Illegal identifier.
+SQL> DESC PARENT;
+ Name                                                                                                              Null?    Type
+ ----------------------------------------------------------------------------------------------------------------- -------- ----------------------------------------------------------------------------
+ ID                                                                                                                         NUMBER(4)
+ NAME                                                                                                                       VARCHAR2(10)
+
+SQL> DESC CHILD;
+ Name                                                                                                              Null?    Type
+ ----------------------------------------------------------------------------------------------------------------- -------- ----------------------------------------------------------------------------
+ ID                                                                                                                         NUMBER(5)
+ NAME                                                                                                                       VARCHAR2(20)
+
+SQL> --
+SQL> --DROP--
+SQL> DROP TABLE CHILD;
+
+Table dropped.
+
+SQL> SELECT * FROM TAB;
+
+TNAME                          TABTYPE  CLUSTERID                                                                                                                                                       
+------------------------------ ------- ----------                                                                                                                                                       
+BIN$N0cu1ou8R1SNOxuwmQikJw==$0 TABLE                                                                                                                                                                    
+BONUS                          TABLE                                                                                                                                                                    
+DEPT                           TABLE                                                                                                                                                                    
+EMP                            TABLE                                                                                                                                                                    
+PARENT                         TABLE                                                                                                                                                                    
+SALGRADE                       TABLE                                                                                                                                                                    
+STUDENT                        TABLE                                                                                                                                                                    
+TRAINER                        TABLE                                                                                                                                                                    
+
+8 rows selected.
+
+SQL> SHOW RECYCLEBIN;
+ORIGINAL NAME    RECYCLEBIN NAME                OBJECT TYPE  DROP TIME                                                                                                                                  
+---------------- ------------------------------ ------------ -------------------                                                                                                                        
+CHILD            BIN$N0cu1ou8R1SNOxuwmQikJw==$0 TABLE        2026-09-15:17:27:57                                                                                                                        
+SQL> DROP TABLE PARENT;
+
+Table dropped.
+
+SQL> SHOW RECYCLEBIN;
+ORIGINAL NAME    RECYCLEBIN NAME                OBJECT TYPE  DROP TIME                                                                                                                                  
+---------------- ------------------------------ ------------ -------------------                                                                                                                        
+CHILD            BIN$N0cu1ou8R1SNOxuwmQikJw==$0 TABLE        2026-09-15:17:27:57                                                                                                                        
+PARENT           BIN$D32lQ4/9TlGn/mD4JUEEVA==$0 TABLE        2026-09-15:17:29:37                                                                                                                        
+SQL> 
+SQL> CREATE TABLE PARENT
+  2  (
+  3  ID NUMBER(4)
+  4  NAME CHAR(10)
+  5  );
+NAME CHAR(10)
+*
+ERROR at line 4:
+ORA-00907: missing right parenthesis 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  CREATE TABLE PARENT
+  2  (
+  3  ID NUMBER(4) PRIMARY KEY,
+  4  NAME CHAR(10)
+  5* )
+SQL> /
+
+Table created.
+
+SQL> SELECT * FROM TAB;
+
+TNAME                          TABTYPE  CLUSTERID                                                                                                                                                       
+------------------------------ ------- ----------                                                                                                                                                       
+BIN$D32lQ4/9TlGn/mD4JUEEVA==$0 TABLE                                                                                                                                                                    
+BIN$N0cu1ou8R1SNOxuwmQikJw==$0 TABLE                                                                                                                                                                    
+BONUS                          TABLE                                                                                                                                                                    
+DEPT                           TABLE                                                                                                                                                                    
+EMP                            TABLE                                                                                                                                                                    
+PARENT                         TABLE                                                                                                                                                                    
+SALGRADE                       TABLE                                                                                                                                                                    
+STUDENT                        TABLE                                                                                                                                                                    
+TRAINER                        TABLE                                                                                                                                                                    
+
+9 rows selected.
+
+SQL> SHOW RECYCLEBIN
+ORIGINAL NAME    RECYCLEBIN NAME                OBJECT TYPE  DROP TIME                                                                                                                                  
+---------------- ------------------------------ ------------ -------------------                                                                                                                        
+CHILD            BIN$N0cu1ou8R1SNOxuwmQikJw==$0 TABLE        2026-09-15:17:27:57                                                                                                                        
+PARENT           BIN$D32lQ4/9TlGn/mD4JUEEVA==$0 TABLE        2026-09-15:17:29:37                                                                                                                        
+SQL> FLASHBACK TABLE CHILD;
+FLASHBACK TABLE CHILD
+*
+ERROR at line 1:
+ORA-00439: feature not enabled: Flashback Table 
+
+
+SQL> PURGE CHILD;
+PURGE CHILD
+      *
+ERROR at line 1:
+ORA-38302: invalid PURGE option 
+
+
+SQL> PURGE TABLE CHILD;
+
+Table purged.
+
+SQL> FLASHBACK TABLE PARENT;
+FLASHBACK TABLE PARENT
+*
+ERROR at line 1:
+ORA-00439: feature not enabled: Flashback Table 
+
+
+SQL> FLASHBACK TABLE PARENT
+  2  ;
+FLASHBACK TABLE PARENT
+*
+ERROR at line 1:
+ORA-00439: feature not enabled: Flashback Table 
+
+
+SQL> FLASHBACK TABLE CHILD
+  2  TO BEFORE DROP;
+FLASHBACK TABLE CHILD
+*
+ERROR at line 1:
+ORA-38305: object not in RECYCLE BIN 
+
+
+SQL> SHOW RECYCLEBIN
+ORIGINAL NAME    RECYCLEBIN NAME                OBJECT TYPE  DROP TIME                                                                                                                                  
+---------------- ------------------------------ ------------ -------------------                                                                                                                        
+PARENT           BIN$D32lQ4/9TlGn/mD4JUEEVA==$0 TABLE        2026-09-15:17:29:37                                                                                                                        
+SQL> FLASHBACK TABLE PARENT
+  2  TO BEFORE DROP;
+FLASHBACK TABLE PARENT
+*
+ERROR at line 1:
+ORA-38312: original name is used by an existing object 
+
+
+SQL> SPOOL OFF;

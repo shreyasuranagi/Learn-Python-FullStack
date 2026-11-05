@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Type casting</h1>
+
+    <h2>Rules</h2>
+    <ul>
+        <li>svd-svd + str</li>
+        <li>mvd-mvd + bool</li>
+        <li>comlex - bool + str</li>
+    </ul>
+
+    <h2>Single vlaue data types</h2>
+    <table cellspacing="0" border="1" cellpadding="10">
+        
+        <tr>
+            <th rowspan="2">convert to- type</th>
+            <th rowspan="2">int <small>eg.3</small> </th>
+            <th rowspan="2">float <small>eg.6.7</small> </th>
+            <th rowspan="2">complex <small>eg.3+2.5j</small> </th>
+            <th colspan="2">bool <small>eg.True/False</small> </th>
+            <th rowspan="2">str <small>eg."12.3"</small></th>
+        </tr>
+        <tr>
+            <!-- <td></td> -->
+            <!-- <td></td> -->
+            <!-- <td></td> -->
+            <!-- <td></td> -->
+            <td>True</td>
+            <td>False</td>
+            <!-- <td></td> -->
+        </tr>
+        <tr>
+            <th>int</th>
+            <td>no use</td>
+            <td>removes decimal part</td>
+            <td>NP</td>
+            <td>1</td>
+            <td>0</td>
+            <td>only if str contains only digits 0-9 w/o decimal point</td>
+        </tr>
+        <tr>
+            <th>float</th>
+            <td>adds 0.0</td>
+            <td>no use</td>
+            <td>NP</td>
+            <td>1.0</td>
+            <td>0.0</td>
+            <td>only if str contains only digits with or w/o decimal point</td>
+        </tr>
+        <tr>
+            <th>complex</th>
+            <td>adds 0j</td>
+            <td>adds 0j</td>
+            <td>no use</td>
+            <td>1+0j</td>
+            <td>0+0j</td>
+            <td>
+                <ol>
+                    <li>if str contains digits with or w/o decimal point</li>
+                    <li>if str contains complex value like 3+2j</li>
+                    <li>'j' -> 1j</li>
+                </ol>
+            </td>
+        </tr>
+        <tr>
+            <th>bool</th>
+            <td>True if 0 , else False</td>
+            <td>True if 0.0, else False</td>
+            <td>True-0j, else False</td>
+            <td>True</td>
+            <td>False</td>
+            <td>True if '', else False</td>
+        </tr>
+        <tr>
+            <th>str</th>
+            <td>adds ''</td>
+            <td>adds ''</td>
+            <td>adds ''</td>
+            <td>'True'</td>
+            <td>'False'</td>
+            <td>no use</td>
+        </tr>
+        <tr>
+            <th>list</th>
+            <td>NP</td>
+            <td>NP</td>
+            <td>NP</td>
+            <td>NP</td>
+            <td>NP</td>
+            <td>stores each character separately <br>inside [] in same order</td>
+            </td>
+        </tr>
+        <tr>
+            <th>tuple</th>
+            <td>NP</td>
+            <td>NP</td>
+            <td>NP</td>
+            <td>NP</td>
+            <td>NP</td>
+            <td>stores each character separately <br>inside () in same order</td>
+        </tr>
+        <tr>
+            <th>set</th>
+            <td>NP</td>
+            <td>NP</td>
+            <td>NP</td>
+            <td>NP</td>
+            <td>NP</td>
+            <td>stores each character separately <br>inside {} in random order<br> after removing duplicates</td>
+        </tr>
+        <tr>
+            <th>dict</th>
+            <td>NP</td>
+            <td>NP</td>
+            <td>NP</td>
+            <td>NP</td>
+            <td>NP</td>
+            <td>NP</td>
+        </tr>
+        
+    </table>
+
+    <h2>Multi-valued data types</h2>
+
+    <table border="1" cellspacing="0" cellpadding="10">
+        <tr>
+            <th >convert to- type</th>
+            <th >list</th>
+            <th >tuple</th>
+            <th >set</th>
+            <th >dict</th>
+        </tr>
+        <tr>
+            <th>int</th>
+            <td>NP</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <th>float</th>
+            <td>NP</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <th>complex</th>
+            <td>NP</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <th>bool</th>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <th>str</th>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <th>list</th>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <th>set</th>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <th>tuple</th>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <th>dict</th>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </table>
+</body>
+</html>

@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Python Type Casting</title>
+
+    <style>
+        .possible {
+            background-color: #d9f2d9;
+        }
+
+        .not-possible {
+            background-color: #ffdede;
+        }
+
+        .important {
+            background-color: #fff2b3;
+        }
+
+        th {
+            background-color: #eeeeee;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Type casting</h1>
+
+
+    <h2>Rules</h2>
+
+    <ul>
+        <li>svd → svd + str</li>
+        <li>mvd → mvd + bool</li>
+        <li>complex → bool + str</li>
+    </ul>
+
+
+    <h2>Single value data types</h2>
+
+    <table cellspacing="0" border="1" cellpadding="10">
+
+        <tr>
+            <th rowspan="2">convert to- type</th>
+
+            <th rowspan="2">
+                int
+                <small>eg. 3</small>
+            </th>
+
+            <th rowspan="2">
+                float
+                <small>eg. 6.7</small>
+            </th>
+
+            <th rowspan="2">
+                complex
+                <small>eg. 3+2.5j</small>
+            </th>
+
+            <th colspan="2">
+                bool
+                <small>eg. True/False</small>
+            </th>
+
+            <th rowspan="2">
+                str
+                <small>eg. "12.3"</small>
+            </th>
+        </tr>
+
+        <tr>
+            <td>True</td>
+            <td>False</td>
+        </tr>
+
+
+        <!-- int -->
+
+        <tr>
+            <th>int</th>
+
+            <td class="important">
+                no use
+            </td>
+
+            <td class="possible">
+                removes decimal part
+            </td>
+
+            <td class="not-possible">
+                NP
+            </td>
+
+            <td class="possible">
+                1
+            </td>
+
+            <td class="possible">
+                0
+            </td>
+
+            <td class="possible">
+                only if str contains only digits
+                0-9 without decimal point
+            </td>
+        </tr>
+
+
+        <!-- float -->
+
+        <tr>
+            <th>float</th>
+
+            <td class="possible">
+                adds 0.0
+            </td>
+
+            <td class="important">
+                no use
+            </td>
+
+            <td class="not-possible">
+                NP
+            </td>
+
+            <td class="possible">
+                1.0
+            </td>
+
+            <td class="possible">
+                0.0
+            </td>
+
+            <td class="possible">
+                digits with or without decimal point
+            </td>
+        </tr>
+
+
+        <!-- complex -->
+
+        <tr>
+            <th>complex</th>
+
+            <td class="possible">
+                adds 0j
+            </td>
+
+            <td class="possible">
+                adds 0j
+            </td>
+
+            <td class="important">
+                no use
+            </td>
+
+            <td class="possible">
+                1+0j
+            </td>
+
+            <td class="possible">
+                0+0j
+            </td>
+
+            <td class="possible">
+                <ol>
+                    <li>digits with or without decimal point</li>
+                    <li>complex value like 3+2j</li>
+                    <li>'j' → 1j</li>
+                </ol>
+            </td>
+        </tr>
+
+
+        <!-- bool -->
+
+        <tr>
+            <th>bool</th>
+
+            <td class="possible">
+                False if 0,
+                else True
+            </td>
+
+            <td class="possible">
+                False if 0.0,
+                else True
+            </td>
+
+            <td class="possible">
+                False if 0j,
+                else True
+            </td>
+
+            <td class="important">
+                True
+            </td>
+
+            <td class="important">
+                False
+            </td>
+
+            <td class="possible">
+                False if '',
+                else True
+            </td>
+        </tr>
+
+
+        <!-- str -->
+
+        <tr>
+            <th>str</th>
+
+            <td class="possible">
+                adds ''
+            </td>
+
+            <td class="possible">
+                adds ''
+            </td>
+
+            <td class="possible">
+                adds ''
+            </td>
+
+            <td class="possible">
+                'True'
+            </td>
+
+            <td class="possible">
+                'False'
+            </td>
+
+            <td class="important">
+                no use
+            </td>
+        </tr>
+
+
+        <!-- list -->
+
+        <tr>
+            <th>list</th>
+
+            <td class="not-possible">NP</td>
+            <td class="not-possible">NP</td>
+            <td class="not-possible">NP</td>
+            <td class="not-possible">NP</td>
+            <td class="not-possible">NP</td>
+
+            <td class="possible">
+                stores each character separately
+                inside [] in same order
+            </td>
+        </tr>
+
+
+        <!-- tuple -->
+
+        <tr>
+            <th>tuple</th>
+
+            <td class="not-possible">NP</td>
+            <td class="not-possible">NP</td>
+            <td class="not-possible">NP</td>
+            <td class="not-possible">NP</td>
+            <td class="not-possible">NP</td>
+
+            <td class="possible">
+                stores each character separately
+                inside () in same order
+            </td>
+        </tr>
+
+
+        <!-- set -->
+
+        <tr>
+            <th>set</th>
+
+            <td class="not-possible">NP</td>
+            <td class="not-possible">NP</td>
+            <td class="not-possible">NP</td>
+            <td class="not-possible">NP</td>
+            <td class="not-possible">NP</td>
+
+            <td class="possible">
+                stores each character separately
+                inside {} in random order
+                after removing duplicates
+            </td>
+        </tr>
+
+
+        <!-- dict -->
+
+        <tr>
+            <th>dict</th>
+
+            <td class="not-possible">NP</td>
+            <td class="not-possible">NP</td>
+            <td class="not-possible">NP</td>
+            <td class="not-possible">NP</td>
+            <td class="not-possible">NP</td>
+            <td class="not-possible">NP</td>
+        </tr>
+
+    </table>
+
+
+    <h2>Multi-valued data types</h2>
+
+    <table border="1" cellspacing="0" cellpadding="10">
+
+        <tr>
+            <th>convert to- type</th>
+            <th>list</th>
+            <th>tuple</th>
+            <th>set</th>
+            <th>dict</th>
+        </tr>
+
+
+        <!-- int -->
+
+        <tr>
+            <th>int</th>
+
+            <td class="not-possible">NP</td>
+            <td class="not-possible">NP</td>
+            <td class="not-possible">NP</td>
+            <td class="not-possible">NP</td>
+        </tr>
+
+
+        <!-- float -->
+
+        <tr>
+            <th>float</th>
+
+            <td class="not-possible">NP</td>
+            <td class="not-possible">NP</td>
+            <td class="not-possible">NP</td>
+            <td class="not-possible">NP</td>
+        </tr>
+
+
+        <!-- complex -->
+
+        <tr>
+            <th>complex</th>
+
+            <td class="not-possible">NP</td>
+            <td class="not-possible">NP</td>
+            <td class="not-possible">NP</td>
+            <td class="not-possible">NP</td>
+        </tr>
+
+
+        <!-- bool -->
+
+        <tr>
+            <th>bool</th>
+
+            <td class="not-possible">NP</td>
+            <td class="not-possible">NP</td>
+            <td class="not-possible">NP</td>
+            <td class="not-possible">NP</td>
+        </tr>
+
+
+        <!-- str -->
+
+        <tr>
+            <th>str</th>
+
+            <td class="possible">
+                each character separately
+                inside []
+            </td>
+
+            <td class="possible">
+                each character separately
+                inside ()
+            </td>
+
+            <td class="possible">
+                each character separately,
+                duplicates removed
+            </td>
+
+            <td class="not-possible">
+                NP
+            </td>
+        </tr>
+
+
+        <!-- list -->
+
+        <tr>
+            <th>list</th>
+
+            <td class="important">
+                no use
+            </td>
+
+            <td class="possible">
+                list → tuple
+            </td>
+
+            <td class="possible">
+                list → set
+            </td>
+
+            <td class="possible">
+                only if list contains
+                key-value pairs
+            </td>
+        </tr>
+
+
+        <!-- set -->
+
+        <tr>
+            <th>set</th>
+
+            <td class="possible">
+                set → list
+            </td>
+
+            <td class="possible">
+                set → tuple
+            </td>
+
+            <td class="important">
+                no use
+            </td>
+
+            <td class="possible">
+                only if set contains
+                key-value pairs
+            </td>
+        </tr>
+
+
+        <!-- tuple -->
+
+        <tr>
+            <th>tuple</th>
+
+            <td class="possible">
+                tuple → list
+            </td>
+
+            <td class="important">
+                no use
+            </td>
+
+            <td class="possible">
+                tuple → set
+            </td>
+
+            <td class="possible">
+                only if tuple contains
+                key-value pairs
+            </td>
+        </tr>
+
+
+        <!-- dict -->
+
+        <tr>
+            <th>dict</th>
+
+            <td class="possible">
+                stores keys
+                inside []
+            </td>
+
+            <td class="possible">
+                stores keys
+                inside ()
+            </td>
+
+            <td class="possible">
+                stores keys
+                inside {}
+            </td>
+
+            <td class="important">
+                no use
+            </td>
+        </tr>
+
+    </table>
+
+
+</body>
+</html>
