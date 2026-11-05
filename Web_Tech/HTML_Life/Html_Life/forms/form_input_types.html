@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Form Input Types</h1>
+    <p>There are 23 input type attributes in HTML.
+        They are used to specify the type of input element to be displayed in the form. 
+        Each type attribute has its own unique behavior and validation rules. 
+        Some of the commonly used input type attributes include:
+        <ol>
+        <li>text</li>
+        <li>email</li>
+        <li>password</li>
+        <li>number</li>
+        <li>date</li>
+        <li>time</li>
+        <li>datetime-local</li>
+        <li>month</li>
+        <li>week</li>
+        <li>url</li>
+        <li>search</li>
+        <li>tel</li>
+        <li>color</li>
+        <li>file</li>
+        <li>image</li>
+        <li>reset</li>
+        <li>submit</li>
+        </ol>
+    </p>
+
+    <hr>
+    <h3>text</h3>
+    <p>It creates an input field that takes a single line of text. it can show 20 characters visible at a time.
+        <br>    more than 20, the input field will become scrollable.</p>
+    <input type="text" placeholder=" your name">
+
+    <hr>
+    <h3>email</h3>
+    <p>It creates an input field for entering an email address. we can perform minimal amount of validation. 
+        <br>it requires an email with @ to trigger the validation.</p>
+    <input type="email" placeholder="Enter your email">
+
+    <hr>
+    <h3>password</h3>
+    <p>It creates an input field for entering a password. 
+        <br>The characters entered in the field are masked (displayed as dots or asterisks)
+         to protect the user's privacy.</p>
+    <input type="password" placeholder="Enter  password">
+
+    <hr>
+    <h3>number</h3>
+    <p>It creates an input field for entering a number. 
+        <br>It allows only numeric values and . so it provides validation for checking if data is numeric or not</p>
+    <input type="number" placeholder="Enter a number">
+
+    <hr>
+    <h3>date</h3>
+    <p>It creates an input field for selecting a date.
+        <br>It provides a date picker interface for users to select a date from a calendar.</p>
+    <input type="date">
+
+    <h3>time</h3>
+    <p>It creates an input field for selecting a time.
+        <br>It provides a time picker interface for users to select a time from a clock.</p>
+    <input type="time">
+
+    <hr>
+    <h3>datetime-local</h3>
+    <p>It creates an input field for selecting a date and time.
+        <br>It provides a date and time picker interface for users to select a date and time from a calendar and clock.</p>
+    <input type="datetime-local">
+
+    <hr>
+    <h3>color</h3>
+    <p>It creates an input field for selecting a color.
+        <br>It provides a color picker interface for users to select a color from a color palette.</p>
+    <input type="color">
+
+    <hr>
+    <h3>url</h3>
+    <p>It creates an input field for entering a URL (Uniform Resource Locator).
+        <br>It provides validation for checking if the entered value is a valid URL format according to protocol.</p>
+    <input type="url">
+
+    <hr>
+    <h3>tel</h3>
+    <p>It creates an input field for entering a telephone number.
+        <br>It allows character input BUT It provides validation for checking if the entered value is a valid telephone number format.</p>
+    <input type="tel" placeholder="Enter your phone number">
+
+    <hr>
+    <h3>search</h3>
+    <p>It creates an input field for entering a search query.
+        <br>It is typically used in search forms to allow users to enter keywords or phrases for searching content.</p>
+    <input type="search" placeholder="Search...">
+
+    <hr>
+    <h3>file</h3>
+    <p>It creates an input field for selecting a file from the user's device.
+        <br>It allows users to browse and choose a file to upload.</p>
+    <input type="file">
+
+    <hr>
+    <h3>image</h3>
+    <p>It creates an input field for selecting an image file from the user's device.
+        <br>It allows users to browse and choose an image file to upload.</p>
+    <input type="image" src="image.jpg" alt="Upload Image">
+
+    <hr>
+    <h3>reset</h3>
+    <p>It creates a button that resets the form fields to their default values.
+        <br>When clicked, it clears all the input fields and restores them to their initial state.</p>
+    <input type="reset" value="Reset">
+
+    <hr>
+    <h3>submit</h3>
+    <p>It creates a button that submits the form data to the server for processing.
+        <br>When clicked, it sends the form data to the specified action URL using the specified method (GET or POST).</p>
+    <input type="submit" value="Submit">
+
+    <hr>
+    <h3>placeholder</h3>
+    <p>The placeholder is an input attribute is used to provide a hint of what should be entered in the input field. 
+        It is displayed inside the input field when  empty as lighter color(separates it from actual data value entered)and disappears when the user starts typing. 
+    <input type="text" placeholder="Enter your name"></p>
+
+    
+
+
+</body>
+</html>

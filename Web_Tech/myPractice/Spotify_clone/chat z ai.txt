@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="dark">
+<title>Spotify - Web Player: Music for everyone</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg-base:#121212; --bg-black:#000; --bg-card:#181818; --bg-hover:#282828; --bg-hover2:#2a2a2a;
+  --text:#fff; --subdued:#b3b3b3; --green:#1ed760; --green-dark:#1db954;
+  --radius:8px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{height:100%}
+body{
+  font-family:'DM Sans','Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+  background:var(--bg-black); color:var(--text);
+  display:flex; flex-direction:column; gap:8px; padding:8px; height:100vh; overflow:hidden;
+}
+button{font-family:inherit;background:none;border:none;color:inherit;cursor:pointer}
+a{color:inherit;text-decoration:none;cursor:pointer}
+ul{list-style:none}
+svg{display:block}
+::-webkit-scrollbar{width:12px}
+::-webkit-scrollbar-thumb{background:hsla(0,0%,100%,.25);border-radius:6px;border:3px solid transparent;background-clip:content-box}
+::-webkit-scrollbar-track{background:transparent}
+
+/* ---------- TOP BAR ---------- */
+.topbar{height:64px;flex-shrink:0;background:var(--bg-base);border-radius:var(--radius);display:flex;align-items:center;justify-content:space-between;padding:0 8px 0 16px;gap:16px}
+.tb-left{display:flex;align-items:center;gap:8px;flex:1;min-width:0}
+.logo{display:flex;align-items:center;padding:0 12px 0 4px}
+.logo svg{width:32px;height:32px}
+.home-btn{width:48px;height:48px;border-radius:50%;background:var(--bg-hover2);display:grid;place-items:center;color:var(--text);transition:transform .1s}
+.home-btn:hover{background:#333;transform:scale(1.04)}
+.search{display:flex;align-items:center;gap:10px;width:min(474px,45%);height:48px;border-radius:500px;background:var(--bg-hover2);border:1px solid transparent;padding:0 8px 0 16px;color:var(--subdued)}
+.search:hover,.search:focus-within{border-color:#7c7c7c;background:#242424}
+.search svg{flex-shrink:0}
+.search input{flex:1;background:none;border:none;outline:none;color:var(--text);font-size:14px;min-width:0}
+.search input::placeholder{color:#9e9e9e}
+.search .divider{width:1px;height:24px;background:#7c7c7c;margin:0 2px}
+.browse{display:grid;place-items:center;width:36px;height:36px;border-radius:50%;color:var(--subdued)}
+.browse:hover{color:#fff;transform:scale(1.06)}
+.tb-right{display:flex;align-items:center;gap:8px}
+.link{font-size:14px;font-weight:700;color:var(--subdued);padding:8px 14px;border-radius:500px;white-space:nowrap}
+.link:hover{color:#fff;transform:scale(1.04)}
+.install{display:flex;align-items:center;gap:6px}
+.bell{position:relative;width:40px;height:40px;border-radius:50%;display:grid;place-items:center;color:var(--subdued)}
+.bell:hover{color:#fff}
+.bell .dot{position:absolute;top:9px;right:10px;width:8px;height:8px;border-radius:50%;background:var(--green);border:2px solid var(--bg-base)}
+.pill{background:#fff;color:#000;font-size:14px;font-weight:700;padding:10px 24px;border-radius:500px;white-space:nowrap}
+.pill:hover{transform:scale(1.04);background:#f0f0f0}
+
+/* ---------- LAYOUT ---------- */
+.layout{flex:1;display:flex;gap:8px;min-height:0}
+
+/* ---------- SIDEBAR ---------- */
+.sidebar{width:280px;flex-shrink:0;background:var(--bg-base);border-radius:var(--radius);display:flex;flex-direction:column;overflow:hidden}
+.lib-head{display:flex;align-items:center;justify-content:space-between;padding:14px 12px 6px 20px}
+.lib-title{display:flex;align-items:center;gap:12px;font-weight:700;color:var(--subdued);font-size:15px}
+.lib-title:hover{color:#fff}
+.icon-btn{width:32px;height:32px;border-radius:50%;display:grid;place-items:center;color:var(--subdued)}
+.icon-btn:hover{color:#fff;transform:scale(1.06)}
+.lib-chips{display:flex;gap:8px;padding:8px 20px 4px}
+.fchip{background:hsla(0,0%,100%,.1);color:#fff;font-size:13px;font-weight:500;padding:6px 12px;border-radius:8px;white-space:nowrap}
+.fchip:hover{background:hsla(0,0%,100%,.2)}
+.fchip.active{background:#fff;color:#000}
+.lib-tools{display:flex;align-items:center;justify-content:space-between;padding:6px 20px}
+.sort{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--subdued);font-weight:500}
+.sort:hover{color:#fff}
+.lib-list{flex:1;overflow-y:auto;padding:4px 8px 8px}
+.lib-item{display:flex;align-items:center;gap:12px;padding:6px 12px;border-radius:6px;cursor:pointer}
+.lib-item:hover{background:#1a1a1a}
+.lib-art{width:48px;height:48px;border-radius:4px;flex-shrink:0;display:grid;place-items:center;font-weight:700;font-size:18px;color:#fff}
+.lib-info{min-width:0}
+.l-name{font-size:15px;font-weight:500;display:flex;align-items:center;gap:6px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.l-name svg{flex-shrink:0;color:var(--green)}
+.l-sub{font-size:13px;color:var(--subdued);margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+
+/* ---------- MAIN CONTENT ---------- */
+.content{flex:1;background:var(--bg-base);border-radius:var(--radius);overflow-y:auto;position:relative;padding:16px 24px 32px;min-width:0}
+.content::before{content:"";position:absolute;top:0;left:0;right:0;height:232px;background:linear-gradient(rgba(90,90,90,.55),rgba(18,18,18,0));pointer-events:none}
+.content>*{position:relative}
+.nav-btns{display:flex;gap:8px;margin-bottom:8px}
+.nav-btn{width:32px;height:32px;border-radius:50%;background:rgba(0,0,0,.7);display:grid;place-items:center;color:#fff}
+.nav-btn:hover{background:#333}
+.greeting{font-size:clamp(22px,3vw,44px);font-weight:700;letter-spacing:-.5px;margin:8px 0 4px}
+.chips{display:flex;gap:8px;margin:16px 0 20px}
+.chip{background:hsla(0,0%,100%,.1);color:#fff;font-size:14px;font-weight:500;padding:7px 15px;border-radius:500px}
+.chip:hover{background:hsla(0,0%,100%,.2)}
+.chip.active{background:#fff;color:#000}
+.section-head{display:flex;align-items:flex-end;justify-content:space-between;margin:24px 0 12px}
+.section-head h2{font-size:24px;font-weight:700;letter-spacing:-.3px}
+.section-head h2:hover{text-decoration:underline;cursor:pointer}
+.show-all{font-size:14px;font-weight:700;color:var(--subdued)}
+.show-all:hover{text-decoration:underline;color:#fff}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:8px}
+.card{background:var(--bg-card);padding:12px;border-radius:8px;cursor:pointer;transition:background .3s;position:relative}
+.card:hover{background:var(--bg-hover)}
+.card-art{position:relative;aspect-ratio:1;border-radius:6px;display:grid;place-items:center;margin-bottom:12px;overflow:hidden}
+.art-letter{font-size:64px;font-weight:700;color:rgba(255,255,255,.85);text-shadow:0 2px 12px rgba(0,0,0,.3)}
+.art-heart{width:44px;height:44px;fill:#fff;filter:drop-shadow(0 2px 8px rgba(0,0,0,.4))}
+.card-play{position:absolute;right:8px;bottom:8px;width:48px;height:48px;border-radius:50%;background:var(--green);display:grid;place-items:center;color:#000;box-shadow:0 8px 16px rgba(0,0,0,.5);opacity:0;transform:translateY(8px);transition:all .2s;z-index:2}
+.card-play:hover{transform:scale(1.06);background:#3be477}
+.card:hover .card-play{opacity:1;transform:translateY(0)}
+.card-play svg{width:22px;height:22px;fill:#000}
+.card-play .i-pause{display:none}
+body.playing .card.is-playing .card-play{opacity:1;transform:translateY(0)}
+body.playing .card.is-playing .i-play{display:none}
+body.playing .card.is-playing .i-pause{display:block}
+.card-name{font-size:16px;font-weight:700;margin-bottom:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.card-sub{font-size:14px;color:var(--subdued);line-height:1.4;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+
+/* gradient "album covers" (placeholders) */
+.g1{background:linear-gradient(135deg,#e4572e,#8f1d14)} .g2{background:linear-gradient(135deg,#f2a33c,#c96f10)}
+.g3{background:linear-gradient(135deg,#7b5cff,#3b1f8f)} .g4{background:linear-gradient(135deg,#2d9cdb,#155e96)}
+.g5{background:linear-gradient(135deg,#38b48b,#1b6d51)} .g6{background:linear-gradient(135deg,#e84393,#8e1e5c)}
+.g7{background:linear-gradient(135deg,#5a6b8c,#2c3752)} .g8{background:linear-gradient(135deg,#b8452f,#6e1f14)}
+.gp1{background:linear-gradient(135deg,#00a0b0,#005f6b)} .gp2{background:linear-gradient(135deg,#ff5e78,#a01a3c)}
+.gp3{background:linear-gradient(135deg,#6d7f4b,#3c4a22)} .gp4{background:linear-gradient(135deg,#8461c9,#4b2f85)}
+.glike{background:linear-gradient(135deg,#4a2fbf,#7fb8d9)}
+
+/* ---------- PLAYER BAR ---------- */
+.player{height:72px;flex-shrink:0;background:var(--bg-base);border-radius:var(--radius);display:grid;grid-template-columns:minmax(180px,30%) 1fr minmax(180px,30%);align-items:center;padding:0 16px;gap:16px}
+.pl-left{display:flex;align-items:center;gap:12px;min-width:0}
+.pl-art{width:56px;height:56px;border-radius:4px;flex-shrink:0}
+.pl-info{min-width:0}
+#plTitle{font-size:14px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#plArtist{font-size:12px;color:var(--subdued);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#plArtist:hover{text-decoration:underline;cursor:pointer}
+#likeBtn svg{width:16px;height:16px}
+#likeBtn.liked{color:var(--green)}
+#likeBtn.liked .heart-o{display:none}
+#likeBtn:not(.liked) .heart-f{display:none}
+.pl-center{display:flex;flex-direction:column;align-items:center;gap:8px;min-width:0}
+.controls{display:flex;align-items:center;gap:20px}
+.ctrl{color:var(--subdued);display:grid;place-items:center;position:relative}
+.ctrl:hover{color:#fff}
+.ctrl svg{width:16px;height:16px;fill:currentColor}
+.toggle-btn.on{color:var(--green)}
+.toggle-btn.on::after{content:"";position:absolute;bottom:-5px;left:50%;transform:translateX(-50%);width:4px;height:4px;border-radius:50%;background:var(--green)}
+.play-btn{width:32px;height:32px;border-radius:50%;background:#fff;display:grid;place-items:center;color:#000}
+.play-btn:hover{transform:scale(1.06)}
+.play-btn svg{width:16px;height:16px;fill:#000}
+.progress{display:flex;align-items:center;gap:8px;width:100%;max-width:600px}
+.progress span{font-size:12px;color:var(--subdued);min-width:36px}
+#curTime{text-align:right}
+.bar{flex:1;height:12px;display:flex;align-items:center;cursor:pointer;position:relative}
+.bar::before{content:"";position:absolute;left:0;right:0;height:4px;border-radius:2px;background:#4d4d4d}
+.bar-fill{position:relative;height:4px;border-radius:2px;background:#fff;width:0%;z-index:1}
+.bar:hover .bar-fill{background:var(--green)}
+.bar-knob{position:absolute;right:-6px;top:50%;transform:translateY(-50%);width:12px;height:12px;border-radius:50%;background:#fff;opacity:0;z-index:2}
+.bar:hover .bar-knob{opacity:1}
+.pl-right{display:flex;align-items:center;justify-content:flex-end;gap:8px}
+.vol-wrap{display:flex;align-items:center;gap:4px}
+.vol-bar{width:93px}
+#volFill{width:70%}
+.hide-sm{display:flex}
+@media(max-width:1150px){.link{display:none}}
+@media(max-width:820px){.sidebar{display:none}.hide-sm{display:none}.search{width:50%}}
+</style>
+</head>
+<body>
+
+<!-- ============ TOP BAR ============ -->
+<header class="topbar">
+  <div class="tb-left">
+    <a class="logo" title="Spotify">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" fill="#1ed760"/><path d="M5.5 9.3c4-1.2 9.5-.8 13 1.3" stroke="#000" stroke-width="2.1" fill="none" stroke-linecap="round"/><path d="M6.2 12.6c3.4-1 8-.6 11 1.2" stroke="#000" stroke-width="1.9" fill="none" stroke-linecap="round"/><path d="M6.9 15.7c2.8-.8 6.5-.4 9 1" stroke="#000" stroke-width="1.7" fill="none" stroke-linecap="round"/></svg>
+    </a>
+    <button class="home-btn" title="Home">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12.5 3.247a1 1 0 0 0-1 0L4 7.577V20h4.5v-6a1 1 0 0 1 1-1h5a1 1 0 0 1 1 1v6H20V7.577l-7.5-4.33zm-2-1.732a3 3 0 0 1 3 0l7.5 4.33a2 2 0 0 1 1 1.732V21a1 1 0 0 1-1 1h-6.5a1 1 0 0 1-1-1v-6h-3v6a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V7.577a2 2 0 0 1 1-1.732l7.5-4.33z"/></svg>
+    </button>
+    <div class="search">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M10.533 1.279c-5.18 0-9.407 4.14-9.407 9.279s4.226 9.279 9.407 9.279c2.234 0 4.29-.77 5.907-2.058l4.353 4.353a1 1 0 1 0 1.414-1.414l-4.344-4.344a9.157 9.157 0 0 0 2.076-5.816c0-5.14-4.226-9.28-9.406-9.28zm-7.407 9.279c0-4.006 3.302-7.28 7.407-7.28s7.406 3.274 7.406 7.28-3.302 7.279-7.406 7.279-7.407-3.273-7.407-7.28z"/></svg>
+      <input id="globalSearch" type="text" placeholder="What do you want to play?">
+      <span class="divider"></span>
+      <button class="browse" title="Browse"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M4 4h7v7H4V4zm9 0h7v7h-7V4zM4 13h7v7H4v-7zm9 0h7v7h-7v-7z"/></svg></button>
+    </div>
+  </div>
+  <div class="tb-right">
+    <a class="link">Explore Premium</a>
+    <a class="link install"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3a1 1 0 0 1 1 1v8.6l3.3-3.3 1.4 1.4-5.7 5.7-5.7-5.7 1.4-1.4L11 12.6V4a1 1 0 0 1 1-1zM5 19h14v2H5v-2z"/></svg>Install App</a>
+    <button class="bell" title="What's New">
+      <svg width="18" height="18" viewBox="0 0 16 16" fill="currentColor"><path d="M8 1.5A4.5 4.5 0 0 0 3.5 6v2.8L2 11.5V12h12v-.5l-1.5-2.7V6A4.5 4.5 0 0 0 8 1.5zM6 13a2 2 0 1 0 4 0H6z"/></svg>
+      <span class="dot"></span>
+    </button>
+    <a class="link">Log in</a>
+    <a class="pill">Sign up for free</a>
+  </div>
+</header>
+
+<div class="layout">
+  <!-- ============ SIDEBAR ============ -->
+  <aside class="sidebar">
+    <div class="lib-head">
+      <a class="lib-title">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M3 22a1 1 0 0 1-1-1V3a1 1 0 0 1 2 0v18a1 1 0 0 1-1 1zm6 0a1 1 0 0 1-1-1V3a1 1 0 0 1 2 0v18a1 1 0 0 1-1 1zm5.514-.284l4.826-17.003a1 1 0 0 1 1.923.546l-4.826 17.003a1 1 0 1 1-1.923-.546z"/></svg>
+        Your Library
+      </a>
+      <div style="display:flex">
+        <button class="icon-btn" title="Create playlist or folder"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M15.25 8a.75.75 0 0 1-.75.75H8.75v5.75a.75.75 0 0 1-1.5 0V8.75H1.5a.75.75 0 0 1 0-1.5h5.75V1.5a.75.75 0 0 1 1.5 0v5.75h5.75a.75.75 0 0 1 .75.75z"/></svg></button>
+        <button class="icon-btn" title="Show more"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M7.19 1.73a1 1 0 0 1 1.32.46l.06.13 5.1 12.28a1 1 0 0 1-1.8.86l-.06-.12L8.9 8.5a1 1 0 0 0-1.8 0l-2.91 6.84a1 1 0 0 1-1.86-.74l5.16-12.35a1 1 0 0 1 .9-.52z"/></svg></button>
+      </div>
+    </div>
+    <div class="lib-chips">
+      <button class="fchip active">Playlists</button>
+      <button class="fchip">Albums</button>
+      <button class="fchip">Artists</button>
+    </div>
+    <div class="lib-tools">
+      <button class="icon-btn" title="Search in Your Library"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M10.5 2a8.5 8.5 0 1 0 5.28 15.16l4.53 4.54 1.42-1.42-4.54-4.53A8.5 8.5 0 0 0 10.5 2zm0 2a6.5 6.5 0 1 1 0 13 6.5 6.5 0 0 1 0-13z"/></svg></button>
+      <button class="sort">Recents <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M1 3h14v2H1V3zm2 4h10v2H3V7zm2 4h6v2H5v-2z"/></svg></button>
+    </div>
+    <ul class="lib-list" id="libList"></ul>
+  </aside>
+
+  <!-- ============ MAIN ============ -->
+  <main class="content" id="content">
+    <div class="nav-btns">
+      <button class="nav-btn" title="Go back"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M11.03 3.03a.75.75 0 0 0-1.06-1.06L4.22 7.72a.75.75 0 0 0 0 1.06l5.75 5.75a.75.75 0 1 0 1.06-1.06L5.81 8.25l5.22-5.22z"/></svg></button>
+      <button class="nav-btn" title="Go forward"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M4.97 3.03a.75.75 0 0 1 1.06-1.06l5.75 5.75a.75.75 0 0 1 0 1.06l-5.75 5.75a.75.75 0 1 1-1.06-1.06l5.22-5.22-5.22-5.22z"/></svg></button>
+    </div>
+
+    <h1 class="greeting" id="greeting">Good afternoon</h1>
+
+    <div class="chips" id="filterChips">
+      <button class="chip active" data-filter="all">All</button>
+      <button class="chip" data-filter="music">Music</button>
+      <button class="chip" data-filter="podcast">Podcasts</button>
+    </div>
+
+    <section id="secMusic">
+      <div class="grid" id="musicGrid"></div>
+    </section>
+
+    <section id="secMade">
+      <div class="section-head"><h2>Made for you</h2><a class="show-all">Show all</a></div>
+      <div class="grid" id="madeGrid"></div>
+    </section>
+
+    <section id="secPods">
+      <div class="section-head"><h2>Popular podcasts</h2><a class="show-all">Show all</a></div>
+      <div class="grid" id="podGrid"></div>
+    </section>
+  </main>
+</div>
+
+<!-- ============ PLAYER ============ -->
+<footer class="player">
+  <div class="pl-left">
+    <div class="pl-art g1" id="plArt"></div>
+    <div class="pl-info">
+      <div id="plTitle">Midnight Drive</div>
+      <div id="plArtist">The Neon Waves</div>
+    </div>
+    <button class="icon-btn" id="likeBtn" title="Save to your Liked Songs">
+      <svg class="heart-o" viewBox="0 0 24 24" fill="currentColor"><path d="M16.5 3c-1.74 0-3.41.81-4.5 2.09C10.91 3.81 9.24 3 7.5 3 4.42 3 2 5.42 2 8.5c0 3.78 3.4 6.86 8.55 11.54L12 21.35l1.45-1.32C18.6 15.36 22 12.28 22 8.5 22 5.42 19.58 3 16.5 3zm-4.4 15.55l-.1.1-.1-.1C7.14 14.24 4 11.39 4 8.5 4 6.5 5.5 5 7.5 5c1.54 0 3.04.99 3.57 2.36h1.87C13.46 5.99 14.96 5 16.5 5c2 0 3.5 1.5 3.5 3.5 0 2.89-3.14 5.74-7.9 10.05z"/></svg>
+      <svg class="heart-f" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+    </button>
+  </div>
+
+  <div class="pl-center">
+    <div class="controls">
+      <button class="ctrl toggle-btn" id="shuffleBtn" title="Enable shuffle"><svg viewBox="0 0 24 24"><path d="M13.151.922a.75.75 0 1 0-1.06 1.06L13.109 3H11.16a3.75 3.75 0 0 0-2.873 1.34l-6.173 7.356A2.25 2.25 0 0 1 .39 12.5H0V14h.391a3.75 3.75 0 0 0 2.873-1.34l6.173-7.356a2.25 2.25 0 0 1 1.724-.804h1.947l-1.017 1.018a.75.75 0 0 0 1.06 1.06L15.98 3.75 13.15.922zM.391 3.5H0V2h.391c1.109 0 2.16.49 2.873 1.34L4.89 5.277l-.979 1.167-1.796-2.14A2.25 2.25 0 0 0 .39 3.5z"/><path d="m7.5 10.723.98-1.167.957 1.14a2.25 2.25 0 0 0 1.724.804h1.947l-1.017-1.018a.75.75 0 1 1 1.06-1.06l2.829 2.828-2.829 2.828a.75.75 0 1 1-1.06-1.06L13.109 13H11.16a3.75 3.75 0 0 1-2.873-1.34l-.787-.937z"/></svg></button>
+      <button class="ctrl" id="prevBtn" title="Previous"><svg viewBox="0 0 16 16"><path d="M3.3 1a.7.7 0 0 1 .7.7v5.15l9.95-5.744a.7.7 0 0 1 1.05.606v12.575a.7.7 0 0 1-1.05.607L4 9.149V14.3a.7.7 0 0 1-.7.7H1.7a.7.7 0 0 1-.7-.7V1.7a.7.7 0 0 1 .7-.7h1.6z"/></svg></button>
+      <button class="play-btn" id="playBtn" title="Play">
+        <svg id="playIcon" viewBox="0 0 16 16"><path d="M3 1.713a.7.7 0 0 1 1.05-.607l10.89 6.288a.7.7 0 0 1 0 1.212L4.05 14.894A.7.7 0 0 1 3 14.288V1.713z"/></svg>
+        <svg id="pauseIcon" style="display:none" viewBox="0 0 16 16"><path d="M2.7 1a.7.7 0 0 0-.7.7v12.6a.7.7 0 0 0 .7.7h2.6a.7.7 0 0 0 .7-.7V1.7a.7.7 0 0 0-.7-.7H2.7zm8 0a.7.7 0 0 0-.7.7v12.6a.7.7 0 0 0 .7.7h2.6a.7.7 0 0 0 .7-.7V1.7a.7.7 0 0 0-.7-.7h-2.6z"/></svg>
+      </button>
+      <button class="ctrl" id="nextBtn" title="Next"><svg viewBox="0 0 16 16"><path d="M12.7 1a.7.7 0 0 0-.7.7v5.15L2.05 1.107A.7.7 0 0 0 1 1.712v12.575a.7.7 0 0 0 1.05.607L12 9.149V14.3a.7.7 0 0 0 .7.7h1.6a.7.7 0 0 0 .7-.7V1.7a.7.7 0 0 0-.7-.7h-1.6z"/></svg></button>
+      <button class="ctrl toggle-btn" id="repeatBtn" title="Enable repeat"><svg viewBox="0 0 16 16"><path d="M0 4.75A3.75 3.75 0 0 1 3.75 1h8.5A3.75 3.75 0 0 1 16 4.75v5a3.75 3.75 0 0 1-3.75 3.75H9.81l1.018 1.018a.75.75 0 1 1-1.06 1.06L6.939 12.75l2.829-2.828a.75.75 0 1 1 1.06 1.06L9.811 12h2.439a2.25 2.25 0 0 0 2.25-2.25v-5a2.25 2.25 0 0 0-2.25-2.25h-8.5A2.25 2.25 0 0 0 1.5 4.75v5A2.25 2.25 0 0 0 3.75 12H5v1.5H3.75A3.75 3.75 0 0 1 0 9.75v-5z"/></svg></button>
+    </div>
+    <div class="progress">
+      <span id="curTime">0:00</span>
+      <div class="bar" id="seekBar"><div class="bar-fill" id="seekFill"><div class="bar-knob"></div></div></div>
+      <span id="totTime">0:00</span>
+    </div>
+  </div>
+
+  <div class="pl-right">
+    <button class="icon-btn hide-sm" title="Now playing view"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M11.196 8 6 5v6l5.196-3z"/><path d="M15.002 1.75A1.75 1.75 0 0 0 13.252 0h-10.5a1.75 1.75 0 0 0-1.75 1.75v12.5c0 .967.784 1.75 1.75 1.75h10.5a1.75 1.75 0 0 0 1.75-1.75V1.75zm-1.5 0v12.5a.25.25 0 0 1-.25.25h-10.5a.25.25 0 0 1-.25-.25V1.75a.25.25 0 0 1 .25-.25h10.5a.25.25 0 0 1 .25.25z"/></svg></button>
+    <button class="icon-btn hide-sm" title="Lyrics"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M8.5 1A4.5 4.5 0 0 0 4 5.5v2.116a4.5 4.5 0 0 0 3.5 4.386V13.5H5V15h6v-1.5H8.5v-1.498A4.5 4.5 0 0 0 13 7.616V5.5A4.5 4.5 0 0 0 8.5 1zM5.5 5.5a3 3 0 1 1 6 0v2.116a3 3 0 1 1-6 0V5.5z"/></svg></button>
+    <button class="icon-btn" title="Queue"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M15 15H1v-1.5h14V15zm0-4.5H1V9h14v1.5zm-14-7A2.5 2.5 0 0 1 3.5 1h9a2.5 2.5 0 0 1 0 5h-9A2.5 2.5 0 0 1 1 3.5zm2.5-1a1 1 0 0 0 0 2h9a1 1 0 1 0 0-2h-9z"/></svg></button>
+    <button class="icon-btn hide-sm" title="Connect to a device"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M6 11.5A1.5 1.5 0 0 1 7.5 10h6A1.5 1.5 0 0 1 15 11.5v3a1.5 1.5 0 0 1-1.5 1.5h-6A1.5 1.5 0 0 1 6 14.5v-3zm1.5 0v3h6v-3h-6zM0 2.5A2.5 2.5 0 0 1 2.5 0h11A2.5 2.5 0 0 1 16 2.5V8h-1.5V2.5a1 1 0 0 0-1-1h-11a1 1 0 0 0-1 1v7A1 1 0 0 0 2.5 10.5H4V12H2.5A2.5 2.5 0 0 1 0 9.5v-7z"/></svg></button>
+    <div class="vol-wrap">
+      <button class="icon-btn" id="volBtn" title="Mute">
+        <svg id="volOn" width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M9.741.85a.75.75 0 0 1 .375.65v13a.75.75 0 0 1-1.125.65l-6.925-4a3.642 3.642 0 0 1-1.33-4.967 3.639 3.639 0 0 1 1.33-1.332l6.925-4a.75.75 0 0 1 .75 0zm-6.924 5.3a2.139 2.139 0 0 0 0 3.7l5.8 3.35V2.8l-5.8 3.35zm8.683 4.29V5.56a2.75 2.75 0 0 1 0 4.88z"/><path d="M11.5 13.614a5.752 5.752 0 0 0 0-11.228v1.55a4.252 4.252 0 0 1 0 8.127v1.55z"/></svg>
+        <svg id="volOff" style="display:none" width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M13.86 5.47a.75.75 0 0 0-1.061 0l-1.47 1.47-1.47-1.47A.75.75 0 0 0 8.8 6.53L10.269 8l-1.47 1.47a.75.75 0 1 0 1.06 1.06l1.47-1.47 1.47 1.47a.75.75 0 0 0 1.06-1.06L12.39 8l1.47-1.47a.75.75 0 0 0 0-1.06z"/><path d="M2.817 2.817a.75.75 0 0 0-1.06 1.06L4.939 6.94l-.44.44A3.642 3.642 0 0 0 3.35 12.15a3.639 3.639 0 0 0 1.33 1.332l6.925 4a.75.75 0 0 0 .75 0V14.5l-8.537-8.537-1.751 1.485a2.139 2.139 0 0 0 0 3.7z" opacity=".01"/><path d="M9.741.85a.75.75 0 0 1 .375.65v2.76L8.8 2.94V1.5a.75.75 0 0 1 1.125-.65zM2.816 2.816 1.5 1.5 2.56.44l12.5 12.5-1.06 1.06-2.32-2.32a5.752 5.752 0 0 1-3.924 1.514v-1.55a4.252 4.252 0 0 0 2.754-1.02L8.8 8.914V8.06L3.81 3.07a2.139 2.139 0 0 0 .993 3.672l-1.34 1.34a3.642 3.642 0 0 1 .354-5.266z"/></svg>
+      </button>
+      <div class="bar vol-bar" id="volBar"><div class="bar-fill" id="volFill"><div class="bar-knob"></div></div></div>
+    </div>
+    <button class="icon-btn hide-sm" title="Full screen"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M6.53 9.47a.75.75 0 0 1 0 1.06l-2.72 2.72h1.018a.75.75 0 0 1 0 1.5H1.25v-3.579a.75.75 0 0 1 1.5 0v1.018l2.72-2.72a.75.75 0 0 1 1.06 0zm2.94-2.94a.75.75 0 0 1 0-1.06l2.72-2.72h-1.018a.75.75 0 1 1 0-1.5h3.578v3.579a.75.75 0 0 1-1.5 0V3.81l-2.72 2.72a.75.75 0 0 1-1.06 0z"/></svg></button>
+  </div>
+</footer>
+
+<script>
+/* ================= DATA (fictional placeholder content) ================= */
+const TRACKS=[
+  {t:"Midnight Drive",a:"The Neon Waves",d:200,g:"g1"},
+  {t:"Golden Hour",a:"Sunset Boulevard",d:225,g:"g2"},
+  {t:"Electric Dreams",a:"Voltage",d:242,g:"g3"},
+  {t:"Ocean Breeze",a:"Coastal",d:197,g:"g4"},
+  {t:"City Lights",a:"Night Owls",d:192,g:"g5"},
+  {t:"Paper Hearts",a:"The Writers",d:214,g:"g6"},
+  {t:"Stardust",a:"Cosmos",d:301,g:"g7"},
+  {t:"Wildfire",a:"Ember Lane",d:213,g:"g8"},
+];
+const CARDS=[
+  {t:"Liked Songs",s:"497 songs",g:"glike",like:true},
+  {t:"Today's Top Hits",s:"The hottest tracks. Update daily!",g:"g2"},
+  {t:"Discover Weekly",s:"Your weekly mixtape of new music. Enjoy new music and deep cuts.",g:"g3"},
+  {t:"Chill Vibes",s:"Relax and unwind with calm, mellow tunes.",g:"g4"},
+  {t:"Daily Mix 1",s:"The Neon Waves, Voltage, Coastal and more",g:"g1"},
+  {t:"Hip-Hop Hits",s:"The biggest hip-hop tracks right now.",g:"g6"},
+  {t:"Peaceful Piano",s:"Relax with soft, peaceful piano melodies.",g:"g7"},
+  {t:"Release Radar",s:"Catch all the latest music from artists you follow.",g:"g8"},
+];
+const MADE=[
+  {t:"Daily Mix 1",s:"The Neon Waves, Voltage, Coastal and more",g:"g1"},
+  {t:"Daily Mix 2",s:"Cosmos, Ember Lane, Night Owls and more",g:"g5"},
+  {t:"Daily Mix 3",s:"The Writers, Sunset Blvd, Coastal and more",g:"g4"},
+  {t:"On Repeat",s:"The songs you can't stop playing.",g:"g3"},
+  {t:"Repeat Rewind",s:"The songs you couldn't stop playing.",g:"g6"},
+  {t:"Time Capsule",s:"We made you a personal playlist of throwbacks.",g:"g2"},
+];
+const PODS=[
+  {t:"The Daily Buzz",s:"News • Fresh episodes every morning",g:"gp1"},
+  {t:"Design Talk",s:"Design • Conversations with creators",g:"gp2"},
+  {t:"True Crime Files",s:"Crime • Investigative storytelling",g:"gp3"},
+  {t:"Tech Weekly",s:"Technology • What's new in tech",g:"gp4"},
+];
+const LIB=[
+  {t:"Liked Songs",s:"Playlist • 497 songs",g:"glike",like:true,pin:true},
+  {t:"Today's Top Hits",s:"Playlist • Spotify",g:"g2"},
+  {t:"Discover Weekly",s:"Playlist • Spotify",g:"g3"},
+  {t:"Chill Vibes",s:"Playlist • Spotify",g:"g4"},
+  {t:"Daily Mix 1",s:"Playlist • Spotify",g:"g1"},
+  {t:"Hip-Hop Hits",s:"Playlist • Spotify",g:"g6"},
+  {t:"Peaceful Piano",s:"Playlist • Spotify",g:"g7"},
+  {t:"Release Radar",s:"Playlist • Spotify",g:"g8"},
+  {t:"Focus Flow",s:"Playlist • Spotify",g:"gp1"},
+  {t:"Workout Beats",s:"Playlist • Spotify",g:"gp2"},
+  {t:"Indie Mix",s:"Playlist • Spotify",g:"gp4"},
+];
+
+/* ================= BUILD DOM ================= */
+const $=s=>document.querySelector(s), $$=s=>document.querySelectorAll(s);
+const playSvg='<svg class="i-play" viewBox="0 0 16 16"><path d="M3 1.713a.7.7 0 0 1 1.05-.607l10.89 6.288a.7.7 0 0 1 0 1.212L4.05 14.894A.7.7 0 0 1 3 14.288V1.713z"/></svg>';
+const pauseSvg='<svg class="i-pause" viewBox="0 0 16 16"><path d="M2.7 1a.7.7 0 0 0-.7.7v12.6a.7.7 0 0 0 .7.7h2.6a.7.7 0 0 0 .7-.7V1.7a.7.7 0 0 0-.7-.7H2.7zm8 0a.7.7 0 0 0-.7.7v12.6a.7.7 0 0 0 .7.7h2.6a.7.7 0 0 0 .7-.7V1.7a.7.7 0 0 0-.7-.7h-2.6z"/></svg>';
+const heartSvg='<svg class="art-heart" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>';
+const pinSvg='<svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M16 3v2l-1 1v5l3 2v2h-5v6h-2v-6H6v-2l3-2V6L8 5V3h8z"/></svg>';
+
+function cardHTML(c){
+  const art=c.like?heartSvg:`<span class="art-letter">${c.t[0]}</span>`;
+  return `<div class="card" data-title="${c.t}" data-artist="Spotify" data-g="${c.g}" data-dur="200">
+    <div class="card-art ${c.g}">${art}<button class="card-play" title="Play">${playSvg}${pauseSvg}</button></div>
+    <div class="card-name">${c.t}</div><div class="card-sub">${c.s}</div></div>`;
+}
+ $("#musicGrid").innerHTML=CARDS.map(cardHTML).join("");
+ $("#madeGrid").innerHTML=MADE.map(cardHTML).join("");
+ $("#podGrid").innerHTML=PODS.map(cardHTML).join("");
+ $("#libList").innerHTML=LIB.map(l=>`
+  <li class="lib-item" data-title="${l.t}" data-artist="Spotify" data-g="${l.g}" data-dur="200">
+    <div class="lib-art ${l.g}">${l.like?heartSvg:""}</div>
+    <div class="lib-info"><div class="l-name">${l.t}${l.pin?pinSvg:""}</div><div class="l-sub">${l.s}</div></div>
+  </li>`).join("");
+
+/* greeting */
+const h=new Date().getHours();
+ $("#greeting").textContent=h<12?"Good morning":h<18?"Good afternoon":"Good evening";
+
+/* ================= PLAYER LOGIC ================= */
+let cur=TRACKS[0], curIdx=0, playing=false, pos=0, timer=null, shuffle=false, lastVol=.7, vol=.7;
+const fmt=s=>Math.floor(s/60)+":"+String(Math.floor(s%60)).padStart(2,"0");
+
+function renderTrack(){
+  $("#plTitle").textContent=cur.t;
+  $("#plArtist").textContent=cur.a;
+  $("#plArt").className="pl-art "+cur.g;
+  $("#totTime").textContent=fmt(cur.d);
+  updateSeek();
+  markPlaying();
+}
+function updateSeek(){
+  const pct=Math.min(pos/cur.d*100,100);
+  $("#seekFill").style.width=pct+"%";
+  $("#curTime").textContent=fmt(pos);
+}
+function markPlaying(){
+  $$(".card").forEach(c=>c.classList.toggle("is-playing",c.dataset.title===cur.t));
+}
+function play(){
+  playing=true; document.body.classList.add("playing");
+  $("#playIcon").style.display="none"; $("#pauseIcon").style.display="block";
+  $("#playBtn").title="Pause";
+  if(!timer) timer=setInterval(tick,500);
+}
+function pause(){
+  playing=false; document.body.classList.remove("playing");
+  $("#playIcon").style.display="block"; $("#pauseIcon").style.display="none";
+  $("#playBtn").title="Play";
+}
+function tick(){
+  pos+=.5;
+  if(pos>=cur.d){ next(); return; }
+  updateSeek();
+}
+function setTrack(i){
+  curIdx=(i+TRACKS.length)%TRACKS.length; cur=TRACKS[curIdx]; pos=0; renderTrack();
+}
+function next(){
+  setTrack(shuffle?Math.floor(Math.random()*TRACKS.length):curIdx+1);
+}
+function prev(){
+  if(pos>3){ pos=0; updateSeek(); } else setTrack(curIdx-1);
+}
+function loadCustom(el){
+  cur={t:el.dataset.title,a:el.dataset.artist||"Spotify",d:+el.dataset.dur||200,g:el.dataset.g};
+  curIdx=-1; pos=0; renderTrack(); play();
+}
+ $("#playBtn").onclick=()=>playing?pause():play();
+ $("#nextBtn").onclick=()=>{next(); if(!playing) play();};
+ $("#prevBtn").onclick=prev;
+ $("#shuffleBtn").onclick=e=>{shuffle=!shuffle;e.currentTarget.classList.toggle("on",shuffle);};
+ $("#repeatBtn").onclick=e=>e.currentTarget.classList.toggle("on");
+
+/* click any card / library item -> load into player */
+ $$(".card").forEach(c=>c.addEventListener("click",()=>loadCustom(c)));
+ $$(".lib-item").forEach(l=>l.addEventListener("click",()=>loadCustom(l)));
+ $$(".card-play").forEach(b=>b.addEventListener("click",e=>{e.stopPropagation();b.closest(".card").click();}));
+
+/* seek bar */
+function bindBar(barId,set){
+  const bar=$(barId);
+  bar.addEventListener("click",e=>{
+    const r=bar.getBoundingClientRect();
+    set(Math.max(0,Math.min(1,(e.clientX-r.left)/r.width)));
+  });
+}
+bindBar("#seekBar",p=>{pos=p*cur.d;updateSeek();});
+function setVolume(v){
+  vol=Math.max(0,Math.min(1,v));
+  $("#volFill").style.width=vol*100+"%";
+  $("#volOn").style.display=vol===0?"none":"block";
+  $("#volOff").style.display=vol===0?"block":"none";
+}
+bindBar("#volBar",setVolume);
+setVolume(.7);
+ $("#volBtn").onclick=()=>{ if(vol>0){lastVol=vol;setVolume(0);} else setVolume(lastVol||.7); };
+
+/* like buttons */
+ $("#likeBtn").onclick=e=>e.currentTarget.classList.toggle("liked");
+ $$(".card-art").forEach(a=>{
+  a.addEventListener("dblclick",()=>$("#likeBtn").classList.toggle("liked"));
+});
+
+/* filter chips */
+ $$("#filterChips .chip").forEach(ch=>ch.onclick=()=>{
+  $$("#filterChips .chip").forEach(c=>c.classList.remove("active"));
+  ch.classList.add("active");
+  const f=ch.dataset.filter;
+  $("#secMusic").style.display=(f==="all"||f==="music")?"":"none";
+  $("#secMade").style.display=(f==="all"||f==="music")?"":"none";
+  $("#secPods").style.display=(f==="all"||f==="podcast")?"":"none";
+});
+
+/* search */
+ $("#globalSearch").addEventListener("input",e=>{
+  const q=e.target.value.toLowerCase().trim();
+  $$(".card").forEach(c=>c.style.display=c.querySelector(".card-name").textContent.toLowerCase().includes(q)?"":"none");
+  $$(".lib-item").forEach(l=>l.style.display=l.dataset.title.toLowerCase().includes(q)?"":"none");
+});
+
+/* library filter chips (visual only) */
+ $$(".fchip").forEach(f=>f.onclick=()=>{ $$(".fchip").forEach(x=>x.classList.remove("active")); f.classList.add("active"); });
+
+/* keyboard: space = play/pause */
+document.addEventListener("keydown",e=>{
+  if(e.code==="Space"&&e.target.tagName!=="INPUT"){e.preventDefault();playing?pause():play();}
+});
+
+renderTrack();
+</script>
+</body>
+</html>

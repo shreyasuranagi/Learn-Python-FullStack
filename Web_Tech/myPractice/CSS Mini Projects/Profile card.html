@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body,html{
+            height:100vh;
+            width:100vw;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+        }
+        h1{
+            /* text-align:center; */
+            margin-right:20px;
+        }
+        .outercard{
+            height: 300px;
+            width: 400px;
+            background-color: #d7c9c9;
+            border-radius: 10px;
+            /* box-shadow: 0 0 20px rgba(0,0,0,0.2); */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            row-gap: 10px;
+        }
+        .row{
+            border: 1px solid black;
+            height: 100%;
+            width: 100%;
+        }
+        a{
+            text-decoration: none;
+            color: black;
+            cursor: pointer;
+        }
+        #row3{
+            height: 30%;
+            display: flex;
+            column-gap: 20px;
+            justify-content: center;
+            align-items: center;
+            font-size: 25px;
+        }
+        button{
+            font-size: 20px;
+            border:none;
+            background-color: #5e2525;
+            cursor: pointer;
+            color:white;
+            padding:4px 10px;
+            border-radius: 15px;
+        }
+        .test{
+            height: 150%;
+            width: 150%;
+            
+        }
+        ul{
+            list-style:none;
+        }
+        
+        #row2 ul{
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            column-gap:40px;
+            margin-top: 60px;
+        }
+        #row1{
+            display:flex;
+            flex-direction:column;
+            /* justify-content:center;
+            align-items:center; */
+        }
+        .icon,.summary{ border:1px solid black; height:100%; width:100%; }
+    </style>
+</head>
+<body>
+    <h1>Profile Card</h1>
+    <br>
+    <div class="outercard">
+        <div class="row" id="row1">
+            <div class="icon">
+
+            </div>
+            <div class="summary">
+
+            </div>
+        </div>
+        <div class="row" id="row2">
+            <ul>
+                <li>Place: Bengaluru</li>
+                <li>YoE: 3 years</li>
+            </ul>
+        </div>
+        <div class="row" id="row3">
+            <button>Follow Me</button>
+            <a href="https://www.linkedin.com/">LinkedIn</a>
+        </div>
+    </div>
+</body>
+</body>
+</html>

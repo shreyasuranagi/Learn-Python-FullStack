@@ -1,0 +1,1404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CSS Transform & Transition Exercises</title>
+
+    <style>
+
+        /* ================================================== */
+        /* BASIC PAGE STYLING */
+        /* ================================================== */
+
+        body{
+            font-family: Arial, sans-serif;
+            margin: 40px;
+        }
+
+        .exercise{
+            border: 2px solid black;
+            padding: 20px;
+            margin-bottom: 40px;
+        }
+
+        .preview{
+            border: 2px dashed gray;
+            width: 300px;
+            height: 180px;
+            margin: 20px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .box{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            color: white;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+
+        /* ================================================== */
+        /* ANSWER HIDING */
+        /* ================================================== */
+
+        .answer{
+            display: none;
+            margin-top: 20px;
+            background-color: #f4f4f4;
+            padding: 15px;
+            border: 1px solid gray;
+        }
+
+        .show-answer{
+            display: inline-block;
+            background-color: black;
+            color: white;
+            padding: 8px 12px;
+            cursor: pointer;
+        }
+
+        .show-answer:hover + .answer{
+            display: block;
+        }
+
+
+        /* ================================================== */
+        /* EXERCISE 1 */
+        /* ROTATE */
+        /* ================================================== */
+
+        .ex1{
+            transition: transform 1s;
+        }
+
+        .ex1:hover{
+            transform: rotate(45deg);
+        }
+
+
+        /* ================================================== */
+        /* EXERCISE 2 */
+        /* TRANSLATE X */
+        /* ================================================== */
+
+        .ex2{
+            transition: transform 1s;
+        }
+
+        .ex2:hover{
+            transform: translateX(100px);
+        }
+
+
+        /* ================================================== */
+        /* EXERCISE 3 */
+        /* TRANSLATE Y */
+        /* ================================================== */
+
+        .ex3{
+            transition: transform 1s;
+        }
+
+        .ex3:hover{
+            transform: translateY(50px);
+        }
+
+
+        /* ================================================== */
+        /* EXERCISE 4 */
+        /* SCALE */
+        /* ================================================== */
+
+        .ex4{
+            transition: transform 1s;
+        }
+
+        .ex4:hover{
+            transform: scale(1.5);
+        }
+
+
+        /* ================================================== */
+        /* EXERCISE 5 */
+        /* SCALE X */
+        /* ================================================== */
+
+        .ex5{
+            transition: transform 1s;
+        }
+
+        .ex5:hover{
+            transform: scaleX(1.5);
+        }
+
+
+        /* ================================================== */
+        /* EXERCISE 6 */
+        /* SCALE Y */
+        /* ================================================== */
+
+        .ex6{
+            transition: transform 1s;
+        }
+
+        .ex6:hover{
+            transform: scaleY(1.5);
+        }
+
+
+        /* ================================================== */
+        /* EXERCISE 7 */
+        /* SKEW */
+        /* ================================================== */
+
+        .ex7{
+            transition: transform 1s;
+        }
+
+        .ex7:hover{
+            transform: skew(20deg, 10deg);
+        }
+
+
+        /* ================================================== */
+        /* EXERCISE 8 */
+        /* ROTATE + SCALE */
+        /* ================================================== */
+
+        .ex8{
+            transition: transform 1s;
+        }
+
+        .ex8:hover{
+            transform: rotate(45deg) scale(1.2);
+        }
+
+
+        /* ================================================== */
+        /* EXERCISE 9 */
+        /* TRANSLATE + ROTATE */
+        /* ================================================== */
+
+        .ex9{
+            transition: transform 1s;
+        }
+
+        .ex9:hover{
+            transform: translateX(100px) rotate(45deg);
+        }
+
+
+        /* ================================================== */
+        /* EXERCISE 10 */
+        /* MULTIPLE TRANSFORMS */
+        /* ================================================== */
+
+        .ex10{
+            transition: transform 1s ease;
+        }
+
+        .ex10:hover{
+            transform:
+                translate(50px, 30px)
+                rotate(30deg)
+                scale(1.2);
+        }
+
+
+        /* ================================================== */
+        /* EXERCISE 11 */
+        /* BACKGROUND + TRANSFORM */
+        /* ================================================== */
+
+        .ex11{
+            transition:
+                transform 1s,
+                background-color 1s;
+        }
+
+        .ex11:hover{
+            transform: rotate(45deg);
+            background-color: blue;
+        }
+
+
+        /* ================================================== */
+        /* EXERCISE 12 */
+        /* WIDTH + TRANSITION */
+        /* ================================================== */
+
+        .ex12{
+            transition: width 1s;
+        }
+
+        .ex12:hover{
+            width: 200px;
+        }
+
+
+        /* ================================================== */
+        /* EXERCISE 13 */
+        /* WIDTH + COLOR + TRANSFORM */
+        /* ================================================== */
+
+        .ex13{
+            transition:
+                width 1s,
+                background-color 1s,
+                transform 1s;
+        }
+
+        .ex13:hover{
+            width: 180px;
+            background-color: green;
+            transform: rotate(20deg);
+        }
+
+
+        /* ================================================== */
+        /* EXERCISE 14 */
+        /* OPACITY + SCALE */
+        /* ================================================== */
+
+        .ex14{
+            transition:
+                opacity 1s,
+                transform 1s;
+        }
+
+        .ex14:hover{
+            opacity: 0.5;
+            transform: scale(1.2);
+        }
+
+
+        /* ================================================== */
+        /* EXERCISE 15 */
+        /* TRANSITION DELAY */
+        /* ================================================== */
+
+        .ex15{
+            transition:
+                transform 1s ease 1s;
+        }
+
+        .ex15:hover{
+            transform: translateX(100px);
+        }
+
+
+        /* ================================================== */
+        /* EXERCISE 16 */
+        /* EASE-IN */
+        /* ================================================== */
+
+        .ex16{
+            transition:
+                transform 2s ease-in;
+        }
+
+        .ex16:hover{
+            transform: translateX(150px);
+        }
+
+
+        /* ================================================== */
+        /* EXERCISE 17 */
+        /* EASE-OUT */
+        /* ================================================== */
+
+        .ex17{
+            transition:
+                transform 2s ease-out;
+        }
+
+        .ex17:hover{
+            transform: translateX(150px);
+        }
+
+
+        /* ================================================== */
+        /* EXERCISE 18 */
+        /* EASE-IN-OUT */
+        /* ================================================== */
+
+        .ex18{
+            transition:
+                transform 2s ease-in-out;
+        }
+
+        .ex18:hover{
+            transform: translateX(150px);
+        }
+
+
+        /* ================================================== */
+        /* EXERCISE 19 */
+        /* TRANSFORM ORIGIN */
+        /* ================================================== */
+
+        .ex19{
+            transform-origin: top left;
+
+            transition:
+                transform 1s;
+        }
+
+        .ex19:hover{
+            transform: rotate(45deg);
+        }
+
+
+        /* ================================================== */
+        /* EXERCISE 20 */
+        /* CHALLENGE */
+        /* ================================================== */
+
+        .ex20{
+            transition:
+                transform 1s ease,
+                background-color 1s ease,
+                border-radius 1s ease;
+        }
+
+        .ex20:hover{
+            transform:
+                translateX(80px)
+                rotate(45deg)
+                scale(1.2);
+
+            background-color: purple;
+
+            border-radius: 50%;
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+    <h1>CSS Transform + Transition Exercise Sheet</h1>
+
+    <p>
+        Try to solve each exercise yourself before
+        looking at the answer.
+    </p>
+
+    <p>
+        Hover over <b>Show Answer</b> to reveal the solution.
+    </p>
+
+
+    <!-- ================================================== -->
+    <!-- EXERCISE 1 -->
+    <!-- ================================================== -->
+
+    <div class="exercise">
+
+        <h2>Exercise 1 — Rotate</h2>
+
+        <p>
+            Make the box rotate 45 degrees when you hover over it.
+        </p>
+
+        <p>
+            Use a transition so the rotation happens smoothly
+            over 1 second.
+        </p>
+
+        <div class="preview">
+
+            <div class="box ex1">
+                Box
+            </div>
+
+        </div>
+
+        <span class="show-answer">
+            Hover to Show Answer
+        </span>
+
+        <div class="answer">
+
+            <pre>
+.ex1{
+    transition: transform 1s;
+}
+
+.ex1:hover{
+    transform: rotate(45deg);
+}
+            </pre>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================================================== -->
+    <!-- EXERCISE 2 -->
+    <!-- ================================================== -->
+
+    <div class="exercise">
+
+        <h2>Exercise 2 — Translate X</h2>
+
+        <p>
+            Move the box 100px to the right when hovered.
+        </p>
+
+        <p>
+            The movement should take 1 second.
+        </p>
+
+        <div class="preview">
+
+            <div class="box ex2">
+                Box
+            </div>
+
+        </div>
+
+        <span class="show-answer">
+            Hover to Show Answer
+        </span>
+
+        <div class="answer">
+
+            <pre>
+.ex2{
+    transition: transform 1s;
+}
+
+.ex2:hover{
+    transform: translateX(100px);
+}
+            </pre>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================================================== -->
+    <!-- EXERCISE 3 -->
+    <!-- ================================================== -->
+
+    <div class="exercise">
+
+        <h2>Exercise 3 — Translate Y</h2>
+
+        <p>
+            Move the box 50px down when hovered.
+        </p>
+
+        <div class="preview">
+
+            <div class="box ex3">
+                Box
+            </div>
+
+        </div>
+
+        <span class="show-answer">
+            Hover to Show Answer
+        </span>
+
+        <div class="answer">
+
+            <pre>
+.ex3{
+    transition: transform 1s;
+}
+
+.ex3:hover{
+    transform: translateY(50px);
+}
+            </pre>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================================================== -->
+    <!-- EXERCISE 4 -->
+    <!-- ================================================== -->
+
+    <div class="exercise">
+
+        <h2>Exercise 4 — Scale</h2>
+
+        <p>
+            Make the box 1.5 times larger when hovered.
+        </p>
+
+        <div class="preview">
+
+            <div class="box ex4">
+                Box
+            </div>
+
+        </div>
+
+        <span class="show-answer">
+            Hover to Show Answer
+        </span>
+
+        <div class="answer">
+
+            <pre>
+.ex4{
+    transition: transform 1s;
+}
+
+.ex4:hover{
+    transform: scale(1.5);
+}
+            </pre>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================================================== -->
+    <!-- EXERCISE 5 -->
+    <!-- ================================================== -->
+
+    <div class="exercise">
+
+        <h2>Exercise 5 — Scale X</h2>
+
+        <p>
+            Increase only the width of the box by 1.5 times.
+        </p>
+
+        <div class="preview">
+
+            <div class="box ex5">
+                Box
+            </div>
+
+        </div>
+
+        <span class="show-answer">
+            Hover to Show Answer
+        </span>
+
+        <div class="answer">
+
+            <pre>
+.ex5{
+    transition: transform 1s;
+}
+
+.ex5:hover{
+    transform: scaleX(1.5);
+}
+            </pre>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================================================== -->
+    <!-- EXERCISE 6 -->
+    <!-- ================================================== -->
+
+    <div class="exercise">
+
+        <h2>Exercise 6 — Scale Y</h2>
+
+        <p>
+            Increase only the height of the box by 1.5 times.
+        </p>
+
+        <div class="preview">
+
+            <div class="box ex6">
+                Box
+            </div>
+
+        </div>
+
+        <span class="show-answer">
+            Hover to Show Answer
+        </span>
+
+        <div class="answer">
+
+            <pre>
+.ex6{
+    transition: transform 1s;
+}
+
+.ex6:hover{
+    transform: scaleY(1.5);
+}
+            </pre>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================================================== -->
+    <!-- EXERCISE 7 -->
+    <!-- ================================================== -->
+
+    <div class="exercise">
+
+        <h2>Exercise 7 — Skew</h2>
+
+        <p>
+            Skew the box 20 degrees on X
+            and 10 degrees on Y.
+        </p>
+
+        <div class="preview">
+
+            <div class="box ex7">
+                Box
+            </div>
+
+        </div>
+
+        <span class="show-answer">
+            Hover to Show Answer
+        </span>
+
+        <div class="answer">
+
+            <pre>
+.ex7{
+    transition: transform 1s;
+}
+
+.ex7:hover{
+    transform: skew(20deg, 10deg);
+}
+            </pre>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================================================== -->
+    <!-- EXERCISE 8 -->
+    <!-- ================================================== -->
+
+    <div class="exercise">
+
+        <h2>Exercise 8 — Rotate + Scale</h2>
+
+        <p>
+            When hovered, rotate the box 45 degrees
+            and make it 1.2 times larger.
+        </p>
+
+        <div class="preview">
+
+            <div class="box ex8">
+                Box
+            </div>
+
+        </div>
+
+        <span class="show-answer">
+            Hover to Show Answer
+        </span>
+
+        <div class="answer">
+
+            <pre>
+.ex8{
+    transition: transform 1s;
+}
+
+.ex8:hover{
+    transform: rotate(45deg) scale(1.2);
+}
+            </pre>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================================================== -->
+    <!-- EXERCISE 9 -->
+    <!-- ================================================== -->
+
+    <div class="exercise">
+
+        <h2>Exercise 9 — Translate + Rotate</h2>
+
+        <p>
+            Move the box 100px to the right
+            and rotate it 45 degrees.
+        </p>
+
+        <div class="preview">
+
+            <div class="box ex9">
+                Box
+            </div>
+
+        </div>
+
+        <span class="show-answer">
+            Hover to Show Answer
+        </span>
+
+        <div class="answer">
+
+            <pre>
+.ex9{
+    transition: transform 1s;
+}
+
+.ex9:hover{
+    transform:
+        translateX(100px)
+        rotate(45deg);
+}
+            </pre>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================================================== -->
+    <!-- EXERCISE 10 -->
+    <!-- ================================================== -->
+
+    <div class="exercise">
+
+        <h2>Exercise 10 — Multiple Transforms</h2>
+
+        <p>
+            On hover:
+        </p>
+
+        <ul>
+            <li>Move the box 50px right</li>
+            <li>Move it 30px down</li>
+            <li>Rotate it 30 degrees</li>
+            <li>Scale it to 1.2</li>
+        </ul>
+
+        <div class="preview">
+
+            <div class="box ex10">
+                Box
+            </div>
+
+        </div>
+
+        <span class="show-answer">
+            Hover to Show Answer
+        </span>
+
+        <div class="answer">
+
+            <pre>
+.ex10{
+    transition: transform 1s ease;
+}
+
+.ex10:hover{
+    transform:
+        translate(50px, 30px)
+        rotate(30deg)
+        scale(1.2);
+}
+            </pre>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================================================== -->
+    <!-- EXERCISE 11 -->
+    <!-- ================================================== -->
+
+    <div class="exercise">
+
+        <h2>Exercise 11 — Transform + Background</h2>
+
+        <p>
+            On hover:
+        </p>
+
+        <ul>
+            <li>Rotate the box 45 degrees</li>
+            <li>Change the background to blue</li>
+            <li>Make both changes take 1 second</li>
+        </ul>
+
+        <div class="preview">
+
+            <div class="box ex11">
+                Box
+            </div>
+
+        </div>
+
+        <span class="show-answer">
+            Hover to Show Answer
+        </span>
+
+        <div class="answer">
+
+            <pre>
+.ex11{
+    transition:
+        transform 1s,
+        background-color 1s;
+}
+
+.ex11:hover{
+    transform: rotate(45deg);
+    background-color: blue;
+}
+            </pre>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================================================== -->
+    <!-- EXERCISE 12 -->
+    <!-- ================================================== -->
+
+    <div class="exercise">
+
+        <h2>Exercise 12 — Width Transition</h2>
+
+        <p>
+            Make the width smoothly increase from
+            100px to 200px.
+        </p>
+
+        <div class="preview">
+
+            <div class="box ex12">
+                Box
+            </div>
+
+        </div>
+
+        <span class="show-answer">
+            Hover to Show Answer
+        </span>
+
+        <div class="answer">
+
+            <pre>
+.ex12{
+    transition: width 1s;
+}
+
+.ex12:hover{
+    width: 200px;
+}
+            </pre>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================================================== -->
+    <!-- EXERCISE 13 -->
+    <!-- ================================================== -->
+
+    <div class="exercise">
+
+        <h2>Exercise 13 — Multiple Properties</h2>
+
+        <p>
+            On hover:
+        </p>
+
+        <ul>
+            <li>Increase width to 180px</li>
+            <li>Change background to green</li>
+            <li>Rotate 20 degrees</li>
+        </ul>
+
+        <div class="preview">
+
+            <div class="box ex13">
+                Box
+            </div>
+
+        </div>
+
+        <span class="show-answer">
+            Hover to Show Answer
+        </span>
+
+        <div class="answer">
+
+            <pre>
+.ex13{
+    transition:
+        width 1s,
+        background-color 1s,
+        transform 1s;
+}
+
+.ex13:hover{
+    width: 180px;
+    background-color: green;
+    transform: rotate(20deg);
+}
+            </pre>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================================================== -->
+    <!-- EXERCISE 14 -->
+    <!-- ================================================== -->
+
+    <div class="exercise">
+
+        <h2>Exercise 14 — Opacity + Scale</h2>
+
+        <p>
+            On hover:
+        </p>
+
+        <ul>
+            <li>Make opacity 0.5</li>
+            <li>Scale the box to 1.2</li>
+        </ul>
+
+        <div class="preview">
+
+            <div class="box ex14">
+                Box
+            </div>
+
+        </div>
+
+        <span class="show-answer">
+            Hover to Show Answer
+        </span>
+
+        <div class="answer">
+
+            <pre>
+.ex14{
+    transition:
+        opacity 1s,
+        transform 1s;
+}
+
+.ex14:hover{
+    opacity: 0.5;
+    transform: scale(1.2);
+}
+            </pre>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================================================== -->
+    <!-- EXERCISE 15 -->
+    <!-- ================================================== -->
+
+    <div class="exercise">
+
+        <h2>Exercise 15 — Transition Delay</h2>
+
+        <p>
+            Make the box move 100px to the right,
+            but wait 1 second before the movement starts.
+        </p>
+
+        <div class="preview">
+
+            <div class="box ex15">
+                Box
+            </div>
+
+        </div>
+
+        <span class="show-answer">
+            Hover to Show Answer
+        </span>
+
+        <div class="answer">
+
+            <pre>
+.ex15{
+    transition:
+        transform 1s ease 1s;
+}
+
+.ex15:hover{
+    transform: translateX(100px);
+}
+            </pre>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================================================== -->
+    <!-- EXERCISE 16 -->
+    <!-- ================================================== -->
+
+    <div class="exercise">
+
+        <h2>Exercise 16 — Ease In</h2>
+
+        <p>
+            Move the box 150px to the right
+            using ease-in over 2 seconds.
+        </p>
+
+        <div class="preview">
+
+            <div class="box ex16">
+                Box
+            </div>
+
+        </div>
+
+        <span class="show-answer">
+            Hover to Show Answer
+        </span>
+
+        <div class="answer">
+
+            <pre>
+.ex16{
+    transition:
+        transform 2s ease-in;
+}
+
+.ex16:hover{
+    transform: translateX(150px);
+}
+            </pre>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================================================== -->
+    <!-- EXERCISE 17 -->
+    <!-- ================================================== -->
+
+    <div class="exercise">
+
+        <h2>Exercise 17 — Ease Out</h2>
+
+        <p>
+            Move the box 150px to the right
+            using ease-out over 2 seconds.
+        </p>
+
+        <div class="preview">
+
+            <div class="box ex17">
+                Box
+            </div>
+
+        </div>
+
+        <span class="show-answer">
+            Hover to Show Answer
+        </span>
+
+        <div class="answer">
+
+            <pre>
+.ex17{
+    transition:
+        transform 2s ease-out;
+}
+
+.ex17:hover{
+    transform: translateX(150px);
+}
+            </pre>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================================================== -->
+    <!-- EXERCISE 18 -->
+    <!-- ================================================== -->
+
+    <div class="exercise">
+
+        <h2>Exercise 18 — Ease In Out</h2>
+
+        <p>
+            Move the box 150px to the right
+            using ease-in-out over 2 seconds.
+        </p>
+
+        <div class="preview">
+
+            <div class="box ex18">
+                Box
+            </div>
+
+        </div>
+
+        <span class="show-answer">
+            Hover to Show Answer
+        </span>
+
+        <div class="answer">
+
+            <pre>
+.ex18{
+    transition:
+        transform 2s ease-in-out;
+}
+
+.ex18:hover{
+    transform: translateX(150px);
+}
+            </pre>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================================================== -->
+    <!-- EXERCISE 19 -->
+    <!-- ================================================== -->
+
+    <div class="exercise">
+
+        <h2>Exercise 19 — Transform Origin</h2>
+
+        <p>
+            Set the transform origin to the top-left
+            and rotate the box 45 degrees.
+        </p>
+
+        <div class="preview">
+
+            <div class="box ex19">
+                Box
+            </div>
+
+        </div>
+
+        <span class="show-answer">
+            Hover to Show Answer
+        </span>
+
+        <div class="answer">
+
+            <pre>
+.ex19{
+    transform-origin: top left;
+
+    transition:
+        transform 1s;
+}
+
+.ex19:hover{
+    transform: rotate(45deg);
+}
+            </pre>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================================================== -->
+    <!-- EXERCISE 20 -->
+    <!-- ================================================== -->
+
+    <div class="exercise">
+
+        <h2>Exercise 20 — Final Challenge</h2>
+
+        <p>
+            Create a hover effect where the box:
+        </p>
+
+        <ul>
+            <li>Moves 80px to the right</li>
+            <li>Rotates 45 degrees</li>
+            <li>Scales to 1.2</li>
+            <li>Changes background to purple</li>
+            <li>Becomes a circle</li>
+            <li>All changes happen smoothly over 1 second</li>
+        </ul>
+
+        <div class="preview">
+
+            <div class="box ex20">
+                Box
+            </div>
+
+        </div>
+
+        <span class="show-answer">
+            Hover to Show Answer
+        </span>
+
+        <div class="answer">
+
+            <pre>
+.ex20{
+    transition:
+        transform 1s ease,
+        background-color 1s ease,
+        border-radius 1s ease;
+}
+
+.ex20:hover{
+    transform:
+        translateX(80px)
+        rotate(45deg)
+        scale(1.2);
+
+    background-color: purple;
+
+    border-radius: 50%;
+}
+            </pre>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================================================== -->
+    <!-- QUICK REVISION -->
+    <!-- ================================================== -->
+
+    <h2>Quick Revision</h2>
+
+    <pre>
+
+TRANSFORM
+--------------------------------------------------
+
+translate(x, y)
+    Move X and Y
+
+translateX(x)
+    Move horizontally
+
+translateY(y)
+    Move vertically
+
+scale(x)
+    Increase/decrease size
+
+scaleX(x)
+    Change width
+
+scaleY(y)
+    Change height
+
+rotate(angle)
+    Rotate
+
+skew(x, y)
+    Tilt
+
+transform-origin
+    Change transformation point
+
+
+TRANSITION
+--------------------------------------------------
+
+transition-property
+    Which property changes
+
+transition-duration
+    How long the change takes
+
+transition-delay
+    How long to wait before changing
+
+transition-timing-function
+    How the speed changes
+
+linear
+    Constant speed
+
+ease
+    Slow → fast → slow
+
+ease-in
+    Slow start
+
+ease-out
+    Slow end
+
+ease-in-out
+    Slow start + slow end
+
+
+COMMON PATTERN
+--------------------------------------------------
+
+.box{
+    transition: transform 1s;
+}
+
+.box:hover{
+    transform: rotate(45deg);
+}
+
+
+MULTIPLE PROPERTIES
+--------------------------------------------------
+
+.box{
+    transition:
+        transform 1s,
+        background-color 1s;
+}
+
+.box:hover{
+    transform: scale(1.2);
+    background-color: blue;
+}
+
+    </pre>
+
+</body>
+</html>

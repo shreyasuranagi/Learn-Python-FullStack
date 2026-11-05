@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin:0px;
+            padding:0px;
+            box-sizing:border-box;
+            position:relative;
+        }
+        .inner{
+            border:2px solid black;
+            width:300px;
+            height:300px;
+            /* margin:150px 150px; */
+            position: absolute;
+            left:150px;
+            top:150px;
+        }
+        .ibox,.obox{
+            border:2px solid green;
+            width:50px;
+            height:50px;
+            
+        }
+        .outer{
+            border:2px solid blue;
+            width:600px;
+            height:600px;
+            margin:150px;
+            
+        }
+
+        #ibox1{
+            position: relative;
+            left:125px;
+        }
+        #ibox3{
+            position: absolute;
+            bottom:0px;
+            left:125px;
+            
+        }
+        #ibox2{
+            position: absolute;
+            top:125px;
+        }
+        #ibox4{
+            position: absolute;
+            right:0px;
+            top:125px;
+        }
+        #ibox5{
+            position: absolute;
+            right:125px;
+            top:125px;
+        }
+
+        .ibox6{
+            position: absolute;
+
+        }
+        #obox7{
+            position: absolute;
+            right:0px;
+            top:0px
+        }
+        #obox8{
+            position: absolute;
+            bottom:0px;
+            left:0px;
+        }
+        #obox9{
+            position: absolute;
+            bottom:0px;
+            right:0px;
+        }
+    </style>
+</head>
+<body>
+    <div class="outer">
+
+        <div class="obox" id="obox6">6</div>
+        <div class="obox" id="obox7">7</div>
+        <div class="obox" id="obox8">8</div>
+        <div class="obox" id="obox9">9</div>
+
+        <div class="inner">
+            <div class="ibox" id="ibox1">1</div>
+            <div class="ibox" id="ibox2">2</div>
+            <div class="ibox" id="ibox3">3</div>
+            <div class="ibox" id="ibox4">4</div>
+            <div class="ibox" id="ibox5">5</div>
+        </div>
+    </div>
+</body>
+</html>

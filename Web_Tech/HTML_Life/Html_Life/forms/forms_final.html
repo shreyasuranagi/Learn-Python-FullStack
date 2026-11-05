@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <!-- 
+    ! Notes:
+
+    Tags:
+    - form
+    - label (for)
+    - input (id [ref], name [variablename] , value [defaultvalue], type [typeofdata])
+    - select
+    - option
+    - optgroup
+    - datalist
+    - fieldset
+    - legend
+    - textarea
+    - button (type [submit, reset, button])
+    -->
+
+
+    <form novalidate>
+        <fieldset>
+            <legend>Personal Details</legend>
+    <label for="user_name">Name:</label>
+    <input id="user_name" type="text" name="userName" value="shreya"> <br> <br>
+
+    <label for="user_email">Email:</label>
+    <input id="user_email" type="email" name="user_email" autocomplete="off"> <br> <br>
+
+    <label for="user_mobile_no">Mobile No:</label>
+    <input id="user_mobile_no" type="tel" name="userMobileNo"> <br> <br>
+
+    <label for="user_age">Age:</label>
+    <input type="number" id="user_age" name="userAge"> <br> <br>
+    </fieldset>
+
+    <fieldset>
+        <legend>Secret Info</legend>
+    <label>Gender: </label>
+    <input type="radio" name="userGender" value="male">Male
+    <input type="radio" name="userGender" value="female">Female
+    <input type="radio" name="userGender" value="others">Others <br> <br>
+    
+    <label for="">Skills:</label>
+    <input type="checkbox" name="userSkills" value="html"> HTML
+    <input type="checkbox" name="userSkills" value="css"> CSS
+    <input type="checkbox" name="userSkills" value="js"> JavaScript
+    <input type="checkbox" name="userSkills" value="reactjs"> React JS <br> <br>
+
+    <label for="">Wife:</label>
+    <select name="wife" id="" multiple>
+        <option>Smrithi</option>
+        <option>Thanvi</option>
+        <option>Yuktha</option>
+        <option>Mrunal</option>
+        <option>sunny</option>
+        <option>sam</option>
+    </select> <br> <br>
+
+    <label for="">Skills:</label>
+    <select name="" id="">
+        <option></option>
+        <optgroup label="Frontend">
+            <option>HTML</option>
+            <option>CSS</option>
+            <option>JavaScript</option>
+            <option>React JS</option>
+            <option>TypeScript</option>
+        </optgroup>
+        <optgroup label="Database">
+            <option>SQL</option>
+            <option>PL SQL</option>
+            <option>My SQL</option>
+            <option>MongoDB</option>
+        </optgroup>
+        <optgroup label="Backend">
+            <option>Java</option>
+            <option>Python</option>
+            <option>Node JS</option>
+            <option>Express JS</option>
+        </optgroup>
+    </select> <br> <br>
+
+    <label for="">Crush:</label>
+    <input list="crushlist">
+    <datalist id="crushlist">
+        <option>Smrithi</option>
+        <option>Thanvi</option>
+        <option>Trisha</option>
+        <option>Anusha</option>
+        <option>Yuktha</option>
+        <option>Mrunal</option>
+        <option>sunny</option>
+        <option>sam</option>
+    </datalist> <br> <br>
+    </fieldset>
+
+    <label for="">Review:</label>
+    <textarea name="" id="" rows="5" cols="30"></textarea> <br> <br>
+
+    <label for="">Feedback:</label>
+    <textarea name="" id="" rows="3" cols="50"></textarea> <br> <br>
+
+    <label for="">Comments:</label>
+    <textarea name="" id="" rows="10" cols="20"></textarea>  <br> <br>
+
+
+    Company Name: <input type="text" name="company" value="Tata Consultancy Services" readonly> <br> <br>
+    Job Role : <input type="text" name="role" value="developer" disabled> <br> <br>
+
+    <button type="submit">submit</button>
+    <button type="reset">reset</button>
+    <button type="button">button</button>
+
+    </form>
+
+    <!-- 
+    submit (d): It will submit the data and refresh the page
+    reset: It will clear the data and it will not refresh the page.
+    button: It will do nothing.
+    -->
+</body>
+</html>

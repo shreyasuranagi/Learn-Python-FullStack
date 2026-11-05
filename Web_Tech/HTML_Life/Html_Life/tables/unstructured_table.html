@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Unstructured table </h1>
+    <p>Without deleting 6</p>
+    <table border="2" cellspacing="2" cellpadding="30">
+        <tr>
+            <td>1</td>
+            <td>2</td>
+            <td rowspan="2">3</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>5</td>
+            <td>6</td>
+        </tr>
+        <tr>
+            <td>7</td>
+            <td>8</td>
+            <td>9</td>
+        </tr>
+    </table>
+    <hr>
+    <h1>Unstructured table </h1>
+    <p>ROWSPAN After deleting 6</p>
+    <table border="2" cellspacing="2" cellpadding="30">
+        <tr>
+            <td>1</td>
+            <td>2</td>
+            <td rowspan="2">3</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>5</td>
+            <!-- <td>6</td> -->
+        </tr>
+        <tr>
+            <td>7</td>
+            <td>8</td>
+            <td>9</td>
+        </tr>
+    </table>
+
+    <hr>
+    <h1>Unstructured table </h1>
+    <p>COLSPAN before deleting 5</p>
+    <table border="2" cellspacing="2" cellpadding="30">
+        <tr>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+        </tr>
+        <tr>
+            <td colspan="2">4</td>
+            <td>5</td>
+            <td>6</td>
+        </tr>
+        <tr>
+            <td>7</td>
+            <td>8</td>
+            <td>9</td>
+        </tr>
+    </table>
+
+    <hr>
+    <h1>Unstructured table </h1>
+    <p>COLSPAN after deleting 5</p>
+    <table border="2" cellspacing="2" cellpadding="30">
+        <tr>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+        </tr>
+        <tr>
+            <td colspan="2">4</td>
+            <!-- <td>5</td> -->
+            <td>6</td>
+        </tr>
+        <tr>
+            <td>7</td>
+            <td>8</td>
+            <td>9</td>
+        </tr>
+    </table>
+
+    <hr>
+    <h1>Unstructured table </h1>
+    <p>TRIAL</p>
+    <table border="2" cellspacing="2" cellpadding="30" bgcolor="red">
+        <tr>
+            <td colspan="2" rowspan="2">1</td>
+            <!-- <td>2</td> -->
+            <td>3</td>
+        </tr>
+        <tr>
+            <!-- <td colspan="2">4</td> -->
+            <!-- <td>5</td> -->
+            <td>6</td>
+        </tr>
+        <tr>
+            <td>7</td>
+            <td>8</td>
+            <td>9</td>
+        </tr>
+    </table>
+</body>
+</html>

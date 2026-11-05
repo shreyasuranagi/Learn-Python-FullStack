@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: rgb(205, 141, 29);
+        }
+        .container{
+            border: 2px solid red;
+            height: 350px;
+            width:600px;
+
+            /* height:40%;
+            width:80%; */
+            display:flex;
+            flex-direction:row;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap:5px;
+            display: none;
+        }
+        
+        /* .box{
+            border:2px solid black;
+            width: 100px;
+            height: 100px;
+            
+        }
+        #green{
+            flex-basis: 50%;
+            
+        }
+        #red{
+            flex-basis: 20%;
+        }
+        #grey{
+            flex-basis:20%;
+        }
+        /* #grey{
+            align-self:50px;
+        } 
+        #orange{
+            flex-basis: 75%;
+        }
+        
+        #brown{
+            flex-basis: 25%;
+            align-self: flex-end;
+        }*/
+
+    .main{
+        border:2px solid black;
+        height: 350px;
+        width:600px;
+        display:flex;
+        flex-direction:row;
+        justify-content: space-between;
+        /* align-items: flex-end; */
+    }
+        .box{
+            border:2px solid black;
+            width: 100px;
+            height: 100px;
+        }
+        .lastrow{
+            border:2px solid red;
+            width: 100%;
+            height: 100px;
+            
+            display:flex;
+            flex-direction:row;
+            justify-content: space-between;
+            column-gap: 10px;
+            align-items: flex-end;
+        }
+        .upper{
+            border:2px solid blue;
+            width: 100%;
+            height: 250px;
+
+        }
+        .left{
+
+        }
+        #lime{
+            flex-basis: 25%;
+        }
+        #orange{
+            flex-basis: 75%;
+        }
+        #green{
+            flex-basis: 75%;
+        }
+    </style>
+</head>
+<body>
+    <!-- <div class="container">
+       
+        <div class="box" id="green"></div>
+        <div class="box" id="red"></div>
+        <div class="box" id="grey"></div>
+        
+        <div class="box" id="purple"></div>
+        <div class="box" id="yellow"></div>
+        <div class="box" id="pink"></div>
+        <div class="box" id="brown"></div>
+        <div class="box" id="lime"></div>
+        <div class="box" id="orange"></div>
+    </div> -->
+
+
+    <br><br>
+
+
+    <div class="main">
+
+        <div class="upper">
+            <div class="left">
+                <div class="row1">
+                    <div class="box" id="green"></div>
+                    <div class="box" id="red"></div>
+                </div>
+                <div class="row2">
+                    <div class="box" id="purple"></div>
+                    <div class="box" id="yellow"></div>
+                    <div class="box" id="purple"></div>
+                </div>
+            </div>
+            <div class="rightcol">
+                <div class="box" id="grey"></div>
+                <div class="box" id="brown"></div>
+            </div>
+        </div>
+        
+        <div class="lastrow">
+            <div class="box" id="lime">green</div>
+            <div class="box" id="orange">orange</div>
+        </div>
+
+
+
+    </div>
+
+</body>
+</html>

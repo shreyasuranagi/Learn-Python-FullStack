@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding:0;
+            box-sizing:border-box;
+        }
+        body{
+            height:100vh;
+            width:100vw;
+            display:flex;
+            justify-content:center;
+            align-content:center;
+        }
+        .mainbox{
+            width:500px;
+            height:500px;
+            /* border:2px solid blue; */
+        }
+        .childbox{
+            height: 200px;
+            width: 200px;
+            background-color:rgb(147, 147, 206);
+            /* border-radius: 50%; */
+            transform:translate(200px,200px);
+            animation-name:ball;
+            animation-duration:2s;
+            animation-timing-function: ease-in-out;
+            animation-delay:2s;
+            /* animation-iteration-count: infinite; */
+            
+        }
+        
+          .box2{
+            height: 100px;
+            width: 100px;
+            background-color:rgb(147, 147, 206);
+            /* border-radius: 50%; */
+            transform:translate(200px,200px);
+            animation-name:ball2;
+            animation-duration:2s;
+            animation-timing-function: ease-in-out;
+            animation-delay:2s;
+            /* animation-iteration-count: infinite; */
+          }
+
+          @keyframes ball{
+            from{
+                transform:translate(200px,200px);
+                background-color:rgb(147, 147, 206);
+            }
+            to{
+                transform: translate(200px,200px) rotate(360deg) scale(2);
+                background-color: pink;
+            }}
+
+            @keyframes ball2{
+            from{
+                transform:translate(50px,50px);
+                background-color:rgb(147, 147, 206);
+            }
+            to{
+                transform: translate(200px,200px) rotate(360deg) ;
+                background-color: pink;
+            }}
+          
+    </style>
+</head>
+<body>
+    <div class="mainbox">
+        <div class="childbox">
+            <b>Welcome!</b>
+            <div class="box2">
+                box2
+            </div>
+        </div>
+        
+    </div>
+</body>
+</html>

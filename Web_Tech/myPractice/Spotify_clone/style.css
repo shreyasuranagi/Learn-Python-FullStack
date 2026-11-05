@@ -1,0 +1,220 @@
+*{
+    margin:0px;
+    padding:0px;
+    box-sizing:border-box;
+}
+body,html{
+    height:100%;
+    width:100%;
+    font-family: 'Poppins', sans-serif;
+    background-color: black;
+    display:flex;
+    flex-direction:column;
+    /* gap:3px; */
+}
+
+body>*{
+    margin:4px;
+    border-radius:5px;
+}
+/* Header */
+header{
+    height: 55px;
+    background-color: grey;
+    border-bottom: 1px solid grey;
+    border-radius:15px;
+    margin-top:5px;
+    display:flex;
+    
+}
+
+.header-left{
+    width: 50%;
+    height:100%;
+    display:flex;
+    justify-content: flex-start;
+    gap:20px;
+    align-items:center;
+    padding-left: 10px;
+}
+
+.header-right{
+    width: 50%;
+    height:100%;
+    display:flex;
+    justify-content: flex-end;
+    gap:10px;
+    align-items:center;
+    padding-right: 10px;
+    
+}
+
+.header-right .login{
+    background-color:white;
+    border:none;
+    /* border:1px solid white; */
+    border-radius:30px;
+    padding:8px 15px;
+    height: 30px;
+    width: 80px;
+}
+
+
+.searchbar{
+    background-color: rgb(227, 215, 215);
+    display: inline-block;
+    height: 30px;
+    border-radius: 15px;
+    padding:5px 12px;
+}
+header ul{
+    list-style:none;
+    display:flex;
+    gap:10px;
+    align-items:center;
+}
+/* Footer */
+footer{
+    height:55px;
+    background-color: rgb(141, 90, 133);
+}
+
+/* Main */
+main{
+    height:calc(100% - 55px - 55px);
+    background-color: black;
+    display:flex;
+    flex-direction:row;
+    gap:8px;
+}
+main>*{
+    border-radius:8px;
+}
+.leftmain{
+    width: 20%;
+    background-color: rgb(212, 196, 210);
+    border-radius:8px;
+}
+.centermain{
+
+    width:calc(100% - 20% - 20%);
+    background-color: rgb(71, 20, 54);
+}
+.rightmain{
+    width: 20%;
+    background-color: rgb(141, 90, 133);
+}
+
+
+
+/* Left main */
+.leftmain{
+    display:flex;
+    flex-direction:column;
+
+}
+
+.leftmain_header{
+    height: 50px;
+    background-color: rgb(56, 28, 53);
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    border-bottom:1px solid black;
+    box-shadow: 1px 1px 4px black;
+}
+
+.leftmain_center{
+    height:calc(100% - 50px - 100px);
+}
+
+.leftmain_footer{
+    height:250px;
+    background-color: rgb(201, 32, 184);
+    display:flex;
+    flex-direction:column;
+    justify-content:space-around;
+    align-content:center;
+}
+
+.leftmain_footer ul{
+    display:flex;
+    flex-wrap:wrap;
+    font-size: 12px;
+}
+
+.leftmain_footer button{
+    display:inline-block;
+    width:60px;
+}
+
+.leftmain_center{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    overflow-y:scroll;
+}
+.lmc_card1{
+    margin:3px;
+    background-color: rgb(173, 119, 167);
+    display:flex;
+    flex-direction:column;
+    justify-content:space-evenly;
+    gap:20px;
+    padding:10px;
+    border-radius:5px;
+
+}
+.lmc_card2{
+    display:flex;
+    flex-direction:column;
+    margin:3px;
+    background-color: rgb(173, 119, 167);
+    display:flex;
+    flex-direction:column;
+    justify-content:space-evenly;
+    gap:20px;
+    padding:10px;
+    border-radius:5px;
+    
+}
+
+/* main */
+
+/* center main */
+
+.centermain{
+    display:flex;
+    flex-direction:column;
+    /* justify-content:space-between; */
+    overflow:scroll;
+}
+
+
+.row{
+    background-color: blue;
+    display:flex;
+    flex-direction:row;
+    justify-content: flex-start;
+    gap:20px;
+    /* overflow-x:scroll; */
+    height:1200px;
+}
+
+.box{
+    width:50px;
+    height:50px;
+    background-color: white;
+    border:2px solid red;
+    flex-shrink:0;
+}
+
+
+
+.centermain_footer{
+    height:200px;
+    display:flex;
+    flex-direction:row;
+
+}
+

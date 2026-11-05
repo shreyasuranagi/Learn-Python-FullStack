@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container1{
+            border:2px solid black;
+            width:400px;
+            height:300px;
+            /* display:grid; */
+        }
+        .container2{
+            border:2px solid black;
+            width:400px;
+            height:300px;
+            display:grid;
+        }
+        .container3{
+            border:2px solid black;
+            width:400px;
+            height:300px;
+            display:grid;
+            grid-template-columns: 100px 50px 200px;
+        }
+        .container4{
+            border:2px solid black;
+            width:400px;
+            height:300px;
+            display:grid;
+            grid-template-columns: 1fr 2fr 3fr;
+        }
+        .container5{
+            border:2px solid black;
+            width:400px;
+            height:300px;
+            display:grid;
+            grid-template-columns: repeat(4,1fr);
+        }
+        .container6{
+            border:2px solid black;
+            width:400px;
+            height:300px;
+            display:grid;
+            grid-template-columns: auto auto auto auto;
+        }
+        .container7{
+            border:2px solid black;
+            width:400px;
+            height:300px;
+            display:grid;
+            grid-template-columns: repeat(auto-fill,50px);
+        }
+        .container8{
+            border:2px solid black;
+            width:400px;
+            height:300px;
+            display:grid;
+            grid-template-columns: repeat(auto-fill,100px);
+        }
+        .container9{
+            border:2px solid black;
+            width:400px;
+            height:300px;
+            display:grid;
+            grid-template-columns: 100px repeat(2,1fr) 50% auto;
+        }
+        .container10{
+            border:2px solid black;
+            width:400px;
+            height:300px;
+            display:grid;
+            grid-template-columns: repeat(2,2fr 1fr 10px);
+        }
+        .container101{
+            border:2px solid black;
+            width:400px;
+            height:300px;
+            display:grid;
+            grid-template-columns: 100px 50px 200px;
+            grid-auto-flow:row;
+        }
+        .container102{
+            border:2px solid black;
+            width:400px;
+            height:300px;
+            display:grid;
+            grid-template-columns: repeat(2,2fr 1fr);
+            grid-auto-flow:row;
+        }
+        .container103{
+            border:2px solid black;
+            width:400px;
+            height:300px;
+            display:grid;
+            grid-template-columns: 100px 50px 200px;
+            grid-auto-flow:column;
+        }
+        .container104{
+            border:2px solid black;
+            width:400px;
+            height:300px;
+            display:grid;
+            grid-template-columns: repeat(2,2fr 1fr);
+            grid-auto-flow:column;
+        }
+        .leftmain .box{
+            border:2px solid blue;
+            width:50px;
+            height:30px;
+        }
+        .rightmain .box{
+            border:2px solid red;
+            height:50px;
+            width:50px;
+        }
+
+        .main{
+            display:flex;
+            flex-direction:row;
+            
+        }
+        .leftmain{
+            width:50%;
+            border: 2px solid black;
+        }
+        .rightmain{
+            width:50%;
+            border: 2px solid black;
+        }
+        .rightmain .box{
+            border:2px solid red;
+        }
+        .container11{
+            border:2px solid black;
+            width:400px;
+            height:300px;
+            
+        }
+        .container12{
+            border:2px solid black;
+            width:400px;
+            height:300px;
+            display:grid;
+
+        }
+        .container13{
+            border:2px solid black;
+            width:400px;
+            height:300px;
+            display:grid;
+            grid-template-rows: 100px 50px 200px;
+        }
+
+        .container14{
+            border:2px solid black;
+            width:400px;
+            height:300px;
+            display:grid;
+            grid-template-rows: 1fr 2fr 3fr;
+        }
+        .container15{
+            border:2px solid black;
+            width:400px;
+            height:300px;
+            display:grid;
+            grid-template-rows: repeat(4,1fr);
+        }
+        .container16{
+            border:2px solid black;
+            width:400px;
+            height:300px;
+            display:grid;
+            grid-template-rows: auto auto auto auto;
+        }
+        .container17{
+            border:2px solid black;
+            width:400px;
+            height:300px;
+            display:grid;
+            grid-template-rows: repeat(auto-fill,50px);
+        }
+        .container18{
+            border:2px solid black;
+            width:400px;
+            height:300px;
+            display:grid;
+            grid-template-rows: repeat(auto-fill,100px);
+        }
+        .container19{
+            border:2px solid black;
+            width:400px;
+            height:300px;
+            display:grid;
+            grid-template-rows: 100px repeat(2,1fr) 50% auto;
+        }
+        .container20{
+            border:2px solid black;
+            width:400px;
+            height:300px;
+            display:grid;
+            grid-template-rows: repeat(2,2fr 1fr 10px);
+        }
+        .container201{
+            border:2px solid black;
+            width:400px;
+            height:300px;
+            display:grid;
+            grid-template-rows: 100px 50px 200px;
+            grid-auto-flow:row;
+        }
+        .container202{
+            border:2px solid black;
+            width:400px;
+            height:300px;
+            display:grid;
+            grid-template-rows: repeat(2,2fr 1fr);
+        }
+        .container203{
+            border:2px solid black;
+            width:400px;
+            height:300px;
+            display:grid;
+            grid-template-rows: 100px 50px 200px;
+            grid-auto-flow:column;
+        }
+        .container204{
+            border:2px solid black;
+            width:400px;
+            height:300px;
+            display:grid;
+            grid-template-rows: repeat(2,2fr 1fr);
+            grid-auto-flow:column;
+        }
+    </style>
+</head>
+<body>
+    <h1>Grid</h1>
+    <p>
+        Grid is display property in CSS which is used to create a <b>2d grid layout</b>. It allows you to define rows and columns, and place items within those rows and columns. <br>
+        The grid contains set of intersecting horiontal and vertical lines called grid lines that in turn define the rows and columns.<br>The grid layout is a powerful tool for creating complex and responsive designs, as it provides a flexible way to arrange content on a web page. You can control the size, position, and alignment of grid items, making it easier to create visually appealing layouts. adv over tabels - we can overlap elements.
+        <br>elements are usually placed based on grid lines, grisd areas or grid line names.
+    </p>
+
+    <h2>box has no height and width - explicit columns</h2>
+    ---------------
+    <div class="main">
+        <div class="leftmain">
+    <h2>Before display:grid</h2>
+    <div class="container1">
+        <div class="box" id="box1">1</div>
+        <div class="box" id="box2">2</div>
+        <div class="box" id="box3">3</div>
+        <div class="box" id="box4">4</div>
+        <div class="box" id="box5">5</div>
+    </div>
+    <pre>
+    .container{
+            border:2px solid black;
+            width:400px;
+            height:300px;
+            <!-- display:grid; -->
+        }
+    .box{
+            border:2px solid blue;
+        }</pre>
+
+
+    <h2>display:grid</h2>
+    <p>It makes the parent container a grid container and its children as grid items.</p>
+    <div class="container2">
+        <div class="box" id="box1">1</div>
+        <div class="box" id="box2">2</div>
+        <div class="box" id="box3">3</div>
+        <div class="box" id="box4">4</div>
+        <div class="box" id="box5">5</div>
+    </div>
+    <pre>
+    .container{
+            border:2px solid black;
+            width:400px;
+            height:300px;
+            display:grid;
+        }
+    .box{
+            border:2px solid blue;
+        }</pre>
+        <p>In a web browser, you won't see any difference before turning them into a grid, as grid has created a single column grid for the items.</p>
+
+
+    <h2>grid-template-columns - Explicit columns</h2>
+    <h3>px unit</h3>
+    <div class="container3">
+        <div class="box" id="box1">1</div>
+        <div class="box" id="box2">2</div>
+        <div class="box" id="box3">3</div>
+        <div class="box" id="box4">4</div>
+        <div class="box" id="box5">5</div>
+    </div>
+    <pre>
+        .container3{
+            border:2px solid black;
+            width:400px;
+            height:300px;
+            display:grid;
+            grid-template-columns: 100px 50px 200px
+        }
+        .box{
+            border:2px solid blue;
+        }
+    </pre>
+
+    <h3>fr unit</h3>
+    <div class="container4">
+        <div class="box" id="box1">1</div>
+        <div class="box" id="box2">2</div>
+        <div class="box" id="box3">3</div>
+        <div class="box" id="box4">4</div>
+        <div class="box" id="box5">5</div>
+    </div>
+    <pre>
+        .container4{
+            border:2px solid black;
+            width:400px;
+            height:300px;
+            display:grid;
+            grid-template-columns: 1fr 2fr 3fr;
+        }
+        .box{
+            border:2px solid blue;
+        }
+    </pre>
+
+    <h3>repeat()</h3>
+    <div class="container5">
+        <div class="box" id="box1">1</div>
+        <div class="box" id="box2">2</div>
+        <div class="box" id="box3">3</div>
+        <div class="box" id="box4">4</div>
+        <div class="box" id="box5">5</div>
+    </div>
+    <pre>
+        .container5{
+            border:2px solid black;
+            width:400px;
+            height:300px;
+            display:grid;
+            grid-template-columns: repeat(4,1fr);
+        }
+        .box{
+            border:2px solid blue;
+        }
+    </pre>
+
+    <h3>auto</h3>
+    <div class="container6">
+        <div class="box" id="box1">1</div>
+        <div class="box" id="box2">2</div>
+        <div class="box" id="box3">3</div>
+        <div class="box" id="box4">4</div>
+        <div class="box" id="box5">5</div>
+    </div>
+    <pre>
+        .container6{
+            border:2px solid black;
+            width:400px;
+            height:300px;
+            display:grid;
+            grid-template-columns: auto auto auto auto;
+        }
+        .box{
+            border:2px solid blue;
+        }
+    </pre>
+
+        <h3>auto-fill</h3>
+        <div class="container7">
+            <div class="box" id="box1">1</div>
+            <div class="box" id="box2">2</div>
+            <div class="box" id="box3">3</div>
+            <div class="box" id="box4">4</div>
+            <div class="box" id="box5">5</div>
+            <div class="box" id="box5">5</div>
+            <div class="box" id="box5">5</div>
+        </div>
+        <pre>
+            .container7{
+            border:2px solid black;
+            width:400px;
+            height:300px;
+            display:grid;
+            grid-template-columns: repeat(auto-fill,50px);
+            }
+            .box{
+                border:2px solid blue;
+            }
+        </pre>
+
+        <div class="container8">
+            <div class="box" id="box1">1</div>
+            <div class="box" id="box2">2</div>
+            <div class="box" id="box3">3</div>
+            <div class="box" id="box4">4</div>
+            <div class="box" id="box5">5</div>
+            <div class="box" id="box5">5</div>
+            <div class="box" id="box5">5</div>
+        </div>
+        <pre>
+            .container8{
+            border:2px solid black;
+            width:400px;
+            height:300px;
+            display:grid;
+            grid-template-columns: repeat(auto-fill,100px);
+            }
+            .box{
+                border:2px solid blue;
+            }
+        </pre>
+
+        <h3>Mixed</h3>
+        <div class="container9">
+            <div class="box" id="box1">1</div>
+            <div class="box" id="box2">2</div>
+            <div class="box" id="box3">3</div>
+            <div class="box" id="box4">4</div>
+            <div class="box" id="box5">5</div>
+        </div>
+        <pre>
+            .container9{
+            border:2px solid black;
+            width:400px;
+            height:300px;
+            display:grid;
+            grid-template-columns: 100px repeat(2,1fr) 50% auto;
+        }
+        .box{
+            border:2px solid blue;
+        }
+        </pre>
+
+         <h3>repeat with combo </h3>
+        <div class="container10">
+            <div class="box" id="box1">1</div>
+            <div class="box" id="box2">2</div>
+            <div class="box" id="box3">3</div>
+            <div class="box" id="box4">4</div>
+            <div class="box" id="box5">5</div>
+            <div class="box" id="box5">5</div>
+            <div class="box" id="box5">5</div>
+            <div class="box" id="box5">5</div>
+        </div>
+        <pre>
+        .container10{
+            border:2px solid black;
+            width:400px;
+            height:300px;
+            display:grid;
+            grid-template-columns: repeat(2,2fr 1fr 10px);
+        }
+        </pre>
+
+        <hr><hr><hr>
+
+        <h3>1. grid-auto-flow:row</h3>
+        <div class="container101">
+            <div class="box" id="box1">1</div>
+            <div class="box" id="box2">2</div>
+            <div class="box" id="box3">3</div>
+            <div class="box" id="box4">4</div>
+            <div class="box" id="box5">5</div>
+            <div class="box" id="box5">5</div>
+            <div class="box" id="box5">5</div>
+            <div class="box" id="box5">5</div>
+        </div>
+        <pre>
+        .container101{
+            border:2px solid black;
+            width:400px;
+            height:300px;
+            display:grid;
+            grid-template-columns: 100px 50px 200px;
+            grid-auto-flow:row;
+        }
+        </pre>
+
+        
+        <h3>2. grid-auto-flow:row</h3>
+        <div class="container102">
+            <div class="box" id="box1">1</div>
+            <div class="box" id="box2">2</div>
+            <div class="box" id="box3">3</div>
+            <div class="box" id="box4">4</div>
+            <div class="box" id="box5">5</div>
+            <div class="box" id="box5">5</div>
+            <div class="box" id="box5">5</div>
+            <div class="box" id="box5">5</div>
+        </div>
+        <pre>
+        .container102{
+            border:2px solid black;
+            width:400px;
+            height:300px;
+            display:grid;
+            grid-template-columns: repeat(2,2fr 1fr);
+            grid-auto-flow:row;
+        }
+        </pre>
+
+
+
+        <h3>i. grid-auto-flow:column</h3>
+        <div class="container103">
+            <div class="box" id="box1">1</div>
+            <div class="box" id="box2">2</div>
+            <div class="box" id="box3">3</div>
+            <div class="box" id="box4">4</div>
+            <div class="box" id="box5">5</div>
+            <div class="box" id="box5">5</div>
+            <div class="box" id="box5">5</div>
+            <div class="box" id="box5">5</div>
+        </div>
+        <pre>
+        .container103{
+            border:2px solid black;
+            width:400px;
+            height:300px;
+            display:grid;
+            grid-template-columns: 100px 50px 200px;
+            grid-auto-flow:column;
+        }
+        </pre>
+
+
+        <h3>ii. grid-auto-flow:column</h3>
+        <div class="container104">
+            <div class="box" id="box1">1</div>
+            <div class="box" id="box2">2</div>
+            <div class="box" id="box3">3</div>
+            <div class="box" id="box4">4</div>
+            <div class="box" id="box5">5</div>
+            <div class="box" id="box5">5</div>
+            <div class="box" id="box5">5</div>
+            <div class="box" id="box5">5</div>
+        </div>
+        <pre>
+        .container104{
+            border:2px solid black;
+            width:400px;
+            height:300px;
+            display:grid;
+            grid-template-columns: repeat(2,2fr 1fr);
+            grid-auto-flow:column;
+        }
+        </pre>
+
+        </div>
+
+
+        <div class="rightmain">
+             <h2>Before display:grid</h2>
+    <div class="container11">
+        <div class="box" id="box1">1</div>
+        <div class="box" id="box2">2</div>
+        <div class="box" id="box3">3</div>
+        <div class="box" id="box4">4</div>
+        <div class="box" id="box5">5</div>
+    </div>
+    <pre>
+    .container11{
+            border:2px solid black;
+            width:400px;
+            height:300px;
+            <!-- display:grid; -->
+        }
+    .box{
+            border:2px solid red;
+        }</pre>
+
+
+        <h2>display:grid</h2>
+    <p>It makes the parent container a grid container and its children as grid items.</p>
+    <div class="container12">
+        <div class="box" id="box1">1</div>
+        <div class="box" id="box2">2</div>
+        <div class="box" id="box3">3</div>
+        <div class="box" id="box4">4</div>
+        <div class="box" id="box5">5</div>
+    </div>
+    <pre>
+    .container{
+            border:2px solid black;
+            width:400px;
+            height:300px;
+            display:grid;
+        }
+    .box{
+            border:2px solid red;
+        }</pre>
+        <p>In a web browser, you won't see any difference before turning them into a grid, as grid has created a single column grid for the items.</p>
+
+
+        <h2>grid-template-columns - Explicit rows</h2>
+    <h3>px unit</h3>
+    <div class="container13">
+        <div class="box" id="box1">1</div>
+        <div class="box" id="box2">2</div>
+        <div class="box" id="box3">3</div>
+        <div class="box" id="box4">4</div>
+        <div class="box" id="box5">5</div>
+    </div>
+    <pre>
+        .container13{
+            border:2px solid black;
+            width:400px;
+            height:300px;
+            display:grid;
+            grid-template-rows: 100px 50px 200px;
+        }
+        .box{
+            border:2px solid red;
+        }
+    </pre>
+
+    <h3>fr unit</h3>
+    <div class="container14">
+        <div class="box" id="box1">1</div>
+        <div class="box" id="box2">2</div>
+        <div class="box" id="box3">3</div>
+        <div class="box" id="box4">4</div>
+        <div class="box" id="box5">5</div>
+    </div>
+    <pre>
+        .container14{
+            border:2px solid black;
+            width:400px;
+            height:300px;
+            display:grid;
+            grid-template-rows: 1fr 2fr 3fr;
+        }
+        .box{
+            border:2px solid red;
+        }
+    </pre>
+
+    <h3>repeat()</h3>
+    <div class="container15">
+        <div class="box" id="box1">1</div>
+        <div class="box" id="box2">2</div>
+        <div class="box" id="box3">3</div>
+        <div class="box" id="box4">4</div>
+        <div class="box" id="box5">5</div>
+    </div>
+    <pre>
+        .container15{
+            border:2px solid black;
+            width:400px;
+            height:300px;
+            display:grid;
+            grid-template-rows: repeat(4,1fr);
+        }
+        .box{
+            border:2px solid red;
+        }
+    </pre>
+
+    <h3>auto</h3>
+    <div class="container16">
+        <div class="box" id="box1">1</div>
+        <div class="box" id="box2">2</div>
+        <div class="box" id="box3">3</div>
+        <div class="box" id="box4">4</div>
+        <div class="box" id="box5">5</div>
+    </div>
+    <pre>
+        .container16{
+            border:2px solid black;
+            width:400px;
+            height:300px;
+            display:grid;
+            grid-template-rows: auto auto auto auto;
+        }
+        .box{
+            border:2px solid red;
+        }
+    </pre>
+
+        <h3>auto-fill</h3>
+        <div class="container17">
+            <div class="box" id="box1">1</div>
+            <div class="box" id="box2">2</div>
+            <div class="box" id="box3">3</div>
+            <div class="box" id="box4">4</div>
+            <div class="box" id="box5">5</div>
+            <div class="box" id="box5">5</div>
+            <div class="box" id="box5">5</div>
+        </div>
+        <pre>
+            .container17{
+            border:2px solid black;
+            width:400px;
+            height:300px;
+            display:grid;
+            grid-template-rows: repeat(auto-fill,50px);
+            }
+            .box{
+                border:2px solid red;
+            }
+        </pre>
+
+        <div class="container18">
+            <div class="box" id="box1">1</div>
+            <div class="box" id="box2">2</div>
+            <div class="box" id="box3">3</div>
+            <div class="box" id="box4">4</div>
+            <div class="box" id="box5">5</div>
+            <div class="box" id="box5">5</div>
+            <div class="box" id="box5">5</div>
+        </div>
+        <pre>
+            .container18{
+            border:2px solid black;
+            width:400px;
+            height:300px;
+            display:grid;
+            grid-template-rows: repeat(auto-fill,100px);
+            }
+            .box{
+                border:2px solid red;
+            }
+        </pre>
+
+        <h3>Mixed</h3>
+        <div class="container19">
+            <div class="box" id="box1">1</div>
+            <div class="box" id="box2">2</div>
+            <div class="box" id="box3">3</div>
+            <div class="box" id="box4">4</div>
+            <div class="box" id="box5">5</div>
+        </div>
+        <pre>
+            .container19{
+            border:2px solid black;
+            width:400px;
+            height:300px;
+            display:grid;
+            grid-template-rows: 100px repeat(2,1fr) 50% auto;
+        }
+        .box{
+            border:2px solid red;
+        }
+        </pre>
+
+         <h3>repeat with combo </h3>
+        <div class="container20">
+            <div class="box" id="box1">1</div>
+            <div class="box" id="box2">2</div>
+            <div class="box" id="box3">3</div>
+            <div class="box" id="box4">4</div>
+            <div class="box" id="box5">5</div>
+            <div class="box" id="box5">5</div>
+            <div class="box" id="box5">5</div>
+            <div class="box" id="box5">5</div>
+        </div>
+        <pre>
+        .container20{
+            border:2px solid black;
+            width:400px;
+            height:300px;
+            display:grid;
+            grid-template-rows: repeat(2,2fr 1fr 10px);
+        }
+        </pre>
+
+        <hr><hr><hr>
+
+        <h3>1. grid-auto-flow:row</h3>
+        <div class="container201">
+            <div class="box" id="box1">1</div>
+            <div class="box" id="box2">2</div>
+            <div class="box" id="box3">3</div>
+            <div class="box" id="box4">4</div>
+            <div class="box" id="box5">5</div>
+            <div class="box" id="box5">5</div>
+            <div class="box" id="box5">5</div>
+            <div class="box" id="box5">5</div>
+        </div>
+        <pre>
+        .container201{
+            border:2px solid black;
+            width:400px;
+            height:300px;
+            display:grid;
+            grid-template-rows: 100px 50px 200px;
+        }
+        </pre>
+
+        <h3>2. grid-auto-flow:row</h3>
+        <div class="container202">
+            <div class="box" id="box1">1</div>
+            <div class="box" id="box2">2</div>
+            <div class="box" id="box3">3</div>
+            <div class="box" id="box4">4</div>
+            <div class="box" id="box5">5</div>
+            <div class="box" id="box5">5</div>
+            <div class="box" id="box5">5</div>
+            <div class="box" id="box5">5</div>
+        </div>
+        <pre>
+        .container202{
+            border:2px solid black;
+            width:400px;
+            height:300px;
+            display:grid;
+            grid-template-rows: repeat(2,2fr 1fr);
+        }
+        </pre>
+
+
+        <h3>i. grid-auto-flow:column</h3>
+        <div class="container203">
+            <div class="box" id="box1">1</div>
+            <div class="box" id="box2">2</div>
+            <div class="box" id="box3">3</div>
+            <div class="box" id="box4">4</div>
+            <div class="box" id="box5">5</div>
+            <div class="box" id="box5">5</div>
+            <div class="box" id="box5">5</div>
+            <div class="box" id="box5">5</div>
+        </div>
+        <pre>
+        .container203{
+            border:2px solid black;
+            width:400px;
+            height:300px;
+            display:grid;
+            grid-template-rows: 100px 50px 200px;
+            grid-auto-flow:column;
+        }
+        </pre>
+
+
+        <h3>ii. grid-auto-flow:column</h3>
+        <div class="container204">
+            <div class="box" id="box1">1</div>
+            <div class="box" id="box2">2</div>
+            <div class="box" id="box3">3</div>
+            <div class="box" id="box4">4</div>
+            <div class="box" id="box5">5</div>
+            <div class="box" id="box5">5</div>
+            <div class="box" id="box5">5</div>
+            <div class="box" id="box5">5</div>
+        </div>
+        <pre>
+        .container204{
+            border:2px solid black;
+            width:400px;
+            height:300px;
+            display:grid;
+            grid-template-rows: repeat(2,2fr 1fr);
+            grid-auto-flow:column;
+        }
+        </pre>
+
+
+
+
+
+        
+        </div>
+
+        
+        </div>
+</body>
+</html>

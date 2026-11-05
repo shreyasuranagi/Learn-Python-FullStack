@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CSS Text Properties</title>
+
+    <style>
+
+        /* ================================================== */
+        /* COMMON */
+        /* ================================================== */
+
+        .container{
+            border: 2px solid black;
+            width: 500px;
+            margin-left: 50px;
+            margin-bottom: 30px;
+            padding: 20px;
+        }
+
+        .box{
+            font-size: 22px;
+        }
+
+
+        /* ================================================== */
+        /* 1. COLOR */
+        /* ================================================== */
+
+        .color{
+            color: crimson;
+        }
+
+
+        /* ================================================== */
+        /* 2. TEXT ALIGN */
+        /* ================================================== */
+
+        .align{
+            text-align: center;
+        }
+
+
+        /* ================================================== */
+        /* 3. TEXT ALIGN LAST */
+        /* ================================================== */
+
+        .align-last{
+            text-align-last: center;
+        }
+
+
+        /* ================================================== */
+        /* 4. TEXT DECORATION */
+        /* ================================================== */
+
+        .decoration{
+            text-decoration: underline;
+        }
+
+
+        /* ================================================== */
+        /* 5. TEXT TRANSFORM */
+        /* ================================================== */
+
+        .transform{
+            text-transform: uppercase;
+        }
+
+
+        /* ================================================== */
+        /* 6. TEXT INDENT */
+        /* ================================================== */
+
+        .indent{
+            text-indent: 50px;
+        }
+
+
+        /* ================================================== */
+        /* 7. LETTER SPACING */
+        /* ================================================== */
+
+        .letter-spacing{
+            letter-spacing: 5px;
+        }
+
+
+        /* ================================================== */
+        /* 8. WORD SPACING */
+        /* ================================================== */
+
+        .word-spacing{
+            word-spacing: 15px;
+        }
+
+
+        /* ================================================== */
+        /* 9. LINE HEIGHT */
+        /* ================================================== */
+
+        .line-height{
+            line-height: 2;
+        }
+
+
+        /* ================================================== */
+        /* 10. WHITE SPACE */
+        /* ================================================== */
+
+        .white-space{
+            white-space: nowrap;
+        }
+
+
+        /* ================================================== */
+        /* 11. TEXT SHADOW */
+        /* ================================================== */
+
+        .shadow{
+            text-shadow: 3px 3px 5px gray;
+        }
+
+
+        /* ================================================== */
+        /* 12. TEXT OVERFLOW */
+        /* ================================================== */
+
+        .overflow{
+            width: 250px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+
+        /* ================================================== */
+        /* 13. WORD BREAK */
+        /* ================================================== */
+
+        .word-break{
+            width: 250px;
+            word-break: break-all;
+        }
+
+
+        /* ================================================== */
+        /* 14. OVERFLOW WRAP */
+        /* ================================================== */
+
+        .overflow-wrap{
+            width: 250px;
+            overflow-wrap: break-word;
+        }
+
+
+        /* ================================================== */
+        /* 15. TEXT JUSTIFY */
+        /* ================================================== */
+
+        .justify{
+            text-align: justify;
+        }
+
+
+        /* ================================================== */
+        /* 16. TEXT UNDERLINE OFFSET */
+        /* ================================================== */
+
+        .underline-offset{
+            text-decoration: underline;
+            text-underline-offset: 8px;
+        }
+
+
+        /* ================================================== */
+        /* 17. TEXT DECORATION COLOR */
+        /* ================================================== */
+
+        .decoration-color{
+            text-decoration: underline;
+            text-decoration-color: red;
+        }
+
+
+        /* ================================================== */
+        /* 18. TEXT DECORATION STYLE */
+        /* ================================================== */
+
+        .decoration-style{
+            text-decoration: underline;
+            text-decoration-style: wavy;
+        }
+
+
+        /* ================================================== */
+        /* 19. TEXT DECORATION THICKNESS */
+        /* ================================================== */
+
+        .decoration-thickness{
+            text-decoration: underline;
+            text-decoration-thickness: 4px;
+        }
+
+
+        /* ================================================== */
+        /* 20. WRITING MODE */
+        /* ================================================== */
+
+        .writing-mode{
+            writing-mode: vertical-rl;
+            height: 200px;
+        }
+
+
+        /* ================================================== */
+        /* 21. DIRECTION */
+        /* ================================================== */
+
+        .direction{
+            direction: rtl;
+        }
+
+
+        /* ================================================== */
+        /* 22. VERTICAL ALIGN */
+        /* ================================================== */
+
+        .vertical-align{
+            vertical-align: super;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <h1>CSS Text Properties</h1>
+
+    <p>
+        CSS text properties control the color, alignment,
+        spacing, decoration, transformation and layout of text.
+    </p>
+
+
+    <!-- ================================================== -->
+    <!-- 1. COLOR -->
+    <!-- ================================================== -->
+
+    <h2>1. color</h2>
+
+    <p>
+        Sets the color of the text.
+    </p>
+
+    <pre>
+        Default:
+            depends on browser / inherited value
+
+        Values:
+            color name
+            #hex
+            rgb()
+            rgba()
+            hsl()
+            hsla()
+            transparent
+    </pre>
+
+    <div class="container">
+        <div class="box color">
+            Text Color
+        </div>
+    </div>
+
+    <pre>
+        .box{
+            color: crimson;
+        }
+    </pre>
+
+
+    <!-- ================================================== -->
+    <!-- 2. TEXT ALIGN -->
+    <!-- ================================================== -->
+
+    <h2>2. text-align</h2>
+
+    <p>
+        Controls the horizontal alignment of text.
+    </p>
+
+    <pre>
+        Default:
+            start
+
+        Values:
+            left
+            right
+            center
+            justify
+            start
+            end
+    </pre>
+
+    <div class="container">
+        <div class="box align">
+            Center Aligned Text
+        </div>
+    </div>
+
+    <pre>
+        .box{
+            text-align: center;
+        }
+    </pre>
+
+
+    <!-- ================================================== -->
+    <!-- 3. TEXT ALIGN LAST -->
+    <!-- ================================================== -->
+
+    <h2>3. text-align-last</h2>
+
+    <p>
+        Controls the alignment of the last line of text.
+    </p>
+
+    <pre>
+        Default:
+            auto
+
+        Values:
+            auto
+            left
+            right
+            center
+            justify
+            start
+            end
+    </pre>
+
+    <div class="container">
+        <div class="box align-last">
+            This is some text where the alignment of
+            the last line can be controlled separately.
+        </div>
+    </div>
+
+    <pre>
+        .box{
+            text-align-last: center;
+        }
+    </pre>
+
+
+    <!-- ================================================== -->
+    <!-- 4. TEXT DECORATION -->
+    <!-- ================================================== -->
+
+    <h2>4. text-decoration</h2>
+
+    <p>
+        Adds a decoration such as underline or line-through.
+    </p>
+
+    <pre>
+        Default:
+            none
+
+        Values:
+            none
+            underline
+            overline
+            line-through
+            blink
+
+        Multiple:
+            underline overline
+            underline line-through
+    </pre>
+
+    <div class="container">
+        <div class="box decoration">
+            Underlined Text
+        </div>
+    </div>
+
+    <pre>
+        .box{
+            text-decoration: underline;
+        }
+    </pre>
+
+
+    <!-- ================================================== -->
+    <!-- 5. TEXT TRANSFORM -->
+    <!-- ================================================== -->
+
+    <h2>5. text-transform</h2>
+
+    <p>
+        Changes the capitalization of text.
+    </p>
+
+    <pre>
+        Default:
+            none
+
+        Values:
+            none
+            capitalize
+            uppercase
+            lowercase
+            full-width
+            full-size-kana
+    </pre>
+
+    <div class="container">
+        <div class="box transform">
+            text transform example
+        </div>
+    </div>
+
+    <pre>
+        .box{
+            text-transform: uppercase;
+        }
+    </pre>
+
+
+    <!-- ================================================== -->
+    <!-- 6. TEXT INDENT -->
+    <!-- ================================================== -->
+
+    <h2>6. text-indent</h2>
+
+    <p>
+        Adds indentation to the first line of text.
+    </p>
+
+    <pre>
+        Default:
+            0
+
+        Values:
+            length
+            percentage
+            each-line
+            hanging
+    </pre>
+
+    <div class="container">
+        <div class="box indent">
+            This paragraph has an indentation at the beginning
+            of its first line.
+        </div>
+    </div>
+
+    <pre>
+        .box{
+            text-indent: 50px;
+        }
+    </pre>
+
+
+    <!-- ================================================== -->
+    <!-- 7. LETTER SPACING -->
+    <!-- ================================================== -->
+
+    <h2>7. letter-spacing</h2>
+
+    <p>
+        Controls the space between individual characters.
+    </p>
+
+    <pre>
+        Default:
+            normal
+
+        Values:
+            normal
+            length
+
+        Examples:
+            2px
+            5px
+            -1px
+    </pre>
+
+    <div class="container">
+        <div class="box letter-spacing">
+            Letter Spacing
+        </div>
+    </div>
+
+    <pre>
+        .box{
+            letter-spacing: 5px;
+        }
+    </pre>
+
+
+    <!-- ================================================== -->
+    <!-- 8. WORD SPACING -->
+    <!-- ================================================== -->
+
+    <h2>8. word-spacing</h2>
+
+    <p>
+        Controls the space between words.
+    </p>
+
+    <pre>
+        Default:
+            normal
+
+        Values:
+            normal
+            length
+
+        Examples:
+            5px
+            10px
+            -2px
+    </pre>
+
+    <div class="container">
+        <div class="box word-spacing">
+            Word Spacing Example
+        </div>
+    </div>
+
+    <pre>
+        .box{
+            word-spacing: 15px;
+        }
+    </pre>
+
+
+    <!-- ================================================== -->
+    <!-- 9. LINE HEIGHT -->
+    <!-- ================================================== -->
+
+    <h2>9. line-height</h2>
+
+    <p>
+        Controls the vertical space between lines of text.
+    </p>
+
+    <pre>
+        Default:
+            normal
+
+        Values:
+            normal
+            number
+            length
+            percentage
+
+        Examples:
+            1.5
+            2
+            24px
+            150%
+    </pre>
+
+    <div class="container">
+        <div class="box line-height">
+            Line height controls the space between lines.
+            This text has increased line spacing.
+        </div>
+    </div>
+
+    <pre>
+        .box{
+            line-height: 2;
+        }
+    </pre>
+
+
+
+
+
+    <!-- ================================================== -->
+    <!-- 10. TEXT SHADOW -->
+    <!-- ================================================== -->
+
+    <h2>10. text-shadow</h2>
+
+    <p>
+        Adds a shadow behind text.
+    </p>
+
+    <pre>
+        Default:
+            none
+
+        Values:
+            none
+
+        Syntax:
+            offset-x
+            offset-y
+            blur-radius
+            color
+
+        Example:
+            2px 2px 5px gray
+    </pre>
+
+    <div class="container">
+        <div class="box shadow">
+            Text Shadow
+        </div>
+    </div>
+
+    <pre>
+        .box{
+            text-shadow:
+                3px 3px 5px gray;
+        }
+    </pre>
+
+
+
+
+
+    <!-- ================================================== -->
+    <!-- 11. TEXT DECORATION COLOR -->
+    <!-- ================================================== -->
+
+    <h2>11. text-decoration-color</h2>
+
+    <p>
+        Sets the color of the text decoration.
+    </p>
+
+    <pre>
+        Default:
+            currentColor
+
+        Values:
+            color
+            currentColor
+            transparent
+            rgb()
+            hsl()
+            #hex
+    </pre>
+
+    <div class="container">
+        <div class="box decoration-color">
+            Decoration Color
+        </div>
+    </div>
+
+    <pre>
+        .box{
+            text-decoration: underline;
+            text-decoration-color: red;
+        }
+    </pre>
+
+
+    <!-- ================================================== -->
+    <!-- 12. TEXT DECORATION STYLE -->
+    <!-- ================================================== -->
+
+    <h2>12. text-decoration-style</h2>
+
+    <p>
+        Controls the style of the text decoration line.
+    </p>
+
+    <pre>
+        Default:
+            solid
+
+        Values:
+            solid
+            double
+            dotted
+            dashed
+            wavy
+    </pre>
+
+    <div class="container">
+        <div class="box decoration-style">
+            Wavy Underline
+        </div>
+    </div>
+
+    <pre>
+        .box{
+            text-decoration: underline;
+            text-decoration-style: wavy;
+        }
+    </pre>
+
+
+
+
+
+    <!-- ================================================== -->
+    <!-- QUICK NOTES -->
+    <!-- ================================================== -->
+
+    <h2>Quick Notes</h2>
+
+    <pre>
+
+    color
+        Text color
+        Default: depends / inherited
+
+
+    text-align
+        Horizontal alignment
+        Default: start
+
+        left | right | center |
+        justify | start | end
+
+
+    text-align-last
+        Last line alignment
+        Default: auto
+
+        auto | left | right |
+        center | justify | start | end
+
+
+    text-decoration
+        Text line
+        Default: none
+
+        none | underline |
+        overline | line-through
+
+
+    text-transform
+        Capitalization
+        Default: none
+
+        none | capitalize |
+        uppercase | lowercase
+
+
+    text-indent
+        First-line indentation
+        Default: 0
+
+        length | percentage
+
+
+    letter-spacing
+        Space between letters
+        Default: normal
+
+        normal | length
+
+
+    word-spacing
+        Space between words
+        Default: normal
+
+        normal | length
+
+
+    line-height
+        Space between lines
+        Default: normal
+
+        normal | number |
+        length | percentage
+
+
+
+    text-shadow
+        Adds text shadow
+        Default: none
+
+        x y blur color
+
+
+    text-overflow
+        Overflow appearance
+        Default: clip
+
+        clip | hidden | 
+
+
+    text-decoration-color
+        Decoration color
+        Default: currentColor
+
+
+    text-decoration-style
+        Decoration style
+        Default: solid
+
+        solid | double | dotted |
+        dashed | wavy
+
+
+
+    --------------------------------------------------
+
+ 
+
+        
+    </pre>
+
+</body>
+</html>

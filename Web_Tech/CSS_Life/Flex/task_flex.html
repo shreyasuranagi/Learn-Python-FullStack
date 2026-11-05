@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    *{
+        margin:0px;
+        padding:0px;
+    }
+    body, html{
+        background-color: rgb(216, 204, 135);
+        color:white;
+    }
+    .main{
+        border:2px solid black;
+        height:350px;
+        width:600px;
+    }
+    .box{
+        border:2px solid black;
+        width:100px;
+        height:100px;
+        display:inline-block;
+        
+    }
+    .upper{
+        border:2px solid red;
+        width:100%;
+        height: 65%;
+        display:flex;
+    }
+    .lower{
+        border: 2px solid green;
+        width:100%;
+        height: 30%;
+        display:flex;
+        column-gap: 10px;
+        align-items: flex-end;
+    }
+    .left{
+        border:2px solid blue;
+        width:74%;
+        height:100%;
+        
+    }
+    .right{
+        border:2px solid yellow;
+        width:24%;
+        height:100%;
+        display:inline-block;
+        display:flex;
+        flex-direction:column;
+        justify-content: space-around;
+        align-items: flex-end;
+        row-gap: 15px;
+    }
+    .row1{
+        border:2px solid pink;
+        width:100%;
+        height:58%;
+        display:flex;
+        column-gap: 10px;
+    }
+    .row2{
+        border:2px solid brown;
+        width:100%;
+        height:39%;
+        display:flex;
+        column-gap: 10px;
+        align-items: flex-end;
+        
+    }
+    .row2 .box{
+        width:30%;
+        height: 70%;
+    }
+    .lower .box{
+        height:90px;
+    }
+    
+    
+    #green{
+        flex-basis:60%;
+        background-color: green;
+    }
+    #red{
+        flex-basis:40%;
+        background-color: red;
+    }
+    #purple{
+        /* flex-basis: 30%; */
+        background-color: rgb(174, 73, 174);
+    }
+
+    #brown{
+        flex-basis: 70%;
+        background-color: brown;
+        
+    }
+    #lime{
+        flex-basis: 25%;
+        background-color: lime;
+    }
+    #orange{
+        flex-basis: 75%;
+        background-color: orange;
+    }
+
+    #grey{
+        background-color: grey;
+    }
+
+    #yellow{
+        background-color: yellow;
+    }
+
+    #pink{
+        background-color: pink;
+    }
+    #red{
+        background-color: red;
+    }
+    h1{
+        font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif
+    }
+    
+</style>
+<body>
+    
+    <div class="main">
+        <div class="upper">
+            <div class="left">
+                <div class="row1">
+                    <div class="box" id="green"></div>
+                    <div class="box" id="red"></div>
+                </div>
+                <div class="row2">
+                    <div class="box" id="purple"></div>
+                    <div class="box" id="yellow"></div>
+                    <div class="box" id="pink"></div>
+                </div>
+            </div>
+            <div class="right">
+                <div class="box" id="grey"></div>
+                <div class="box" id="brown"></div>
+            </div>
+        </div>
+        <div class="lower">
+            
+            <div class="box" id="lime"></div>
+            <div class="box" id="orange"></div>
+        </div>
+    </div>
+    <br>
+    <h1>CSS FLEX-BOX</h1>
+</body>
+</html>

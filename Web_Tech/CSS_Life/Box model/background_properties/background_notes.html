@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CSS Background</title>
+
+    <style>
+
+        /* ================================================== */
+        /* COMMON */
+        /* ================================================== */
+
+        .container{
+            border: 2px solid black;
+            width: 300px;
+            height: 150px;
+            margin-left: 50px;
+            margin-bottom: 30px;
+        }
+
+        .box{
+            width: 100%;
+            height: 100%;
+            color: white;
+            text-align: center;
+            line-height: 150px;
+        }
+
+
+        /* ================================================== */
+        /* 1. BACKGROUND COLOR */
+        /* ================================================== */
+
+        .color{
+            background-color: tomato;
+        }
+
+
+        /* ================================================== */
+        /* 2. BACKGROUND IMAGE */
+        /* ================================================== */
+
+        .image{
+            background-image: url("https://picsum.photos/300/150");
+        }
+
+
+        /* ================================================== */
+        /* 3. BACKGROUND REPEAT */
+        /* ================================================== */
+
+        .repeat{
+            background-image: url("https://picsum.photos/70/70");
+            background-repeat: no-repeat;
+        }
+
+
+        /* ================================================== */
+        /* 4. BACKGROUND POSITION */
+        /* ================================================== */
+
+        .position{
+            background-image: url("https://picsum.photos/100/100");
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+
+        /* ================================================== */
+        /* 5. BACKGROUND SIZE */
+        /* ================================================== */
+
+        .size{
+            background-image: url("https://picsum.photos/300/150");
+            background-size: cover;
+        }
+
+
+        /* ================================================== */
+        /* 6. BACKGROUND ATTACHMENT */
+        /* ================================================== */
+
+        .attachment{
+            background-image: url("https://picsum.photos/600/600");
+            background-size: cover;
+            background-attachment: fixed;
+        }
+
+
+        /* ================================================== */
+        /* 7. BACKGROUND CLIP */
+        /* ================================================== */
+
+        .clip{
+            border: 10px dashed red;
+            padding: 10px;
+            background-color: gold;
+            background-clip: padding-box;
+        }
+
+
+        /* ================================================== */
+        /* 8. BACKGROUND ORIGIN */
+        /* ================================================== */
+
+        .origin{
+            border: 10px dashed red;
+            padding: 10px;
+            background-image: url("https://picsum.photos/300/150");
+            background-repeat: no-repeat;
+            background-origin: content-box;
+        }
+
+
+        /* ================================================== */
+        /* 9. BACKGROUND BLEND MODE */
+        /* ================================================== */
+
+        .blend{
+            background-color: red;
+            background-image: url("https://picsum.photos/300/150");
+            background-blend-mode: multiply;
+        }
+
+
+        /* ================================================== */
+        /* 10. BACKGROUND SHORTHAND */
+        /* ================================================== */
+
+        .background{
+            background:
+                lightblue
+                url("https://picsum.photos/300/150")
+                no-repeat
+                center / cover;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <h1>CSS Background</h1>
+
+    <p>
+        Background properties control the color, image,
+        position, size and behavior of an element's background.
+    </p>
+
+
+    <!-- ================================================== -->
+    <!-- 1. BACKGROUND COLOR -->
+    <!-- ================================================== -->
+
+    <h2>1. background-color</h2>
+
+    <p>Sets the background color. </p>
+
+        <pre>
+        Default:
+            transparent
+
+        Values:
+            color
+            transparent
+            rgb()
+            rgba()
+            hsl()
+            hsla()
+            #hex
+    </pre>
+
+    <div class="container">
+        <div class="box color">
+            Color
+        </div>
+    </div>
+
+    <pre>
+        .box{
+            background-color: tomato;
+        }
+    </pre>
+
+    
+
+
+    <!-- ================================================== -->
+    <!-- 2. BACKGROUND IMAGE -->
+    <!-- ================================================== -->
+
+    <h2>2. background-image</h2>
+
+    <p>Sets one or more background images.</p>
+     <pre>
+        Default:
+            none
+
+        Values:
+            none
+            url()
+            linear-gradient()
+            radial-gradient()
+            conic-gradient()
+    </pre>
+
+    <div class="container">
+        <div class="box image">
+            Image
+        </div>
+    </div>
+
+    <pre>
+        .box{
+            background-image:
+                url("image.jpg");
+        }
+    </pre>
+
+   
+
+
+    <!-- ================================================== -->
+    <!-- 3. BACKGROUND REPEAT -->
+    <!-- ================================================== -->
+
+    <h2>3. background-repeat</h2>
+
+    <p>Controls background image repetition.</p>
+     <pre>
+        Default:
+            repeat
+
+        Values:
+            repeat
+            repeat-x
+            repeat-y
+            no-repeat
+            space
+            round
+    </pre>
+
+    <div class="container">
+        <div class="box repeat">
+            Repeat
+        </div>
+    </div>
+
+    <pre>
+        .box{
+            background-repeat: no-repeat;
+        }
+    </pre>
+
+   
+
+
+    <!-- ================================================== -->
+    <!-- 4. BACKGROUND POSITION -->
+    <!-- ================================================== -->
+
+    <h2>4. background-position</h2>
+
+    <p>Controls the position of the background image.</p>
+    <pre>
+        Default:
+            0% 0%
+
+        Values:
+            left
+            center
+            right
+            top
+            bottom
+
+            50% 50%
+            20px 30px
+
+        Examples:
+            center
+            left top
+            right bottom
+    </pre>
+
+    <div class="container">
+        <div class="box position">
+            Position
+        </div>
+    </div>
+
+    <pre>
+        .box{
+            background-position: center;
+        }
+    </pre>
+
+    
+
+
+    <!-- ================================================== -->
+    <!-- 5. BACKGROUND SIZE -->
+    <!-- ================================================== -->
+
+    <h2>5. background-size</h2>
+
+    <p>Controls the size of the background image.</p>
+    <pre>
+        Default:
+            auto
+
+        Values:
+            auto
+            cover
+            contain
+            100% 100%
+            200px 100px
+            50% 50%
+    </pre>
+
+    <div class="container">
+        <div class="box size">
+            Size
+        </div>
+    </div>
+
+    <pre>
+        .box{
+            background-size: cover;
+        }
+    </pre>
+
+    
+
+
+    <!-- ================================================== -->
+    <!-- 6. BACKGROUND ATTACHMENT -->
+    <!-- ================================================== -->
+
+    <h2>6. background-attachment</h2>
+
+    <p>Controls how the background moves when scrolling.</p>
+
+    <pre>
+        Default:
+            scroll
+
+        Values:
+            scroll
+            fixed
+            local
+    </pre>
+
+    <div class="container">
+        <div class="box attachment">
+            Attachment
+        </div>
+    </div>
+
+    <pre>
+        .box{
+            background-attachment: fixed;
+        }
+    </pre>
+
+    
+
+
+
+    <!-- ================================================== -->
+    <!-- 10. BACKGROUND SHORTHAND -->
+    <!-- ================================================== -->
+
+    <h2>7. background</h2>
+
+    <p>Shorthand for multiple background properties.</p>
+
+        <pre>
+        Default:
+            Depends on each
+            individual property.
+
+        Can include:
+            color
+            image
+            repeat
+            attachment
+            position
+            / size
+            
+            
+    </pre>
+
+    <div class="container">
+        <div class="box background">
+            Background
+        </div>
+    </div>
+
+    <pre>
+        .box{
+            background:
+                lightblue
+                url("image.jpg")
+                no-repeat
+                center / cover;
+        }
+    </pre>
+
+
+
+
+    <!-- ================================================== -->
+    <!-- QUICK NOTES -->
+    <!-- ================================================== -->
+
+    <h2>Quick Notes</h2>
+
+    <pre>
+
+    background-color
+        Color
+        Default: transparent
+
+    background-image
+        Image / gradient
+        Default: none
+
+    background-repeat
+        Repeat image
+        Default: repeat
+                repeat | repeat-x | repeat-y | no-repeat |
+
+    background-position
+        Image position
+        Default: 0% 0%
+                left | center | right |
+                top | bottom | x y
+
+    background-size
+        Image size
+        Default: auto
+                auto | cover | contain | width height
+
+    background-attachment
+        Scroll behavior
+        Default: scroll
+                scroll | fixed | local
+
+    
+    background
+        Shorthand
+        color image repeat position / size
+        attachment origin clip
+
+
+
+    </pre>
+
+</body>
+</html>

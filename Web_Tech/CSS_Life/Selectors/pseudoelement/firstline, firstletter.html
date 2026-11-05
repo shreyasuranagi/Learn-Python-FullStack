@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        h1::first-letter{
+            color:black;
+            font-size:60px;
+        }
+        p::first-line{
+            font-size:20px;
+        }
+        p::first-letter{
+            color:greenyellow;
+            font-size:32px;
+        }
+        p::before{
+            content: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSmstVEERs6sQCYqvoWZlElZbzc5mijoPLHJ88dsx4rRWzxqFDTFM00LGGH&s=10", height=35px, width=35px);
+            content:icon;
+            
+        }
+        p::after{
+            content:"HAHAHA";
+        }
+        p::selection{
+            background-color:rgb(21, 21, 37);
+            color:rgb(31, 241, 31);
+        }
+        li::marker{
+            content: "📚"
+        }
+        input::placeholder{
+            color: rgb(169, 72, 169);
+        }
+    </style>
+</head>
+<body>
+    <h1>Hello World!</h1>
+    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Harum molestias eligendi dignissimos consequatur cumque, nobis aspernatur ad praesentium obcaecati doloremque tempore velit amet laborum dicta fugit temporibus non magnam. Nostrum quo corporis praesentium harum! Minus dolores inventore voluptatem! Veritatis maxime ullam incidunt aspernatur dolorem libero amet qui aut. Maiores consectetur, id debitis quaerat optio est similique amet enim nesciunt officia voluptatem obcaecati aspernatur repellat tempore esse doloribus et voluptatum deserunt voluptas nostrum. Ex voluptatibus consequatur laboriosam maiores possimus architecto saepe, expedita necessitatibus. Molestiae, error, velit dolorem nulla asperiores quasi iusto magnam non odio rerum voluptate ratione dolore unde! Vero, voluptate!</p>
+
+    <ol>
+        <li>html</li>
+        <li>css</li>
+        <li>python</li>
+        <li>sql</li>
+    </ol>
+
+    <form>
+        <input type="text" placeholder="enter your name"><br><br>
+        <input type="password" placeholder="Enter your password">
+    </form>
+</body>
+</html>

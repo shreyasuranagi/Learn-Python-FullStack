@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* input[type]{
+            background-color:rgb(200, 123, 123);
+        }
+        input[type="text"]{
+            background-color:blanchedalmond;
+        } */
+        input[placeholder~="your"]
+        {
+            background-color:blue;
+        }
+        
+        input[lang~="en"]
+        {
+            background-color: orange;
+        }
+        input[lang|="en"]
+        {
+            background-color: red;
+        }
+        a[href^="http"]{
+            color:red;
+        }
+        a[href^="com"]
+        {
+            color:green;
+        }
+        img[src$="jpg"]
+        {
+
+        }
+        label[name*='username']
+        {
+        color: orange;
+        }
+    </style>
+</head>
+<body>
+    <form>
+        <label name="username">Username</label>
+        <input type="text" placeholder="Enteryour username" lang="hi"><br><br>
+        <label>Email:</label>
+        <input type="mail" placeholder="Enter your email"><br><br>
+        
+        <button>Submit</button>
+
+        <a href="https://www.google.com">Google</a> 
+        <a href="http://www.abc.com" tooltip="not secure website">ABC</a>
+
+        <img src="">
+    </form>
+</body>
+</html>

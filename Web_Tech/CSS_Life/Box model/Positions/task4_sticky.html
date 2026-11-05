@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin:0px;
+            padding:0px;
+        }
+        .page{
+            width:100vw;
+            height:100vh;
+        }
+        #page1{
+            background-color: red;
+        }
+        #page2{
+            background-color: orange;
+        }
+        #page3{
+            background-color: yellow;
+        }
+        #page4{
+            background-color: white;
+        }
+        .chatbot{
+            width:100px;
+            height:100px;
+            border-radius:50%;
+            background-color: rgb(246, 100, 100);
+            border: 2px solid black;
+            position:sticky;
+            bottom:20px;
+            right:20px;
+            background-image:url("../../images/bot.gif");
+            background-repeat:no-repeat;
+            background-size:cover;
+        }
+        
+        .prompt{
+            position: sticky;
+            width:200px;
+            right:120px;
+            background-color: #fff;
+            border: 2px solid black;
+        }
+        .invisible{
+            width:100vw;
+            height:150vh;
+            position:absolute;
+            top:150vh;
+            /* background-color: green; */
+            
+        }
+        
+        
+        .invisible>#chatbot{
+            position:sticky;
+            top:20px;
+            /* left:970px; */
+            left:700vh;
+        }
+        .invisible>.prompt{
+            position: sticky;
+            top:20px;
+            left:756px;
+        }
+        
+    </style>
+</head>
+<body>
+    
+    
+    <div class="page" id="page1">
+        <h1>Page 1</h1>
+
+    </div>
+    
+    <div class="invisible">
+             
+            <div class="chatbot" id="chatbot"></div>
+            <div class="prompt">How can I help you</div>
+        </div>
+    
+    
+    <div class="page" id="page2">
+        <h1>Page 2</h1>
+    </div>
+
+    <div class="page" id="page3">
+        <h1>Page 3</h1>
+    </div>
+
+    <div class="page" id="page4">
+        <h1>Page 4</h1>
+    </div>
+
+</body>
+</html>

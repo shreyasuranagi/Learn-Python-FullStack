@@ -1,0 +1,31 @@
+p{
+    color:green;
+
+    text-align: center;
+
+    text-transform: none;
+
+    text-indent: 150px;
+
+    text-decoration-line: line-through;
+
+    text-decoration-style: wavy;
+
+    text-decoration-color: blue;
+
+    text-decoration: none brown dashed;
+
+    letter-spacing: 3px;
+
+    word-spacing: 10px;
+
+    text-wrap: wrap;
+
+    text-shadow: 3px -2px 3px grey;
+    
+}
+h1{
+    text-shadow:-3px 4px 2px lightblue;
+    color:blue;
+    text-align:center;
+}

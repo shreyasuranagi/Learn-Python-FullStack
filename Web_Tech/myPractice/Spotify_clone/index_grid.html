@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css"
+        integrity="sha512-QeR2VH+lsBE5LSAe1Q5EnTBbe7XTBubt8dG93Y7gidSgdMCr8nVqKcfKAMyN96SV8KDbZVTDXChatu5G2KQGzg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer">
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body,
+        html {
+            width: 100%;
+            height: 100%;
+            background-color: black;
+
+        }
+
+        .container {
+            width: 100%;
+            height: 100%;
+            /* margin:10px 10px 10px 10px; */
+            background-color: white;
+            display: grid;
+            grid-template-columns: 1fr 2fr 1fr;
+            grid-template-rows: 55px 1fr 55px;
+        }
+
+        .navbar {
+            grid-column: 1/4;
+            grid-row: 1/2;
+            background-color: red;
+        }
+
+        .main {
+            grid-row: 2/3;
+            grid-column: 1/4;
+            background-color: green;
+            display: grid;
+            grid-template-columns: 1fr 2fr 1fr;
+        }
+
+        .footer {
+            grid-column: 1/4;
+            grid-row: 3/4;
+            background-color: blue;
+        }
+
+        /* .leftmain{
+            grid-column:1/2;
+            grid-row:2/3;
+            background-color: yellow;
+        }
+        .rightmain{
+            grid-column:3/4;
+            grid-row:2/3;
+            background-color: pink;
+        }
+        .maincenter{
+            grid-column:2/3;
+            grid-row:2/3;
+            background-color: orange;
+        } */
+
+        .leftmain {
+            grid-column: 1/2;
+            grid-row: 1/2;
+            background-color: yellow;
+        }
+
+        .rightmain {
+            grid-column: 3/4;
+            grid-row: 1/2;
+            background-color: pink;
+        }
+
+        .maincenter {
+            grid-column: 2/3;
+            grid-row: 1/2;
+            background-color: orange;
+            
+            /* overflow-y: auto;
+            overflow-x:auto;
+
+            display: grid;
+            grid-template-columns: repeat(4, 200px);
+            grid-auto-flow:columns;
+            grid-auto-columns: 200px;
+            /* grid-auto-rows:200px; */
+            /* grid-template-rows: repeat(5, 200px) 200px;  */
+
+
+        }
+        .section{
+            height: 500px;
+            width: 100%;
+            overflow-y: auto;
+            overflow-x:auto;
+
+            display: grid;
+            grid-template-columns: repeat(4, 200px);
+            grid-auto-flow: column;
+            grid-auto-columns : 200px;
+            grid-template-rows: repeat(5, 200px) 200px;
+            
+        }
+        .maincenter_footer{
+            grid-column:1/5;
+            grid-row:6/7;
+            background-color: brown;
+            display:flex;
+            justify-content:space-between;
+            padding-top:10px;
+            
+        }
+        .box{
+            background-color: lightblue;
+            width: 200px;
+            height: 200px;
+            margin: 10px;
+            border:2px solid red;
+            
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="navbar">Navbar</div>
+        <div class="main">
+            <div class="leftmain"></div>
+
+
+            <div class="maincenter">
+
+
+
+                <div class="section">
+                    <div class="box">1</div>
+                <div class="box">2</div>
+                <div class="box">3</div>
+                <div class="box">4</div>
+                <div class="box">5</div>
+                <div class="box">6</div>
+                <div class="box">6</div>
+                <div class="box">6</div>
+                </div>
+
+                
+                
+                
+
+                <div class="maincenter_footer">
+                    <h4>Good Afternoon</h4>
+                    <ul>
+                        <li><b>Company</b></li>
+                        <li>About</li>
+                        <li>Jobs</li>
+                        <li>For the record</li>
+                    </ul>
+                    <ul>
+                        <li><b>Communities</b></li>
+                        <li>For Artists</li>
+                        <li>For Authors</li>
+                        <li>For Creators</li>
+                        <li>Developers</li>
+                    </ul>
+                    <i class="fa-brands fa-instagram"></i>
+                    <i class="fa-brands fa-linkedin"></i>
+                </div>
+            </div>
+
+            <div class="rightmain"></div>
+
+        </div>
+        <div class="footer"></div>
+    </div>
+</body>
+
+</html>

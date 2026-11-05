@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .supred{
+            color:red;
+        }
+        body{
+            background-color: rgb(98, 98, 211);
+        }
+        
+        input:placeholder-shown{
+            background-color:rgb(238, 233, 233);
+        }
+        input:invalid{
+            background-color:red;
+        }
+        input:focus{
+            background-color:lightgoldenrodyellow;
+        }
+    </style>
+</head>
+<body>
+    <!-- <center> -->
+    <form>
+        <fieldset style="background-color: rgb(209, 226, 249);">
+            <legend><b><h3>Applicant Information</h3></b></legend>
+
+            <label required for="name"><b>Name<sup class="supred">*</sup></b></label>
+            <br>
+            <select id="name">
+                <option value="mr">Mr.</option>
+                <option value="mrs">Mrs.</option>
+                <option value="dr">Dr.</option>
+                <option value="miss">Miss</option>
+            </select>
+            <input  autofocus id="name" required type="text" name="applicantfirstname" placeholder="First Name">
+            <input  type="text" name="applicantlastname" placeholder="Last Name">
+            
+            <br>
+            <br>
+            <label for="addr" ><b>Address<sup class="supred">*</sup></b></label>
+            <br>
+            <input  id="addr" type="text" name="addr_str1" size="60" placeholder="Street Address 1">
+            <br><br>
+            <input  type="text" name="addr_str2" size="60" placeholder="Street Address 2">
+            <br><br>
+            <input  type="text" name="addr_city" placeholder="City">
+            <input  type="text" name="addr_state" placeholder="State">
+            <br><br>
+            <input  type="type" name="addr_zip" placeholder="ZipCode" maxlength="6">
+            <input  type="text" name="addr_country" placeholder="Country" list="country">
+            <datalist id="country">
+                <!-- <option disabled selected>Select...</option> -->
+                <option value="India">India</option>
+                <option value="USA">USA</option>
+                <option value="UK">UK</option>
+                <option value="Australia">Australia</option>
+            </datalist>
+
+            <br><br>
+
+            <label><b>Email<sup class="supred">*</sup></b></label>
+            <br>
+            <input  type="email" name="email" size="60" placeholder="Email address">
+
+            <br><br>
+            <label><b>Phone number<sup class="supred">*</sup></b></label>
+            <br>
+            <input  type="number" name="phone" size="60" max="10" placeholder="10-digit-phone no">
+
+            <br><br>
+            <button>Submit</button>
+
+
+        </fieldset>
+    </form>
+    <!-- </center> -->
+</body>
+</html>

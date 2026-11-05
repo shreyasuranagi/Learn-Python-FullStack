@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing:border-box;
+        }
+        body{
+            display:flex;
+            justify-content: center;
+            align-items:center;
+        }
+        .outer{
+            
+            text-align:center;
+            font-size:30px;
+            color:white;
+            font-weight: 900;
+        }
+        @media (width<=700px)
+        {   
+            body{background-color:red;}
+            .outer{
+                width:200px;
+                height:600px;
+                border:2px solid yellow;
+                
+            }
+            
+        }
+        
+        @media (width>=800px)
+        {
+            /* body{
+                background-color: blue;
+            } */
+            .outer{
+                display:block;
+                width:300px;
+                height:300px;
+                border:2px solid;
+            }
+        }
+
+        
+
+
+    </style>
+</head>
+<body>
+    <div class="outer">Hello!</div>
+</body>
+</html>

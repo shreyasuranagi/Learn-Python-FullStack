@@ -1,0 +1,921 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Transitions</title>
+
+    <style>
+
+        .container{
+            border: 2px solid black;
+            width: 250px;
+            height: 150px;
+            margin-left: 50px;
+            margin-bottom: 30px;
+        }
+
+        .box{
+            width: 100px;
+            height: 100px;
+            color: white;
+            text-align: center;
+            line-height: 100px;
+            background-color: red;
+        }
+
+
+        /* ================================================== */
+        /* TRANSITION */
+        /* ================================================== */
+
+        .transition{
+            transition: 1s;
+        }
+
+        .transition:hover{
+            background-color: blue;
+        }
+
+
+        /* ================================================== */
+        /* TRANSITION PROPERTY */
+        /* ================================================== */
+
+        .property{
+            transition-property: background-color;
+        }
+
+        .property:hover{
+            background-color: green;
+        }
+
+
+        /* ================================================== */
+        /* TRANSITION DURATION */
+        /* ================================================== */
+
+        .duration{
+            transition-property: background-color;
+            transition-duration: 2s;
+        }
+
+        .duration:hover{
+            background-color: blue;
+        }
+
+
+        /* ================================================== */
+        /* TRANSITION DELAY */
+        /* ================================================== */
+
+        .delay{
+            transition-property: background-color;
+            transition-duration: 1s;
+            transition-delay: 2s;
+        }
+
+        .delay:hover{
+            background-color: purple;
+        }
+
+
+        /* ================================================== */
+        /* TRANSITION TIMING FUNCTION */
+        /* ================================================== */
+
+        .linear{
+            transition: background-color 2s linear;
+        }
+
+        .linear:hover{
+            background-color: blue;
+        }
+
+
+        .ease{
+            transition: background-color 2s ease;
+        }
+
+        .ease:hover{
+            background-color: green;
+        }
+
+
+        .ease-in{
+            transition: background-color 2s ease-in;
+        }
+
+        .ease-in:hover{
+            background-color: orange;
+        }
+
+
+        .ease-out{
+            transition: background-color 2s ease-out;
+        }
+
+        .ease-out:hover{
+            background-color: purple;
+        }
+
+
+        .ease-in-out{
+            transition: background-color 2s ease-in-out;
+        }
+
+        .ease-in-out:hover{
+            background-color: brown;
+        }
+
+
+        /* ================================================== */
+        /* TRANSITION WIDTH */
+        /* ================================================== */
+
+        .width{
+            transition: width 1s;
+        }
+
+        .width:hover{
+            width: 200px;
+        }
+
+
+        /* ================================================== */
+        /* TRANSITION HEIGHT */
+        /* ================================================== */
+
+        .height{
+            transition: height 1s;
+        }
+
+        .height:hover{
+            height: 140px;
+        }
+
+
+        /* ================================================== */
+        /* TRANSITION COLOR */
+        /* ================================================== */
+
+        .color{
+            transition: background-color 1s;
+        }
+
+        .color:hover{
+            background-color: black;
+        }
+
+
+        /* ================================================== */
+        /* TRANSITION OPACITY */
+        /* ================================================== */
+
+        .opacity{
+            transition: opacity 1s;
+        }
+
+        .opacity:hover{
+            opacity: 0.3;
+        }
+
+
+        /* ================================================== */
+        /* TRANSITION TRANSFORM */
+        /* ================================================== */
+
+        .transform{
+            transition: transform 1s;
+        }
+
+        .transform:hover{
+            transform: rotate(45deg);
+        }
+
+
+        /* ================================================== */
+        /* MULTIPLE PROPERTIES */
+        /* ================================================== */
+
+        .multiple{
+            transition:
+                width 1s,
+                height 1s,
+                background-color 1s,
+                transform 1s;
+        }
+
+        .multiple:hover{
+            width: 150px;
+            height: 120px;
+            background-color: blue;
+            transform: rotate(45deg);
+        }
+
+
+        /* ================================================== */
+        /* TRANSITION ALL */
+        /* ================================================== */
+
+        .all{
+            transition: all 1s;
+        }
+
+        .all:hover{
+            width: 150px;
+            height: 120px;
+            background-color: green;
+            transform: rotate(30deg);
+        }
+
+
+        /* ================================================== */
+        /* SHORTHAND */
+        /* ================================================== */
+
+        .shorthand{
+            transition: background-color 2s ease-in-out 1s;
+        }
+
+        .shorthand:hover{
+            background-color: orange;
+        }
+
+
+        /* ================================================== */
+        /* TRANSFORM + TRANSITION */
+        /* ================================================== */
+
+        .transform-transition{
+            transition:
+                transform 1s ease,
+                background-color 1s ease;
+        }
+
+        .transform-transition:hover{
+            transform: translateX(100px);
+            background-color: purple;
+        }
+
+
+        /* ================================================== */
+        /* MULTIPLE TRANSFORM */
+        /* ================================================== */
+
+        .multiple-transform{
+            transition: transform 1s;
+        }
+
+        .multiple-transform:hover{
+            transform:
+                translateX(50px)
+                rotate(45deg)
+                scale(1.2);
+        }
+
+
+        /* ================================================== */
+        /* TRANSITION TIMING FUNCTION - CUSTOM */
+        /* ================================================== */
+
+        .cubic{
+            transition:
+                transform 2s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+        }
+
+        .cubic:hover{
+            transform: translateX(100px);
+        }
+
+
+    </style>
+</head>
+
+<body>
+
+    <h1>CSS Transitions</h1>
+
+    <p>
+        CSS transitions allow an element to change from one
+        CSS state to another smoothly.
+    </p>
+
+    <p>
+        For example, when you hover over a button,
+        the background color can smoothly change.
+    </p>
+
+
+    <!-- ================================================== -->
+    <!-- BASIC TRANSITION -->
+    <!-- ================================================== -->
+
+    <h2>transition</h2>
+
+    <p>
+        transition allows a CSS property to change smoothly.
+    </p>
+
+    <div class="container">
+        <div class="box transition">
+            Hover
+        </div>
+    </div>
+
+    <pre>
+        .box{
+            transition: 1s;
+        }
+
+        .box:hover{
+            background-color: blue;
+        }
+    </pre>
+
+
+    <!-- ================================================== -->
+    <!-- TRANSITION PROPERTY -->
+    <!-- ================================================== -->
+
+    <h2>transition-property</h2>
+
+    <p>
+        transition-property tells CSS which property
+        should have a transition.
+    </p>
+
+    <div class="container">
+        <div class="box property">
+            Hover
+        </div>
+    </div>
+
+    <pre>
+        .box{
+            transition-property: background-color;
+        }
+
+        .box:hover{
+            background-color: green;
+        }
+    </pre>
+
+
+    <!-- ================================================== -->
+    <!-- TRANSITION DURATION -->
+    <!-- ================================================== -->
+
+    <h2>transition-duration</h2>
+
+    <p>
+        transition-duration controls how long
+        the transition takes.
+    </p>
+
+    <div class="container">
+        <div class="box duration">
+            Hover
+        </div>
+    </div>
+
+    <pre>
+        .box{
+            transition-property: background-color;
+            transition-duration: 2s;
+        }
+    </pre>
+
+
+    <!-- ================================================== -->
+    <!-- TRANSITION DELAY -->
+    <!-- ================================================== -->
+
+    <h2>transition-delay</h2>
+
+    <p>
+        transition-delay controls how long CSS waits
+        before starting the transition.
+    </p>
+
+    <div class="container">
+        <div class="box delay">
+            Hover
+        </div>
+    </div>
+
+    <pre>
+        .box{
+            transition-property: background-color;
+            transition-duration: 1s;
+            transition-delay: 2s;
+        }
+    </pre>
+
+
+    <!-- ================================================== -->
+    <!-- LINEAR -->
+    <!-- ================================================== -->
+
+    <h2>transition-timing-function: linear</h2>
+
+    <p>
+        linear keeps the same speed throughout the transition.
+    </p>
+
+    <div class="container">
+        <div class="box linear">
+            Hover
+        </div>
+    </div>
+
+    <pre>
+        .box{
+            transition: background-color 2s linear;
+        }
+    </pre>
+
+
+    <!-- ================================================== -->
+    <!-- EASE -->
+    <!-- ================================================== -->
+
+    <h2>transition-timing-function: ease</h2>
+
+    <p>
+        ease starts slowly, speeds up, and slows down at the end.
+    </p>
+
+    <div class="container">
+        <div class="box ease">
+            Hover
+        </div>
+    </div>
+
+    <pre>
+        .box{
+            transition: background-color 2s ease;
+        }
+    </pre>
+
+
+    <!-- ================================================== -->
+    <!-- EASE IN -->
+    <!-- ================================================== -->
+
+    <h2>transition-timing-function: ease-in</h2>
+
+    <p>
+        ease-in starts slowly and becomes faster.
+    </p>
+
+    <div class="container">
+        <div class="box ease-in">
+            Hover
+        </div>
+    </div>
+
+    <pre>
+        .box{
+            transition: background-color 2s ease-in;
+        }
+    </pre>
+
+
+    <!-- ================================================== -->
+    <!-- EASE OUT -->
+    <!-- ================================================== -->
+
+    <h2>transition-timing-function: ease-out</h2>
+
+    <p>
+        ease-out starts quickly and slows down at the end.
+    </p>
+
+    <div class="container">
+        <div class="box ease-out">
+            Hover
+        </div>
+    </div>
+
+    <pre>
+        .box{
+            transition: background-color 2s ease-out;
+        }
+    </pre>
+
+
+    <!-- ================================================== -->
+    <!-- EASE IN OUT -->
+    <!-- ================================================== -->
+
+    <h2>transition-timing-function: ease-in-out</h2>
+
+    <p>
+        ease-in-out starts slowly, speeds up,
+        and slows down again.
+    </p>
+
+    <div class="container">
+        <div class="box ease-in-out">
+            Hover
+        </div>
+    </div>
+
+    <pre>
+        .box{
+            transition: background-color 2s ease-in-out;
+        }
+    </pre>
+
+
+    <!-- ================================================== -->
+    <!-- WIDTH -->
+    <!-- ================================================== -->
+
+    <h2>Transition on width</h2>
+
+    <p>
+        Transitions can be applied to width.
+    </p>
+
+    <div class="container">
+        <div class="box width">
+            Hover
+        </div>
+    </div>
+
+    <pre>
+        .box{
+            transition: width 1s;
+        }
+
+        .box:hover{
+            width: 200px;
+        }
+    </pre>
+
+
+    <!-- ================================================== -->
+    <!-- HEIGHT -->
+    <!-- ================================================== -->
+
+    <h2>Transition on height</h2>
+
+    <p>
+        Transitions can be applied to height.
+    </p>
+
+    <div class="container">
+        <div class="box height">
+            Hover
+        </div>
+    </div>
+
+    <pre>
+        .box{
+            transition: height 1s;
+        }
+
+        .box:hover{
+            height: 140px;
+        }
+    </pre>
+
+
+    <!-- ================================================== -->
+    <!-- BACKGROUND COLOR -->
+    <!-- ================================================== -->
+
+    <h2>Transition on background-color</h2>
+
+    <div class="container">
+        <div class="box color">
+            Hover
+        </div>
+    </div>
+
+    <pre>
+        .box{
+            transition: background-color 1s;
+        }
+
+        .box:hover{
+            background-color: black;
+        }
+    </pre>
+
+
+    <!-- ================================================== -->
+    <!-- OPACITY -->
+    <!-- ================================================== -->
+
+    <h2>Transition on opacity</h2>
+
+    <p>
+        opacity controls how transparent an element is.
+    </p>
+
+    <div class="container">
+        <div class="box opacity">
+            Hover
+        </div>
+    </div>
+
+    <pre>
+        .box{
+            transition: opacity 1s;
+        }
+
+        .box:hover{
+            opacity: 0.3;
+        }
+    </pre>
+
+
+    <!-- ================================================== -->
+    <!-- TRANSFORM -->
+    <!-- ================================================== -->
+
+    <h2>Transition on transform</h2>
+
+    <p>
+        Transform and transition are often used together.
+    </p>
+
+    <div class="container">
+        <div class="box transform">
+            Hover
+        </div>
+    </div>
+
+    <pre>
+        .box{
+            transition: transform 1s;
+        }
+
+        .box:hover{
+            transform: rotate(45deg);
+        }
+    </pre>
+
+
+    <!-- ================================================== -->
+    <!-- MULTIPLE PROPERTIES -->
+    <!-- ================================================== -->
+
+    <h2>Multiple transition properties</h2>
+
+    <p>
+        Multiple properties can be transitioned at the same time.
+    </p>
+
+    <div class="container">
+        <div class="box multiple">
+            Hover
+        </div>
+    </div>
+
+    <pre>
+        .box{
+            transition:
+                width 1s,
+                height 1s,
+                background-color 1s,
+                transform 1s;
+        }
+
+        .box:hover{
+            width: 150px;
+            height: 120px;
+            background-color: blue;
+            transform: rotate(45deg);
+        }
+    </pre>
+
+
+    <!-- ================================================== -->
+    <!-- TRANSITION ALL -->
+    <!-- ================================================== -->
+
+    <h2>transition: all</h2>
+
+    <p>
+        all tells CSS to transition all applicable
+        changed properties.
+    </p>
+
+    <div class="container">
+        <div class="box all">
+            Hover
+        </div>
+    </div>
+
+    <pre>
+        .box{
+            transition: all 1s;
+        }
+
+        .box:hover{
+            width: 150px;
+            height: 120px;
+            background-color: green;
+            transform: rotate(30deg);
+        }
+    </pre>
+
+
+    <!-- ================================================== -->
+    <!-- SHORTHAND -->
+    <!-- ================================================== -->
+
+    <h2>transition shorthand</h2>
+
+    <p>
+        The transition shorthand can contain
+        property, duration, timing-function and delay.
+    </p>
+
+    <div class="container">
+        <div class="box shorthand">
+            Hover
+        </div>
+    </div>
+
+    <pre>
+        .box{
+            transition:
+                background-color
+                2s
+                ease-in-out
+                1s;
+        }
+    </pre>
+
+
+    <!-- ================================================== -->
+    <!-- TRANSFORM + TRANSITION -->
+    <!-- ================================================== -->
+
+    <h2>transform + transition</h2>
+
+    <p>
+        Transition makes the transform happen smoothly.
+    </p>
+
+    <div class="container">
+        <div class="box transform-transition">
+            Hover
+        </div>
+    </div>
+
+    <pre>
+        .box{
+            transition:
+                transform 1s ease,
+                background-color 1s ease;
+        }
+
+        .box:hover{
+            transform: translateX(100px);
+            background-color: purple;
+        }
+    </pre>
+
+
+    <!-- ================================================== -->
+    <!-- MULTIPLE TRANSFORMS -->
+    <!-- ================================================== -->
+
+    <h2>Multiple transforms with transition</h2>
+
+    <div class="container">
+        <div class="box multiple-transform">
+            Hover
+        </div>
+    </div>
+
+    <pre>
+        .box{
+            transition: transform 1s;
+        }
+
+        .box:hover{
+            transform:
+                translateX(50px)
+                rotate(45deg)
+                scale(1.2);
+        }
+    </pre>
+
+
+    <!-- ================================================== -->
+    <!-- CUBIC BEZIER -->
+    <!-- ================================================== -->
+
+    <h2>transition-timing-function: cubic-bezier()</h2>
+
+    <p>
+        cubic-bezier() allows you to create your own
+        timing curve.
+    </p>
+
+    <div class="container">
+        <div class="box cubic">
+            Hover
+        </div>
+    </div>
+
+    <pre>
+        .box{
+            transition:
+                transform
+                2s
+                cubic-bezier(0.68, -0.55, 0.27, 1.55);
+        }
+    </pre>
+
+
+    <!-- ================================================== -->
+    <!-- QUICK NOTES -->
+    <!-- ================================================== -->
+
+    <h2>Quick Notes</h2>
+
+    <pre>
+
+    transition
+        Shorthand for creating a transition
+
+    transition-property
+        Which CSS property should transition
+
+    transition-duration
+        How long the transition takes
+
+    transition-delay
+        How long to wait before starting
+
+    transition-timing-function
+        Controls the speed of the transition
+
+    linear
+        Same speed throughout
+
+    ease
+        Slow → fast → slow
+
+    ease-in
+        Starts slowly
+
+    ease-out
+        Ends slowly
+
+    ease-in-out
+        Starts and ends slowly
+
+    cubic-bezier()
+        Custom timing curve
+
+    transition: all 1s;
+        Transitions all changed properties
+
+    </pre>
+
+
+    <!-- ================================================== -->
+    <!-- IMPORTANT DIFFERENCE -->
+    <!-- ================================================== -->
+
+    <h2>Transform vs Transition</h2>
+
+    <pre>
+
+    transform
+        Changes the element.
+
+        Example:
+        transform: rotate(45deg);
+
+
+    transition
+        Makes the change happen smoothly.
+
+        Example:
+        transition: transform 1s;
+
+
+    Together:
+
+        .box{
+            transition: transform 1s;
+        }
+
+        .box:hover{
+            transform: rotate(45deg);
+        }
+
+    </pre>
+
+</body>
+</html>

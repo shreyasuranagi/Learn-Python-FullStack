@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        /* p{
+            color: blue;
+        }
+
+        h3,h4{
+            color: purple;
+        }
+
+        div p{
+            color:orange;
+        } */
+
+        /* ul>li{
+            color:blue;
+        } */
+
+        p.highlighted{
+            background-color:yellow;
+        }
+
+        h2~p{
+            color:red;
+        }
+        input[type="text"]{
+            background-color:lightgreen;
+        }
+        a[href^="https"]{
+            color:green;
+        }
+        li:first-child{
+            color:none;
+        }
+        li{
+            background-color:lightblue;
+        }
+        .skip{
+            background-color:none;
+        }
+        tr:nth-child(2n+1){
+            background-color:lightgray;
+            
+        }
+        input:required{
+            background-color:lightcoral;
+        }
+
+        section>p.text:first-child{
+            color:blue;
+        }
+        div.
+    </style>
+</head>
+<body>
+    <h1>css selectors exercise</h1>
+    <p>
+        <a href="https://www.scribd.com/document/1004552857/Css-Selectors-Exercises" target="_blank">Exercise link</a>
+    </p>
+
+    <hr>
+    <!-- <div> 
+    <h2>1.color all paras blue</h2>
+    <p>first para</p>
+    <p>second para</p>
+    <div>Not a paragraph</div>
+    </div>
+
+    <h3>head3</h3>
+    <h4>head4</h4> -->
+
+    <!-- <h2>5. color only paras inside div o be orange</h2>
+    <div>
+        <p>
+            inside div
+        </p>
+    </div>
+    <p>outside div</p> -->
+
+    <ul>
+        <li>list item 1</li>
+        <li>list item 2</li>
+        <ol>
+            <li>nested list</li>
+        </ol>
+    </ul>
+
+    <p class="highlighted">highlighted para</p>
+    <div class="highlighted">highlighted div</div>
+
+    <h2>Section</h2>
+    <p>first para</p>
+    <p>second para</p>
+
+
+    <input type="text"><br>
+    <input type="password" required><br>
+    <input type="text"><br>
+    
+    <ul>
+        <li>apple</li>
+        <li class="skip">banana</li>
+
+    </ul>
+
+    <ul>
+        <li>mango</li>
+        <li>cherry</li>
+    </ul>
+
+    <table border="3" cellspacing="3" cellpadding="3">
+        <tr><td>1</td></tr>
+        <tr><td>2</td></tr>
+        <tr><td>3</td></tr>
+        <tr><td>4</td></tr>
+    </table>
+
+    <section>
+        <p class="text">Target</p>
+        <p class="text">Not first</p>
+
+    </section>
+
+    <section>
+        <div>Something</div>
+        <p class="text">Not first</p>
+
+    </section>
+
+    <div class="card">
+        <p>Text<span>Target</span></p>
+    </div>
+    <p><span>Not target</span></p>
+</body>
+</html>

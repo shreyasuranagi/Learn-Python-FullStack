@@ -1,0 +1,25 @@
+div{
+    background-color: maroon;
+    height: 300px;
+    width: 500px;
+    border: solid;
+    background-image: url("https://assets0.mirraw.com/images/10505233/PM_289_15_small.jpg?1656345879");
+
+    /* background-image:url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTz7ifbErkaMAOHvQF75gcRjB7V0UaXPfXyXH4TdmmTiE7D5xQD7ql284o&s=10"); */
+
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+
+body{
+    background-image: url("https://cdn11.bigcommerce.com/s-x49po/images/stencil/1500x1500/products/87741/251512/1661711728366_W62_WATERCOLOR_ON_PAPER_20x14INCH_22000__79572.1687003386.jpg?c=2");
+    background-size: cover;
+    /* background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhUVduBILGAlCvqf_ZXhQ90wMwJ2d22qyMNsl-qDE6wA&s=10"); */
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+}
+
+p{
+    color:white;
+}

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        h2{
+            background-color: indigo;
+        }
+    </style>
+    <link rel="stylesheet" href="ext.css">
+</head>
+<body>
+    <p>Inline - highest priority</p>
+    <h1>Heading1 with beige and pink
+        <h2 style="background-color: yellow;"> with inline css -yellow- overwriting internal </h2>
+            <h2 style="background-color: green;"> with inline css -green- overwriting external</h2>
+            
+            <hr>
+
+    <p>Int. vs External.</p>
+    <h2>heading2 first int. style tag(indigo(dark)), then link tag</h2>
+
+    <hr>
+    <p>Int vs External</p>
+    <h2>heading2 first ext. style tag(pink()), then int. tag(indigo)</h2>
+</body>
+</html>

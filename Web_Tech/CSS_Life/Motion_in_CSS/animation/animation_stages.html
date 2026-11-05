@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding:0;
+            box-sizing:border-box;
+        }
+        body{
+            height:100vh;
+            width:100vw;
+            display:flex;
+            justify-content:center;
+            align-content:center;
+        }
+        .mainbox{
+            width:500px;
+            height:500px;
+            border:2px solid blue;
+        }
+        .childbox{
+            height: 200px;
+            width: 200px;
+            background-color:rgb(48, 184, 100);
+            /* border-radius: 50%; */
+            
+            animation-name:box;
+            /* animation-duration:4s; */
+            /* animation-timing-function: ease-in-out; */
+            animation-duration:6s;
+            animation-iteration-count:infinite;
+            animation-direction:alternate-reverse;
+            
+        }
+        
+          
+
+          @keyframes box{
+            0%{
+                tranform: translate(0px,0px);
+                transition-timing-function: cubic-bezier(0.1, 0.7, 1.0, 0.1);
+               
+            }
+            25%{
+                transform: translate(300px,0px);
+                transition-timing-function:cubic-bezier(0.8, 0.9, 1.0, 0.1);
+            }
+            50%{
+                transform:translate(300px,300px);
+            }
+            75%{
+                transform:translate(0px,300px);
+            }
+          }
+    </style>
+</head>
+<body>
+    <div class="mainbox">
+        <div class="childbox">
+            <b>box!</b>
+
+        </div>
+        
+    </div>
+</body>
+</html>

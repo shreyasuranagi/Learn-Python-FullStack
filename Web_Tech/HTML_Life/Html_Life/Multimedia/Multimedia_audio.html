@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- <audio controls src="C:\Users\Suranagi\Downloadssigmamusicart-football-football-music-551346.mp3"></audio> -->
+    <!-- <audio controls src="../dummy/sigmamusicart-football-football-music-551346.mp3" loop autoplay muted preload="metadata"></audio> -->
+    <!-- <audio controls src="c:\Users\Suranagi\Downloads\mixkit-driving-ambition-32.mp3"></audio> -->
+
+
+    <h1>Audio tag</h1>
+
+    <p>below is a simple audio tag</p>
+    <audio controls src="../dummy/sigmamusicart-football-football-music-551346.mp3">
+        hello there
+    </audio>
+
+    <p>above u saw was the code to it was:
+        <code>audio controls src="../dummy/sigmamusicart-football-football-music-551346.mp3"</code>
+        controls i s mandatory. otherwise it is not seen as eg below
+    </p>
+
+    <audio src="../dummy/sigmamusicart-football-football-music-551346.mp3">
+
+    </audio>
+
+    <p>like i said u cant see it. cos no 'controls' attribute
+    <ul>
+        <li>play n pause</li>
+        <li>progress</li>
+        <li>volume</li>
+    </ul>
+    </p>
+
+    <hr>
+
+    <h3>Attributes</h3>
+    <ul>
+        <li>autoplay</li>
+        <li>loop</li>
+        <li>muted</li>
+        <li>preload</li>
+    </ul>
+
+    <hr>
+    <h3>Autoplay </h3>
+    <audio controls src="../dummy/sigmamusicart-football-football-music-551346.mp3" autoplay>
+    </audio>
+
+    <hr>
+    <h3>Loop</h3>
+    <audio controls src="../dummy/sigmamusicart-football-football-music-551346.mp3" loop>
+    </audio>
+
+    <hr>
+    <h3>Muted</h3>
+
+    <audio controls src="../dummy/sigmamusicart-football-football-music-551346.mp3" muted>
+    </audio>
+    <hr>
+    <h3>Preload</h3>
+    <h4>metadata </h4>
+        <p>et the information needed to know about this audio. It might download a small amount of the file/data to obtain that information.</p>
+
+    <audio controls src="../dummy/sigmamusicart-football-football-music-551346.mp3" preload="metadata">
+    </audio>
+
+    <h4>Auto</h4>
+    <p>The browser may download a substantial portion or even the entire file.</p>
+    <audio controls src="../dummy/sigmamusicart-football-football-music-551346.mp3" preload="auto">
+    </audio>
+
+    <h4>None</h4>
+    <p>Don't fetch the audio. When the user presses Play, it starts fetching what it needs.</p>
+    <audio controls src="../dummy/sigmamusicart-football-football-music-551346.mp3" preload="none">
+    </audio>
+
+    <hr>
+
+    <h3>Try corrupted link - BAckup sources</h3>
+    <audio controls>
+        <source src="../dummy/sigmamusicll-music-551346.mp3" type="audio/mpeg">
+        <source src="../dummy/mixkit-driving-ambition-32.mp3" type="audio/mpeg">
+        Your browser does not support the audio tag.
+    </audio>
+
+</body>
+
+</html>

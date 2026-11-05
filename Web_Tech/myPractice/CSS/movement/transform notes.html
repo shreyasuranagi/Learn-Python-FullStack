@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Transform</title>
+
+    <style>
+
+        .container{
+            border: 2px solid black;
+            width: 200px;
+            height: 200px;
+            margin-left: 50px;
+            margin-bottom: 30px;
+        }
+
+        .box{
+            width: 100px;
+            height: 100px;
+            color: white;
+            text-align: center;
+            line-height: 100px;
+        }
+
+        /* ---------------- ROTATE ---------------- */
+
+        .rotate{
+            background-color: red;
+            transform: rotate(45deg);
+        }
+
+
+        /* ---------------- TRANSLATE ---------------- */
+
+        .translate{
+            background-color: green;
+            transform: translate(50px, 50px);
+        }
+
+
+        /* ---------------- TRANSLATE X ---------------- */
+
+        .translateX{
+            background-color: blue;
+            transform: translateX(50px);
+        }
+
+
+        /* ---------------- TRANSLATE Y ---------------- */
+
+        .translateY{
+            background-color: orange;
+            transform: translateY(50px);
+        }
+
+
+        /* ---------------- TRANSLATE Z ---------------- */
+
+        .translateZ{
+            background-color: purple;
+
+            transform: translateZ(50px);
+
+            /* Needed to see Z movement */
+            transform-style: preserve-3d;
+        }
+
+
+        /* ---------------- SCALE ---------------- */
+
+        .scale{
+            background-color: brown;
+            transform: scale(1.5);
+        }
+
+
+        /* ---------------- SCALE X ---------------- */
+
+        .scaleX{
+            background-color: pink;
+            transform: scaleX(1.5);
+        }
+
+
+        /* ---------------- SCALE Y ---------------- */
+
+        .scaleY{
+            background-color: teal;
+            transform: scaleY(1.5);
+        }
+
+
+        /* ---------------- SCALE X AND Y ---------------- */
+
+        .scaleXY{
+            background-color: darkgreen;
+            transform: scale(1.5, 2);
+        }
+
+
+        /* ---------------- ROTATE X ---------------- */
+
+        .rotateX{
+            background-color: darkred;
+            transform: rotateX(45deg);
+        }
+
+
+        /* ---------------- ROTATE Y ---------------- */
+
+        .rotateY{
+            background-color: darkblue;
+            transform: rotateY(45deg);
+        }
+
+
+        /* ---------------- ROTATE Z ---------------- */
+
+        .rotateZ{
+            background-color: darkorange;
+            transform: rotateZ(45deg);
+        }
+
+
+        /* ---------------- SKEW ---------------- */
+
+        .skew{
+            background-color: gray;
+            transform: skew(20deg, 10deg);
+        }
+
+
+        /* ---------------- SKEW X ---------------- */
+
+        .skewX{
+            background-color: black;
+            transform: skewX(20deg);
+        }
+
+
+        /* ---------------- SKEW Y ---------------- */
+
+        .skewY{
+            background-color: navy;
+            transform: skewY(20deg);
+        }
+
+
+        /* ---------------- TRANSFORM ORIGIN ---------------- */
+
+        .origin{
+            background-color: crimson;
+
+            transform: rotate(45deg);
+
+            transform-origin: top left;
+        }
+
+
+        /* ---------------- MULTIPLE TRANSFORMS ---------------- */
+
+        .multiple{
+            background-color: darkviolet;
+
+            transform: translate(30px, 30px)
+                       rotate(30deg)
+                       scale(1.2);
+        }
+
+
+        /* ---------------- 3D TRANSFORM ---------------- */
+
+        .threeD{
+            background-color: seagreen;
+
+            transform: perspective(500px)
+                       rotateX(45deg);
+        }
+
+
+        /* ---------------- MATRIX ---------------- */
+
+        .matrix{
+            background-color: chocolate;
+
+            transform: matrix(
+                1,
+                0,
+                0,
+                1,
+                50,
+                50
+            );
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <h1>CSS Transforms</h1>
+
+    <p>
+        CSS transforms allow us to change the position,
+        size, orientation and shape of an element.
+    </p>
+
+    <p>
+        The main transform functions are rotate, translate,
+        scale and skew.
+    </p>
+
+
+    <!-- ================================================== -->
+    <!-- ROTATE -->
+    <!-- ================================================== -->
+
+    <h2>transform: rotate()</h2>
+
+    <div class="container">
+        <div class="box rotate">
+            Rotate
+        </div>
+    </div>
+
+    <pre>
+        .box{
+            transform: rotate(45deg);
+        }
+    </pre>
+
+
+    <!-- ================================================== -->
+    <!-- TRANSLATE -->
+    <!-- ================================================== -->
+
+    <h2>transform: translate()</h2>
+
+    <p>
+        translate(x, y) moves an element horizontally and vertically.
+    </p>
+
+    <div class="container">
+        <div class="box translate">
+            Translate
+        </div>
+    </div>
+
+    <pre>
+        .box{
+            transform: translate(50px, 50px);
+        }
+    </pre>
+
+
+    <!-- ================================================== -->
+    <!-- TRANSLATE X -->
+    <!-- ================================================== -->
+
+    <h2>transform: translateX()</h2>
+
+    <p>
+        translateX() moves the element horizontally.
+    </p>
+
+    <div class="container">
+        <div class="box translateX">
+            X
+        </div>
+    </div>
+
+    <pre>
+        .box{
+            transform: translateX(50px);
+        }
+    </pre>
+
+
+    <!-- ================================================== -->
+    <!-- TRANSLATE Y -->
+    <!-- ================================================== -->
+
+    <h2>transform: translateY()</h2>
+
+    <p>
+        translateY() moves the element vertically.
+    </p>
+
+    <div class="container">
+        <div class="box translateY">
+            Y
+        </div>
+    </div>
+
+    <pre>
+        .box{
+            transform: translateY(50px);
+        }
+    </pre>
+
+
+    <!-- ================================================== -->
+    <!-- TRANSLATE Z -->
+    <!-- ================================================== -->
+
+    <h2>transform: translateZ()</h2>
+
+    <p>
+        translateZ() moves an element along the Z axis.
+        It is mainly used with 3D transforms.
+    </p>
+
+    <div class="container">
+        <div class="box translateZ">
+            Z
+        </div>
+    </div>
+
+    <pre>
+        .box{
+            transform: translateZ(50px);
+        }
+    </pre>
+
+
+    <!-- ================================================== -->
+    <!-- SCALE -->
+    <!-- ================================================== -->
+
+    <h2>transform: scale()</h2>
+
+    <p>
+        scale() increases or decreases the size of an element.
+    </p>
+
+    <div class="container">
+        <div class="box scale">
+            Scale
+        </div>
+    </div>
+
+    <pre>
+        .box{
+            transform: scale(1.5);
+        }
+    </pre>
+
+
+    <!-- ================================================== -->
+    <!-- SCALE X -->
+    <!-- ================================================== -->
+
+    <h2>transform: scaleX()</h2>
+
+    <p>
+        scaleX() changes the width of an element.
+    </p>
+
+    <div class="container">
+        <div class="box scaleX">
+            X
+        </div>
+    </div>
+
+    <pre>
+        .box{
+            transform: scaleX(1.5);
+        }
+    </pre>
+
+
+    <!-- ================================================== -->
+    <!-- SCALE Y -->
+    <!-- ================================================== -->
+
+    <h2>transform: scaleY()</h2>
+
+    <p>
+        scaleY() changes the height of an element.
+    </p>
+
+    <div class="container">
+        <div class="box scaleY">
+            Y
+        </div>
+    </div>
+
+    <pre>
+        .box{
+            transform: scaleY(1.5);
+        }
+    </pre>
+
+
+    <!-- ================================================== -->
+    <!-- SCALE X Y -->
+    <!-- ================================================== -->
+
+    <h2>transform: scale(x, y)</h2>
+
+    <p>
+        You can change width and height separately.
+    </p>
+
+    <div class="container">
+        <div class="box scaleXY">
+            X Y
+        </div>
+    </div>
+
+    <pre>
+        .box{
+            transform: scale(1.5, 2);
+        }
+    </pre>
+
+
+    <!-- ================================================== -->
+    <!-- ROTATE X -->
+    <!-- ================================================== -->
+
+    <h2>transform: rotateX()</h2>
+
+    <p>
+        rotateX() rotates an element around the X axis.
+    </p>
+
+    <div class="container">
+        <div class="box rotateX">
+            X
+        </div>
+    </div>
+
+    <pre>
+        .box{
+            transform: rotateX(45deg);
+        }
+    </pre>
+
+
+    <!-- ================================================== -->
+    <!-- ROTATE Y -->
+    <!-- ================================================== -->
+
+    <h2>transform: rotateY()</h2>
+
+    <p>
+        rotateY() rotates an element around the Y axis.
+    </p>
+
+    <div class="container">
+        <div class="box rotateY">
+            Y
+        </div>
+    </div>
+
+    <pre>
+        .box{
+            transform: rotateY(45deg);
+        }
+    </pre>
+
+
+    <!-- ================================================== -->
+    <!-- ROTATE Z -->
+    <!-- ================================================== -->
+
+    <h2>transform: rotateZ()</h2>
+
+    <p>
+        rotateZ() rotates an element around the Z axis.
+        rotateZ() is similar to rotate().
+    </p>
+
+    <div class="container">
+        <div class="box rotateZ">
+            Z
+        </div>
+    </div>
+
+    <pre>
+        .box{
+            transform: rotateZ(45deg);
+        }
+    </pre>
+
+
+    <!-- ================================================== -->
+    <!-- SKEW -->
+    <!-- ================================================== -->
+
+    <h2>transform: skew()</h2>
+
+    <p>
+        skew() tilts an element along the X and Y axes.
+    </p>
+
+    <div class="container">
+        <div class="box skew">
+            Skew
+        </div>
+    </div>
+
+    <pre>
+        .box{
+            transform: skew(20deg, 10deg);
+        }
+    </pre>
+
+
+    <!-- ================================================== -->
+    <!-- SKEW X -->
+    <!-- ================================================== -->
+
+    <h2>transform: skewX()</h2>
+
+    <p>
+        skewX() tilts the element along the X axis.
+    </p>
+
+    <div class="container">
+        <div class="box skewX">
+            X
+        </div>
+    </div>
+
+    <pre>
+        .box{
+            transform: skewX(20deg);
+        }
+    </pre>
+
+
+    <!-- ================================================== -->
+    <!-- SKEW Y -->
+    <!-- ================================================== -->
+
+    <h2>transform: skewY()</h2>
+
+    <p>
+        skewY() tilts the element along the Y axis.
+    </p>
+
+    <div class="container">
+        <div class="box skewY">
+            Y
+        </div>
+    </div>
+
+    <pre>
+        .box{
+            transform: skewY(20deg);
+        }
+    </pre>
+
+
+    <!-- ================================================== -->
+    <!-- TRANSFORM ORIGIN -->
+    <!-- ================================================== -->
+
+    <h2>transform-origin</h2>
+
+    <p>
+        transform-origin changes the point around which
+        the transformation happens.
+    </p>
+
+    <div class="container">
+        <div class="box origin">
+            Origin
+        </div>
+    </div>
+
+    <pre>
+        .box{
+            transform: rotate(45deg);
+            transform-origin: top left;
+        }
+    </pre>
+
+
+    <!-- ================================================== -->
+    <!-- MULTIPLE TRANSFORMS -->
+    <!-- ================================================== -->
+
+    <h2>Multiple transforms</h2>
+
+    <p>
+        You can use multiple transform functions together.
+    </p>
+
+    <div class="container">
+        <div class="box multiple">
+            Multiple
+        </div>
+    </div>
+
+    <pre>
+        .box{
+            transform:
+                translate(30px, 30px)
+                rotate(30deg)
+                scale(1.2);
+        }
+    </pre>
+
+
+    <!-- ================================================== -->
+    <!-- 3D TRANSFORM -->
+    <!-- ================================================== -->
+
+    <h2>transform: perspective()</h2>
+
+    <p>
+        perspective() gives a 3D transformation a sense of depth.
+    </p>
+
+    <div class="container">
+        <div class="box threeD">
+            3D
+        </div>
+    </div>
+
+    <pre>
+        .box{
+            transform:
+                perspective(500px)
+                rotateX(45deg);
+        }
+    </pre>
+
+
+    <!-- ================================================== -->
+    <!-- MATRIX -->
+    <!-- ================================================== -->
+
+    <h2>transform: matrix()</h2>
+
+    <p>
+        matrix() is an advanced way of combining
+        2D transformations using numbers.
+    </p>
+
+    <div class="container">
+        <div class="box matrix">
+            Matrix
+        </div>
+    </div>
+
+    <pre>
+        .box{
+            transform: matrix(
+                1,
+                0,
+                0,
+                1,
+                50,
+                50
+            );
+        }
+    </pre>
+
+
+    <!-- ================================================== -->
+    <!-- QUICK NOTES -->
+    <!-- ================================================== -->
+
+    <h2>Quick Notes</h2>
+
+    <pre>
+
+    translate(x, y)
+        Moves X and Y
+
+    translateX(x)
+        Moves horizontally
+
+    translateY(y)
+        Moves vertically
+
+    translateZ(z)
+        Moves in 3D
+
+    scale(x)
+        Changes size
+
+    scaleX(x)
+        Changes width
+
+    scaleY(y)
+        Changes height
+
+    rotate(angle)
+        Rotates the element
+
+    rotateX(angle)
+        Rotates around X axis
+
+    rotateY(angle)
+        Rotates around Y axis
+
+    rotateZ(angle)
+        Rotates around Z axis
+
+    skew(x, y)
+        Tilts X and Y
+
+    skewX(angle)
+        Tilts horizontally
+
+    skewY(angle)
+        Tilts vertically
+
+    transform-origin
+        Changes the point of transformation
+
+    perspective()
+        Creates 3D depth
+
+    matrix()
+        Advanced 2D transformation
+
+    </pre>
+
+</body>
+</html>

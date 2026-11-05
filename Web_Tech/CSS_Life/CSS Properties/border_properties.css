@@ -1,0 +1,24 @@
+#box{
+    height: 400px;
+    width: 300px;
+
+    background-color:beige;
+
+    border: 10px groove brown;
+
+    border-top-color:blue;
+    border-right-style: dotted;
+    border-left: 5px double pink;
+    border-bottom: 5px double grey;
+
+    border-radius: 30px;
+
+    border-top-right-radius: 80px;
+
+
+}
+
+table{
+    border-spacing: 1px;
+    border-collapse: collapse;
+}

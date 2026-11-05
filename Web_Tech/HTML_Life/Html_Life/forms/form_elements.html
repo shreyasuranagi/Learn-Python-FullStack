@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Form and Form elements</h1>
+    <p>Forms are used to collect user input. eg-registration form, login page, applicaiton form, etc.<br>
+        The <code>form</code> element is the parent tag/element for all form elements.
+        It can contain various input elements, labels, buttons, and other form-related elements.</p>
+    <h2>Form Elements</h2>
+    <ol>
+        <li><b><code>form</code></b>: The parent tag/element for form elements. It contains other form elemnts like
+            input, label, select, button, etc.</li>
+        <li><b><code>label</code></b>: It gives label/ clarity to the user about the input field.</li>
+        <li><b><code>input</code></b>: Used to accept many types of user inputs like text, number, email, etc.</li>
+        <li><b><code>textarea</code></b>: It is used to take multiples lines of input from user. attributes-rows and col
+        </li>
+        <li><b><code>select</code></b>: Creates a drop-down list form whihc any one can be selected.<br>it is parent tag
+            for option element</li>
+        <li><b><code>option</code></b>: Defines an option in a drop-down list.<br> it is child tag for select element.
+        </li>
+        <li><b><code>fieldset</code></b>: It is used to put a boundary to the form.(Groups related elements in a form. )
+        </li>
+        <li><b><code>legend</code></b>: Gives a title for the <code>fieldset</code> element.</li>
+        <li><b><code>button</code></b>: Defines a clickable button. click it-> some action happens. eg- Submit, Reset
+        </li>
+
+    </ol>
+    <hr>
+    <h3>Form element alone</h3>
+    <p>Nothing can be seen here.</p>
+    <form>
+
+    </form>
+
+    <hr>
+    <h3>Form element with just input field without type</h3>
+    <p>This will always take text input as default.<br> still, forms are useless without submit button to make
+        sure that user entered data goes somewhere(database, server(as http request), or ust put into query string.</p>
+    <form>
+        <input>
+        <button>Submit  </button>
+    </form>
+
+    <hr>
+    <h3>Buttons and its types</h3>
+    <s>
+        <p>so lets just build one submit button. but ehy skip this thing cos its too difficult.</p>
+    </s>
+    <form>
+        <input type="submit" value="Submit">
+    </form>
+    <button type="">Submit here</button>
+
+    <hr>
+    <h3>Textarea element</h3>
+    <p>Textarea element is used to take multiple lines of input from user.<br>
+        It has two attributes rows and cols which defines the number of rows and columns in the textarea.<br><br>
+        Browser allows to expand the textarea by dragging the bottom right corner of the textarea.<br>
+        if the text expands beyond the textarea, then scroll bar appears to scroll the text.<br>
+
+        below is a normal textarea but <b>without any attributes.</b></p>
+    <textarea></textarea>
+    <p>below is a textarea with rows and cols attributes. row=10, col=50</p>
+    <textarea rows="4" cols="26"></textarea>
+
+    <hr>
+    <h3>Label element</h3>
+    <p>Label element is used to give <b>label/clarity</b> to the input field.<br>
+
+
+
+       - It has an attribute called for which is used to bind/connect the label with the respective input field. <br>
+        -clicking on the label will activate the respective input field.<br>
+        -The value of for attribute should be same as the id of the input field.<br>
+        <br></p>
+
+        <p> label <b>without</b> for-id for input type="text"</p>
+        <label>username: </label><input type="text"> <br><br>
+
+        <p> label <b>with for-id </b>for input type="text"</p>
+        <label for="uname">username: </label><input type="text" id="uname"> <br><br>
+
+        <p>if label  has for but id doesnt match or id not given.</p>
+        <label for="uname">username:</label><input type="text" >
+
+        <p> if label and input field are properly connected.</p>
+        <label for="usname">username: </label><input type="text" id="pass"> <br>
+        <label for="pass">password: </label><input type="text" id="usname"> <br>
+
+        <p>--if multiple input fields are present with same id which should never happen, the first input field with that mathcing id is picked and activated</p>
+
+        <hr>
+        <h3>Fieldset</h3>
+        <p>Fieldset element is used to put a boundary to the form.<br>
+            It is used to group related elements in a form.<br>
+            It has a child element called legend which gives a title for the fieldset element.</p>
+
+            <form>
+                <fieldset>
+                    <legend>Personal Information</legend>
+                    <label for="fname">First Name:</label>
+                    <input type="text" id="fname">
+                </fieldset>
+            </form>
+
+        <hr>
+        
+        <h3>Select element + option</h3>
+        <p>Select element is used to create a drop-down list from which any one can be selected.<br>
+            -It is a parent tag for option element.<br>
+            -Option element defines an option in a drop-down list.<br>
+            -It has an attribute called value which defines the value of the option.</p>
+
+            <p> <b>select without option</b></p>
+            <form>
+                <select></select>
+            </form>
+            <br>
+
+            <p> <b>select with options</b>. to send data to server of what is selected we need to add value attribute. see how query stirng changes.</p>
+            <form>
+                <label for="cars">Choose a car:</label>
+                <select name="cars" id="cars">
+                    <option value="select">select</option>
+                    <option value="volvo">Volvo</option>
+                    <option value="benz">Benz</option>
+                    <option value="audi">Audi</option>
+                </select>
+                <button>submit</button>
+            </form>
+
+            <p> if we want to allow  <u>disable one option</u>- disabled attribute:--</p>
+
+            <form>
+                <label for="cars2">Choose a car:</label>
+                <select name="cars" id="cars2">
+                    <option value="select" disabled>select</option>
+                    <option value="volvo">Volvo</option>
+                    <option value="benz">Benz</option>
+                    <option value="audi">Audi</option>
+                </select>
+                <button>submit</button>
+            </form>
+
+            <p> we disabled select but the firs toption is shown. <br>
+                to <u>show a default option</u>, we can use the selected attribute:</p>
+            <form>
+                <label for="cars3">Choose a car:</label>
+                <select name="cars" id="cars3">
+                    <option value="select" selected disabled>select</option>
+                    <option value="volvo">Volvo</option>
+                    <option value="benz">Benz</option>
+                    <option value="audi">Audi</option>
+                </select>
+                <button>submit</button>
+            </form>
+
+
+
+</body>
+
+</html>
