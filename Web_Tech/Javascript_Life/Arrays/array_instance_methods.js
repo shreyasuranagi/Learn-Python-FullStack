@@ -137,5 +137,121 @@
 // }
 
 // every()
-let data=['pink','red','yellow','','undefined',undefined]
-console.log(data.every( (col) => col!== undefined)) //true // checks value and data type is undefined or not
+// let data=['pink','red','yellow','','undefined',undefined]
+// console.log(data.every( (col) => col!== undefined)) //true // checks value and data type is undefined or not
+
+// some()
+// let arr=[1,2,3,4,5,6]
+// console.log(arr.some((num)=>num>10))
+// console.log(arr)
+
+
+//fill()
+// let arr=[1,2,3,4,5]
+// console.log(arr.fill(100,3))
+// console.log(arr)
+// console.log(arr.fill(0))
+// console.log(arr) 
+// console.log(arr.fill(['a','b'],2,4))
+
+// // find()
+// let arr1 = ['a', 'b12', 'c23cd', '123']
+// console.log(arr1.find((w) => w.length == 6)) // b12  // undefined
+
+// //findIndex()
+// let arr2 = ['a', 'b12', 'c23cd', '123']
+// console.log(arr2.findIndex((w) => w.length == 6)) //1  //-1
+
+// //findLastIndex()
+// let arr3 = ['a', 'b12', 'c23cd', '123']
+// console.log(arr3.findLastIndex((w) => w.length == 6)) //3  //-1
+
+
+// //findLastIndex()
+// let arr4 = ['a', '12345', 'b12', 'c23cd', '123']
+// console.log(arr4.findLast((w) => w.length == 5)) //c23d  // undefined
+
+// //flat
+// let data = [1, 2, 3, 4, [10, 20, ['a', 'b', 'c'], 30, 40, [100, 200]]]
+// console.log(data.flat()) // default -> 1 [ 1, 2, 3, 4, 10, 20, [ 'a', 'b', 'c' ] ]
+// console.log(data.flat(1))
+// //[
+// //   1,  2,   3,   4,   10,
+// //   20, 'a', 'b', 'c'
+// // ]
+// console.log(data.flat(2))
+// console.log(data.flat(3))
+// console.log(data.flat(-2))
+
+// console.log(data[4][2][2])
+
+// //infinite nesting
+
+// let d = [1, [2, [3, [4, [5, 6]]]]]
+// console.log(d.flat(Infinity))
+
+
+
+// // .reverse - modifies
+// let a = [1,2,3,[9,8],4,5]
+// console.log(a)
+// console.log(a.reverse())
+// console.log(a)
+// console.log()
+// // toReversed()
+// let b = [1,2,3,[9,8],4,5]
+// console.log(b)
+// console.log(b.toReversed())
+// console.log(b)
+
+
+// // toSpliced- not modified
+// let d=[1,2,3,4,5]
+// console.log(d)
+
+// console.log(d.splice(1,2,9,10))
+// console.log(d)
+
+// let e=[1,2,3,4,5]
+// console.log()
+// console.log(e.toSpliced(1,2,9,10))
+// console.log(e) 
+
+
+//.sort()
+// let data =[1,8,3,10,20]
+// console.log(data)
+// console.log(data.sort()) //lexically - converts items to strings
+// console.log(data)
+// let letters = ['a','v','c']
+// console.log(letters.sort())
+
+// // acutally sort numbers-
+// let d =[1,8,3,10,20]
+// console.log(d)
+// console.log(d.sort()) //lexically
+// console.log(d.sort( (a,b) => a-b )) //ascending - operation basically forces it to number
+// console.log(d.sort( (a,b) => b-a )) // descending
+
+//toSorted
+let data =[1,8,3,10,20]
+console.log(data)
+console.log(data.toSorted()) //lexically - converts items to strings
+console.log(data)
+let letters = ['a','v','c']
+console.log(letters.toSorted())
+console.log(letters)
+
+// acutally sort numbers-
+let d =[1,8,3,10,20]
+console.log(d)
+console.log(d.toSorted()) //lexically
+console.log(d.toSorted( (a,b) => a-b )) //ascending - operation basically forces it to number
+console.log(d.toSorted( (a,b) => b-a )) // descending
+
+let d1= ['a','c','b']
+console.log(d1.toSorted( (a,b) => a-b )) // ascending
+
+// ? =- sort words descending
+let d2= ['a','c','b']
+console.log(d2.sort().reverse())
