@@ -36,3 +36,6 @@ console.log(o === ss)
 //6. extract file extentsion
 let file = 'notes.md'
 console.log(file.slice(file.lastIndexOf('.')))
+
+//copywithin
+let s = 'abc'
