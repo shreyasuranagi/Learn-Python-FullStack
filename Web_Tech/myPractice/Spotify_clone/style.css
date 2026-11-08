@@ -183,31 +183,38 @@ main>*{
 
 /* center main */
 
+
 .centermain{
+    padding:10px 10px;
     display:flex;
     flex-direction:column;
-    /* justify-content:space-between; */
-    overflow:scroll;
+    justify-content:space-around;
+    /* align-items:stretch; */
+    gap:15px;
+  
+    overflow-y:scroll;
 }
-
 
 .row{
     background-color: blue;
     display:flex;
     flex-direction:row;
     justify-content: flex-start;
-    gap:20px;
-    /* overflow-x:scroll; */
-    height:1200px;
+    gap:30px;
+    
+    overflow-x:auto;
+    flex-wrap:nowrap;
+    flex-shrink:0;
 }
 
 .box{
-    width:50px;
-    height:50px;
+    width:150px;
+    height:150px;
     background-color: white;
     border:2px solid red;
     flex-shrink:0;
 }
+
 
 
 
@@ -218,3 +225,14 @@ main>*{
 
 }
 
+
+/* icons */
+.fa-brands.fa-spotify{
+    transform:scale(1.75);
+}
+.fa-solid.fa-house{
+    transform:scale(1.5)
+}
+.fa-solid.fa-magnifying-glass{
+    transform:scale(1.2);
+}
