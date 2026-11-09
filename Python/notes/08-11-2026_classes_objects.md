@@ -74,4 +74,22 @@ If you write print(college) inside display(), Python checks:Local scope (display
 ### getter and setter
 
 
-### 
+### static instance and class methods
+
+- normall we call calss emthod htrought class and instace method throught object
+- bUT we can call a class emthdo thrught instance however it takes onyl the cls as argument anyway - s1.class_method()
+- we can instanc emethdo throgh class IF we pass object as sargumetn fo r the self : Student.display(s1)
+- the decorator tell pyhton that it belogns to class method, and automaticall pass addres of cls
+- suppose our data to create objects come form a file/webAPI/json?SQL now we cant send directly to init thoses tring.
+so we can create an alternative constructor that splits based on',' and then call the constructor:
+```
+# Alternative constructor example using a class method:
+    @classmethod
+    def from_string(cls, data_str):
+        """Parses a comma-separated string like 'Rahul,21' to create a Student object."""
+        name, age = data_str.split(",")
+        return cls(name, int(age))
+```
+
+
+
