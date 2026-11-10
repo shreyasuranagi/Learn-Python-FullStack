@@ -34,9 +34,6 @@
 
 
 
-
-
-
 # **senior/interview-level questions**
 
 ---
@@ -87,8 +84,7 @@ You are writing a low-level utility library that normalizes incoming parameters,
 7. frequency of each character
 8. capitalize first letter of every word
 9. most frequenct character
-## solution notes
- it is better to parse every word than every character
+
 
 # JS medium level String method questions
 
@@ -185,3 +181,12 @@ Output: "a3b2c4d1"
 Interview practice tip: Try solving all 10 using JavaScript string methods such as split(), join(), slice(), substring(), replace(), replaceAll(), includes(), startsWith(), endsWith(), match() and toLowerCase().
 
 Some problems may also require loops or arrays along with string methods.
+
+
+# SOLUTION NOTES
+
+### HEADING -
+#### QUESTION NO.- 
+- TRIED:
+- MISTAKE-
+- FINAL

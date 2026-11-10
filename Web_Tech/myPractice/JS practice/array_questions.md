@@ -167,3 +167,13 @@ Output:
 3 -> 1
 4 -> 1
 ```
+
+
+
+# SOLUTION NOTES
+
+### HEADING -
+#### QUESTION NO.- 
+- TRIED:
+- MISTAKE-
+- FINAL
