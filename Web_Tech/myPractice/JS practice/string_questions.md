@@ -1,6 +1,4 @@
-Here are 26 practical, real-world scenarios you might encounter while building websites or web applications. Each challenge is designed around a specific string manipulation task without naming the method you need.
-
-Work through them at your own pace to test your problem-solving skills!
+# Real world scenarios DIRECT USE CASE
 
 ---
 
@@ -39,11 +37,7 @@ Work through them at your own pace to test your problem-solving skills!
 
 
 
-
-
-Here is a set of **senior/interview-level questions** inspired by real-world system design, performance tuning, and tricky edge cases you'll face in front-end or full-stack engineering interviews.
-
-These scenarios won't just ask you to "clean a string"—they will test how well you handle performance bottlenecks, Unicode safety, memory management, and complex data parsing.
+# **senior/interview-level questions**
 
 ---
 
@@ -93,6 +87,8 @@ You are writing a low-level utility library that normalizes incoming parameters,
 7. frequency of each character
 8. capitalize first letter of every word
 9. most frequenct character
+## solution notes
+ it is better to parse every word than every character
 
 # JS medium level String method questions
 
