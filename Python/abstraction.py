@@ -86,7 +86,7 @@ class ATM(ABC):
     def change_pin():
         pass
 
-ob=ATM()
+#ob=ATM()
 
 class newATM(ATM):
 
@@ -137,4 +137,28 @@ class newATM(ATM):
             print('Invalid pin')
     
 
-            
+         
+print('enter 1 to check balance')
+print('enter 2 to update pin')
+print('enter 3 to withdraw')
+print('enter 4 to deposit')
+print('enter 5 to stop')
+
+def operations(obj):
+    while True:
+        choice=int(input('enter your choice:'))
+        if choice==1:
+            obj.check_bal()
+        elif choice==2:
+            obj.change_pin()
+        elif choice==3:
+            obj.withdraw()
+        elif choice==4:
+            obj.deposit()
+        elif choice==5:
+            print('exiting')
+            break
+
+
+c1=newATM('anu',2345,2345,123456)   
+operations(c1)
