@@ -125,7 +125,7 @@
 //     console.log(x);
 // }
 // console.log(arr.entries[2]) //undefined
-// console.log()
+// console.log()1
 
 // for(let x of arr.keys()){
 //     console.log(x);
