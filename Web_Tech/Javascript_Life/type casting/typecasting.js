@@ -251,3 +251,6 @@ console.log(2.6 || 3); //2.6
 console.log('hi' || false);// hi
 console.log(null || true); //true
 console.log(false || 1);  // 1
+
+//! ! operator
+console.log((!!'helo'));
