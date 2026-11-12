@@ -184,12 +184,32 @@ armstrong_numbers()
 
 
 
+# wap to print 139.Wap to check whether the number is happy number or not
+# A Happy Number is a positive integer that eventually reaches 1 when you repeatedly replace it with the sum of the squares of its digits.
+# • \(1^2 + 9^2 = 1 + 81 = 82\)
+# • \(8^2 + 2^2 = 64 + 4 = 68\)
+# • \(6^2 + 8^2 = 36 + 64 = 100\)
+# • \(1^2 + 0^2 + 0^2 = 1\) (Happy!)
 
+n=int(input('Enter a no to check if it is happy or not:'))
 
+while n>=10:
 
+    temp=n
+    s=0
+    while temp>0:
+        
+        d=temp%10
+        
+        s=s+d**2
+        
+        temp=temp//10
+    n=s
 
-
-
+if s==1:
+    print('happy number')
+else:
+    print('not happy')
 
 
 
