@@ -49,6 +49,6 @@ console.log(a.findLast((n)=>n<0))
 // Create a new array containing just ["green", "blue"] without changing the original array.
 // In the original array, replace "yellow" with "orange" in-place.
 //* solution
-
+log
 
 //NOTE: cant su epslice or pop cos it changes the array and splice does not change original array
