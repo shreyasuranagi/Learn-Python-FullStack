@@ -190,7 +190,7 @@ armstrong_numbers()
 # • \(8^2 + 2^2 = 64 + 4 = 68\)
 # • \(6^2 + 8^2 = 36 + 64 = 100\)
 # • \(1^2 + 0^2 + 0^2 = 1\) (Happy!)
-
+'''
 n=int(input('Enter a no to check if it is happy or not:'))
 
 while n>=10:
@@ -210,10 +210,78 @@ if s==1:
     print('happy number')
 else:
     print('not happy')
+'''
 
 
 
+#144.Wap to check whether the number is xylem or not.
+#Ex: 1234→1+4=2+3
+#The sum of the first and last digits equals the sum of the middle digits
 
+#single digit-true
+#two digit - false
+#first (n//10) + last(n//10**len(n) == loop len(n)-2 times starting from n//100)
+
+'''
+def is_xylem():
+    n=int(input('Enter:'))
+    l=len(str(n))
+    if n//10==0:
+        return True
+    elif n//100==0:
+        return False
+    else:
+        lh=n%10 + (n//(10**(l-1)))
+        print(n%10)
+        print((n//(10**(l-1))))
+        print(lh)
+        i=l-2
+        rh=0
+        n=n//10
+        while i>0:
+            d=n%10
+            rh=rh+d
+            n=n//10
+            i=i-1
+        print(rh)
+        if lh==rh:
+            return True
+        else:
+            return False
+
+print(is_xylem())
+'''
+
+
+def is_xylem():
+    n=int(input('Enter:'))
+
+    if n//10==0:
+        return True
+    elif n//100==0:
+        return False 
+    else:
+        lh = 0
+        lh = lh + n%10
+        n=n//100
+        rh=0
+        while n>0:
+            d=n%10
+            rh=rh+d
+            if n//10==0:
+                d=n%10
+                rh=rh+d
+                n=n//10
+                lh=lh+n%10
+                break
+            n=n//10
+        
+        if lh==rh:
+            return True
+        else:
+            return False
+        
+print(is_xylem())
 
 
 
