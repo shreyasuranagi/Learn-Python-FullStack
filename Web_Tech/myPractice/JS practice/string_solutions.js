@@ -305,7 +305,36 @@ console.log(out);
 // Capitalize the first letter of every word and convert the remaining letters to lowercase.
 // js Input: "hELLO wORLD javascript" Output: "Hello World Javascript"
 
-let s= "hELLO wORLD"
+let s= "hELLO wORLD javascript"
+wl=s.split(' ')
+out=''
+for(let i=0; i<wl.length; i++){
+    w=wl[i]
+    nw=w[0].toUpperCase().concat(w.slice(1).toLowerCase())
+    out=out.concat(nw,' ')
+}
+console.log(out)
+
+
+
+6. **Find the Most Repeated Word**
+
+Find the word that appears most frequently in a sentence.
+
+
+js
+Input: "apple banana apple orange banana apple"
+Output: "apple"
+
+
+//! 7. **Remove a Specific Character From a String**
+// Remove all occurrences of a given character from a string.
+// Input: "programming"
+// Character: "g"
+// Output: "prorammin"
+//* solution
+let s='programming'
+console.log(s.replaceAll('g',''))
 
 
 //! 9. **Find the Second Longest Word**
