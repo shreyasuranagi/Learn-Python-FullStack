@@ -301,6 +301,12 @@ for (let i = 0; i < s.split(' ').length; i++) {
 }
 console.log(out);
 
+//! Convert a String to Title Case
+// Capitalize the first letter of every word and convert the remaining letters to lowercase.
+// js Input: "hELLO wORLD javascript" Output: "Hello World Javascript"
+
+let s= "hELLO wORLD"
+
 
 //! 9. **Find the Second Longest Word**
 // Input: "I love JavaScript programming"
