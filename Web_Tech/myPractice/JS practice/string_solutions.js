@@ -254,6 +254,16 @@ console.log(s.split(' ').reverse().join(' '))
 // Input: "I love learning programming"
 // Output: "programming"
 //* solution
+// s='I love programming learn'
+// a=s.split(' ')
+// console.log(a);
+// let longest=''
+// for(let i=0; i<a.length; i++){
+//     if (a[i].length>longest.length){
+//         longest=a[i]
+//     }
+// }
+// console.log(longest)
 
 
 //! 3. **Remove Duplicate Words**
@@ -304,27 +314,28 @@ console.log(out);
 //! Convert a String to Title Case
 // Capitalize the first letter of every word and convert the remaining letters to lowercase.
 // js Input: "hELLO wORLD javascript" Output: "Hello World Javascript"
-
 let s= "hELLO wORLD javascript"
-wl=s.split(' ')
-out=''
-for(let i=0; i<wl.length; i++){
-    w=wl[i]
-    nw=w[0].toUpperCase().concat(w.slice(1).toLowerCase())
-    out=out.concat(nw,' ')
-}
-console.log(out)
+// wl=s.split(' ')
+// out=''
+// for(let i=0; i<wl.length; i++){
+//     w=wl[i]
+//     nw=w[0].toUpperCase().concat(w.slice(1).toLowerCase())
+//     out=out.concat(nw,' ')
+// }
+// console.log(out)
 
 
 
-6. **Find the Most Repeated Word**
+//! 6. **Find the Most Repeated Word**
+// Find the word that appears most frequently in a sentence.
+// Input: "apple banana apple orange banana apple"
+// Output: "apple"
+//* solution
+s='apple banana apple orange banana apple'
+a=s.split(' ')
+console.log(a)
+console.log(a)
 
-Find the word that appears most frequently in a sentence.
-
-
-js
-Input: "apple banana apple orange banana apple"
-Output: "apple"
 
 
 //! 7. **Remove a Specific Character From a String**

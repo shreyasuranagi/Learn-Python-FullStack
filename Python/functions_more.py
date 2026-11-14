@@ -253,9 +253,9 @@ print(is_xylem())
 '''
 
 
+'''
 def is_xylem():
     n=int(input('Enter:'))
-
     if n//10==0:
         return True
     elif n//100==0:
@@ -263,19 +263,17 @@ def is_xylem():
     else:
         lh = 0
         lh = lh + n%10
-        n=n//100
+        print(lh)
+        n=n//10
         rh=0
         while n>0:
+            print(n)
             d=n%10
             rh=rh+d
-            if n//10==0:
-                d=n%10
-                rh=rh+d
-                n=n//10
-                lh=lh+n%10
+            if n//100==0:
+                lh=lh+(n//10)%10
                 break
             n=n//10
-        
         if lh==rh:
             return True
         else:
@@ -283,9 +281,77 @@ def is_xylem():
         
 print(is_xylem())
 
+'''
 
 
 
+'''
+# 145.Wap to check whether the number is spy or not.
+#  Ex: 123→1+2+3=1*2*3
+def spy():
+    n=int(input('Enter:'))
+
+    sum=0
+    prod=1
+
+    while n>0:
+        d=n%10
+        sum=sum+d
+        prod=prod*d
+        n=n//10
+    if sum==prod:
+        print('Spy number')
+    else:
+        print('Not a spy number')
+spy()
+'''
+
+
+'''
+# 142.wap to check whether the string is anagram or not.
+# listen=silent
+
+s1=input('Enter string s1:')
+s2=input('Enter string s2:')
+a1=sorted(s1)
+a2=sorted(s2)
+if a1==a2:
+    print('Anagrams')
+else:
+    print('Not anagrams')
+'''
+
+
+'''
+#check
+s1=input('Enter string s1:')
+s2=input('Enter string s2:')
+
+for ch in s1:
+    if ch in s2:
+        s2=s2.replace(ch,'')
+        s1=s1.replace(ch,'')
+
+if s2=='':
+    print('Anagrams')
+else:
+    print('Not anagrams')
+'''
+
+'''
+#  143.Wap to check whether the string is pangram or not.
+# it has every alphabet of English at least once
+# eg - the quick brown fox jumps over the lazy dog
+s='the quick brown fox jumps over the lazy dog'
+alpha='abcdefghijklmnopqrstuvwxyz'
+for ch in s.lower():
+    if ch in alpha:
+        alpha=alpha.replace(ch,'')
+if alpha=='':
+    print('pangram')
+else:
+    print('not a pangram')
+'''
 
 
 
