@@ -6,7 +6,7 @@ file handling: performing operations on the file-read write update
 open() -e stablishes conn between python file and another file/ access a file so we can perform file oeprations
 in built function to get file access
 
-var.open('file.ext','mode') , mode- type of operation
+var=open('file.ext','mode') , mode- type of operation
 
 var.close()
 
@@ -17,7 +17,7 @@ mode of oepration
 
 w - 
 write() - single line ofdata -> onyl string data
-writelines() - mmultiple lines of data
+writelines() - multiple lines of data
 write-it creates  anw file if the file does not exist and writes, if the file exists it overwrrites the data
 openign a file in w mode overrites it
 

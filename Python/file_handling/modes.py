@@ -7,6 +7,7 @@ f.writelines(['hi','hello\n','namaskara'])
 f.close()
 '''
 
+
 '''
 f=open('file1.txt','w')
 f.close()
@@ -45,5 +46,7 @@ else:
 ##hello # becuae pyhton is adding newline at \n
 ##
 ##world it is
+
+
 
 
