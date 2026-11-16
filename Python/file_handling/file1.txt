@@ -1,3 +1,4 @@
-hello
-world it is
-Friday today!
+Python today
+no JS class today
+Python today
+no JS class today

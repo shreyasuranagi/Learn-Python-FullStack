@@ -8,7 +8,7 @@ in built function to get file access
 
 var=open('file.ext','mode') , mode- type of operation
 
-var.close()
+var.close() - save any modifications (especially after write NOT read operations)
 
 mode of oepration
 1. wrtie ( w, w+, wb, wb+ ) - wrie, w+r, w binary, w+r binary
@@ -21,14 +21,118 @@ writelines() - multiple lines of data
 write-it creates  anw file if the file does not exist and writes, if the file exists it overwrrites the data
 openign a file in w mode overrites it
 
-----------
 
-read - reads all the lines
+----------
+read - rb (default mode)
+
+read(no of char ) - reads n no. of characters
+read - reads all the lines / compelte file
 readline - reads one line at a time
-readlines - reads all the lines in the form of  alist
+readlines - complete file reads all the lines in the form of  a list
 
 shell-\n in output
 
 
+----
+append - a
+
+adds new data to existing data without modifying the data
+if file doesnt exist it will create it and write the data 
+wrtie()
+writelines()
 
 
+----
+
+x  (opposite to w)
+if file exists it raises the error - FileNOtFOund error
+else, it creates a new file and wrties the data
+write()
+writelines()
+
+
+---
+
+seek(n) - to adjsut the file pointer base don our requirement(just before  reading)
+
+tell() - current position of the file pointer/ move the file pointer -a s index number
+
+
+--------
+
+w+
+we can both read and write data to a file BUT NOT together (w emust use seek) 
+we must always use seek(0) when we want to read from a file
+
+first read then write?
+seek() has no affect?
+---
+
+r+
+reading and writing can be done together
+first read - then write just adds to the end of file
+first write - then read wll replaces those characters(overwrites) (icnluding  \n if any)
+
+in r+ mode - reading moves pointer, and writing moves pointer back to 0
+
+
+---
+
+a+ - file pointer always at tend of file, so no overwriting
+in a mode seek() has no affect 
+
+
+-----------------
+
+BINARY - image files
+
+
+pickle module -dumps and loads
+dumps - converts original data to bytes, hides data, changes repr an adds security
+or use 'b- 
+
+import pickle
+c=pickle.dumps(original)
+type(c) -> class bytes
+
+loads - converts bytes to oiringial data
+pickle.loads(c)
+
+
+-----------------
+
++ mode - write and read together
+
+------------------
+
+csv 
+
+writerow() - single row of data
+
+writerows() - to wrtie multiple rows of data
+
+import csv
+
+Writer calss 
+1. import csv
+2. f=open('file.csv','w',newline='')
+3. create object of writer class - ob = csv.writer(f) f- access variable
+4. ob.writerow([d1,d2,...,dn])
+5. ob.writerows( [[d1,d2,d3,,,dn] , [d1,d2,d3,...dn]] )
+
+
+read csv data-
+import csv
+f=open('file.csv','r')
+create object of reader class - ob = csv.reader(f)
+type cast that object to list: print(list(ob)) - nested list
+
+----------------
+
+
+#context manager
+in python is the with keyword
+so control cna handle closing file by itself
+it handles the entering and closing files by itself
+with open('exam.csv','a') as f:
+    ob=csv.writer(f)

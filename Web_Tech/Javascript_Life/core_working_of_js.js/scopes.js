@@ -12,17 +12,17 @@
 // print()
 
 
-//~ local scope
+//~ example -  name is not defined
 
-// console.log(data);
-// function print(){
-//     console.log((data));
+console.log(data); //undefined
+function print(){
+    console.log((data));
 
-// }
-// print()
-// console.log(name); # ReferenceError: name is not defined
-// var data='somu'
-// console.log(data)
+}
+print() // undefined
+console.log(name); // ReferenceError: name is not defined
+var data='somu'
+console.log(data)
 
 
 
@@ -39,13 +39,13 @@
 
 //~ example of global getting changed in function when accessed without declaration cos declaration creates the var/data in creation phase
 
-// let x = 10
-// function print() {
-//     x = 20
-//     console.log(x) //20
-// }
-// print()
-// console.log(x) //20
+let x = 10
+function print() {
+     x = 20
+    console.log(x) //20
+}
+print()
+console.log(x) //20
 
 
 

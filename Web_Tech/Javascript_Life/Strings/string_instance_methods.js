@@ -39,14 +39,15 @@ var s='JS is Java Script'
 console.log(s.includes('is'))
 console.log(s.includes('pt'))
 console.log(s.includes('z'))
-console.log(s.includes('s',4))
+console.log(s.includes('s',5))
 console.log(s.includes('S',11))
 
 //indexOf()
 var s ='javascript'
-console.log(s.indexOf('a'))
-console.log(s.indexOf('a',s.indexOf('a')+1)) // a after the first a
+console.log(s.indexOf('a')) //1
+console.log(s.indexOf('a',s.indexOf('a')-1)) // a after the first a 
 console.log(s.indexOf('z'))
+console.log(s.indexOf('va'))
 
 
 
@@ -54,8 +55,8 @@ console.log(s.indexOf('z'))
 //7. lastIndexOf
 var s ='java script java'
 console.log(s.lastIndexOf('i')) //8
-console.log(s.lastIndexOf('va'))
-console.log(s.lastIndexOf('va',0))
+console.log(s.lastIndexOf('va')) //14
+console.log(s.lastIndexOf('va',2)) //2
 // console.log()
 // console.log()
 
