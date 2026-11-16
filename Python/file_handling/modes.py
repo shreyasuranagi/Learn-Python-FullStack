@@ -141,7 +141,7 @@ f.close()
 ###########################################
 # practice test.txt
 
-#p1
+#p1-r
 '''
 f=open('test.txt','r')
 print(f.readline())
@@ -175,7 +175,7 @@ f.close()
 
 
 
-#p2
+#p2-w
 '''
 f=open('test.txt','w')
 print(f.write('kitten'))
@@ -215,7 +215,7 @@ catbc world
 3
 '''
 
-#p3
+#p3-a
 '''
 f=open('test.txt','a')
 print(f.write('kitten'))
@@ -256,3 +256,118 @@ f.close()
 ##37
 
 '''
+
+
+#p4 - w+
+'''
+f=open('test.txt','w+')
+print(f.read())
+print(f.tell())
+f.write('abc')
+f.write('defg\n')
+f.write('hi')
+print(f.tell())
+print(f.read())
+print(f.seek(4))
+print(f.readline())
+print(f.write('123'))
+f.close()
+'''
+
+'''
+abcdefg
+hi123
+
+output-
+
+0
+11
+
+4
+efg
+
+3
+
+'''
+
+
+
+#p5 - r+
+'''
+f=open('test.txt','r+')
+print(f.write('hey'))
+print(f.tell())
+print(f.read())
+print(f.tell())
+print(f.seek(5))
+print(f.read())
+f.close()
+'''
+
+
+#p6-a+
+'''
+f=open('test.txt','a+')
+print(f.tell())
+print(f.write('added'))
+print(f.tell())
+print(f.seek(0))
+print(f.tell())
+print(f.readline())
+print()
+f.close()
+'''
+
+
+#p7-wb+
+'''
+f=open('testb.txt','wb+')
+print(f.tell())
+f1= open('icon.jpg','rb')
+icon=f1.read()
+print(icon)
+f.write(icon)
+s1=b'hello there testing here'
+f.write(s1)
+f1.close()
+f.close()
+'''
+
+'''
+
+f=open('testb.txt','wb+')
+print(f.tell())
+
+s1=b'hello there testing here'
+f.write(s1)
+s2='non binary string'
+f.write(s2.encode())
+f.close()
+'''
+
+
+import pickle
+f=open('testb.txt','wb+')
+print(f.tell())
+
+s1=b'hello there testing here'
+outs1=pickle.dumps(s1)
+f.write(outs1)
+s2='non binary string'
+f.write(s2.encode())
+f.seek(1)
+print(f.read())
+f.close()
+
+
+with open("testb.txt", "rb") as file:
+  loaded_data = pickle.load(file)
+  print(loaded_data)
+
+with open('testb.txt','ab+') as file:
+    file.write(b'[1,2,3]')
+    file.seek(0)
+    print(file.tell())
+    print(file.read())
+    print(pickle.load(file))
+
