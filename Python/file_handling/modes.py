@@ -318,9 +318,9 @@ print()
 f.close()
 '''
 
-
+# assignment
 #p7-wb+
-'''
+
 f=open('testb.txt','wb+')
 print(f.tell())
 f1= open('icon.jpg','rb')
@@ -331,7 +331,7 @@ s1=b'hello there testing here'
 f.write(s1)
 f1.close()
 f.close()
-'''
+
 
 '''
 
@@ -346,6 +346,7 @@ f.close()
 '''
 
 
+'''
 import pickle
 f=open('testb.txt','wb+')
 print(f.tell())
@@ -358,8 +359,12 @@ f.write(s2.encode())
 f.seek(1)
 print(f.read())
 f.close()
+'''
 
 
+
+
+'''
 with open("testb.txt", "rb") as file:
   loaded_data = pickle.load(file)
   print(loaded_data)
@@ -370,4 +375,4 @@ with open('testb.txt','ab+') as file:
     print(file.tell())
     print(file.read())
     print(pickle.load(file))
-
+'''
