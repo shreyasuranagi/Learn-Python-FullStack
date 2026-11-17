@@ -1,4 +1,4 @@
-// global scope
+//! global scope
 // here data is global scope
 
 // console.log(data);
@@ -60,3 +60,51 @@ console.log(x) //20
 // }
 // print()
 // console.log(x) //20
+
+//! BLOCK SCOPE
+
+//~ let example
+
+let flag=true
+if (flag) {
+    var data=100
+    console.log('in block:',data) //100
+}
+else{
+    var data=100
+    console.log('in block:',data)
+}
+console.log(data) //100
+
+//~ modified
+
+let flag=true
+if (flag) {
+    let data=100
+    console.log('in block:',data) //100
+}
+else{
+    var data=100
+    console.log('in block:',data)
+}
+console.log(data) // undefined
+
+//~ scope chaining
+
+let d1='somu'
+function outer(){
+    let d2='rani'
+    function inner(){
+        let d3='raja'
+        console.log(d1);
+        console.log(d2); //scope chaining
+        console.log(d3);
+        
+    }
+    inner()
+    console.log(d2)
+    console.log(d3) // d3 not defined, scope concept here
+}
+outer()
+
+// dif in lexical and scope chaning and scopes
