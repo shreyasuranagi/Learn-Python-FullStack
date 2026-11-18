@@ -89,6 +89,19 @@ else{
 }
 console.log(data) // undefined
 
+//!
+
+let flag=true
+if (flag) {
+    let data=100
+    console.log('in block:',data) //100
+}
+else{
+    let data=100
+    console.log('in block:',data)
+}
+console.log(data) // data is not defined
+
 //~ scope chaining
 
 let d1='somu'
