@@ -498,7 +498,7 @@ a b c d
 '''
 
 #q36. Wap to find the second greatest of 4 values.-?
-
+'''
 a=int(input('Enter 1st number:'))
 b=int(input('Enter 2nd number:'))
 c=int(input('Enter 3rd number:'))
@@ -527,7 +527,7 @@ else:
     #greatest=d
     sec=c
 print('Second greatest:',sec)
-
+'''
 
 #q37. Wap to find the smallest of 4 numbers.
 '''
@@ -1257,15 +1257,31 @@ print(d)
  #91. Wap to get the following output.
  #S=[‘jiocinema.com’,’file.py’,’web.html’,’amazom.com’,’www.org’]
  #Out=[‘com’,’py’,’html’,’org’]
-'''
-s=input('enter a list of domain name:')
+
+s=['file.py','jiocinema.com', 'web.html','www.org']
+res=[]
 for dn in s:
     i=0
     while i<len(s):
-        if dn=='.':
+        if dn[i]=='.':
+            #j=i
+            ext=''
+            for j in range(i,len(dn)):
+                ext+=dn[j]
+            if ext not in res:
+                res.append(ext)
+            break
+        i=i+1
+print(res)
+
+        
+
+
 '''
 
 
  #92. Wap to get the following output.
  #S=[‘jiocinema.com’,’file.py’,’web.html’,’amazom.com’,’www.org ’python.py’]
  #Out={‘com’:[‘jiocinema’,’amazon’],’py’:[‘file’,’python’],’html’:[‘web’],’org’:[‘www’]}
+
+'''
