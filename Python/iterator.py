@@ -68,14 +68,18 @@ def sam2():
     yield a*b
 
 print(sam2())
-print(list(sam2()))
+# <generator object sam2 at 0x00000213CE8AA5A0>
+#hello
+#hi
+print(list(sam2())) #[30, -10]
 #hi
 #[30, -10, 200]
 
 i=iter(sam2())
-
+#30
+ #hello
 print(next(i))
-print(next(i))
+print(next(i)) #-10
 #print(next(i))
 '''
 30
