@@ -1,30 +1,30 @@
 
-// let userinfo = {
-//     name: null,
-//     "is LoggedIn": true,
-//     streak: 7,
-//     days: 360,
-//     subjects: ['js', 'html', 'python', 'sql'],
-//     "status%": 'busy',
+let userinfo = {
+    name: null,
+    "is LoggedIn": true,
+    streak: 7,
+    days: 360,
+    subjects: ['js', 'html', 'python', 'sql'],
+    "status%": 'busy',
 
-//     coding: function () {
-//         console.log(name, 'is coding now');
-//     },
-//     resting: (name) => { console.log(name, 'is resting'); },
+    coding: function () {
+        console.log(name, 'is coding now');
+    },
+    resting: (name) => { console.log(name, 'is resting'); },
 
-//     eating: function eat() {
-//         return "eating.."
-//     },
+    eating: function eat() {
+        return "eating.."
+    },
 
-//     address: {
-//         city: 'mysuru',
-//         code: 570002,
-//         wards: [101,103,201,302]
-//     },
-//     0:"some metadata first"
-// }
+    address: {
+        city: 'mysuru',
+        code: 570002,
+        wards: [101,103,201,302]
+    },
+    0:"some metadata first"
+}
 
-// console.log(userinfo);
+console.log(userinfo);
 
 // //~ Defintion
 // /*
@@ -131,13 +131,14 @@ let userData = {
 }
 //~ 1. KEYS()
 console.log(Object.keys(userData)) // [ '10', 'name', 'age', 'flag' ]
-
+console.log(Object.keys(userinfo))
 //~ 2. values()
 
 console.log(Object.values(userData)) //[ 'icse', 'abc', 12, true ] //! note order ws changed
-
+console.log(Object.values(userinfo))
 //~ 3. entries()
 console.log(Object.entries(userData)) 
+console.log(Object.entries(userinfo))
 /* output
 [
   [ '10', 'icse' ],
