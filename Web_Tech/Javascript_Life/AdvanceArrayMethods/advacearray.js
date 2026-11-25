@@ -146,26 +146,26 @@
 
 //~ 1. ocunt of odd numbers in the gvien array
 
-// let a = [1,2,3,4,5,6,7,8,9,10]
-// let na = a.filter( n=> n%2==1 ).reduce( (acc,currval) => ++acc ) // doutbt ? why not acc++
-// console.log(na)
+var a = [1,2,3,4,5,6,7,8,9,10]
+var na = a.filter( n=> n%2==1 ).reduce( (acc,currval) => ++acc ) // doutbt ? why not acc++
+console.log(na)
 
 //~ 2. find the sum of squares of given elemnts
 
-// let a = [1,2,3,4,5]
-// let na = a.map( item=>item**2).reduce( (acc,currval) => acc+currval,0)
-// console.log(na)
+var a = [1,2,3,4,5]
+var na = a.map( item=>item**2).reduce( (acc,currval) => acc+currval,0)
+console.log(na)
 
 //3. count how many numbers are divisible by 2 and 3 both
 
-let a = [1,2,3,4,5,6,7,8,9,10,12] // 6
-let ia = a.filter( item => item%2==0 && item%3==0 )
-let na = ia.reduce( acc => ++acc,0 ) // doubt - why it wont work wihtout initliaing?
-console.log(ia)
+var a = [1,2,3,4,5,6,7,8,9,10,12] // 6
+var ia = a.filter( item => item%2==0 && item%3==0 )
+var na = ia.reduce( acc => ++acc,0 ) // doubt - why it wont work wihtout initliaing?
+// console.log(ia)
 console.log(na)
 
 
 //4. find total no of chars in all the strings of array
 
-let s=['hi','hello','there']
+var s=['hi','hello','there']
 console.log(s.map( item => item.length ).reduce( (acc,curr) => acc+curr ))
