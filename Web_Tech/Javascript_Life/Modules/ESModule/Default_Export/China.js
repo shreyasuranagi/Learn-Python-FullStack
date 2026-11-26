@@ -21,11 +21,18 @@
 // export default toys
 // export default add // SYNTAX error multiple default export statements are not possible
 
-//! exporting mutiple data - usinng object
+// //! exporting mutiple data - usinng object
 
-let toys = 'Electric cars'
-function add(a,b){
-    console.log(a+b)
+// let toys = 'Electric cars'
+// function add(a,b){
+//     console.log(a+b)
+// }
+
+// export default { toys, add }
+
+//! exporitng an object
+let data={
+    name:'shreya',
+    age:21
 }
-
-export default { toys, add }
+export default data

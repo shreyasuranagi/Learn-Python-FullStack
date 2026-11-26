@@ -24,17 +24,36 @@
 
 //! import using a signle object and THEN destructuring it -
 
-import object from './China.js'
-console.log(object) // { toys: 'Electric cars', add: [Function: add] }
-console.log(object.toys) // Electric cars
-console.log(object.add) //[Function: add]
-object.add(1,2)
+// import object from './China.js'
+// console.log(object) // { toys: 'Electric cars', add: [Function: add] }
+// console.log(object.toys) // Electric cars
+// console.log(object.add) //[Function: add]
+// object.add(1,2)
 
 
-//OR
-let {toys,add}=object 
-console.log(toys); //Electric cars
-console.log(add); // [Function: add]
-add(10,20)
+// //OR
+// let {toys,add}=object 
+// console.log(toys); //Electric cars
+// console.log(add); // [Function: add]
+// add(10,20)
+
+
+//! importing object
+
+// import object from './China.js'
+
+// console.log(object)
+// console.log(object.name);
+
+// let {name,age} = object 
+// console.log(name);
+// console.log(age);
+
+// let {name:n, age:a} = object 
+// console.log(n);
+// console.log(a);
+
+
+
 
 
