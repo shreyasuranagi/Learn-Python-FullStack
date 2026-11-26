@@ -1,4 +1,6 @@
-// import {password} from './China.js'
+import {p} from './China.js'
+console.log(p);
+
 
 // console.log(password) // 3j234j
 
