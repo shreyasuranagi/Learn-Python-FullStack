@@ -1,25 +1,21 @@
 //~ synchronous
 //! SYnchronous
 // console.log('starting execution');
-
 // console.log('mid of execution');
-
 // console.log('end of execution');
-
 // output-
 // starting execution
 // mid of execution
 // end of execution
 
 //! also synchronous
-
 // console.log('starting execution');
 // for (let i = 0; i < 12345; i++) { console.log('loading...') } // takes up execution time in call stack
 // console.log('important data here');
 // console.log('end of execution');
 
 
-//ooutput-
+//* output-
 // start execution
 // loading... 
 // loading...
@@ -30,7 +26,6 @@
 
 
 //! this is still synchronous -
-
 // console.log('starting execution')
 // function handlingData() {
 //     for(let i=0; i<1234534523; i++) {}
@@ -54,16 +49,13 @@
 
 //! ASYNCHRONOUS 
 // ! async - error - worng way to call callbackfunction that have parameters
-
 // console.log('starting execution')
 // function handlingData(n) {
 //     for(let i=0; i<102; i++){
-
 //     }
 //     console.log(n);
 //     console.log('done dealing with data');
 // }
-
 // setTimeout(handlingData(1), 0.5) //*TypeError [ERR_INVALID_ARG_TYPE]: The "callback" argument must be of type function. Received undefined
 // setTimeout(handlingData(2),0.4)
 // console.log('ending execution');
@@ -75,12 +67,10 @@
 // console.log('starting execution')
 // function handlingData(n) {
 //     for(let i=0; i<1029876543; i++){
-
 //     }
 //     console.log(n);
 //     console.log('done dealing with data');
 // }
-
 // setTimeout(() => handlingData(1), 0.7) 
 // setTimeout(function(){ handlingData(2)},0.4)
 // console.log('ending execution');
@@ -96,7 +86,7 @@
 // done dealing with data
 
 
-
+// program-
 // console.log('starting execution')
 // function handlingData(n) {
 //     for(let i=0; i<1029876543; i++){
@@ -127,16 +117,13 @@
 // console.log('starting execution')
 // function handlingData() {
 //     for(let i=0; i<102; i++){
-
 //     }
 //     console.log('done dealing with data');
 // }
-
 // setTimeout(handlingData, 0)
 // setTimeout(handlingData, 1)
 // console.log('ending execution');
 // console.log('done with program');
-
 
 //* output-
 // starting execution
@@ -173,11 +160,8 @@
 
 // //! clearTimeout() - correct method
 // 1.starting execution logs synchronously.
-
 // 2.setTimeout(handlingData, 5000) schedules the timer and returns a timer ID, stored in timerId.
-
 // 3.clearTimeout(timerId) runs immediately on the next synchronous line, canceling that timer before its 5000 ms delay finishes.
-
 // 4.ending execution and done with program log synchronously, and the program finishes with no pending timer callback left to run.
 
 
@@ -252,7 +236,7 @@
 
 
 
-//! clearInterval() - class way
+//! clearInterval() - class way -??
 //!wrong
 // console.log('starting execution')
 // function handlingData() {
@@ -260,24 +244,22 @@
 //     }  
 //     console.log('done dealing with data');
 // }
-// setInterval(handlingData,6000)
-// setTimeout( ()=> clearInterval(handlingData),2000)
+// setInterval(handlingData,2000)
+// setTimeout( ()=> clearInterval(handlingData),6000)
 // console.log('ending execution');
 // console.log('done with program');
 
 
 //////////////////
 
-//! setTimeout - corrected class way
+//! setTimeout - neew program corrected class way
 // let interval= setInterval( () => { console.log('program...')} , 800)
-
 // setTimeout( ()=> { clearInterval(interval)}, 5000 )
-
 // console.log('Dealing with imp data');
 
 
 
-//! clearInterval()  - correct way
+//! clearInterval()  - correct normal way
 // console.log('starting execution')
 // function handlingData() {
 //     for(let i=0; i<102; i++){
@@ -296,14 +278,20 @@
 
 //~ USE CASE VERSIONS
 
-//~ clearInterval() - lets say we show ads every 6s and we want to stop showing ads
-console.log('starting execution')
-function handlingData() {
-    for(let i=0; i<102; i++){
-    }  
-    console.log('AD: buy santoor soap!');
-}
-setInterval(handlingData,6000)
-setTimeout( ()=> clearInterval(handlingData),4000)
-console.log('ending execution');
-console.log('done with program');
+//~ clearInterval() - lets say we show ads every 2s and we want to stop showing ads after 5s (cos maybe at 5s a button gets clicked) : so we need to reapeat-setInterval, to stop repition-clearInterval, and we need to stop it after 5s so trigger it after a delay of 5s-setTimeout(,5000)
+// console.log('starting execution')
+// function ad() {
+//     for(let i=0; i<102; i++){
+//     }  
+//     console.log('AD: buy santoor soap!');
+// }
+// let tid=setInterval(ad,2000)
+// setTimeout( ()=> clearInterval(tid) , 5000)
+// console.log('ending execution');
+// console.log('done with program');
+// //* output -
+// starting execution
+// ending execution
+// done with program
+// AD: buy santoor soap!
+// AD: buy santoor soap!

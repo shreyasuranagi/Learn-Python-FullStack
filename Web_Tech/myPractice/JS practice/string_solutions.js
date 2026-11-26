@@ -1,10 +1,4 @@
-// ---EASY LEVEL
-
-
-// 10 JavaScript String Coding Problems
-// Easy
-// level
-
+//~ ---EASY LEVEL - 10 - METHODS
 
 //! 1. Reverse a String
 //! Write a function to reverse a given string.
@@ -23,7 +17,6 @@
 // let s2 = 'hello'
 // console.log(s2.split('').reverse().join(''))
 
-// ----------------------------------------
 
 //! 2. Check Palindrome
 // Example:
@@ -43,8 +36,6 @@
 // let str = 'madam'
 // console.log(str == str.split('').join(''))
 
-// ----------------------------------------
-
 
 // ! 3. Count Vowels in a String
 //* solution
@@ -56,8 +47,6 @@
 //     }
 // }
 // console.log(count)
-
-// ----------------------------------------
 
 
 //! 4. Find the First Non-Repeating Character
@@ -90,7 +79,6 @@
 //     }
 // }
 
-// ----------------------------------------
 
 //! 5. Remove Duplicate Characters
 // Example:
@@ -108,8 +96,6 @@
 // }
 // console.log(out);
 
-// ----------------------------------------
-
 
 //! 6. Check Whether Two Strings Are Anagrams
 //! Example: Input: "listen", "silent" Output: true
@@ -125,8 +111,6 @@
 //     }
 // }
 // console.log(flag);
-
-// ----------------------------------------
 
 
 //! 7. Find the Longest Word in a Sentence
@@ -151,10 +135,7 @@
 // console.log(l);
 
 
-// ----------------------------------------
-
-
-// 8. Count Frequency of Each Character
+//! 8. Count Frequency of Each Character
 // Input: "banana"
 // Output:
 // {
@@ -165,11 +146,8 @@
 // Count how many times each character appears.
 
 
-// ----------------------------------------
-
-
 //! 9. Capitalize the First Letter of Every Word
-//best solution
+//*best solution
 // let s = 'hello welcome to javascript'
 // sa = s.split(' ')
 // console.log(sa);
@@ -181,7 +159,7 @@
 // console.log(out);
 
 
-// OR
+//* OR
 // let s2 = 'hello welcome to javascript'
 
 // out = s2[0].toUpperCase()
@@ -199,7 +177,7 @@
 // }
 // console.log(out);
 
-//OR
+//*OR
 // let s = 'hello welcome to javascript'
 // sa = s.split(' ')
 // console.log(sa);
@@ -210,10 +188,6 @@
 // console.log(sa)
 // console.log(sa.toString().replaceAll(',', ' '));
 
-
-
-
-//! ----------------------------------------
 
 //! 10. Find the Most Frequent Character
 // Example:
@@ -227,7 +201,6 @@
 //     let c=s[i]
 //     let cc=0
 //     for(let j=0; j<s.length; j++)   {
-
 //     } 
 // }
 
@@ -239,15 +212,15 @@
 // ----------------------------------------
 
 
-// MEIDUM LEVEL QUESTIONS WITH JS  STRING METHODS
+//~ MEIDUM LEVEL QUESTIONS WITH JS  STRING METHODS
 
 
 //! 1. **Reverse the Order of Words**
 // Input: "I love JavaScript"
 // Output: "JavaScript love I"
 //* Solution
-s = "I love JavaScript"
-console.log(s.split(' ').reverse().join(' '))
+// s = "I love JavaScript"
+// console.log(s.split(' ').reverse().join(' '))
 
 
 //! 2. **Find the Longest Word in a Sentence**
@@ -275,23 +248,14 @@ console.log(s.split(' ').reverse().join(' '))
 // console.log(sa);
 // out=''
 // for (let i = 0; i < sa.length; i++) {
-//     // console.log(s.indexOf(sa[i]))
-//     // console.log(s.indexOf(sa[i],s.indexOf(sa[i])+1));
-
 //     if (s.indexOf(sa[i], s.indexOf(sa[i]) + 1) != -1) {
 //         out=out+sa[i]+' '
-//         // console.log('out:',out);
 //         s=s.replaceAll(sa[i],'')
-//         // console.log('s:',s);
 //         sa=s.split(' ')
 //         s=sa.join(' ')
-//         // console.log(s)
-
-
 //     }
 //     else{
 //         out=out+sa[i]+' '
-
 //     }
 // }
 // console.log(out.trimEnd());
@@ -301,20 +265,20 @@ console.log(s.split(' ').reverse().join(' '))
 // Input: "Apple is not an amazing orange"
 // Output: ["Apple", "is", "an", "amazing", "orange"]
 //* solution
-let s = 'Apple is an amazing orange'
-let sa = s.split(' ')
-out = []
-for (let i = 0; i < s.split(' ').length; i++) {
-    if ('aeiouAEIOU'.includes(sa[i][0].split())) {
-        out.push(sa[i])
-    }
-}
-console.log(out);
+// let s = 'Apple is an amazing orange'
+// let sa = s.split(' ')
+// out = []
+// for (let i = 0; i < s.split(' ').length; i++) {
+//     if ('aeiouAEIOU'.includes(sa[i][0].split())) {
+//         out.push(sa[i])
+//     }
+// }
+// console.log(out);
 
-//! Convert a String to Title Case
+//! 5. Convert a String to Title Case
 // Capitalize the first letter of every word and convert the remaining letters to lowercase.
 // js Input: "hELLO wORLD javascript" Output: "Hello World Javascript"
-let s= "hELLO wORLD javascript"
+// let s = "hELLO wORLD javascript"
 // wl=s.split(' ')
 // out=''
 // for(let i=0; i<wl.length; i++){
@@ -331,10 +295,10 @@ let s= "hELLO wORLD javascript"
 // Input: "apple banana apple orange banana apple"
 // Output: "apple"
 //* solution
-s='apple banana apple orange banana apple'
-a=s.split(' ')
-console.log(a)
-console.log(a)
+// s = 'apple banana apple orange banana apple'
+// a = s.split(' ')
+// console.log(a)
+// console.log(a)
 
 
 
@@ -344,68 +308,169 @@ console.log(a)
 // Character: "g"
 // Output: "prorammin"
 //* solution
-let s='programming'
-console.log(s.replaceAll('g',''))
+// let s = 'programming'
+// console.log(s.replaceAll('g', ''))
 
 
 //! 9. **Find the Second Longest Word**
 // Input: "I love JavaScript programming"
 // Output: "JavaScript"
-let s = "I love  programming JavaScript"
-sa = s.split(' ')
+// let s = "I love  programming JavaScript"
+// sa = s.split(' ')
 
-let ll = 0
-let lw = ''
-let sl = 0
-let slw = ''
+// let ll = 0
+// let lw = ''
+// let sl = 0
+// let slw = ''
 
-for (let i = 0; i < sa.length; i++) {
+// for (let i = 0; i < sa.length; i++) {
 
-    if (sa[i].length > ll) {
-        sl = ll
-        slw = lw
-        ll = sa[i].length
-        lw = sa[i]
+//     if (sa[i].length > ll) {
+//         sl = ll
+//         slw = lw
+//         ll = sa[i].length
+//         lw = sa[i]
 
-    }
-    else if (sa[i].length > sl) {
-        sl = sa[i].length
-        slw = sa[i]
-    }
+//     }
+//     else if (sa[i].length > sl) {
+//         sl = sa[i].length
+//         slw = sa[i]
+//     }
 
-}
-console.log(slw);
+// }
+// console.log(slw);
+
+
+//! 10.Compress a String
+// Compress consecutive repeated characters by writing each character followed by its count. Return the original string if compression does not make it shorter.
+// js Input: "aaabbccccd" Output: "a3b2c4d1" 
+//** solution 
+// let s='aaabbccccd'
+// let out=''
+// while (s!=''){
+//     c=s[0]
+//     i1=s.indexOf(c)
+//     i2=s.lastIndexOf(c)
+//     out=out+c+(i2-i1+1)
+//     s=s.replaceAll(c,'')
+// }
+// console.log(out);
+
+
+
+// ----------------------------------------
+// ----------------------------------------
+
+
+
+
+//~ REAL WORLD STRING METHOD QUESTIONS
+
+//! 3. The Unicode Icon Lookup: You are building an emoji picker or text character inspector. How do you find the Unicode (UTF-16) value of a character at a specific position in a string?
+// //* solution
+// let s='hello😄 there🍕c'
+// console.log(s.charCodeAt(5));
+// console.log(String.fromCodePoint(s.charCodeAt(5),65));
+
+
+//! 9. The CSV Data Parser: A user pastes a comma-separated list of tags into an input field (e.g., javascript, html, css), and you need to convert that single string into an array of individual tag strings.
+
+
+
+//! 16. The Navigation Breadcrumb Check: You want to check if the current page URL path begins with /admin to conditionally render an admin dashboard header.
+//* solution
+// let url1='/admin/contorls'
+// let url2='/customer/dashboard'
+// console.log(url1.startsWith('/admin')); //true
+// if (url1.startsWith('/admin')) console.log('Render ADMIN dashboard'); //Render ADMIN dashboard
+// if (~(url2.startsWith('/admin'))) console.log('Render 404'); //Render 404
+
+
+
+
+
+//! 18. The Loading Bar Visualizer: You want to repeat a loading character string (like =-=) a specific number of times to create a custom progress bar animation.
+//* solution
+// console.log('loading...')
+// for(let i=0; i<100; i+=10)
+// {   
+//     console.log(`progress: ${i}%`);
+//     console.log('='.repeat(i));
+// }
+// console.log('||')
+
+
+//!20. The Receipt Column Alignment: You are printing a text-based receipt for an e-commerce checkout page, and you need to pad product prices with trailing spaces or characters so they align neatly on the right side.
+//* solution
+// let total=30
+// let prod={milk:56,bread:30,tomato:34}
+// let prodname=Object.keys(prod)
+// let prodprice=Object.values(prod)
+// for(let i=0; i<prodname.length; i++)
+// {
+//     let row=''
+//     row=row.concat(prodname[i])
+//     row=row.padEnd( total, ' ')
+//     row=row.concat(prodprice[i])
+//     console.log(row);
+    
+// }
+
+
+
+//! 21. The Content Moderation Tool: You are building a blog comment section and need to replace a specific banned word with asterisks (e.g., replacing "badword" with "***").
+//* solution
+// let badword ='stupid'
+// let comment =' the product is so stupidly cheap. dont be so stupid ok?'
+// console.log(comment);
+// let newcomment = comment.replaceAll(badword,'***')
+// console.log(newcomment);
+
+
 
 
 
 // ----------------------------------------
 // ----------------------------------------
 // ----------------------------------------
-// ----------------------------------------
 
 
-// REAL WORLD SCENARIO QUESTIONS interview level
+
+
+
+
+
+
+//~ SENIOR LEVEL interview level
+
 //! 2. **The High-Performance Autocomplete Substring Matcher:**
 // Your team is reviewing a high-traffic search bar where users type rapidly. You notice memory spikes and unnecessary allocations when validating whether a product list contains a search term. Aside from basic inclusion checks, how would you search a string while ignoring case sensitivity without creating expensive temporary lowercase copies of large catalog strings?
 //* solution
-let catalog=`shoes
-Shampoo
-Dresses
-CLEAN and CLEAR
-Jeans
-Fruits and Vegetables
-Vegetables`
-let search='clear'
-let search2='sh'
+// let catalog = `shoes
+// Shampoo
+// Dresses
+// CLEAN and CLEAR
+// Jeans
+// Fruits and Vegetables
+// Vegetables`
+// let search = 'clear'
+// let search2 = 'sh'
 
-let a=catalog.toLowerCase().split('\n')
-// console.log(a);
+// let a = catalog.toLowerCase().split('\n')
+// // console.log(a);
 
-for(let i=0; i<a.length; i++){
-    
-    
-    if (a[i].includes(search2.toLowerCase())) {
-        console.log(a[i]);
-        
-    }
-}
+// for (let i = 0; i < a.length; i++) {
+
+
+//     if (a[i].includes(search2.toLowerCase())) {
+//         console.log(a[i]);
+
+//     }
+// }
+
+
+
+// ----------------------------------------
+// ----------------------------------------
+// ----------------------------------------
+
