@@ -295,3 +295,46 @@
 // done with program
 // AD: buy santoor soap!
 // AD: buy santoor soap!
+
+ 
+//~ display  a countdown of 20s timer, once countdown over show Time is UP
+
+// console.log('start exec');
+// //60-59-58-56-...
+// let time=20
+// function time20(){
+//     console.log(time);
+//     time=time-1
+// }
+// let tid = setInterval( ()=>time20(), 1000 )
+// setTimeout( ()=>clearInterval(tid) , 22000) // why? - 
+// console.log('Time is up');
+// console.log('end exec');
+// console.log('end prog');
+
+/*
+start exec
+end exec
+end prog
+20
+19
+18
+17
+16
+15
+14
+13
+12
+11 
+10
+9
+8
+7
+6
+5
+4
+3
+2
+1
+0
+*/
