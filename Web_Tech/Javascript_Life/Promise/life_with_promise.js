@@ -214,58 +214,57 @@
 
 //!CAFE - tradidional approach then and catch
 
-// function orderfood() {
+function orderfood() {
 
-//     //what if we did this and then returned new promise?
-//     // setTimeout(() => {
-//     //     console.log('your fav food is ordered!!');
-//     // }, 2000)
-
-
-//     return new Promise((resolve) => {
-//         setTimeout(() => {
-//             console.log('your fav food is ordered!!');
-//         }, 2000)
-//         resolve('--ordering done successfully--')
-//     })
-// }
+    //what if we did this and then returned new promise?
+    // setTimeout(() => {
+    //     console.log('your fav food is ordered!!');
+    // }, 2000)
 
 
-// function preparefood() {
-
-//     return new Promise((resolve) => {
-//         setTimeout(() => {
-//             console.log('done preparng the food!!');
-//         }, 2000) //5000 same problem persists!???
-//         resolve()
-//     })
-
-
-// }
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            console.log('your fav food is ordered!!');
+            resolve('--ordering done successfully--')
+        }, 2000)
+        
+    })
+}
 
 
-// function payment() {
+function preparefood() {
 
-//     return new Promise((resolve) => {
-//         setTimeout(() => {
-//             console.log('payment is dont');
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            console.log('done preparng the food!!');
+             resolve()
+        }, 5000) 
+    })
+}
 
-//         }, 2000);
-//         resolve()
-//     })
-// }
+
+function payment() {
+
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            console.log('payment is dont');
+            resolve()
+        }, 2000);
+        
+    })
+}
 
 
-// function takeaway() {
-//     setTimeout(() => {
-//         console.log('ready for takeaway!');
+function takeaway() {
+    setTimeout(() => {
+        console.log('ready for takeaway!');
+        resolve()
+    }, 2000)
 
-//     }, 2000)
-
-// }
+}
 
 //~ traditional appraoch
-// orderfood().then(() => { return preparefood() }).then(() => { return takeaway() }).then(() => { return payment; console.log('enjoy oyour food!') });
+orderfood().then(() => { return preparefood() }).then(() => { return takeaway() }).then(() => { return payment; console.log('enjoy oyour food!') });
 
 
 //! callback hell
@@ -287,61 +286,61 @@
 
 //~ MODERN APPROACH
 
-function orderfood() {
+// function orderfood() {
 
-    return new Promise((resolve) => {
-        setTimeout(() => {
-            console.log('your fav food is ordered!!');
-            resolve()
-        }, 2000)
-        // resolve('--ordering done successfully--')?
-    })
-}
+//     return new Promise((resolve) => {
+//         setTimeout(() => {
+//             console.log('your fav food is ordered!!');
+//             resolve()
+//         }, 2000)
+//         // resolve('--ordering done successfully--')?
+//     })
+// }
 
 
-function preparefood() {
+// function preparefood() {
 
-    return new Promise((resolve) => {
+//     return new Promise((resolve) => {
 
-        setTimeout(() => {
-            console.log('done preparng the food!!');
-            resolve()
-        }, 5000)
+//         setTimeout(() => {
+//             console.log('done preparng the food!!');
+//             resolve()
+//         }, 5000)
         
-    })
+//     })
 
 
-}
+// }
 
 
-function payment() {
+// function payment() {
 
-    return new Promise((resolve) => {
-        setTimeout(() => {
-            console.log('payment is dont');
-            resolve()
-        }, 2000);
-        // resolve()
-    })
-}
+//     return new Promise((resolve) => {
+//         setTimeout(() => {
+//             console.log('payment is dont');
+//             resolve()
+//         }, 2000);
+//         // resolve()
+//     })
+// }
 
 
-function takeaway() {
-    return new Promise((resolve) => {
-        setTimeout(() => {
-            console.log('takeaway is called');
-            resolve()
-        }, 2000);
-        // resolve()
-    })
+// function takeaway() {
+//     return new Promise((resolve) => {
+//         setTimeout(() => {
+//             console.log('takeaway is called');
+//             resolve()
+//         }, 2000);
+//         // resolve()
+//     })
 
-}
+// }
 
-async function handledata() {
-    await orderfood()
-    await preparefood()
-    await takeaway()
-    await payment()
-    console.log('enjoy food');
-}
-handledata()
+// async function handledata() {
+//     await orderfood()
+//     await preparefood()
+//     await takeaway()
+//     await payment()
+//     console.log('enjoy food');
+// }
+// handledata()
